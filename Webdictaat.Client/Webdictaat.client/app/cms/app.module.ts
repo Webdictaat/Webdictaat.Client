@@ -9,6 +9,7 @@ import {DragulaModule, DragulaService} from 'ng2-dragula/ng2-dragula';
 
 //modules
 import { QuestionsModule } from '../questions/questions.module';
+import { ImagesModule } from '../images/images.module';
 import { PagesModule } from '../pages/pages.module';
 import { ToolsModule } from '../tools/tools.module';
 
@@ -28,11 +29,12 @@ import { routing } from './app.routing';
 import { DialogService } from '../services/dialog.service';
 import { FilePreviewService } from '../services/file-preview.service';
 import { QuestionsService } from '../services/question.service';
+import { ImageService } from '../services/images.service';
 
 
 @NgModule({
     imports: [
-        DragulaModule, ToolsModule, QuestionsModule,
+        DragulaModule, ToolsModule, QuestionsModule, ImagesModule, 
         BrowserModule, HttpModule, routing, PagesModule, FormsModule, CKEditorModule
     ],
     declarations: [
@@ -40,7 +42,7 @@ import { QuestionsService } from '../services/question.service';
         AppComponent, DictatenComponent, FilePreviewComponent, DictaatComponent, EditPageComponent
     ],
     providers: [
-        FilePreviewService, DialogService, QuestionsService,
+        FilePreviewService, DialogService, QuestionsService, ImageService,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
     ],
     bootstrap: [

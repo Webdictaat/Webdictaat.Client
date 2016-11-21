@@ -9,8 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var images_service_1 = require('../../services/images.service');
 var ImgComponent = (function () {
-    function ImgComponent() {
+    function ImgComponent(imageServie) {
+        this.imageServie = imageServie;
     }
     /**
      * Omslachtige maar nodige manier om terug in de Angular2 context te komen.
@@ -29,15 +31,19 @@ var ImgComponent = (function () {
         });
     };
     ImgComponent.prototype.onDrop = function (ui, done) {
-        ui.item.replaceWith("<div class='wd-component'><img src='https://abitor2.files.wordpress.com/2013/07/monkey-smile.jpg' /></div>");
-        done();
+        this.ui = ui;
+        this.done = done;
+        this.imageServie.ShowModal().then(function (imgName) {
+            ui.item.replaceWith("<div class='wd-component'><img src='http://localhost:65418//images//" + imgName + "'/></div>");
+            done();
+        });
     };
     ImgComponent = __decorate([
         core_1.Component({
             selector: "wd-img-tool",
             template: "<div id='wd-img-tool' class='wd-component' >Img</div>",
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [images_service_1.ImageService])
     ], ImgComponent);
     return ImgComponent;
 }());

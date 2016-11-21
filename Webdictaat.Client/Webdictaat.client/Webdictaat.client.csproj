@@ -35,6 +35,7 @@
     <Content Include="app\dictaten\add-dictaat.component.html" />
     <Content Include="app\dictaten\dictaten.component.css" />
     <Content Include="app\dictaten\dictaten.component.html" />
+    <Content Include="app\images\add-image.component.html" />
     <Content Include="app\pages\edit-page.component.html" />
     <Content Include="app\file-preview\file-preview.component.css" />
     <Content Include="app\file-preview\file-preview.component.html" />
@@ -52,6 +53,9 @@
     <TypeScriptCompile Include="app\context-menu\context-menu.component.ts" />
     <TypeScriptCompile Include="app\context-menu\context-menu.service.ts" />
     <TypeScriptCompile Include="app\dialog\dialog.component.ts" />
+    <TypeScriptCompile Include="app\images\add-image.component.ts" />
+    <TypeScriptCompile Include="app\images\images.module.ts" />
+    <TypeScriptCompile Include="app\services\images.service.ts" />
     <TypeScriptCompile Include="app\models\question.ts" />
     <TypeScriptCompile Include="app\models\tool-params.ts" />
     <TypeScriptCompile Include="app\core\html-outlet.directive.ts" />
@@ -65,7 +69,6 @@
     <TypeScriptCompile Include="app\tools\default-tools\column.component.ts" />
     <TypeScriptCompile Include="app\tools\default-tools\img.component.ts" />
     <TypeScriptCompile Include="app\tools\default-tools\trash.component.ts" />
-    <TypeScriptCompile Include="app\tools\game-tools\game-tools.service.ts" />
     <TypeScriptCompile Include="app\tools\tools.module.ts" />
     <TypeScriptCompile Include="app\tools\default-tools\header.component.ts" />
     <TypeScriptCompile Include="app\tools\html.component.ts" />

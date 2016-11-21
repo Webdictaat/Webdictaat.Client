@@ -1,0 +1,23 @@
+﻿<div id="myModal" class="modal fade in" role="dialog" *ngIf="isModalVisible">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" (click)="hideDialog()">&times;</button>
+                <h4 class="modal-title">Add Image</h4>
+            </div>
+            <div class="modal-body">
+
+                <input type="file" (change)="fileChange($event)" />
+              
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" (click)="Add()">Save</button>
+            <button class="btn btn-default" (click)="Cancel()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+

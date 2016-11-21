@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
-
+import { ImageService } from '../../services/images.service';
 declare var $: JQueryStatic;
 
 @Component({
@@ -8,7 +8,12 @@ declare var $: JQueryStatic;
 })
 export class ImgComponent implements OnInit  {
 
-    constructor() { }
+    private ui: any;
+    private done: any; 
+
+
+
+    constructor(private imageServie: ImageService) { }
 
     /**
      * Omslachtige maar nodige manier om terug in de Angular2 context te komen.
@@ -28,9 +33,16 @@ export class ImgComponent implements OnInit  {
         })
     }
 
-    public onDrop(ui : any, done: any): void {
-        ui.item.replaceWith("<div class='wd-component'><img src='https://abitor2.files.wordpress.com/2013/07/monkey-smile.jpg' /></div>");
-        done();
+    public onDrop(ui: any, done: any): void {
+        this.ui = ui;
+        this.done = done;
+        this.imageServie.ShowModal().then((imgName) => {
+
+            ui.item.replaceWith("<div class='wd-component'><img src='http://localhost:65418//images//" + imgName +"'/></div>");
+            done();
+
+        });
+
     }
 
 }
