@@ -1,0 +1,22 @@
+﻿
+
+<wd-add-page (pageAdded)="getPages($event)"></wd-add-page>
+
+<ul class="list-group">
+    <li class="list-group-item clearfix" *ngFor="let  page of dictaat.pages">
+        <span class="glyphicon glyphicon-file"></span>
+        {{page.name}}
+        <div class="btn-group pull-right" role="group" aria-label="...">
+            <button class="btn btn-xs btn-default" (click)="selectPage(page)">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+            <button class="btn btn-xs btn-warning" (click)="editPage(page)">
+                <span class="glyphicon glyphicon-edit"></span>
+            </button>
+            <button class="btn btn-xs btn-danger" (click)="deletePage(page)">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </div>
+    </li>
+</ul>
+

@@ -1,0 +1,15 @@
+﻿<div class="panel panel-default" *ngIf="dictaat">
+    <div class="panel-heading">
+        Dictaat - {{dictaat.name}}
+    </div>
+    <div class="panel-body">
+
+       <wd-pages [dictaat]="dictaat"></wd-pages>
+        
+    </div>
+    <div class="panel-footer">
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
+        </div>
+    </div>
+</div>

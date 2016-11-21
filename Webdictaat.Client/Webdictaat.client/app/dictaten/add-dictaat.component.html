@@ -1,0 +1,31 @@
+﻿<button class="btn btn-xs btn-success" (click)="showModal = true">
+    <span class="glyphicon glyphicon-plus"></span>
+</button>
+
+<div class="modal" *ngIf="showModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add new dictaat</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label for="isInMenu">Name of the dictaat</label>
+                    <input type="text" class="form-control" name="dictaatName" id="dictaatName" placeholder="Name of the dictaat"
+                           [(ngModel)]="dictaatName" required>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary pull-left" (click)="showModal = false">Cancel</button>
+                    <button type="button" class="btn btn-success pull-right"
+                            (click)="add()"
+                            [disabled]="!dictaatName || dictaatName.length < 3">
+                        Add
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>

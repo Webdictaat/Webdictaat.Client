@@ -1,0 +1,15 @@
+﻿<ul *ngIf="navMenu">
+    <li *ngFor="let item of navMenu.MenuItems">
+        <a routerLink="{{item.Url}}" routerLinkActive="active">{{item.Name}}</a>
+    </li>
+    <li *ngFor="let menu of navMenu.SubMenus"  
+        [ngClass]="{'open': menu.show}">
+       
+        <a  (click)="menu.show = !menu.show">{{menu.Name}}</a>
+        <wd-nav-menu [navMenu]="menu" 
+                     *ngIf="menu.show">
+        </wd-nav-menu>
+    </li>
+
+
+</ul>

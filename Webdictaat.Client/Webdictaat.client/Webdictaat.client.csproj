@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{35105AA9-C0BC-4505-95B3-CF91B8B6F5C9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="app\cms\app.component.ts" />
+    <TypeScriptCompile Include="app\cms\app.module.ts" />
+    <TypeScriptCompile Include="app\cms\app.routing.ts" />
+    <TypeScriptCompile Include="app\cms\main.ts" />
+    <TypeScriptCompile Include="app\client\app.component.ts" />
+    <Content Include="app\cms\app.component.css" />
+    <Content Include="app\cms\app.component.html" />
+    <Content Include="app\dialog\dialog.component.html" />
+    <Content Include="app\dictaat\dictaat.component.css" />
+    <Content Include="app\dictaat\dictaat.component.html" />
+    <Content Include="app\dictaten\add-dictaat.component.html" />
+    <Content Include="app\dictaten\dictaten.component.css" />
+    <Content Include="app\dictaten\dictaten.component.html" />
+    <Content Include="app\pages\edit-page.component.html" />
+    <Content Include="app\file-preview\file-preview.component.css" />
+    <Content Include="app\file-preview\file-preview.component.html" />
+    <Content Include="app\nav-menu\nav-menu.component.html" />
+    <Content Include="app\pages\add-page.component.css" />
+    <Content Include="app\pages\add-page.component.html" />
+    <Content Include="app\pages\pages.component.html" />
+    <Content Include="app\page\page.component.html" />
+    <Content Include="app\questions\add-question.component.html" />
+    <Content Include="css\style.css" />
+    <Content Include="index.html" />
+    <Content Include="js\dictaat.systemjs.config.js" />
+    <Content Include="web.config" />
+    <TypeScriptCompile Include="app\client\app.routing.ts" />
+    <TypeScriptCompile Include="app\context-menu\context-menu.component.ts" />
+    <TypeScriptCompile Include="app\context-menu\context-menu.service.ts" />
+    <TypeScriptCompile Include="app\dialog\dialog.component.ts" />
+    <TypeScriptCompile Include="app\models\question.ts" />
+    <TypeScriptCompile Include="app\models\tool-params.ts" />
+    <TypeScriptCompile Include="app\core\html-outlet.directive.ts" />
+    <TypeScriptCompile Include="app\questions\add-question.component.ts" />
+    <TypeScriptCompile Include="app\questions\questions.module.ts" />
+    <TypeScriptCompile Include="app\services\question.service.ts" />
+    <TypeScriptCompile Include="app\services\dialog.service.ts" />
+    <TypeScriptCompile Include="app\dictaten\add-dictaat.component.ts" />
+    <TypeScriptCompile Include="app\game-elements\multiple-choice.component.ts" />
+    <TypeScriptCompile Include="app\game-elements\game-elements.module.ts" />
+    <TypeScriptCompile Include="app\tools\default-tools\column.component.ts" />
+    <TypeScriptCompile Include="app\tools\default-tools\img.component.ts" />
+    <TypeScriptCompile Include="app\tools\default-tools\trash.component.ts" />
+    <TypeScriptCompile Include="app\tools\game-tools\game-tools.service.ts" />
+    <TypeScriptCompile Include="app\tools\tools.module.ts" />
+    <TypeScriptCompile Include="app\tools\default-tools\header.component.ts" />
+    <TypeScriptCompile Include="app\tools\html.component.ts" />
+    <TypeScriptCompile Include="app\tools\game-tools\multiple-choice.component.ts" />
+    <TypeScriptCompile Include="app\tools\default-tools\text.component.ts" />
+    <TypeScriptCompile Include="app\pages\edit-page.component.ts" />
+    <TypeScriptCompile Include="app\models\nav-menu.ts" />
+    <TypeScriptCompile Include="app\models\page-summary.ts" />
+    <TypeScriptCompile Include="app\models\page.ts" />
+    <TypeScriptCompile Include="app\nav-menu\nav-menu.component.ts" />
+    <TypeScriptCompile Include="app\nav-menu\nav-menu.service.ts" />
+    <TypeScriptCompile Include="app\pages\add-page.component.ts" />
+    <TypeScriptCompile Include="app\dictaat\dictaat.component.ts" />
+    <TypeScriptCompile Include="app\services\dictaat.service.ts" />
+    <TypeScriptCompile Include="app\dictaten\dictaten.component.ts" />
+    <TypeScriptCompile Include="app\dictaten\dictaten.service.ts" />
+    <TypeScriptCompile Include="app\file-preview\file-preview.component.ts" />
+    <TypeScriptCompile Include="app\pages\pages.component.ts" />
+    <TypeScriptCompile Include="app\pages\pages.module.ts" />
+    <TypeScriptCompile Include="app\pages\pages.service.ts" />
+    <TypeScriptCompile Include="app\page\page.component.ts" />
+    <TypeScriptCompile Include="app\page\page.service.ts" />
+    <TypeScriptCompile Include="app\services\file-preview.service.ts" />
+    <TypeScriptCompile Include="app\client\main.ts" />
+    <TypeScriptCompile Include="app\models\dictaat-summary.ts" />
+    <TypeScriptCompile Include="app\models\dictaat.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="package.json" />
+    <Content Include="typings.json" />
+    <Content Include="tsconfig.json" />
+    <Content Include="js\cms.systemjs.config.js" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="app\client\app.module.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\App_LocalResources\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Webdictaat.client</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52061</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52061/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+</Project>

@@ -1,0 +1,130 @@
+﻿body {
+}
+
+.modal{
+    display:block;
+    background-color: rgba(128, 128, 128, 0.4);
+}
+
+.wd-container{
+    padding:15px;
+    border:1px dashed #ccc;
+}
+
+.drop-container{
+   padding:10px;
+   border:1px dashed black;
+}
+
+.tools .wd-component{
+      text-align:center;
+}
+
+ .wd-component {
+     border:1px dashed black;
+     border-color: transparent;
+     padding:10px;
+}
+ .wd-component:hover{
+    border:1px dashed black;
+}
+
+ .wd-game-component{
+    display:block;
+ }
+
+.wd-row{
+    display:flex;
+}
+
+.wd-flex-1{
+    flex:1;
+}
+
+.wd-flex-2{
+    flex:2;
+}
+
+.wd-flex-3{
+    flex:3;
+}
+
+.wd-flex-4{
+    flex:4;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+.tools{
+    list-style:none;
+    padding:0; margin:0;
+}
+
+.tools li {
+    border:1px solid gray;
+    padding:5px;
+    margin:5px;
+    cursor:pointer;
+}
+
+.tools li .row{
+    width:100%;
+    margin-left:0px;
+}
+
+.remove{
+    border:1px dashed red;
+}
+
+.ui-state-hover{
+    border:1px dashed black;
+}
+
+.ui-state-hover .wd-component{
+    border:1px dashed #ccc;
+}
+
+.highlight{
+    border:1px dashed darkgreen;
+    display:block;
+}
+
+img{
+    max-width:100%;
+    max-height:100%;
+}
+
+/** tools */
+
+.trashcan{
+    padding:15px;
+    border:1px dashed #ccc;
+    text-align:center;
+    position:relative;
+    min-height:100px;
+    color:darkred;
+}
+
+.trashcan span{
+    position:absolute;
+    font-size:20px;
+    width:100%;
+    text-align:center;
+    left:0px;
+    line-height:100px;
+}
+
+.trashcan .highlight{
+    border:2px dashed darkred;
+    min-height:100px;
+}
+
+
+.dragged{
+    
+    opacity: 0.8;
+}

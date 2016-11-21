@@ -1,0 +1,24 @@
+﻿<div class="modal" *ngIf="selectedFile">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn btn-default pull-right" (click)="showSource = !showSource">Source</button>
+                <h4 class="modal-title">File preview - {{selectedFile.name}}</h4>
+            </div>
+            <div class="modal-body">
+
+                <div *ngIf="!showSource" [innerHTML]="selectedFile.source">
+                </div>
+
+                <div *ngIf="showSource">
+                    {{selectedFile.source}}
+                </div>
+
+            </div>
+            <div class="modal-footer">
+              
+                <button type="button" class="btn btn-secondary" (click)="closeFile()">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

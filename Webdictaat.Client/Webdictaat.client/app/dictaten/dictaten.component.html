@@ -1,0 +1,35 @@
+﻿
+
+<div class="panel panel-default">
+    <div class="panel-heading">Welcome</div>
+    <div class="panel-body">
+        <h2>Welcome</h2>
+
+        <p>Hier zie je een lijst van dictaten</p>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Dictaten
+        <wd-add-dictaat (dictaatAdded)="setDictaten($event)"></wd-add-dictaat>
+    </div>
+    <div class="panel-body">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let  dictaat of dictaten">
+                    <td>{{dictaat.name}}</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button type="button" class="btn btn-default" (click)="gotoDetail(dictaat)">Details</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
