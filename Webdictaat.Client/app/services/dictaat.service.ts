@@ -16,7 +16,7 @@ export class DictaatService {
     private dictatenUrl = 'http://localhost:65418/api/dictaten/';
 
     public getDictaat(dictaatName: String): Promise<Dictaat> {
-        return this.http.get(this.dictatenUrl + dictaatName)
+        return this.http.get(this.dictatenUrl + dictaatName, { withCredentials: true })
             .toPromise()
             .then(response =>
                 response.json() as Dictaat

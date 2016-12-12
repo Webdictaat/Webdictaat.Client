@@ -12,27 +12,34 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 require('rxjs/add/operator/map');
-var DictaatService = (function () {
-    function DictaatService(http) {
+var DictatenService = (function () {
+    function DictatenService(http) {
         this.http = http;
-        this.dictatenUrl = 'http://localhost:65418/api/dictaten/';
+        this.dictatenUrl = 'http://localhost:65418/api/dictaten';
     }
-    DictaatService.prototype.getDictaat = function (dictaatName) {
-        return this.http.get(this.dictatenUrl + dictaatName)
+    DictatenService.prototype.addDictaat = function (dictaatName) {
+        return this.http.post(this.dictatenUrl, { name: dictaatName })
             .toPromise()
             .then(function (response) {
             return response.json();
         }).catch(this.handleError);
     };
-    DictaatService.prototype.handleError = function (error) {
+    DictatenService.prototype.getDictaten = function () {
+        return this.http.get(this.dictatenUrl, { withCredentials: true })
+            .toPromise()
+            .then(function (response) {
+            return response.json();
+        }).catch(this.handleError);
+    };
+    DictatenService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     };
-    DictaatService = __decorate([
+    DictatenService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], DictaatService);
-    return DictaatService;
+    ], DictatenService);
+    return DictatenService;
 }());
-exports.DictaatService = DictaatService;
-//# sourceMappingURL=dictaat.service.js.map
+exports.DictatenService = DictatenService;
+//# sourceMappingURL=dictaten.service.js.map

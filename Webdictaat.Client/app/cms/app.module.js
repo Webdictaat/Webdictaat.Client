@@ -29,12 +29,14 @@ var dialog_component_1 = require('../dialog/dialog.component');
 var dictaat_component_1 = require('../dictaat/dictaat.component');
 var common_1 = require('@angular/common');
 var edit_page_component_1 = require('../pages/edit-page.component');
+var avatar_component_1 = require('../avatar/avatar.component');
 //services
 var app_routing_1 = require('./app.routing');
 var dialog_service_1 = require('../services/dialog.service');
 var file_preview_service_1 = require('../services/file-preview.service');
 var question_service_1 = require('../services/question.service');
 var images_service_1 = require('../services/images.service');
+var account_service_1 = require('../services/account.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -45,11 +47,11 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule, http_1.HttpModule, app_routing_1.routing, pages_module_1.PagesModule, forms_1.FormsModule, ng2_ckeditor_1.CKEditorModule
             ],
             declarations: [
-                add_dictaat_component_1.AddDictaatComponent, dialog_component_1.DialogComponent,
+                add_dictaat_component_1.AddDictaatComponent, dialog_component_1.DialogComponent, avatar_component_1.AvatarComponent,
                 app_component_1.AppComponent, dictaten_component_1.DictatenComponent, file_preview_component_1.FilePreviewComponent, dictaat_component_1.DictaatComponent, edit_page_component_1.EditPageComponent
             ],
             providers: [
-                file_preview_service_1.FilePreviewService, dialog_service_1.DialogService, question_service_1.QuestionsService, images_service_1.ImageService,
+                file_preview_service_1.FilePreviewService, dialog_service_1.DialogService, question_service_1.QuestionsService, images_service_1.ImageService, account_service_1.AccountService,
                 { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
             ],
             bootstrap: [
