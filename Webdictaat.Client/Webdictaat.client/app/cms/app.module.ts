@@ -3,10 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }    from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
-//external libraries
-import {CKEditorModule} from 'ng2-ckeditor';
-import {DragulaModule, DragulaService} from 'ng2-dragula/ng2-dragula';
-
 //modules
 import { QuestionsModule } from '../questions/questions.module';
 import { ImagesModule } from '../images/images.module';
@@ -36,8 +32,8 @@ import { AccountService } from '../services/account.service';
 
 @NgModule({
     imports: [
-        DragulaModule, ToolsModule, QuestionsModule, ImagesModule, 
-        BrowserModule, HttpModule, routing, PagesModule, FormsModule, CKEditorModule
+        ToolsModule, QuestionsModule, ImagesModule, 
+        BrowserModule, HttpModule, routing, PagesModule, FormsModule
     ],
     declarations: [
         AddDictaatComponent, DialogComponent, AvatarComponent,

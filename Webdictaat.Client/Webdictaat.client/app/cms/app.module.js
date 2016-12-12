@@ -12,9 +12,6 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
 var forms_1 = require('@angular/forms');
-//external libraries
-var ng2_ckeditor_1 = require('ng2-ckeditor');
-var ng2_dragula_1 = require('ng2-dragula/ng2-dragula');
 //modules
 var questions_module_1 = require('../questions/questions.module');
 var images_module_1 = require('../images/images.module');
@@ -43,8 +40,8 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [
-                ng2_dragula_1.DragulaModule, tools_module_1.ToolsModule, questions_module_1.QuestionsModule, images_module_1.ImagesModule,
-                platform_browser_1.BrowserModule, http_1.HttpModule, app_routing_1.routing, pages_module_1.PagesModule, forms_1.FormsModule, ng2_ckeditor_1.CKEditorModule
+                tools_module_1.ToolsModule, questions_module_1.QuestionsModule, images_module_1.ImagesModule,
+                platform_browser_1.BrowserModule, http_1.HttpModule, app_routing_1.routing, pages_module_1.PagesModule, forms_1.FormsModule
             ],
             declarations: [
                 add_dictaat_component_1.AddDictaatComponent, dialog_component_1.DialogComponent, avatar_component_1.AvatarComponent,
