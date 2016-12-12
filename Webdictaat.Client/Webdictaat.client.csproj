@@ -22,11 +22,13 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="app\avatar\avatar.component.ts" />
     <TypeScriptCompile Include="app\cms\app.component.ts" />
     <TypeScriptCompile Include="app\cms\app.module.ts" />
     <TypeScriptCompile Include="app\cms\app.routing.ts" />
     <TypeScriptCompile Include="app\cms\main.ts" />
     <TypeScriptCompile Include="app\client\app.component.ts" />
+    <Content Include="app\avatar\avatar.component.html" />
     <Content Include="app\cms\app.component.css" />
     <Content Include="app\cms\app.component.html" />
     <Content Include="app\dialog\dialog.component.html" />
@@ -55,6 +57,7 @@
     <TypeScriptCompile Include="app\dialog\dialog.component.ts" />
     <TypeScriptCompile Include="app\images\add-image.component.ts" />
     <TypeScriptCompile Include="app\images\images.module.ts" />
+    <TypeScriptCompile Include="app\models\user.ts" />
     <TypeScriptCompile Include="app\services\images.service.ts" />
     <TypeScriptCompile Include="app\models\question.ts" />
     <TypeScriptCompile Include="app\models\tool-params.ts" />
@@ -66,6 +69,7 @@
     <TypeScriptCompile Include="app\dictaten\add-dictaat.component.ts" />
     <TypeScriptCompile Include="app\game-elements\multiple-choice.component.ts" />
     <TypeScriptCompile Include="app\game-elements\game-elements.module.ts" />
+    <TypeScriptCompile Include="app\services\account.service.ts" />
     <TypeScriptCompile Include="app\tools\default-tools\column.component.ts" />
     <TypeScriptCompile Include="app\tools\default-tools\img.component.ts" />
     <TypeScriptCompile Include="app\tools\default-tools\trash.component.ts" />
@@ -133,7 +137,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52061</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:52061/</IISUrl>
+          <IISUrl>http://localhost:3000/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
