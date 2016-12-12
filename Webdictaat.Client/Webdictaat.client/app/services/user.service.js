@@ -9,30 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 require('rxjs/add/operator/map');
-var DictaatService = (function () {
-    function DictaatService(http) {
-        this.http = http;
-        this.dictatenUrl = 'http://localhost:65418/api/dictaten/';
+var AcccountService = (function () {
+    function AcccountService() {
+        this.dictatenUrl = 'http://localhost:65418/api/account/';
     }
-    DictaatService.prototype.getDictaat = function (dictaatName) {
-        return this.http.get(this.dictatenUrl + dictaatName, { withCredentials: true })
-            .toPromise()
-            .then(function (response) {
-            return response.json();
-        }).catch(this.handleError);
+    AcccountService.prototype.Login = function () {
     };
-    DictaatService.prototype.handleError = function (error) {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
+    AcccountService.prototype.Logoff = function () {
     };
-    DictaatService = __decorate([
+    AcccountService.prototype.GetMyProfile = function () {
+    };
+    AcccountService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], DictaatService);
-    return DictaatService;
+        __metadata('design:paramtypes', [])
+    ], AcccountService);
+    return AcccountService;
 }());
-exports.DictaatService = DictaatService;
-//# sourceMappingURL=dictaat.service.js.map
+exports.AcccountService = AcccountService;
+//# sourceMappingURL=user.service.js.map
