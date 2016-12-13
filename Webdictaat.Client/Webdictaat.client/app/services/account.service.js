@@ -12,34 +12,44 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 require('rxjs/add/operator/map');
-var DictatenService = (function () {
-    function DictatenService(http) {
+var AccountService = (function () {
+    function AccountService(http) {
         this.http = http;
-        this.dictatenUrl = 'http://localhost:65418/api/dictaten';
+        this.accountUrl = 'http://localhost:65418/api/account/';
     }
-    DictatenService.prototype.addDictaat = function (dictaatName) {
-        return this.http.post(this.dictatenUrl, { name: dictaatName }, { withCredentials: true })
+    AccountService.prototype.Login = function () {
+        window.location.href = this.accountUrl + "ExternalLogin?returnurl=" + window.location;
+    };
+    AccountService.prototype.Logoff = function () {
+        this.http.post(this.accountUrl + "/LogOff", null)
             .toPromise()
             .then(function (response) {
-            return response.json();
+            //reload browser after logoff
+            location.reload();
         }).catch(this.handleError);
     };
-    DictatenService.prototype.getDictaten = function () {
-        return this.http.get(this.dictatenUrl, { withCredentials: true })
+    AccountService.prototype.GetMyProfile = function () {
+        var _this = this;
+        if (this.user) {
+            return new Promise(function (resolve, reject) {
+                resolve(_this.user);
+            });
+        }
+        return this.http.get(this.accountUrl + "Current", { withCredentials: true })
             .toPromise()
             .then(function (response) {
-            return response.json();
+            _this.user = response.json();
+            return _this.user;
         }).catch(this.handleError);
     };
-    DictatenService.prototype.handleError = function (error) {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
+    AccountService.prototype.handleError = function () {
+        console.log("not logged in ");
     };
-    DictatenService = __decorate([
+    AccountService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], DictatenService);
-    return DictatenService;
+    ], AccountService);
+    return AccountService;
 }());
-exports.DictatenService = DictatenService;
-//# sourceMappingURL=dictaten.service.js.map
+exports.AccountService = AccountService;
+//# sourceMappingURL=account.service.js.map

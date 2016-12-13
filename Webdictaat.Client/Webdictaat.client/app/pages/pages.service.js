@@ -19,7 +19,7 @@ var PagesService = (function () {
     }
     PagesService.prototype.getPages = function (dictaatName) {
         var url = this.dictatenUrl + dictaatName + '/pages';
-        return this.http.get(url)
+        return this.http.get(url, { withCredentials: true })
             .toPromise()
             .then(function (response) {
             return response.json();
@@ -31,7 +31,7 @@ var PagesService = (function () {
             subMenu: menuName
         };
         var url = this.dictatenUrl + dictaatName + '/pages';
-        return this.http.post(url, data)
+        return this.http.post(url, data, { withCredentials: true })
             .toPromise()
             .then(function (response) {
             return response.json();
@@ -39,7 +39,7 @@ var PagesService = (function () {
     };
     PagesService.prototype.editPage = function (dictaatName, page) {
         var url = this.dictatenUrl + dictaatName + '/pages/' + page.name;
-        return this.http.put(url, page)
+        return this.http.put(url, page, { withCredentials: true })
             .toPromise()
             .then(function (response) {
             return response.json();
@@ -47,7 +47,7 @@ var PagesService = (function () {
     };
     PagesService.prototype.getPage = function (dictaatName, pageName) {
         var url = this.dictatenUrl + dictaatName + '/pages/' + pageName;
-        return this.http.get(url)
+        return this.http.get(url, { withCredentials: true })
             .toPromise()
             .then(function (response) {
             return response.json();
@@ -55,7 +55,7 @@ var PagesService = (function () {
     };
     PagesService.prototype.deletePage = function (dictaatName, pageName) {
         var url = this.dictatenUrl + dictaatName + '/pages/' + pageName;
-        return this.http.delete(url)
+        return this.http.delete(url, { withCredentials: true })
             .toPromise()
             .then(function (response) { return response; })
             .catch(this.handleError);

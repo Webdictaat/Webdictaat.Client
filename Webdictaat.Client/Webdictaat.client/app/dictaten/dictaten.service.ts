@@ -17,7 +17,7 @@ export class DictatenService {
 
     public addDictaat(dictaatName: string): Promise<DictaatSummary[]> {
 
-        return this.http.post(this.dictatenUrl, { name: dictaatName } )
+        return this.http.post(this.dictatenUrl, { name: dictaatName }, { withCredentials: true })
             .toPromise()
             .then(response =>
                 response.json() as DictaatSummary[]
@@ -25,7 +25,7 @@ export class DictatenService {
     }
 
     public getDictaten(): Promise<DictaatSummary[]> {
-        return this.http.get(this.dictatenUrl)
+        return this.http.get(this.dictatenUrl, { withCredentials: true })
             .toPromise()
             .then(response => 
                 response.json() as DictaatSummary[]

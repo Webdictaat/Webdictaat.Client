@@ -18,7 +18,7 @@ export class PagesService {
 
     public getPages(dictaatName: String): Promise<PageSummary[]> {
         let url: string = this.dictatenUrl + dictaatName + '/pages';
-        return this.http.get(url)
+        return this.http.get(url, { withCredentials: true })
             .toPromise()
             .then(response =>
                 response.json() as PageSummary[]
@@ -34,7 +34,7 @@ export class PagesService {
 
         let url: string = this.dictatenUrl + dictaatName + '/pages';
 
-        return this.http.post(url, data)
+        return this.http.post(url, data, { withCredentials: true })
             .toPromise()
             .then(response =>
                 response.json() as Page
@@ -43,7 +43,7 @@ export class PagesService {
 
     public editPage(dictaatName: String, page: Page): Promise<Page> {
         let url: string = this.dictatenUrl + dictaatName + '/pages/' + page.name;
-        return this.http.put(url, page)
+        return this.http.put(url, page, { withCredentials: true })
             .toPromise()
             .then(response =>
                 response.json() as Page
@@ -52,7 +52,7 @@ export class PagesService {
 
     public getPage(dictaatName: String, pageName: string): Promise<Page> {
         let url: string = this.dictatenUrl + dictaatName + '/pages/' + pageName;
-        return this.http.get(url)
+        return this.http.get(url, { withCredentials: true })
             .toPromise()
             .then(response =>
                 response.json() as Page
@@ -62,7 +62,7 @@ export class PagesService {
 
     public deletePage(dictaatName: String, pageName: String): Promise<Response>{
         let url: string = this.dictatenUrl + dictaatName + '/pages/' + pageName;
-        return this.http.delete(url)
+        return this.http.delete(url, { withCredentials: true })
             .toPromise()
             .then(response => response)
             .catch(this.handleError);

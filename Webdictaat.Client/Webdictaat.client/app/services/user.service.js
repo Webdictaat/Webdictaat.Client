@@ -9,27 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 require('rxjs/add/operator/map');
-var PageService = (function () {
-    function PageService(http) {
-        this.http = http;
+var AcccountService = (function () {
+    function AcccountService() {
+        this.dictatenUrl = 'http://localhost:65418/api/account/';
     }
-    PageService.prototype.getPage = function (pageName) {
-        return this.http.get('pages/' + pageName + '.html', { withCredentials: true })
-            .toPromise()
-            .then(function (response) { return response.text(); }).catch(this.handleError);
+    AcccountService.prototype.Login = function () {
     };
-    PageService.prototype.handleError = function (error) {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
+    AcccountService.prototype.Logoff = function () {
     };
-    PageService = __decorate([
+    AcccountService.prototype.GetMyProfile = function () {
+    };
+    AcccountService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], PageService);
-    return PageService;
+        __metadata('design:paramtypes', [])
+    ], AcccountService);
+    return AcccountService;
 }());
-exports.PageService = PageService;
-//# sourceMappingURL=page.service.js.map
+exports.AcccountService = AcccountService;
+//# sourceMappingURL=user.service.js.map

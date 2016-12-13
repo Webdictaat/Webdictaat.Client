@@ -24,7 +24,7 @@ var NavMenuService = (function () {
             return Promise.resolve(this.menu);
         }
         else {
-            return this.http.get('/nav-menu.json')
+            return this.http.get('nav-menu.json')
                 .toPromise()
                 .then(function (response) {
                 return _this.menu = response.json();

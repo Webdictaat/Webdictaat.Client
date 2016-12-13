@@ -18,7 +18,7 @@ var DictaatService = (function () {
         this.dictatenUrl = 'http://localhost:65418/api/dictaten/';
     }
     DictaatService.prototype.getDictaat = function (dictaatName) {
-        return this.http.get(this.dictatenUrl + dictaatName)
+        return this.http.get(this.dictatenUrl + dictaatName, { withCredentials: true })
             .toPromise()
             .then(function (response) {
             return response.json();
