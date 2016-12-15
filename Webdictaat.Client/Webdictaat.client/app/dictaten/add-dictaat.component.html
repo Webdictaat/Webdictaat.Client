@@ -2,6 +2,9 @@
     <span class="glyphicon glyphicon-plus"></span>
 </button>
 
+
+
+
 <div class="modal" *ngIf="showModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -10,12 +13,16 @@
             </div>
             <div class="modal-body">
 
-                <div class="form-group">
-                    <label for="isInMenu">Name of the dictaat</label>
-                    <input type="text" class="form-control" name="dictaatName" id="dictaatName" placeholder="Name of the dictaat"
-                           [(ngModel)]="dictaatName" required>
 
+                <div class="form-group">
+                    <label for="dictaatName" class="col-md-2 control-label">Name</label>
+
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="dictaatName" id="dictaatName" placeholder="Name of the dictaat"
+                        [(ngModel)]="dictaatName" required>
+                    </div>
                 </div>
+            
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary pull-left" (click)="showModal = false">Cancel</button>

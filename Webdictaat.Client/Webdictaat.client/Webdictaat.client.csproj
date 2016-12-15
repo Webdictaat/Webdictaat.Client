@@ -47,6 +47,8 @@
     <Content Include="app\pages\pages.component.html" />
     <Content Include="app\page\page.component.html" />
     <Content Include="app\questions\add-question.component.html" />
+    <Content Include="css\custom-bootstrap.css" />
+    <Content Include="css\custom-bootstrap.min.css" />
     <Content Include="css\style.css" />
     <Content Include="index.html" />
     <Content Include="js\dictaat.systemjs.config.js" />
@@ -105,6 +107,7 @@
     <Content Include="typings.json" />
     <Content Include="tsconfig.json" />
     <Content Include="js\cms.systemjs.config.js" />
+    <Content Include="css\custom-bootstrap.less" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
