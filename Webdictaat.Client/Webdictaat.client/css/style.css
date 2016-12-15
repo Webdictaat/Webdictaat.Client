@@ -128,3 +128,15 @@ img{
     
     opacity: 0.8;
 }
+
+.navbar-sub{
+    margin-top: -20px;
+    margin-bottom: 65px;
+}
+
+img.wd-logo{
+    position:relative;
+    width: 100px;
+    top:65px;
+    margin-top:-65px;
+}

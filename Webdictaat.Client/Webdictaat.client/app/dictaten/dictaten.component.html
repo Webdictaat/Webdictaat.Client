@@ -1,33 +1,42 @@
 ﻿
 
-<article class="text-center">
-    <h1>Welcome op de site van Webdictaat!</h1>
+<div class="panel panel-default navbar-sub">
+    <div class="panel-body text-center">
+        <h1>Welcome op de site van Webdictaat!</h1>
 
-    <p>Maak nu een nieuw webdictaat, of bekijk de lijst van bestaande dictaten!</p>
-</article>
-       
-<div class="panel panel-default">
-    <div class="panel-heading">
-        Dictaten
-        <wd-add-dictaat (dictaatAdded)="setDictaten($event)"></wd-add-dictaat>
+        <p>Maak nu een nieuw webdictaat, of bekijk de lijst van bestaande dictaten!</p>
+
+        <p>
+            <wd-add-dictaat (dictaatAdded)="setDictaten($event)"></wd-add-dictaat>
+        </p>
+        
+
+        <img src="/img/wd-logo.png" class="wd-logo" />
     </div>
-    <div class="panel-body">
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let  dictaat of dictaten">
-                    <td>{{dictaat.name}}</td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="...">
-                            <button type="button" class="btn btn-default" (click)="gotoDetail(dictaat)">Details</button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+</div>
+
+<div class="container">
+
+    
+    <div class="dictaten row">
+        <div class="col-xs-12 col-sm-6 col-md-4 text-center"  *ngFor="let  dictaat of dictaten">
+            <div class="panel panel-default" >
+                <div class="panel-body">
+
+                    <h2>{{dictaat.name}}</h2>
+
+                    <p>
+                        <button type="button" class="btn btn-raised btn-info" (click)="gotoDetail(dictaat)">Details</button>
+                    </p>
+                </div>
+
+                <div class="panel-footer">
+                    <p>
+                        Updates N days ago
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
+
 </div>

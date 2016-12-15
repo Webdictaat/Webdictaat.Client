@@ -50,6 +50,7 @@
     <Content Include="css\custom-bootstrap.css" />
     <Content Include="css\custom-bootstrap.min.css" />
     <Content Include="css\style.css" />
+    <Content Include="img\wd-logo.png" />
     <Content Include="index.html" />
     <Content Include="js\dictaat.systemjs.config.js" />
     <Content Include="web.config" />
