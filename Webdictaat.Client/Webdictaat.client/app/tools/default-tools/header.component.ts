@@ -15,17 +15,17 @@ export class HeaderComponent {
             helper: "clone",
             connectToSortable: ".wd-container",
             start: function (e, ui) {
-                ui.helper.data("callback", function (ui, done) {
-                    component.onDrop(ui, done)
-                });
+                ui.helper.data("component", component);
             }
         })
     }
 
-    public onDrop(ui: any, done: any): void {
-        ui.item.replaceWith("<div class='wd-component'><h1>Header</h1></div>");
-        done();
-    }
-
+    //returns a promise with a boolean, to recompile or not
+    public onDrop(ui): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            ui.item.replaceWith("<div class='wd-component'><h1>Header</h1></div>");
+            resolve(false);
+        });
+    }    
 }
 

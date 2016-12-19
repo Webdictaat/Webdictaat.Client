@@ -18,15 +18,18 @@ var TextComponent = (function () {
             helper: "clone",
             connectToSortable: ".wd-container",
             start: function (e, ui) {
-                ui.helper.data("callback", function (ui, done) {
-                    component.onDrop(ui, done);
-                });
+                ui.helper.data("component", component);
             }
         });
     };
-    TextComponent.prototype.onDrop = function (ui, done) {
-        ui.item.replaceWith("<div class='wd-component'><p>Tekst</p></div>");
-        done();
+    //returns a promise with a boolean, to recompile or not
+    TextComponent.prototype.onDrop = function (ui) {
+        return new Promise(function (resolve, reject) {
+            var newItem = $("<div class='wd-component'><p>Change me!</p></div>");
+            ui.item.replaceWith(newItem);
+            newItem.focus();
+            resolve(false);
+        });
     };
     TextComponent = __decorate([
         core_1.Component({

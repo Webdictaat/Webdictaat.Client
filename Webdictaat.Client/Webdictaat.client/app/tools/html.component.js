@@ -11,28 +11,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var dialog_service_1 = require('../services/dialog.service');
 var HtmlComponent = (function () {
-    function HtmlComponent(dialogService, changeDetector) {
+    function HtmlComponent(dialogService, changeDetector, zone) {
         var _this = this;
         this.dialogService = dialogService;
         this.changeDetector = changeDetector;
+        this.zone = zone;
         this.editableElements = "p, span, h1, h2, h3, h4, h5";
         this.containerElements = ".wd-container";
         this.pageEdited = new core_1.EventEmitter();
         this.onDrop = function (event, ui) {
-            var callback = ui.item.data("callback");
-            var component = _this;
-            if (callback)
-                callback(ui, function () {
-                    component.recompile();
-                });
-            ui.item
-                .removeAttr('style')
-                .find(_this.editableElements)
-                .attr("contenteditable", "true");
-            //Helaas nodig omdat browsers stom doen omtrent content editable
-            _this.solveEnterIssue(ui.item);
-            _this.enableContainers(ui.item);
-            //we need to refresh the things
+            var target = ui.item.data("component");
+            if (!target)
+                return; //Sometimes we drop components that do not need any enhancement
+            target.onDrop(ui).then(function (needsRecompile) {
+                //If the component needs a recompile, we do a full rerender of the components.
+                //Otherwise, we just do some class enhancement 
+                if (needsRecompile) {
+                    _this.recompile();
+                }
+                else {
+                    ui.item
+                        .removeAttr('style')
+                        .find(_this.editableElements)
+                        .attr("contenteditable", "true");
+                    _this.pageElement.find('.wd-container').find(_this.editableElements)
+                        .attr("contenteditable", "true");
+                    //Als het gedropte item sub containers bevat, even drop enable
+                    _this.enableContainers(ui.item);
+                    //Helaas nodig omdat browsers stom doen omtrent content editable
+                    _this.solveEnterIssue(ui.item);
+                    setTimeout(function () { return ui.item.focus(); }, 0);
+                }
+            });
         };
     }
     HtmlComponent.prototype.ngOnInit = function () {
@@ -52,6 +62,7 @@ var HtmlComponent = (function () {
         this.pageElement.find('.wd-container').find(this.editableElements)
             .attr("contenteditable", "true");
         this.solveEnterIssue(this.pageElement.find(this.editableElements));
+        this.zone.run(function () { }); //Get back into angular running context
     };
     HtmlComponent.prototype.decompileHtml = function () {
         var pageObject = this.pageElement.find("dynamic-html");
@@ -150,9 +161,9 @@ var HtmlComponent = (function () {
     HtmlComponent = __decorate([
         core_1.Component({
             selector: "wd-html",
-            template: "\n        <div id='page'>\n            <html-outlet [html]=\"innerHTML\" (afterCompile)=\"afterCompile()\"></html-outlet>\n        </div>\n        <button class='btn btn-default' (click)='savePage()'>Save</button>\n    ",
+            template: "\n        <div id='page'>\n            <html-outlet [html]=\"innerHTML\" (afterCompile)=\"afterCompile()\"></html-outlet>\n        </div>\n        <div class='panel-footer'>\n            <button class=\"btn btn-lg btn-success btn-raised\" (click)='savePage()'>\n                <span class=\"glyphicon glyphicon-floppy-disk pull-left\"></span>&nbsp;Save page\n            </button>\n        </div>\n    ",
         }), 
-        __metadata('design:paramtypes', [dialog_service_1.DialogService, core_1.ChangeDetectorRef])
+        __metadata('design:paramtypes', [dialog_service_1.DialogService, core_1.ChangeDetectorRef, core_1.NgZone])
     ], HtmlComponent);
     return HtmlComponent;
 }());

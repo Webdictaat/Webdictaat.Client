@@ -18,15 +18,16 @@ var HeaderComponent = (function () {
             helper: "clone",
             connectToSortable: ".wd-container",
             start: function (e, ui) {
-                ui.helper.data("callback", function (ui, done) {
-                    component.onDrop(ui, done);
-                });
+                ui.helper.data("component", component);
             }
         });
     };
-    HeaderComponent.prototype.onDrop = function (ui, done) {
-        ui.item.replaceWith("<div class='wd-component'><h1>Header</h1></div>");
-        done();
+    //returns a promise with a boolean, to recompile or not
+    HeaderComponent.prototype.onDrop = function (ui) {
+        return new Promise(function (resolve, reject) {
+            ui.item.replaceWith("<div class='wd-component'><h1>Header</h1></div>");
+            resolve(false);
+        });
     };
     HeaderComponent = __decorate([
         core_1.Component({

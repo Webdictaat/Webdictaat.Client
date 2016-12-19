@@ -13,11 +13,21 @@ var ColumnComponent = (function () {
     function ColumnComponent() {
     }
     ColumnComponent.prototype.ngOnInit = function () {
+        var component = this;
         $('#wd-columnn')
             .draggable({
             cursorAt: { left: 0, top: 0 },
             helper: "clone",
-            connectToSortable: ".wd-container"
+            connectToSortable: ".wd-container",
+            start: function (e, ui) {
+                ui.helper.data("component", component);
+            }
+        });
+    };
+    //returns a promise with a boolean, to recompile or not
+    ColumnComponent.prototype.onDrop = function (ui) {
+        return new Promise(function (resolve, reject) {
+            resolve(false);
         });
     };
     ColumnComponent = __decorate([

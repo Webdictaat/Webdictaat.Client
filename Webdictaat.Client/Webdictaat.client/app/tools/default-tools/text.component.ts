@@ -10,23 +10,25 @@ export class TextComponent {
 
     public ngOnInit(): void {
         var component = this;
-
         $('#wd-text-tool').draggable({
             helper: "clone",
             connectToSortable: ".wd-container",
             start: function (e, ui) {
-                ui.helper.data("callback", function (ui, done) {
-                    component.onDrop(ui, done)
-                });
+                ui.helper.data("component", component);
             }
         })
     }
 
-    public onDrop(ui: any, done: any): void {
-        ui.item.replaceWith("<div class='wd-component'><p>Tekst</p></div>");
-        done();
+    //returns a promise with a boolean, to recompile or not
+    public onDrop(ui): Promise<boolean> {
+
+        return new Promise((resolve, reject) => {
+            var newItem = $("<div class='wd-component'><p>Change me!</p></div>");
+            ui.item.replaceWith(newItem);
+            newItem.focus();
+            resolve(false);
+        });
+
     }
-
-
 }
 

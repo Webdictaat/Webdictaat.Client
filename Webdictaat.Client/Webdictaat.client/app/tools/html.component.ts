@@ -1,4 +1,4 @@
-﻿import { Component, Input, Output, OnInit, EventEmitter, ChangeDetectorRef } from '@angular/core';
+﻿import { Component, Input, Output, OnInit, EventEmitter, ChangeDetectorRef, NgZone } from '@angular/core';
 import { DialogService } from '../services/dialog.service';
 import { ToolParams } from '../models/tool-params';
 
@@ -10,7 +10,11 @@ declare var $: JQueryStatic;
         <div id='page'>
             <html-outlet [html]="innerHTML" (afterCompile)="afterCompile()"></html-outlet>
         </div>
-        <button class='btn btn-default' (click)='savePage()'>Save</button>
+        <div class='panel-footer'>
+            <button class="btn btn-lg btn-success btn-raised" (click)='savePage()'>
+                <span class="glyphicon glyphicon-floppy-disk pull-left"></span>&nbsp;Save page
+            </button>
+        </div>
     `,
 })
 export class HtmlComponent implements OnInit{
@@ -26,7 +30,10 @@ export class HtmlComponent implements OnInit{
 
     private pageElement : JQuery;
 
-    constructor(private dialogService: DialogService, private changeDetector: ChangeDetectorRef) {}
+    constructor(
+        private dialogService: DialogService,
+        private changeDetector: ChangeDetectorRef,
+        private zone: NgZone) { }
 
     public ngOnInit(): void{
         this.pageElement = $('#page'); //.html(this.innerHTML);
@@ -37,26 +44,40 @@ export class HtmlComponent implements OnInit{
 
     private onDrop = (event: any, ui) => {
 
-        var callback = ui.item.data("callback");
-        var component = this;
+        var target = ui.item.data("component");
 
-        if (callback) 
-            callback(ui, function () {
-                component.recompile();
-            });
-        
-        ui.item
-            .removeAttr('style')
-            .find(this.editableElements)
-            .attr("contenteditable", "true");
+        if (!target)
+            return; //Sometimes we drop components that do not need any enhancement
 
-        //Helaas nodig omdat browsers stom doen omtrent content editable
-        this.solveEnterIssue(ui.item);
+        target.onDrop(ui).then((needsRecompile) => {
 
-        this.enableContainers(ui.item);
+            //If the component needs a recompile, we do a full rerender of the components.
+            //Otherwise, we just do some class enhancement 
+            if (needsRecompile) {
+                this.recompile();
+            }
+            else {
 
-        //we need to refresh the things
-        
+                ui.item
+                    .removeAttr('style')
+                    .find(this.editableElements)
+                    .attr("contenteditable", "true");
+
+                this.pageElement.find('.wd-container').find(this.editableElements)
+                    .attr("contenteditable", "true");
+
+                //Als het gedropte item sub containers bevat, even drop enable
+                this.enableContainers(ui.item);
+
+               
+
+                //Helaas nodig omdat browsers stom doen omtrent content editable
+                this.solveEnterIssue(ui.item);
+
+                setTimeout(() => ui.item.focus(), 0);
+                
+            }
+        })
     }
 
     private compileHtml(html : string): void {
@@ -76,6 +97,7 @@ export class HtmlComponent implements OnInit{
 
         this.solveEnterIssue(this.pageElement.find(this.editableElements));
 
+        this.zone.run(() => { }); //Get back into angular running context
     }
 
     private decompileHtml(): string {

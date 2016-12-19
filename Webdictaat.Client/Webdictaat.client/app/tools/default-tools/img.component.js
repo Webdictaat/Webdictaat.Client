@@ -24,24 +24,22 @@ var ImgComponent = (function () {
             helper: "clone",
             connectToSortable: ".wd-container",
             start: function (e, ui) {
-                ui.helper.data("callback", function (ui, done) {
-                    component.onDrop(ui, done);
-                });
+                ui.helper.data("component", component);
             }
         });
     };
-    ImgComponent.prototype.onDrop = function (ui, done) {
+    //returns a promise with a boolean, to recompile or not
+    ImgComponent.prototype.onDrop = function (ui) {
         var _this = this;
-        this.ui = ui;
-        this.done = done;
-        this.imageServie.ShowModal()
-            .then(function (imgName) {
-            ui.item.replaceWith("<div class='wd-component'><img src='http://localhost:65418//images//" + imgName + "'/></div>");
-            done();
-        })
-            .catch(function () {
-            _this.ui.item.remove();
-            done();
+        return new Promise(function (resolve, reject) {
+            _this.imageServie.ShowModal()
+                .then(function (imgName) {
+                ui.item.replaceWith("<div class='wd-component'><img src='http://localhost:65418//images//" + imgName + "'/></div>");
+                resolve(false);
+            })
+                .catch(function () {
+                ui.item.remove();
+            });
         });
     };
     ImgComponent = __decorate([

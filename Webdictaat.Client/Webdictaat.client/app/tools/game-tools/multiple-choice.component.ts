@@ -25,24 +25,25 @@ export class MultipleChoiceToolComponent {
             helper: "clone",
             connectToSortable: ".wd-container",
             start: function (e, ui) {
-                ui.helper.data("callback", function(ui, done){
-                    component.onDrop(ui, done)
-                });
+                ui.helper.data("component", component);
             }
         })
     }
 
-    private onDrop(ui, done): void {
+    //returns a promise with a boolean, to recompile or not
+    public onDrop(ui): Promise<boolean> {
 
-        this.questionsService.ShowModal()
-            .then((question) => {
-                ui.item.replaceWith("<wd-multiple-choice class='wd-game-component' [qid]='" + question.id + "' />");
-                done();
-            })
-            .catch(() => {
-                ui.item.remove();
-                done();
-            });
+        return new Promise((resolve, reject) => {
+            this.questionsService.ShowModal()
+                .then((question) => {
+                    ui.item.replaceWith("<wd-multiple-choice class='wd-game-component' [qid]='" + question.id + "' />");
+                    resolve(true);
+                })
+                .catch(() => {
+                    ui.item.remove();
+                });
+        });
+       
     }
 }
 

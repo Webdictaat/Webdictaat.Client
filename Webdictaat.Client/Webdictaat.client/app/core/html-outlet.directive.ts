@@ -10,7 +10,8 @@ import {
     ComponentFactory,
     ModuleWithComponentFactories,
     ComponentRef,
-    ReflectiveInjector
+    ReflectiveInjector,
+    NgZone
 } from '@angular/core';
 
 import { RouterModule }  from '@angular/router';

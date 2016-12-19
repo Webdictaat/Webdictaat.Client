@@ -8,11 +8,6 @@ declare var $: JQueryStatic;
 })
 export class ImgComponent implements OnInit  {
 
-    private ui: any;
-    private done: any; 
-
-
-
     constructor(private imageServie: ImageService) { }
 
     /**
@@ -26,25 +21,24 @@ export class ImgComponent implements OnInit  {
             helper: "clone",
             connectToSortable: ".wd-container",
             start: function (e, ui) {
-                ui.helper.data("callback", function (ui, done) {
-                    component.onDrop(ui, done)
-                });
+                ui.helper.data("component", component);
             }
         })
     }
 
-    public onDrop(ui: any, done: any): void {
-        this.ui = ui;
-        this.done = done;
-        this.imageServie.ShowModal()
-            .then((imgName) => {
-                ui.item.replaceWith("<div class='wd-component'><img src='http://localhost:65418//images//" + imgName + "'/></div>");
-                done();
-            })
-            .catch(() => {
-                this.ui.item.remove();
-                done();
-            });
+    //returns a promise with a boolean, to recompile or not
+    public onDrop(ui): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            this.imageServie.ShowModal()
+                .then((imgName) => {
+                    ui.item.replaceWith("<div class='wd-component'><img src='http://localhost:65418//images//" + imgName + "'/></div>");
+                    resolve(false);
+                })
+                .catch(() => {
+                    ui.item.remove();
+                });
+        });
+
     }
 
 }
