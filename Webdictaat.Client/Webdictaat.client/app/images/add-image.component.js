@@ -36,8 +36,8 @@ var AddImageComponent = (function () {
     AddImageComponent.prototype.Add = function () {
         var _this = this;
         this.imageService.addImages(this.dictaatName, this.selectedFile)
-            .then(function (question) {
-            _this.imageService.HideModal();
+            .then(function (imageLocation) {
+            _this.imageService.CompleteModal(imageLocation);
         });
     };
     AddImageComponent.prototype.Cancel = function () {

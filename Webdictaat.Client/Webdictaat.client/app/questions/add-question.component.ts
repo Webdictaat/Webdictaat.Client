@@ -47,12 +47,12 @@ export class AddQuestionComponent implements OnInit   {
     
         this.questionsService.addQuestion(this.dictaatName, this.question)
             .then((question: Question) => {
-                this.questionsService.HideAddQuestionModal();
+                this.questionsService.CompleteModal(question);
             });
     }
 
     public Cancel(): void {
-        this.questionsService.HideAddQuestionModal();
+        this.questionsService.CancelModal();
     }
 }
 

@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, Input } from '@angular/core';
+﻿import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { PagesService} from './pages.service';
 import { Dictaat } from '../models/dictaat';
@@ -19,6 +19,12 @@ export class PagesComponent {
     @Input()
     public dictaat: Dictaat;
 
+    @Output()
+    public pageSelected = new EventEmitter();
+
+    public selectedPage: Page;
+
+
     public newPage: Page;
 
     constructor(
@@ -28,7 +34,8 @@ export class PagesComponent {
      ) { }
 
     public selectPage(page): void {
-        this.filePreviewService.selectFile(this.dictaat.name, page);
+        this.selectedPage = page;
+        this.pageSelected.emit(page);
     }
 
     public getPages(): void {

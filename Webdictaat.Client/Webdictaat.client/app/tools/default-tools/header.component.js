@@ -13,15 +13,25 @@ var HeaderComponent = (function () {
     function HeaderComponent() {
     }
     HeaderComponent.prototype.ngOnInit = function () {
-        $('#wd-header').draggable({
+        var component = this;
+        $('#wd-header-tool').draggable({
             helper: "clone",
-            connectToSortable: ".wd-container"
+            connectToSortable: ".wd-container",
+            start: function (e, ui) {
+                ui.helper.data("callback", function (ui, done) {
+                    component.onDrop(ui, done);
+                });
+            }
         });
+    };
+    HeaderComponent.prototype.onDrop = function (ui, done) {
+        ui.item.replaceWith("<div class='wd-component'><h1>Header</h1></div>");
+        done();
     };
     HeaderComponent = __decorate([
         core_1.Component({
             selector: "wd-header",
-            template: "<div  id='wd-header' class='wd-component'><h1>Header</h1></div>"
+            template: "<div  id='wd-header-tool' class='wd-component'>Header</div>"
         }), 
         __metadata('design:paramtypes', [])
     ], HeaderComponent);

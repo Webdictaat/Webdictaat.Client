@@ -36,13 +36,15 @@ export class ImgComponent implements OnInit  {
     public onDrop(ui: any, done: any): void {
         this.ui = ui;
         this.done = done;
-        this.imageServie.ShowModal().then((imgName) => {
-
-            ui.item.replaceWith("<div class='wd-component'><img src='http://localhost:65418//images//" + imgName +"'/></div>");
-            done();
-
-        });
-
+        this.imageServie.ShowModal()
+            .then((imgName) => {
+                ui.item.replaceWith("<div class='wd-component'><img src='http://localhost:65418//images//" + imgName + "'/></div>");
+                done();
+            })
+            .catch(() => {
+                this.ui.item.remove();
+                done();
+            });
     }
 
 }

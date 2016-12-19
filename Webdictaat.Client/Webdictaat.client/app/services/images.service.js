@@ -29,16 +29,19 @@ var ImageService = (function () {
         this.isModalVisible = true;
         this.subject.next(this.isModalVisible);
         return new Promise(function (resolve, reject) {
-            _this.resolveAddQuestion = resolve;
+            _this.resolveAddImage = resolve;
             _this.resolveCancel = reject;
         });
     };
-    ImageService.prototype.HideModal = function () {
+    ImageService.prototype.CancelModal = function () {
+        this.resolveCancel();
         this.isModalVisible = false;
         this.subject.next(this.isModalVisible);
     };
-    ImageService.prototype.CancelModal = function () {
-        this.resolveCancel();
+    ImageService.prototype.CompleteModal = function (imageLocation) {
+        this.resolveAddImage(imageLocation);
+        this.isModalVisible = false;
+        this.subject.next(this.isModalVisible);
     };
     ImageService.prototype.addImages = function (dictaatName, image) {
         var _this = this;
@@ -48,7 +51,6 @@ var ImageService = (function () {
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
-                        _this.resolveAddQuestion(xhr.response);
                         resolve(xhr.response);
                     }
                     else {

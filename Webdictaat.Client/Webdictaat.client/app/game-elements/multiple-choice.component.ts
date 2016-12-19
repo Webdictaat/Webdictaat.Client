@@ -9,9 +9,13 @@ import { Question, QuestionAnswer } from '../models/question';
     template: `
         <div class='wd-component'>
 
-             <div *ngIf="!question" >
-                <p>Loading...</p>
+            <div *ngIf="error" class="alert alert-danger">
+                <p>{{error}}</p>
             </div>
+
+
+            <p *ngIf="!error && !question" class='default'>Loading...</p>
+      
 
             <div *ngIf="question" >
                 <p>{{question.text}}</p>
@@ -42,6 +46,7 @@ export class MultipleChoiceComponent implements OnInit {
     public qid: number; 
     public question: Question;
     public selectedAnswer: QuestionAnswer;
+    public error: string;
 
     private dictaatName: string;
 
@@ -56,7 +61,8 @@ export class MultipleChoiceComponent implements OnInit {
         this.route.params.forEach((params: Params) => {
             this.dictaatName = params['dictaatName'];
             this.questionsService.getQuestion(this.dictaatName, this.qid)
-                .then(question => this.question = question);
+                .then(question => this.question = question)
+                .catch( reason => this.error = reason);
         });
 
         this.questionsService.getQuestion;

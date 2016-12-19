@@ -37,11 +37,11 @@ var AddQuestionComponent = (function () {
         var _this = this;
         this.questionsService.addQuestion(this.dictaatName, this.question)
             .then(function (question) {
-            _this.questionsService.HideAddQuestionModal();
+            _this.questionsService.CompleteModal(question);
         });
     };
     AddQuestionComponent.prototype.Cancel = function () {
-        this.questionsService.HideAddQuestionModal();
+        this.questionsService.CancelModal();
     };
     __decorate([
         core_1.Output(), 

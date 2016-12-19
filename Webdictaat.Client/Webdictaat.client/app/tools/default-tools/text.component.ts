@@ -4,18 +4,29 @@ declare var $: JQueryStatic;
 
 @Component({
     selector: "wd-text",
-    template: "<div id='wd-text' class='wd-component'><p>Tekst</p></div>"
+    template: "<div id='wd-text-tool' class='wd-component'>Tekst</div>"
 })
 export class TextComponent {
 
-    private content: string;
-
     public ngOnInit(): void {
-        $('#wd-text').draggable({
+        var component = this;
+
+        $('#wd-text-tool').draggable({
             helper: "clone",
-            connectToSortable: ".wd-container"
-        });
+            connectToSortable: ".wd-container",
+            start: function (e, ui) {
+                ui.helper.data("callback", function (ui, done) {
+                    component.onDrop(ui, done)
+                });
+            }
+        })
     }
+
+    public onDrop(ui: any, done: any): void {
+        ui.item.replaceWith("<div class='wd-component'><p>Tekst</p></div>");
+        done();
+    }
+
 
 }
 

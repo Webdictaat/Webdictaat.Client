@@ -18,7 +18,7 @@ export class ImageService {
     public isModalVisible: boolean = false;
     private subject: Subject<boolean> = new Subject<boolean>();
 
-    private resolveAddQuestion;
+    private resolveAddImage;
     private resolveCancel;
 
 
@@ -26,24 +26,25 @@ export class ImageService {
         return this.subject.asObservable();
     }
 
-    public 
-
     public ShowModal(): Promise<string[]> {
         this.isModalVisible = true;
         this.subject.next(this.isModalVisible);
         return new Promise<string[]>((resolve, reject) => {
-            this.resolveAddQuestion = resolve; 
+            this.resolveAddImage = resolve; 
             this.resolveCancel = reject;
         });
     }
 
-    public HideModal(): void {
+    public CancelModal(): void {
+        this.resolveCancel();
         this.isModalVisible = false;
         this.subject.next(this.isModalVisible);
     }
 
-    public CancelModal(): void {
-        this.resolveCancel();
+    public CompleteModal(imageLocation: string) {
+        this.resolveAddImage(imageLocation);
+        this.isModalVisible = false;
+        this.subject.next(this.isModalVisible);
     }
 
     public addImages(dictaatName: string, image: File): Promise<any> {
@@ -56,7 +57,6 @@ export class ImageService {
             xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
-                        this.resolveAddQuestion(xhr.response);
                         resolve(xhr.response);
                     } else {
                         reject(xhr.response);
@@ -70,6 +70,7 @@ export class ImageService {
             xhr.send(formData);
         });
     }
+
 
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only

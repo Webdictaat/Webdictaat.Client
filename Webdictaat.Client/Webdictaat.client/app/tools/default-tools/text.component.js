@@ -13,15 +13,25 @@ var TextComponent = (function () {
     function TextComponent() {
     }
     TextComponent.prototype.ngOnInit = function () {
-        $('#wd-text').draggable({
+        var component = this;
+        $('#wd-text-tool').draggable({
             helper: "clone",
-            connectToSortable: ".wd-container"
+            connectToSortable: ".wd-container",
+            start: function (e, ui) {
+                ui.helper.data("callback", function (ui, done) {
+                    component.onDrop(ui, done);
+                });
+            }
         });
+    };
+    TextComponent.prototype.onDrop = function (ui, done) {
+        ui.item.replaceWith("<div class='wd-component'><p>Tekst</p></div>");
+        done();
     };
     TextComponent = __decorate([
         core_1.Component({
             selector: "wd-text",
-            template: "<div id='wd-text' class='wd-component'><p>Tekst</p></div>"
+            template: "<div id='wd-text-tool' class='wd-component'>Tekst</div>"
         }), 
         __metadata('design:paramtypes', [])
     ], TextComponent);

@@ -1,44 +1,33 @@
-﻿<div >
-    <div class="row">
+﻿<!-- First we rendere all the possible modals-->
+<wd-add-question></wd-add-question>
+<wd-add-image></wd-add-image>
 
-        <!-- First we rendere all the possible modals-->
-        <wd-add-question></wd-add-question>
-        <wd-add-image></wd-add-image>
 
-        <div class="col-md-3">
-                
-            <h3>Elements</h3>
 
-            <ul class="tools">
-                <li><wd-header></wd-header></li>
-                <li><wd-text></wd-text></li>
-                <li><wd-column></wd-column></li>
-                <li><wd-multiple-choice-tool></wd-multiple-choice-tool></li>
-                <li><wd-img-tool></wd-img-tool></li>
-            </ul>
+<div class="row" *ngIf="page">
+    <div class="col-md-9">
+        <div class="panel panel-default">
+            <wd-html [innerHTML]="page.source" (pageEdited)="updateSource($event)"></wd-html>
+        </div>
+    </div>
+    <div class="col-md-3 text-center" >
+        <div class="panel panel-default fixed">
+            <div class="panel-body bordered">
+                <h3>Elements</h3>
+            </div>
+
+            <table class="table table-hover elements">
+                <tr><td> <wd-header></wd-header> </td></tr>
+                <tr><td> <wd-text></wd-text> </td></tr>
+                <tr><td> <wd-column></wd-column> </td></tr>
+                <tr><td> <wd-multiple-choice-tool></wd-multiple-choice-tool> </td></tr>
+                <tr><td> <wd-img-tool></wd-img-tool> </td></tr>
+            </table>
 
             <wd-trash></wd-trash>
 
         </div>
-
-        <div class='wrapper col-md-9' *ngIf="page">
-
-            <wd-html [innerHTML]="page.source" (pageEdited)="updateSource($event)"></wd-html>
-
-            <hr />
-
-            <div>
-                {{page ? page.source : ''}}
-            </div>
-         
-
-            <div class="btn-group">
-            
-            </div>
-
-        </div>
-
     </div>
-    
-    
 </div>
+
+

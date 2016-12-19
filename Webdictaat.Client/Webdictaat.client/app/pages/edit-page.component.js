@@ -16,15 +16,13 @@ var EditPageComponent = (function () {
         this.route = route;
         this.pagesService = pagesService;
     }
-    EditPageComponent.prototype.ngOnInit = function () {
+    EditPageComponent.prototype.ngOnChanges = function () {
         var _this = this;
         this.route.params.forEach(function (params) {
             var name = params['pageName'];
             _this.dictaatName = params['dictaatName'];
-            _this.pagesService.getPage(_this.dictaatName, name)
-                .then(function (page) {
-                _this.page = page;
-            });
+            _this.pagesService.getPage(_this.dictaatName, _this.pageName)
+                .then(function (page) { _this.page = page; });
         });
     };
     EditPageComponent.prototype.savePage = function () {
@@ -36,6 +34,10 @@ var EditPageComponent = (function () {
         this.page.source = pageSource;
         this.savePage();
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], EditPageComponent.prototype, "pageName", void 0);
     EditPageComponent = __decorate([
         core_1.Component({
             selector: "wd-edit-page",

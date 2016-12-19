@@ -24,20 +24,26 @@ export class QuestionsService {
         return this.subject.asObservable();
     }
 
-    public questionAdded: Question;
+    private resolveAddQuestion;
+    private resolveCancel;
 
-    private questionAddedSubject: Subject<Question> = new Subject<Question>();
-
-    public getQuestionAdded(): Observable<Question> {
-        return this.questionAddedSubject.asObservable();
+    public ShowModal(): Promise<Question> {
+        this.isModalVisible = true;
+        this.subject.next(this.isModalVisible);
+        return new Promise<Question>((resolve, reject) => {
+            this.resolveAddQuestion = resolve;
+            this.resolveCancel = reject;
+        });
     }
 
-    public ShowAddQuestionModal(): void{
-        this.isModalVisible = true;
+    public CancelModal(): void {
+        this.resolveCancel();
+        this.isModalVisible = false;
         this.subject.next(this.isModalVisible);
     }
 
-    public HideAddQuestionModal(): void {
+    public CompleteModal(question: Question) {
+        this.resolveAddQuestion(question);
         this.isModalVisible = false;
         this.subject.next(this.isModalVisible);
     }
@@ -49,15 +55,21 @@ export class QuestionsService {
         return this.http.post(url, question  )
             .toPromise()
             .then(response => {
-                this.questionAdded = response.json() as Question;
-                this.questionAddedSubject.next(this.questionAdded);
-                return this.questionAdded;
-            }
-                
-            ).catch(this.handleError);
+                return response.json() as Question
+            })
+            .catch(() => {
+                this.resolveCancel(); //hier nog niet bij mee
+                return this.handleError;
+            });
     }
 
     public getQuestion(dictaatName: String, questionId: number): Promise<Question> {
+
+        if (!questionId) {
+            return new Promise<Question>((resolve, reject) => {
+                reject("Cannot load question without questionId");
+            });
+        }
 
         let url: string = this.dictatenUrl + dictaatName + '/questions/' + questionId;
 

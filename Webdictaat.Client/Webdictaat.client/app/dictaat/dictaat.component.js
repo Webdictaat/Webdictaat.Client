@@ -18,22 +18,20 @@ var DictaatComponent = (function () {
         this.route = route;
         this.filePreviewService = filePreviewService;
     }
+    DictaatComponent.prototype.selectPage = function (page) {
+        this.selectedPage = page;
+    };
     //event
     DictaatComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.forEach(function (params) {
             var name = params['dictaatName'];
             _this.dictaatService.getDictaat(name)
-                .then(function (dictaat) { return _this.dictaat = dictaat; });
+                .then(function (dictaat) {
+                _this.dictaat = dictaat;
+                _this.selectedPage = dictaat.pages[0];
+            });
         });
-    };
-    DictaatComponent.prototype.selectPage = function (page) {
-        this.filePreviewService.selectFile(this.dictaat.name, page);
-    };
-    DictaatComponent.prototype.addPage = function () {
-    };
-    DictaatComponent.prototype.goBack = function () {
-        window.history.back();
     };
     __decorate([
         core_1.Input(), 

@@ -13,9 +13,6 @@ export class MultipleChoiceToolComponent {
 
     private template: String = "<wd-multiple-choice>";
 
-    private ui: any;
-    private done: any; 
-
     constructor(private questionsService: QuestionsService) { }
 
     /**
@@ -33,17 +30,19 @@ export class MultipleChoiceToolComponent {
                 });
             }
         })
-
-        this.questionsService.getQuestionAdded().subscribe(question => {
-            this.ui.item.replaceWith("<wd-multiple-choice class='wd-game-component' [qid]='" + question.id + "' />");
-            this.done();
-        });
     }
 
     private onDrop(ui, done): void {
-        this.ui = ui;
-        this.done = done;
-        this.questionsService.ShowAddQuestionModal();
+
+        this.questionsService.ShowModal()
+            .then((question) => {
+                ui.item.replaceWith("<wd-multiple-choice class='wd-game-component' [qid]='" + question.id + "' />");
+                done();
+            })
+            .catch(() => {
+                ui.item.remove();
+                done();
+            });
     }
 }
 

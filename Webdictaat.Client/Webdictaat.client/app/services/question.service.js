@@ -20,19 +20,26 @@ var QuestionsService = (function () {
         this.dictatenUrl = 'http://localhost:65418/api/dictaten/';
         this.isModalVisible = false;
         this.subject = new Subject_1.Subject();
-        this.questionAddedSubject = new Subject_1.Subject();
     }
     QuestionsService.prototype.getIsModalVisible = function () {
         return this.subject.asObservable();
     };
-    QuestionsService.prototype.getQuestionAdded = function () {
-        return this.questionAddedSubject.asObservable();
-    };
-    QuestionsService.prototype.ShowAddQuestionModal = function () {
+    QuestionsService.prototype.ShowModal = function () {
+        var _this = this;
         this.isModalVisible = true;
         this.subject.next(this.isModalVisible);
+        return new Promise(function (resolve, reject) {
+            _this.resolveAddQuestion = resolve;
+            _this.resolveCancel = reject;
+        });
     };
-    QuestionsService.prototype.HideAddQuestionModal = function () {
+    QuestionsService.prototype.CancelModal = function () {
+        this.resolveCancel();
+        this.isModalVisible = false;
+        this.subject.next(this.isModalVisible);
+    };
+    QuestionsService.prototype.CompleteModal = function (question) {
+        this.resolveAddQuestion(question);
         this.isModalVisible = false;
         this.subject.next(this.isModalVisible);
     };
@@ -42,12 +49,19 @@ var QuestionsService = (function () {
         return this.http.post(url, question)
             .toPromise()
             .then(function (response) {
-            _this.questionAdded = response.json();
-            _this.questionAddedSubject.next(_this.questionAdded);
-            return _this.questionAdded;
-        }).catch(this.handleError);
+            return response.json();
+        })
+            .catch(function () {
+            _this.resolveCancel(); //hier nog niet bij mee
+            return _this.handleError;
+        });
     };
     QuestionsService.prototype.getQuestion = function (dictaatName, questionId) {
+        if (!questionId) {
+            return new Promise(function (resolve, reject) {
+                reject("Cannot load question without questionId");
+            });
+        }
         var url = this.dictatenUrl + dictaatName + '/questions/' + questionId;
         return this.http.get(url)
             .toPromise()

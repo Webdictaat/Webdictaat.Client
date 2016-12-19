@@ -46,8 +46,8 @@ export class AddImageComponent implements OnInit   {
     public Add(): void {
 
         this.imageService.addImages(this.dictaatName, this.selectedFile)
-            .then((question: Question) => {
-                this.imageService.HideModal();
+            .then((imageLocation: string) => {
+                this.imageService.CompleteModal(imageLocation);
             });
     }
 

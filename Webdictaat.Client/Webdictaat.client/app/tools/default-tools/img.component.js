@@ -31,10 +31,16 @@ var ImgComponent = (function () {
         });
     };
     ImgComponent.prototype.onDrop = function (ui, done) {
+        var _this = this;
         this.ui = ui;
         this.done = done;
-        this.imageServie.ShowModal().then(function (imgName) {
+        this.imageServie.ShowModal()
+            .then(function (imgName) {
             ui.item.replaceWith("<div class='wd-component'><img src='http://localhost:65418//images//" + imgName + "'/></div>");
+            done();
+        })
+            .catch(function () {
+            _this.ui.item.remove();
             done();
         });
     };

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { PagesService } from './pages.service';
 import { Page } from '../models/page';
@@ -11,12 +11,16 @@ import { Page } from '../models/page';
     templateUrl: "http://localhost:3000/app/pages/edit-page.component.html",
     providers: [PagesService]
 })
-export class EditPageComponent implements OnInit {
+export class EditPageComponent {
+
+    @Input()
+    public pageName: string;
 
     private pageElement;
-    private page: Page;
-    private dictaatName: string;
 
+    private page: Page;
+
+    private dictaatName: string;
 
     constructor(
         private route: ActivatedRoute,
@@ -25,15 +29,15 @@ export class EditPageComponent implements OnInit {
 
     }
 
-    public ngOnInit(): void {
+    public ngOnChanges(): void {
         this.route.params.forEach((params: Params) => {
             let name = params['pageName'];
             this.dictaatName = params['dictaatName'];
-            this.pagesService.getPage(this.dictaatName, name)
-                .then(page => {
-                    this.page = page;
-                });
+            this.pagesService.getPage(this.dictaatName, this.pageName)
+                .then(page => { this.page = page; });
         });
+      
+     
     }
 
     public savePage(): void {

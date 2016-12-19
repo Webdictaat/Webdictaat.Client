@@ -20,7 +20,6 @@ var MultipleChoiceToolComponent = (function () {
         Nu kan ik nog wat dingen doen aanpassen voor ik de drop afrond.
      */
     MultipleChoiceToolComponent.prototype.ngOnInit = function () {
-        var _this = this;
         var component = this;
         $('#wd-multiple-choice-tool').draggable({
             helper: "clone",
@@ -31,15 +30,17 @@ var MultipleChoiceToolComponent = (function () {
                 });
             }
         });
-        this.questionsService.getQuestionAdded().subscribe(function (question) {
-            _this.ui.item.replaceWith("<wd-multiple-choice class='wd-game-component' [qid]='" + question.id + "' />");
-            _this.done();
-        });
     };
     MultipleChoiceToolComponent.prototype.onDrop = function (ui, done) {
-        this.ui = ui;
-        this.done = done;
-        this.questionsService.ShowAddQuestionModal();
+        this.questionsService.ShowModal()
+            .then(function (question) {
+            ui.item.replaceWith("<wd-multiple-choice class='wd-game-component' [qid]='" + question.id + "' />");
+            done();
+        })
+            .catch(function () {
+            ui.item.remove();
+            done();
+        });
     };
     MultipleChoiceToolComponent = __decorate([
         core_1.Component({

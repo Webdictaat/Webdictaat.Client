@@ -1,5 +1,4 @@
-﻿body {
-}
+﻿body { padding-top: 70px; }
 
 .modal{
     display:block;
@@ -12,7 +11,7 @@
 }
 
 .drop-container{
-   padding:10px;
+   padding:2px;
    border:1px dashed black;
 }
 
@@ -23,7 +22,7 @@
  .wd-component {
      border:1px dashed black;
      border-color: transparent;
-     padding:10px;
+     padding:2px;
 }
  .wd-component:hover{
     border:1px dashed black;
@@ -139,4 +138,28 @@ img.wd-logo{
     width: 100px;
     top:65px;
     margin-top:-65px;
+}
+
+.table td .btn{
+    margin-top:0px; margin-bottom:0px;
+}
+
+.panel-body.bordered{
+    border-bottom:2px solid #00AEED;
+}
+
+.wd-component{
+    cursor: pointer;
+}
+
+.wd-component h1, h2, h3, h4, h5, p, span{
+    cursor: default;
+}
+
+.elements > tbody > tr > td{
+    padding:2px;
+}
+
+.fixed{
+    position:fixed;
 }
