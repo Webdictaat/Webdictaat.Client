@@ -140,6 +140,10 @@ img.wd-logo{
     margin-top:-65px;
 }
 
+.table-hover tr{
+    cursor:pointer;
+}
+
 .table td .btn{
     margin-top:0px; margin-bottom:0px;
 }
