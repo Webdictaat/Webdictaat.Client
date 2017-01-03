@@ -13,7 +13,7 @@ export class ImageService {
 
     constructor(private http: Http) { }
 
-    private dictatenUrl = 'http://localhost:65418/api/dictaten/';
+    private dictatenUrl = 'http://webdictaat.azurewebsites.net/api/dictaten/';
 
     public isModalVisible: boolean = false;
     private subject: Subject<boolean> = new Subject<boolean>();

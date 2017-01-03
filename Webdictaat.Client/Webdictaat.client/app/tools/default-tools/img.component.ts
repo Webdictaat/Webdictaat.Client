@@ -31,7 +31,7 @@ export class ImgComponent implements OnInit  {
         return new Promise((resolve, reject) => {
             this.imageServie.ShowModal()
                 .then((imgName) => {
-                    ui.item.replaceWith("<div class='wd-component'><img src='http://localhost:65418//images//" + imgName + "'/></div>");
+                    ui.item.replaceWith("<div class='wd-component'><img src='http://webdictaat.azurewebsites.net//images//" + imgName + "'/></div>");
                     resolve(false);
                 })
                 .catch(() => {

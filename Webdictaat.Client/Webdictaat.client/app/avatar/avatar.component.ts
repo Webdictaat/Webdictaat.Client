@@ -16,7 +16,7 @@ export class AvatarComponent implements OnInit {
 
     public user: User;
 
-    private accountUrl: string = "http://localhost:65418/api/Account/";
+    private accountUrl: string = "http://webdictaat.azurewebsites.net/api/Account/";
    
     constructor(private accountService: AccountService) { }
 

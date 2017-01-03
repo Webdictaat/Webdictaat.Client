@@ -13,7 +13,7 @@ export class DictaatService {
 
     constructor(private http: Http) { }
 
-    private dictatenUrl = 'http://localhost:65418/api/dictaten/';
+    private dictatenUrl = 'http://webdictaat.azurewebsites.net/api/dictaten/';
 
     public getDictaat(dictaatName: String): Promise<Dictaat> {
         return this.http.get(this.dictatenUrl + dictaatName, { withCredentials: true })

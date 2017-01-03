@@ -15,7 +15,7 @@ require('rxjs/add/operator/map');
 var AccountService = (function () {
     function AccountService(http) {
         this.http = http;
-        this.accountUrl = 'http://localhost:65418/api/account/';
+        this.accountUrl = 'http://webdictaat.azurewebsites.net/api/account/';
     }
     AccountService.prototype.Login = function () {
         window.location.href = this.accountUrl + "ExternalLogin?returnurl=" + window.location;

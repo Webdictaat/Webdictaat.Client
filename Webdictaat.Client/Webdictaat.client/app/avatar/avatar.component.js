@@ -13,7 +13,7 @@ var account_service_1 = require('../services/account.service');
 var AvatarComponent = (function () {
     function AvatarComponent(accountService) {
         this.accountService = accountService;
-        this.accountUrl = "http://localhost:65418/api/Account/";
+        this.accountUrl = "http://webdictaat.azurewebsites.net/api/Account/";
     }
     AvatarComponent.prototype.ngOnInit = function () {
         var _this = this;

@@ -15,7 +15,7 @@ require('rxjs/add/operator/map');
 var DictatenService = (function () {
     function DictatenService(http) {
         this.http = http;
-        this.dictatenUrl = 'http://localhost:65418/api/dictaten';
+        this.dictatenUrl = 'http://webdictaat.azurewebsites.net/api/dictaten';
     }
     DictatenService.prototype.addDictaat = function (dictaatName) {
         return this.http.post(this.dictatenUrl, { name: dictaatName }, { withCredentials: true })

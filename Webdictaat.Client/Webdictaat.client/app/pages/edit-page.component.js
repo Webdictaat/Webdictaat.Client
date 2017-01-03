@@ -41,7 +41,7 @@ var EditPageComponent = (function () {
     EditPageComponent = __decorate([
         core_1.Component({
             selector: "wd-edit-page",
-            templateUrl: "http://localhost:3000/app/pages/edit-page.component.html",
+            templateUrl: "app/pages/edit-page.component.html",
             providers: [pages_service_1.PagesService]
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, pages_service_1.PagesService])

@@ -15,7 +15,7 @@ require('rxjs/add/operator/map');
 var PagesService = (function () {
     function PagesService(http) {
         this.http = http;
-        this.dictatenUrl = 'http://localhost:65418/api/dictaten/';
+        this.dictatenUrl = 'http://webdictaat.azurewebsites.net/api/dictaten/';
     }
     PagesService.prototype.getPages = function (dictaatName) {
         var url = this.dictatenUrl + dictaatName + '/pages';

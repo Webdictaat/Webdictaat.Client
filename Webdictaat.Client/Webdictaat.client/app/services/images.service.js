@@ -17,7 +17,7 @@ require('rxjs/add/operator/map');
 var ImageService = (function () {
     function ImageService(http) {
         this.http = http;
-        this.dictatenUrl = 'http://localhost:65418/api/dictaten/';
+        this.dictatenUrl = 'http://webdictaat.azurewebsites.net/api/dictaten/';
         this.isModalVisible = false;
         this.subject = new Subject_1.Subject();
     }

@@ -6,7 +6,7 @@ import { NavMenu } from '../models/nav-menu';
 
 @Component({
     selector: "wd-nav-menu",
-    templateUrl: "http://localhost:3000/app/nav-menu/nav-menu.component.html",
+    templateUrl: "http://student.aii.avans.nl/doc/ssmulder/app/nav-menu/nav-menu.component.html",
     providers: [NavMenuService]
 })
 export class NavMenuComponent implements OnInit {

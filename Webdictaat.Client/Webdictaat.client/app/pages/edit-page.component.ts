@@ -8,7 +8,7 @@ import { Page } from '../models/page';
 
 @Component({
     selector: "wd-edit-page",
-    templateUrl: "http://localhost:3000/app/pages/edit-page.component.html",
+    templateUrl: "app/pages/edit-page.component.html",
     providers: [PagesService]
 })
 export class EditPageComponent {

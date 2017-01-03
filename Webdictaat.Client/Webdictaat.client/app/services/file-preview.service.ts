@@ -18,7 +18,7 @@ export class FilePreviewService {
     // Observable string streams
     public selectedFile$ = this.selectedFileSource.asObservable();
 
-    private dictatenUrl = 'http://localhost:65418/api/dictaten/';
+    private dictatenUrl = 'http://webdictaat.azurewebsites.net/api/dictaten/';
 
     public selectFile(dictaatName: string, fileEntry: PageSummary): void {
         this.http.get(this.dictatenUrl + dictaatName + "/pages/" + fileEntry.name)

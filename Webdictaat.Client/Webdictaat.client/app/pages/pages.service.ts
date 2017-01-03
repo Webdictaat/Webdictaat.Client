@@ -14,7 +14,7 @@ export class PagesService {
 
     constructor(private http: Http) { }
 
-    private dictatenUrl = 'http://localhost:65418/api/dictaten/';
+    private dictatenUrl = 'http://webdictaat.azurewebsites.net/api/dictaten/';
 
     public getPages(dictaatName: String): Promise<PageSummary[]> {
         let url: string = this.dictatenUrl + dictaatName + '/pages';

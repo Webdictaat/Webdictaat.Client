@@ -4,7 +4,7 @@
  */
 (function (global) {
     System.config({
-    baseURL: '//localhost:3000',
+    baseURL: 'http://student.aii.avans.nl/doc/ssmulder',
     paths: {
       // paths serve as alias
       'npm:': 'node_modules/'

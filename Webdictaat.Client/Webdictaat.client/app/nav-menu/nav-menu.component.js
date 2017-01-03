@@ -33,7 +33,7 @@ var NavMenuComponent = (function () {
     NavMenuComponent = __decorate([
         core_1.Component({
             selector: "wd-nav-menu",
-            templateUrl: "http://localhost:3000/app/nav-menu/nav-menu.component.html",
+            templateUrl: "http://student.aii.avans.nl/doc/ssmulder/app/nav-menu/nav-menu.component.html",
             providers: [nav_menu_service_1.NavMenuService]
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, nav_menu_service_1.NavMenuService])

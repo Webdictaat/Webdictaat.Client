@@ -18,7 +18,7 @@ var FilePreviewService = (function () {
         this.selectedFileSource = new Subject_1.Subject();
         // Observable string streams
         this.selectedFile$ = this.selectedFileSource.asObservable();
-        this.dictatenUrl = 'http://localhost:65418/api/dictaten/';
+        this.dictatenUrl = 'http://webdictaat.azurewebsites.net/api/dictaten/';
     }
     FilePreviewService.prototype.selectFile = function (dictaatName, fileEntry) {
         var _this = this;

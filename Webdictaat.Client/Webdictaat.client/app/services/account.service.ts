@@ -14,7 +14,7 @@ import 'rxjs/add/operator/map';
 export class AccountService {
 
 
-    private accountUrl = 'http://localhost:65418/api/account/';
+    private accountUrl = 'http://webdictaat.azurewebsites.net/api/account/';
     private user: User;
 
     constructor(private http: Http) { }

@@ -34,7 +34,7 @@ var ImgComponent = (function () {
         return new Promise(function (resolve, reject) {
             _this.imageServie.ShowModal()
                 .then(function (imgName) {
-                ui.item.replaceWith("<div class='wd-component'><img src='http://localhost:65418//images//" + imgName + "'/></div>");
+                ui.item.replaceWith("<div class='wd-component'><img src='http://webdictaat.azurewebsites.net//images//" + imgName + "'/></div>");
                 resolve(false);
             })
                 .catch(function () {
