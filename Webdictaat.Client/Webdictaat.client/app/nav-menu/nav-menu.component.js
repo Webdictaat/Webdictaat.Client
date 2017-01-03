@@ -26,10 +26,21 @@ var NavMenuComponent = (function () {
             });
         }
     };
+    NavMenuComponent.prototype.toggleMenu = function () {
+        this.showMenu = false;
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', nav_menu_1.NavMenu)
     ], NavMenuComponent.prototype, "navMenu", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], NavMenuComponent.prototype, "isRoot", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], NavMenuComponent.prototype, "showMenu", void 0);
     NavMenuComponent = __decorate([
         core_1.Component({
             selector: "wd-nav-menu",

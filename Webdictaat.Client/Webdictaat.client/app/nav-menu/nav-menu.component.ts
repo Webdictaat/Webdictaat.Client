@@ -16,6 +16,12 @@ export class NavMenuComponent implements OnInit {
     @Input()
     public navMenu: NavMenu;
 
+    @Input()
+    public isRoot: boolean;
+
+    @Input()
+    public showMenu: boolean;
+
     constructor(
         private route: ActivatedRoute,
         private navMenuService: NavMenuService
@@ -28,6 +34,10 @@ export class NavMenuComponent implements OnInit {
                     this.navMenu = navMenu
                 });
         }
+    }
+
+    public toggleMenu() {
+        this.showMenu = false;
     }
 }
 
