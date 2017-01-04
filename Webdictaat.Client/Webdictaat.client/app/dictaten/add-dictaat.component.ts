@@ -23,6 +23,10 @@ export class AddDictaatComponent {
         private route: ActivatedRoute
     ) { }
 
+    public trim(str) {
+        return str.replace(/\s/g, '');
+    }
+
     //event
     public ngOnInit(): void {
 
@@ -31,6 +35,8 @@ export class AddDictaatComponent {
 
     public add(): void {
         this.showModal = false;
+
+        this.dictaatName = this.trim(this.dictaatName);
 
         this.dictatenService.addDictaat(this.dictaatName)
             .then(dictaten => {

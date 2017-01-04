@@ -19,12 +19,16 @@ var AddDictaatComponent = (function () {
         this.dictaatName = "";
         this.dictaatAdded = new core_1.EventEmitter();
     }
+    AddDictaatComponent.prototype.trim = function (str) {
+        return str.replace(/\s/g, '');
+    };
     //event
     AddDictaatComponent.prototype.ngOnInit = function () {
     };
     AddDictaatComponent.prototype.add = function () {
         var _this = this;
         this.showModal = false;
+        this.dictaatName = this.trim(this.dictaatName);
         this.dictatenService.addDictaat(this.dictaatName)
             .then(function (dictaten) {
             _this.dictaatName = null;

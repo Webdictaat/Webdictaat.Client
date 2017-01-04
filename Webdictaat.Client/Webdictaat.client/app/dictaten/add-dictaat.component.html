@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
 
-
+                
                 <div class="form-group">
                     <label for="dictaatName" class="col-md-2 control-label">Name</label>
 
@@ -20,6 +20,10 @@
                     </div>
                 </div>
             
+
+                <p class="text-info" *ngIf="dictaatName.indexOf(' ') >= 0">
+                    De naam van de website mag geen spaties bevatten, en zal uiteindelijk veranderen in <strong>{{trim(dictaatName)}}</strong>
+                </p>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary pull-left" (click)="showModal = false">Cancel</button>
