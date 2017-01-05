@@ -1,14 +1,13 @@
 ﻿<!-- First we rendere all the possible modals-->
 <wd-add-question></wd-add-question>
+<wd-add-rating></wd-add-rating>
 <wd-add-image></wd-add-image>
 
 
 
 <div class="row" *ngIf="page">
     <div class="col-md-9">
-        <div class="panel panel-default">
             <wd-html [innerHTML]="page.source" (pageEdited)="updateSource($event)"></wd-html>
-        </div>
     </div>
     <div class="col-md-3 text-center" >
         <div class="panel panel-default fixed">
@@ -21,6 +20,7 @@
                 <tr><td> <wd-text></wd-text> </td></tr>
                 <tr><td> <wd-column></wd-column> </td></tr>
                 <tr><td> <wd-multiple-choice-tool></wd-multiple-choice-tool> </td></tr>
+                <tr><td> <wd-rating-tool></wd-rating-tool> </td></tr>
                 <tr><td> <wd-img-tool></wd-img-tool> </td></tr>
             </table>
 

@@ -29,15 +29,69 @@
     <TypeScriptCompile Include="app\cms\main.ts" />
     <TypeScriptCompile Include="app\client\app.component.ts" />
     <Content Include="app\avatar\avatar.component.html" />
+    <Content Include="app\client\app.component.js">
+      <DependentUpon>app.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\client\app.module.js">
+      <DependentUpon>app.module.ts</DependentUpon>
+    </Content>
+    <Content Include="app\client\app.routing.js">
+      <DependentUpon>app.routing.ts</DependentUpon>
+    </Content>
+    <Content Include="app\client\main.js">
+      <DependentUpon>main.ts</DependentUpon>
+    </Content>
     <Content Include="app\cms\app.component.css" />
     <Content Include="app\cms\app.component.html" />
+    <Content Include="app\cms\app.component.js">
+      <DependentUpon>app.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\cms\app.module.js">
+      <DependentUpon>app.module.ts</DependentUpon>
+    </Content>
+    <Content Include="app\core\html-outlet.directive.js">
+      <DependentUpon>html-outlet.directive.ts</DependentUpon>
+    </Content>
     <Content Include="app\dialog\dialog.component.html" />
     <Content Include="app\dictaat\dictaat.component.css" />
     <Content Include="app\dictaat\dictaat.component.html" />
     <Content Include="app\dictaten\add-dictaat.component.html" />
     <Content Include="app\dictaten\dictaten.component.css" />
     <Content Include="app\dictaten\dictaten.component.html" />
+    <Content Include="app\game-elements\rating.component.js">
+      <DependentUpon>rating.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\game-elements\rating.component.js.map">
+      <DependentUpon>rating.component.ts</DependentUpon>
+    </Content>
     <Content Include="app\images\add-image.component.html" />
+    <Content Include="app\models\dictaat-summary.js">
+      <DependentUpon>dictaat-summary.ts</DependentUpon>
+    </Content>
+    <Content Include="app\models\Dictaat.js">
+      <DependentUpon>dictaat-summary.ts</DependentUpon>
+    </Content>
+    <Content Include="app\models\nav-menu.js">
+      <DependentUpon>nav-menu.ts</DependentUpon>
+    </Content>
+    <Content Include="app\models\page-summary.js">
+      <DependentUpon>page-summary.ts</DependentUpon>
+    </Content>
+    <Content Include="app\models\page.js">
+      <DependentUpon>page.ts</DependentUpon>
+    </Content>
+    <Content Include="app\models\question.js">
+      <DependentUpon>question.ts</DependentUpon>
+    </Content>
+    <Content Include="app\models\rating.js">
+      <DependentUpon>rating.ts</DependentUpon>
+    </Content>
+    <Content Include="app\models\tool-params.js">
+      <DependentUpon>tool-params.ts</DependentUpon>
+    </Content>
+    <Content Include="app\models\user.js">
+      <DependentUpon>user.ts</DependentUpon>
+    </Content>
     <Content Include="app\pages\edit-page.component.html" />
     <Content Include="app\file-preview\file-preview.component.css" />
     <Content Include="app\file-preview\file-preview.component.html" />
@@ -47,6 +101,20 @@
     <Content Include="app\pages\pages.component.html" />
     <Content Include="app\page\page.component.html" />
     <Content Include="app\questions\add-question.component.html" />
+    <Content Include="app\rating\add-rating.component.html" />
+    <Content Include="app\rating\add-rating.component.js">
+      <DependentUpon>add-rating.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\services\rating.service.js">
+      <DependentUpon>rating.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\tools\game-tools\game-tools.service.js" />
+    <Content Include="app\tools\game-tools\rating.component.js">
+      <DependentUpon>rating.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\tools\tools.module.js">
+      <DependentUpon>tools.module.ts</DependentUpon>
+    </Content>
     <Content Include="css\custom-bootstrap.css" />
     <Content Include="css\custom-bootstrap.min.css" />
     <Content Include="css\style.css" />
@@ -58,15 +126,19 @@
     <TypeScriptCompile Include="app\context-menu\context-menu.component.ts" />
     <TypeScriptCompile Include="app\context-menu\context-menu.service.ts" />
     <TypeScriptCompile Include="app\dialog\dialog.component.ts" />
+    <TypeScriptCompile Include="app\game-elements\rating.component.ts" />
     <TypeScriptCompile Include="app\images\add-image.component.ts" />
     <TypeScriptCompile Include="app\images\images.module.ts" />
+    <TypeScriptCompile Include="app\models\rating.ts" />
     <TypeScriptCompile Include="app\models\user.ts" />
+    <TypeScriptCompile Include="app\rating\add-rating.component.ts" />
     <TypeScriptCompile Include="app\services\images.service.ts" />
     <TypeScriptCompile Include="app\models\question.ts" />
     <TypeScriptCompile Include="app\models\tool-params.ts" />
     <TypeScriptCompile Include="app\core\html-outlet.directive.ts" />
     <TypeScriptCompile Include="app\questions\add-question.component.ts" />
     <TypeScriptCompile Include="app\questions\questions.module.ts" />
+    <TypeScriptCompile Include="app\services\rating.service.ts" />
     <TypeScriptCompile Include="app\services\question.service.ts" />
     <TypeScriptCompile Include="app\services\dialog.service.ts" />
     <TypeScriptCompile Include="app\dictaten\add-dictaat.component.ts" />
@@ -76,7 +148,7 @@
     <TypeScriptCompile Include="app\tools\default-tools\column.component.ts" />
     <TypeScriptCompile Include="app\tools\default-tools\img.component.ts" />
     <TypeScriptCompile Include="app\tools\default-tools\trash.component.ts" />
-    <TypeScriptCompile Include="app\tools\tools.module.ts" />
+    <TypeScriptCompile Include="app\tools\game-tools\rating.component.ts" />
     <TypeScriptCompile Include="app\tools\default-tools\header.component.ts" />
     <TypeScriptCompile Include="app\tools\html.component.ts" />
     <TypeScriptCompile Include="app\tools\game-tools\multiple-choice.component.ts" />
@@ -102,6 +174,7 @@
     <TypeScriptCompile Include="app\client\main.ts" />
     <TypeScriptCompile Include="app\models\dictaat-summary.ts" />
     <TypeScriptCompile Include="app\models\dictaat.ts" />
+    <TypeScriptCompile Include="app\tools\tools.module.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="package.json" />
@@ -109,6 +182,8 @@
     <Content Include="tsconfig.json" />
     <Content Include="js\cms.systemjs.config.js" />
     <Content Include="css\custom-bootstrap.less" />
+    <None Include="avans.pubxml" />
+    <Content Include="css\callouts.less" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

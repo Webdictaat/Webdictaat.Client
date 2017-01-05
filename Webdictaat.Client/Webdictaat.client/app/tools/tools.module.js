@@ -17,6 +17,7 @@ var header_component_1 = require('./default-tools/header.component');
 var text_component_1 = require('./default-tools/text.component');
 var column_component_1 = require('./default-tools/column.component');
 var multiple_choice_component_1 = require('./game-tools/multiple-choice.component');
+var rating_component_1 = require('./game-tools/rating.component');
 var trash_component_1 = require('./default-tools/trash.component');
 var img_component_1 = require('./default-tools/img.component');
 var ToolsModule = (function () {
@@ -26,10 +27,10 @@ var ToolsModule = (function () {
         core_1.NgModule({
             declarations: [
                 html_outlet_directive_1.HtmlOutlet, column_component_1.ColumnComponent, text_component_1.TextComponent, header_component_1.HeaderComponent, html_component_1.HtmlComponent,
-                multiple_choice_component_1.MultipleChoiceToolComponent, trash_component_1.TrashComponent, img_component_1.ImgComponent
+                multiple_choice_component_1.MultipleChoiceToolComponent, trash_component_1.TrashComponent, img_component_1.ImgComponent, rating_component_1.RatingToolComponent
             ],
             exports: [column_component_1.ColumnComponent, text_component_1.TextComponent, header_component_1.HeaderComponent, html_component_1.HtmlComponent,
-                multiple_choice_component_1.MultipleChoiceToolComponent, html_outlet_directive_1.HtmlOutlet, trash_component_1.TrashComponent, img_component_1.ImgComponent
+                multiple_choice_component_1.MultipleChoiceToolComponent, html_outlet_directive_1.HtmlOutlet, trash_component_1.TrashComponent, img_component_1.ImgComponent, rating_component_1.RatingToolComponent
             ]
         }), 
         __metadata('design:paramtypes', [])

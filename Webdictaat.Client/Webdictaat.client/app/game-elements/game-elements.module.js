@@ -12,14 +12,15 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 //components
 var multiple_choice_component_1 = require('./multiple-choice.component');
+var rating_component_1 = require('./rating.component');
 var GameElementsModule = (function () {
     function GameElementsModule() {
     }
     GameElementsModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule],
-            declarations: [multiple_choice_component_1.MultipleChoiceComponent],
-            exports: [multiple_choice_component_1.MultipleChoiceComponent]
+            declarations: [multiple_choice_component_1.MultipleChoiceComponent, rating_component_1.RatingComponent],
+            exports: [multiple_choice_component_1.MultipleChoiceComponent, rating_component_1.RatingComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], GameElementsModule);

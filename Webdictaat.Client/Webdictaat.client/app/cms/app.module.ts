@@ -10,6 +10,7 @@ import { PagesModule } from '../pages/pages.module';
 import { ToolsModule } from '../tools/tools.module';
 
 //components
+import { AddRatingComponent } from '../rating/add-rating.component';
 import { AppComponent } from './app.component';
 import { AddDictaatComponent } from '../dictaten/add-dictaat.component';
 import { DictatenComponent } from '../dictaten/dictaten.component';
@@ -26,6 +27,7 @@ import { routing } from './app.routing';
 import { DialogService } from '../services/dialog.service';
 import { FilePreviewService } from '../services/file-preview.service';
 import { QuestionsService } from '../services/question.service';
+import { RatingService } from '../services/rating.service';
 import { ImageService } from '../services/images.service';
 import { AccountService } from '../services/account.service';
 
@@ -36,11 +38,12 @@ import { AccountService } from '../services/account.service';
         BrowserModule, HttpModule, routing, PagesModule, FormsModule
     ],
     declarations: [
-        AddDictaatComponent, DialogComponent, AvatarComponent,
+        AddDictaatComponent, DialogComponent, AvatarComponent, AddRatingComponent,
         AppComponent, DictatenComponent, FilePreviewComponent, DictaatComponent, EditPageComponent
     ],
     providers: [
         FilePreviewService, DialogService, QuestionsService, ImageService, AccountService,
+        RatingService,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
     ],
     bootstrap: [

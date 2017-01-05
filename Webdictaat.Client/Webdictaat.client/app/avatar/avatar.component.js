@@ -31,7 +31,7 @@ var AvatarComponent = (function () {
     AvatarComponent = __decorate([
         core_1.Component({
             selector: "wd-avatar",
-            templateUrl: "./app/avatar/avatar.component.html",
+            templateUrl: "http://student.aii.avans.nl/doc/ssmulder/app/avatar/avatar.component.html",
             providers: []
         }), 
         __metadata('design:paramtypes', [account_service_1.AccountService])

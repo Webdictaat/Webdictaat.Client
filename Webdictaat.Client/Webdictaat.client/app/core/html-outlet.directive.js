@@ -14,6 +14,7 @@ var router_1 = require('@angular/router');
 var common_1 = require('@angular/common');
 var game_elements_module_1 = require('../game-elements/game-elements.module');
 var question_service_1 = require('../services/question.service');
+var rating_service_1 = require('../services/rating.service');
 function createComponentFactory(compiler, metadata) {
     var cmpClass = (function () {
         function DynamicComponent() {
@@ -27,7 +28,7 @@ function createComponentFactory(compiler, metadata) {
         DynamicHtmlModule = __decorate([
             core_1.NgModule({
                 imports: [common_1.CommonModule, router_1.RouterModule, game_elements_module_1.GameElementsModule],
-                providers: [question_service_1.QuestionsService],
+                providers: [question_service_1.QuestionsService, rating_service_1.RatingService],
                 declarations: [decoratedCmp]
             }), 
             __metadata('design:paramtypes', [])
