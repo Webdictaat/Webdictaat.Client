@@ -4,6 +4,7 @@
     description: Boolean = false;
     emotion: string;
     feedback: string;
+    myRate: Rate;
 }
 
 export class Rate {

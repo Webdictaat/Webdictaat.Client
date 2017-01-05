@@ -35,7 +35,7 @@ import { Rating, Rate } from '../models/rating';
 
             <div *ngIf="isAuth">
 
-                <div *ngIf="!rate.id">
+                <div *ngIf="!rating.myRate">
                     <div>
                         <img (click)="setEmotion('sad')" [ngClass]="{ 'active' : rate.emotion == 'sad' }" class='emotion' src="http://webdictaat.azurewebsites.net/images/shared/sad.png">
                         <img (click)="setEmotion('happy')" [ngClass]="{ 'active' : rate.emotion == 'happy' }" class='emotion'  src="http://webdictaat.azurewebsites.net/images/shared/happy.png">
@@ -48,9 +48,12 @@ import { Rating, Rate } from '../models/rating';
                     </div>
                 </div>
 
-                <div *ngIf="rate.id">
+                <div *ngIf="rating.myRate">
                     <p>Thank you for the feedback!</p>
-                    <p *ngIf="rate.feedback">"{{rate.feedback}}"</p>
+                    <p *ngIf="rating.myRate.feedback"> 
+                        <img width="30px" *ngIf="rating.myRate.emotion == 0" src="http://webdictaat.azurewebsites.net/images/shared/sad.png">
+                        <img width="30px" *ngIf="rating.myRate.emotion == 1" src="http://webdictaat.azurewebsites.net/images/shared/happy.png">
+                        - "{{rating.myRate.feedback}}"</p>
                 </div>
 
 
@@ -110,7 +113,7 @@ export class RatingComponent implements OnInit {
 
     public sendRate(): void {
         this.ratingService.SendRate(this.dictaatName, this.rating.id, this.rate)
-            .then((rate) => this.rate = rate);
+            .then((rate) => this.rating.myRate = rate);
     }
 
     public setEmotion(emotion): void {

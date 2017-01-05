@@ -46,7 +46,7 @@ var RatingService = (function () {
     RatingService.prototype.addRating = function (dictaatName, rating) {
         var _this = this;
         var url = this.dictatenUrl + dictaatName + '/rating';
-        return this.http.post(url, rating)
+        return this.http.post(url, rating, { withCredentials: true })
             .toPromise()
             .then(function (response) {
             return response.json();
@@ -59,7 +59,7 @@ var RatingService = (function () {
     RatingService.prototype.SendRate = function (dictaatName, ratingId, rate) {
         var _this = this;
         var url = this.dictatenUrl + dictaatName + '/rating/' + ratingId + '/rates';
-        return this.http.post(url, rate)
+        return this.http.post(url, rate, { withCredentials: true })
             .toPromise()
             .then(function (response) {
             return response.json();

@@ -52,7 +52,7 @@ export class RatingService {
 
         let url: string = this.dictatenUrl + dictaatName + '/rating';
 
-        return this.http.post(url, rating)
+        return this.http.post(url, rating, { withCredentials: true })
             .toPromise()
             .then(response => {
                 return response.json() as Rating
@@ -67,7 +67,7 @@ export class RatingService {
 
         let url: string = this.dictatenUrl + dictaatName + '/rating/' + ratingId + '/rates';
 
-        return this.http.post(url, rate)
+        return this.http.post(url, rate, { withCredentials: true })
             .toPromise()
             .then(response => {
                 return response.json() as Rate
