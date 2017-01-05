@@ -9,11 +9,11 @@ import { AccountService } from '../services/account.service';
     selector: "wd-multiple-choice",
     styles: [`
 
-.answers {
-    list-style-type:none;
-    padding-left:5px;
-    padding-right:5px;
+.answer {
+   max-width:100%;
+   white-space:normal;
 }    
+
 
     `],
     template: `
@@ -35,7 +35,7 @@ import { AccountService } from '../services/account.service';
 
                 <div *ngIf="isAuth">
                     <div *ngFor='let answer of question.answers'>
-                        <button class="btn btn-raised btn-default" (click)="giveAnswer(answer)"
+                        <button class="btn btn-raised btn-default answer" (click)="giveAnswer(answer)"
                                 [ngClass]="{ 
                                     'btn-success' :  selectedAnswer == answer  && selectedAnswer.isCorrect,
                                     'btn-danger' : selectedAnswer == answer  && !selectedAnswer.isCorrect
