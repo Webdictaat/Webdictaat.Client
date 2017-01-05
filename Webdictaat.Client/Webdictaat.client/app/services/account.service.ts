@@ -15,9 +15,19 @@ export class AccountService {
 
 
     private accountUrl = 'http://webdictaat.azurewebsites.net/api/account/';
-    private user: User;
 
-    constructor(private http: Http) { }
+    //the user
+    private user: User;
+    private subject: Subject<User> = new Subject<User>();
+
+    constructor(private http: Http) {
+        this.http.get(this.accountUrl + "Current", { withCredentials: true })
+            .toPromise()
+            .then(response => {
+                this.user = response.json() as User;
+                this.subject.next(this.user);
+            }).catch(this.handleError);
+    }
 
     public Login(): void {
         window.location.href = this.accountUrl + "ExternalLogin?returnurl=" + window.location;
@@ -32,21 +42,12 @@ export class AccountService {
             }).catch(this.handleError);
     }
 
-   
-    public GetMyProfile(): Promise<User> {
+    public getUser(): Observable<User> {
+        return this.subject.asObservable();
+    }
 
-        if (this.user) {
-            return new Promise<User>((resolve, reject) => {
-                resolve(this.user);
-            });
-        }
-
-        return this.http.get(this.accountUrl + "Current", { withCredentials: true })
-            .toPromise()
-            .then(response => {
-                this.user = response.json() as User;
-                return this.user;
-            }).catch(this.handleError);
+    public update(): void {
+        this.subject.next(this.user);
     }
 
     private handleError(): void {

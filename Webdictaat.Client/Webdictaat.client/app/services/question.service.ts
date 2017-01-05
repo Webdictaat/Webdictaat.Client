@@ -52,7 +52,7 @@ export class QuestionsService {
 
         let url: string = this.dictatenUrl + dictaatName + '/questions';
 
-        return this.http.post(url, question  )
+        return this.http.post(url, question, { withCredentials: true } )
             .toPromise()
             .then(response => {
                 return response.json() as Question

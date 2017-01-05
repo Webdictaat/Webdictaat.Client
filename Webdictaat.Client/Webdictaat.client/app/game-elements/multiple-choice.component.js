@@ -11,13 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var question_service_1 = require('../services/question.service');
 var router_1 = require('@angular/router');
+var account_service_1 = require('../services/account.service');
 var MultipleChoiceComponent = (function () {
-    function MultipleChoiceComponent(questionsService, route) {
+    function MultipleChoiceComponent(questionsService, route, accountService) {
         this.questionsService = questionsService;
         this.route = route;
+        this.accountService = accountService;
     }
     MultipleChoiceComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.accountService.getUser()
+            .subscribe(function (user) {
+            _this.isAuth = user != null;
+        });
+        //Krijg initiele waarde van observable niet :(
+        this.accountService.update();
         this.route.params.forEach(function (params) {
             _this.dictaatName = params['dictaatName'];
             _this.questionsService.getQuestion(_this.dictaatName, _this.qid)
@@ -29,6 +37,9 @@ var MultipleChoiceComponent = (function () {
     MultipleChoiceComponent.prototype.giveAnswer = function (answer) {
         this.selectedAnswer = answer;
     };
+    MultipleChoiceComponent.prototype.login = function () {
+        this.accountService.Login();
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Number)
@@ -36,9 +47,9 @@ var MultipleChoiceComponent = (function () {
     MultipleChoiceComponent = __decorate([
         core_1.Component({
             selector: "wd-multiple-choice",
-            template: "\n        <div class='wd-component'>\n\n            <div *ngIf=\"error\" class=\"alert alert-danger\">\n                <p>{{error}}</p>\n            </div>\n\n\n            <p *ngIf=\"!error && !question\" class='default'>Loading...</p>\n      \n\n            <div *ngIf=\"question\" >\n                <p>{{question.text}}</p>\n\n                <div *ngIf=\"selectedAnswer && selectedAnswer.isCorrect\">\n                    {{selectedAnswer.text}} is correct!\n                </div>\n\n                <div *ngIf=\"selectedAnswer && !selectedAnswer.isCorrect\">\n                    {{selectedAnswer.text}} is not correct.\n                    Feel free to try again!\n                </div>\n\n                <ul>\n                    <li *ngFor='let answer of question.answers' (click)=\"giveAnswer(answer)\">\n                        {{answer.text}}\n                    </li>\n                </ul>\n            </div>\n\n        </div>\n    "
+            template: "\n        <div class='wd-component'>\n\n            <div *ngIf=\"error\" class=\"alert alert-danger\">\n                <p>{{error}}</p>\n            </div>\n\n            <p *ngIf=\"!error && isAuth && !question\" class='default'>Loading...</p>\n      \n            <div *ngIf=\"question\" >\n                <p>{{question.text}}</p>\n\n                <div *ngIf=\"!isAuth\">\n                    <button class='btn btn-info btn-raised' (click)=\"login()\">Login to submit answers</button>\n                </div>\n\n                <div *ngIf=\"isAuth\">\n                    <div *ngIf=\"selectedAnswer && selectedAnswer.isCorrect\">\n                        {{selectedAnswer.text}} is correct!\n                    </div>\n\n                    <div *ngIf=\"selectedAnswer && !selectedAnswer.isCorrect\">\n                        {{selectedAnswer.text}} is not correct.\n                        Feel free to try again!\n                    </div>\n\n                    <ul>\n                        <li *ngFor='let answer of question.answers' (click)=\"giveAnswer(answer)\">\n                            {{answer.text}}\n                        </li>\n                    </ul>\n                </div>\n            </div>\n\n        </div>\n    "
         }), 
-        __metadata('design:paramtypes', [question_service_1.QuestionsService, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [question_service_1.QuestionsService, router_1.ActivatedRoute, account_service_1.AccountService])
     ], MultipleChoiceComponent);
     return MultipleChoiceComponent;
 }());

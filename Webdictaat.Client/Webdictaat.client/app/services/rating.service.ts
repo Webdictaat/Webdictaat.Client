@@ -4,7 +4,7 @@ import { Headers, Http, Response } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 
-import { Rating } from '../models/rating';
+import { Rating, Rate } from '../models/rating';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
@@ -59,6 +59,20 @@ export class RatingService {
             })
             .catch(() => {
                 this.resolveCancel(); //hier nog niet bij mee
+                return this.handleError;
+            });
+    }
+
+    public SendRate(dictaatName: String, ratingId: number, rate: Rate): Promise<Rate> {
+
+        let url: string = this.dictatenUrl + dictaatName + '/rating/' + ratingId + '/rates';
+
+        return this.http.post(url, rate)
+            .toPromise()
+            .then(response => {
+                return response.json() as Rate
+            })
+            .catch(() => {
                 return this.handleError;
             });
     }

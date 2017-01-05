@@ -11,13 +11,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var rating_service_1 = require('../services/rating.service');
+var account_service_1 = require('../services/account.service');
+var rating_1 = require('../models/rating');
 var RatingComponent = (function () {
-    function RatingComponent(route, ratingService) {
+    function RatingComponent(route, ratingService, accountService) {
         this.route = route;
         this.ratingService = ratingService;
+        this.accountService = accountService;
+        this.rate = new rating_1.Rate();
     }
     RatingComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.accountService.getUser()
+            .subscribe(function (user) {
+            _this.isAuth = user != null;
+        });
+        //Krijg initiele waarde van observable niet :(
+        this.accountService.update();
         this.route.params.forEach(function (params) {
             _this.dictaatName = params['dictaatName'];
             _this.ratingService.getRating(_this.dictaatName, _this.rid)
@@ -27,10 +37,16 @@ var RatingComponent = (function () {
                 .catch(function (reason) { return _this.error = reason; });
         });
     };
-    RatingComponent.prototype.rate = function () {
+    RatingComponent.prototype.login = function () {
+        this.accountService.Login();
+    };
+    RatingComponent.prototype.sendRate = function () {
+        var _this = this;
+        this.ratingService.SendRate(this.dictaatName, this.rating.id, this.rate)
+            .then(function (rate) { return _this.rate = rate; });
     };
     RatingComponent.prototype.setEmotion = function (emotion) {
-        this.rating.emotion = emotion;
+        this.rate.emotion = emotion;
     };
     __decorate([
         core_1.Input(), 
@@ -40,9 +56,9 @@ var RatingComponent = (function () {
         core_1.Component({
             selector: "wd-rating",
             styles: ["\n        .emotion{\n             width: 35px; cursor: pointer;\n             -webkit-transition: all 0.4s; /* Safari */\n            transition: all 0.4s;\n            margin:4px;\n        }\n        .emotion.active { \n            transform: scale(1.3, 1.3); \n        }\n    "],
-            template: "\n        <div class='wd-component'>\n\n            <div *ngIf=\"error\" class=\"alert alert-danger\">\n                <p>{{error}}</p>\n            </div>\n\n            <div class=\"bs-callout bs-callout-info row\" *ngIf=\"rating\">\n                <div class=\"col-md-3\">\n\n                  <h4>{{rating.title}}</h4>\n                  <p>{{rating.description}}</p>\n\n                  <div>\n                    <img (click)=\"setEmotion('sad')\" [ngClass]=\"{ 'active' : rating.emotion == 'sad' }\" class='emotion' src=\"http://webdictaat.azurewebsites.net/images/shared/sad.png\">\n                    <img (click)=\"setEmotion('happy')\" [ngClass]=\"{ 'active' : rating.emotion == 'happy' }\" class='emotion'  src=\"http://webdictaat.azurewebsites.net/images/shared/happy.png\">\n                  </div>\n\n                  <button class='btn btn-info btn-raised' *ngIf=\"rating.emotion\" (click)=\"rate()\">Send rating</button>\n\n                </div>\n\n                <div  class='col-md-6 well well-md' *ngIf=\"rating.emotion\">\n                    <textarea class=\"form-control\" rows=\"3\" id=\"textArea\"></textarea>\n                    <span class=\"help-block\">Would you like to give feedback?</span>\n                </div>\n\n\n            </div>\n        </div>\n    "
+            template: "\n    <div class='wd-component'>\n\n        <div *ngIf=\"error\" class=\"alert alert-danger\">\n            <p>{{error}}</p>\n        </div>\n\n        <div class=\"bs-callout bs-callout-info\" *ngIf=\"rating\" >\n               \n            <h4>{{rating.title}}</h4>\n            <p>{{rating.description}}</p>\n\n            <div *ngIf=\"!isAuth\">\n                 <button class='btn btn-info btn-raised' (click)=\"login()\">Login to give feedback</button>\n            </div>\n\n            <div *ngIf=\"isAuth\">\n\n                <div *ngIf=\"!rate.id\">\n                    <div>\n                        <img (click)=\"setEmotion('sad')\" [ngClass]=\"{ 'active' : rate.emotion == 'sad' }\" class='emotion' src=\"http://webdictaat.azurewebsites.net/images/shared/sad.png\">\n                        <img (click)=\"setEmotion('happy')\" [ngClass]=\"{ 'active' : rate.emotion == 'happy' }\" class='emotion'  src=\"http://webdictaat.azurewebsites.net/images/shared/happy.png\">\n                    </div>\n\n                    <div *ngIf=\"rate.emotion\">\n                        <textarea class=\"form-control\" rows=\"3\" [(ngModel)]='rate.feedback' id=\"textArea\"></textarea>\n                        <span class=\"help-block\">Would you like to give feedback?</span>\n                        <button class='btn btn-info btn-raised' (click)=\"sendRate()\">Send rating</button>\n                    </div>\n                </div>\n\n                <div *ngIf=\"rate.id\">\n                    <p>Thank you for the feedback!</p>\n                    <p *ngIf=\"rate.feedback\">\"{{rate.feedback}}\"</p>\n                </div>\n\n\n            </div>\n\n            \n\n        </div>\n    </div>\n    "
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, rating_service_1.RatingService])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, rating_service_1.RatingService, account_service_1.AccountService])
     ], RatingComponent);
     return RatingComponent;
 }());

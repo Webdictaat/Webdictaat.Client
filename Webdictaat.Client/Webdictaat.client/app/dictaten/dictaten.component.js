@@ -22,8 +22,7 @@ var DictatenComponent = (function () {
     }
     DictatenComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.accountService.GetMyProfile()
-            .then(function (user) { return _this.user = user; });
+        this.accountService.getUser().subscribe(function (user) { return _this.user = user; });
         this.dictatenService.getDictaten()
             .then(function (dictaten) { return _this.dictaten = dictaten; });
     };

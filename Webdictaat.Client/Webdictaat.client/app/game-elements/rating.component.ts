@@ -1,7 +1,8 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { RatingService } from '../services/rating.service';
-import { Rating } from '../models/rating';
+import { AccountService } from '../services/account.service';
+import { Rating, Rate } from '../models/rating';
 
 @Component({
     selector: "wd-rating",
@@ -17,35 +18,48 @@ import { Rating } from '../models/rating';
         }
     `],
     template: `
-        <div class='wd-component'>
+    <div class='wd-component'>
 
-            <div *ngIf="error" class="alert alert-danger">
-                <p>{{error}}</p>
-            </div>
-
-            <div class="bs-callout bs-callout-info row" *ngIf="rating">
-                <div class="col-md-3">
-
-                  <h4>{{rating.title}}</h4>
-                  <p>{{rating.description}}</p>
-
-                  <div>
-                    <img (click)="setEmotion('sad')" [ngClass]="{ 'active' : rating.emotion == 'sad' }" class='emotion' src="http://webdictaat.azurewebsites.net/images/shared/sad.png">
-                    <img (click)="setEmotion('happy')" [ngClass]="{ 'active' : rating.emotion == 'happy' }" class='emotion'  src="http://webdictaat.azurewebsites.net/images/shared/happy.png">
-                  </div>
-
-                  <button class='btn btn-info btn-raised' *ngIf="rating.emotion" (click)="rate()">Send rating</button>
-
-                </div>
-
-                <div  class='col-md-6 well well-md' *ngIf="rating.emotion">
-                    <textarea class="form-control" rows="3" id="textArea"></textarea>
-                    <span class="help-block">Would you like to give feedback?</span>
-                </div>
-
-
-            </div>
+        <div *ngIf="error" class="alert alert-danger">
+            <p>{{error}}</p>
         </div>
+
+        <div class="bs-callout bs-callout-info" *ngIf="rating" >
+               
+            <h4>{{rating.title}}</h4>
+            <p>{{rating.description}}</p>
+
+            <div *ngIf="!isAuth">
+                 <button class='btn btn-info btn-raised' (click)="login()">Login to give feedback</button>
+            </div>
+
+            <div *ngIf="isAuth">
+
+                <div *ngIf="!rate.id">
+                    <div>
+                        <img (click)="setEmotion('sad')" [ngClass]="{ 'active' : rate.emotion == 'sad' }" class='emotion' src="http://webdictaat.azurewebsites.net/images/shared/sad.png">
+                        <img (click)="setEmotion('happy')" [ngClass]="{ 'active' : rate.emotion == 'happy' }" class='emotion'  src="http://webdictaat.azurewebsites.net/images/shared/happy.png">
+                    </div>
+
+                    <div *ngIf="rate.emotion">
+                        <textarea class="form-control" rows="3" [(ngModel)]='rate.feedback' id="textArea"></textarea>
+                        <span class="help-block">Would you like to give feedback?</span>
+                        <button class='btn btn-info btn-raised' (click)="sendRate()">Send rating</button>
+                    </div>
+                </div>
+
+                <div *ngIf="rate.id">
+                    <p>Thank you for the feedback!</p>
+                    <p *ngIf="rate.feedback">"{{rate.feedback}}"</p>
+                </div>
+
+
+            </div>
+
+            
+
+        </div>
+    </div>
     `
 })
 export class RatingComponent implements OnInit {
@@ -58,33 +72,49 @@ export class RatingComponent implements OnInit {
     public rid: number; 
 
     public rating: Rating;
-
+    public rate: Rate = new Rate();
+    public isAuth: boolean;
 
     constructor(
         private route: ActivatedRoute,
-        private ratingService: RatingService
-    ) { }
+        private ratingService: RatingService,
+        private accountService: AccountService
+    ) {}
 
     public ngOnInit() {
 
-            this.route.params.forEach((params: Params) => {
-                this.dictaatName = params['dictaatName'];
-                this.ratingService.getRating(this.dictaatName, this.rid)
-                    .then(rating => {
-                        this.rating = rating;
-                    })
-                    .catch(reason => this.error = reason);
+        this.accountService.getUser()
+            .subscribe(user => {
+                this.isAuth = user != null
             });
+
+        //Krijg initiele waarde van observable niet :(
+        this.accountService.update();
+
+        this.route.params.forEach((params: Params) => {
+            this.dictaatName = params['dictaatName'];
+            this.ratingService.getRating(this.dictaatName, this.rid)
+                .then(rating => {
+                    this.rating = rating;
+                })
+                .catch(reason => this.error = reason);
+        });
 
 
     }
 
-    public rate(): void {
+    public login() {
+        this.accountService.Login();
+    }
 
+
+    public sendRate(): void {
+        this.ratingService.SendRate(this.dictaatName, this.rating.id, this.rate)
+            .then((rate) => this.rate = rate);
     }
 
     public setEmotion(emotion): void {
-        this.rating.emotion = emotion;
+        this.rate.emotion = emotion;
     }
 
 }

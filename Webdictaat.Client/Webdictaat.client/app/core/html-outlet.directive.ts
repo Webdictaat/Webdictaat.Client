@@ -14,6 +14,9 @@ import {
     NgZone
 } from '@angular/core';
 
+import { BrowserModule } from '@angular/platform-browser';
+
+
 import { RouterModule }  from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { GameElementsModule } from '../game-elements/game-elements.module';
@@ -26,7 +29,7 @@ export function createComponentFactory(compiler: Compiler, metadata: Component):
     const decoratedCmp = Component(metadata)(cmpClass);
 
     @NgModule({
-        imports: [CommonModule, RouterModule, GameElementsModule],
+        imports: [BrowserModule, CommonModule, RouterModule, GameElementsModule],
         providers: [QuestionsService, RatingService],
         declarations: [decoratedCmp]
     })

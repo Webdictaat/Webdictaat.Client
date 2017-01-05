@@ -10,12 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+//Nodig om een object om te toveren in een promise.
+var Subject_1 = require('rxjs/Subject');
 require('rxjs/add/operator/toPromise');
 require('rxjs/add/operator/map');
 var AccountService = (function () {
     function AccountService(http) {
+        var _this = this;
         this.http = http;
         this.accountUrl = 'http://webdictaat.azurewebsites.net/api/account/';
+        this.subject = new Subject_1.Subject();
+        this.http.get(this.accountUrl + "Current", { withCredentials: true })
+            .toPromise()
+            .then(function (response) {
+            _this.user = response.json();
+            _this.subject.next(_this.user);
+        }).catch(this.handleError);
     }
     AccountService.prototype.Login = function () {
         window.location.href = this.accountUrl + "ExternalLogin?returnurl=" + window.location;
@@ -28,19 +38,11 @@ var AccountService = (function () {
             location.reload();
         }).catch(this.handleError);
     };
-    AccountService.prototype.GetMyProfile = function () {
-        var _this = this;
-        if (this.user) {
-            return new Promise(function (resolve, reject) {
-                resolve(_this.user);
-            });
-        }
-        return this.http.get(this.accountUrl + "Current", { withCredentials: true })
-            .toPromise()
-            .then(function (response) {
-            _this.user = response.json();
-            return _this.user;
-        }).catch(this.handleError);
+    AccountService.prototype.getUser = function () {
+        return this.subject.asObservable();
+    };
+    AccountService.prototype.update = function () {
+        this.subject.next(this.user);
     };
     AccountService.prototype.handleError = function () {
         console.log("not logged in ");

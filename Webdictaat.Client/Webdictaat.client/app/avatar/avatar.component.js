@@ -17,8 +17,8 @@ var AvatarComponent = (function () {
     }
     AvatarComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.accountService.GetMyProfile()
-            .then(function (user) {
+        this.accountService.getUser()
+            .subscribe(function (user) {
             _this.user = user;
         });
     };

@@ -56,6 +56,18 @@ var RatingService = (function () {
             return _this.handleError;
         });
     };
+    RatingService.prototype.SendRate = function (dictaatName, ratingId, rate) {
+        var _this = this;
+        var url = this.dictatenUrl + dictaatName + '/rating/' + ratingId + '/rates';
+        return this.http.post(url, rate)
+            .toPromise()
+            .then(function (response) {
+            return response.json();
+        })
+            .catch(function () {
+            return _this.handleError;
+        });
+    };
     RatingService.prototype.getRating = function (dictaatName, ratingId) {
         if (!ratingId) {
             return new Promise(function (resolve, reject) {

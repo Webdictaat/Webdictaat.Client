@@ -29,8 +29,7 @@ export class DictatenComponent implements OnInit {
 
     public ngOnInit(): void {
 
-        this.accountService.GetMyProfile()
-            .then(user => this.user = user);
+        this.accountService.getUser().subscribe(user => this.user = user);
 
         this.dictatenService.getDictaten()
             .then(dictaten => this.dictaten = dictaten);

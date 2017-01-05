@@ -29,6 +29,9 @@
     <TypeScriptCompile Include="app\cms\main.ts" />
     <TypeScriptCompile Include="app\client\app.component.ts" />
     <Content Include="app\avatar\avatar.component.html" />
+    <Content Include="app\avatar\avatar.component.js">
+      <DependentUpon>avatar.component.ts</DependentUpon>
+    </Content>
     <Content Include="app\client\app.component.js">
       <DependentUpon>app.component.ts</DependentUpon>
     </Content>
@@ -56,8 +59,26 @@
     <Content Include="app\dictaat\dictaat.component.css" />
     <Content Include="app\dictaat\dictaat.component.html" />
     <Content Include="app\dictaten\add-dictaat.component.html" />
+    <Content Include="app\dictaten\add-dictaat.component.js">
+      <DependentUpon>add-dictaat.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\dictaten\app.component.js">
+      <DependentUpon>add-dictaat.component.ts</DependentUpon>
+    </Content>
     <Content Include="app\dictaten\dictaten.component.css" />
     <Content Include="app\dictaten\dictaten.component.html" />
+    <Content Include="app\dictaten\dictaten.component.js">
+      <DependentUpon>dictaten.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\dictaten\dictaten.service.js">
+      <DependentUpon>dictaten.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\game-elements\game-elements.module.js">
+      <DependentUpon>game-elements.module.ts</DependentUpon>
+    </Content>
+    <Content Include="app\game-elements\multiple-choice.component.js">
+      <DependentUpon>multiple-choice.component.ts</DependentUpon>
+    </Content>
     <Content Include="app\game-elements\rating.component.js">
       <DependentUpon>rating.component.ts</DependentUpon>
     </Content>
@@ -104,6 +125,24 @@
     <Content Include="app\rating\add-rating.component.html" />
     <Content Include="app\rating\add-rating.component.js">
       <DependentUpon>add-rating.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\services\account.service.js">
+      <DependentUpon>account.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\services\dialog.service.js">
+      <DependentUpon>dialog.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\services\dictaat.service.js">
+      <DependentUpon>dictaat.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\services\file-preview.service.js">
+      <DependentUpon>file-preview.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\services\images.service.js">
+      <DependentUpon>images.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\services\question.service.js">
+      <DependentUpon>question.service.ts</DependentUpon>
     </Content>
     <Content Include="app\services\rating.service.js">
       <DependentUpon>rating.service.ts</DependentUpon>

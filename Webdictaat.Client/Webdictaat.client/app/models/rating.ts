@@ -5,3 +5,9 @@
     emotion: string;
     feedback: string;
 }
+
+export class Rate {
+    id: number;
+    emotion: number;
+    feedback: string;
+}
