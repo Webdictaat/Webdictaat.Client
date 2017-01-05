@@ -13,15 +13,24 @@ var dictaten_service_1 = require('./dictaten.service');
 var account_service_1 = require('../services/account.service');
 var http_1 = require('@angular/http');
 var router_1 = require('@angular/router');
+var rx_1 = require('rxjs/rx');
 var DictatenComponent = (function () {
     function DictatenComponent(accountService, dictatenService, httpService, router) {
         this.accountService = accountService;
         this.dictatenService = dictatenService;
         this.httpService = httpService;
         this.router = router;
+        this.loaderValue = 0;
     }
     DictatenComponent.prototype.ngOnInit = function () {
         var _this = this;
+        //fake loader :D
+        var timer = rx_1.Observable.timer(0, 25);
+        timer.subscribe(function (t) {
+            if (_this.loaderValue == 100) {
+                _this.loaderValue++;
+            }
+        });
         this.accountService.getUser().subscribe(function (user) { return _this.isAuth = user != null; });
         this.accountService.update();
         this.dictatenService.getDictaten()
@@ -33,6 +42,9 @@ var DictatenComponent = (function () {
     DictatenComponent.prototype.gotoDetail = function (dictaat) {
         var link = ['/dictaten', dictaat.name];
         this.router.navigate(link);
+    };
+    DictatenComponent.prototype.login = function () {
+        this.accountService.Login();
     };
     DictatenComponent = __decorate([
         core_1.Component({

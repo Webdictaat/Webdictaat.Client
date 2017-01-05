@@ -5,6 +5,7 @@ import { DictaatSummary } from '../models/dictaat-summary';
 import { Headers, Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
+import { Observable } from 'rxjs/rx';
 
 
 @Component({
@@ -20,6 +21,8 @@ export class DictatenComponent implements OnInit {
 
     public isAuth: boolean;
 
+    public loaderValue: number = 0;
+
     constructor(
         private accountService: AccountService,
         private dictatenService: DictatenService,
@@ -28,6 +31,14 @@ export class DictatenComponent implements OnInit {
     ) { }
 
     public ngOnInit(): void {
+
+        //fake loader :D
+        let timer = Observable.timer(0, 25);
+        timer.subscribe(t => {
+            if (this.loaderValue == 100) {
+                this.loaderValue++;
+            }
+        });
 
         this.accountService.getUser().subscribe(user => this.isAuth = user != null);
         this.accountService.update();
@@ -43,6 +54,10 @@ export class DictatenComponent implements OnInit {
     public gotoDetail(dictaat: DictaatSummary): void {
         let link = ['/dictaten', dictaat.name];
         this.router.navigate(link);
+    }
+
+    public login() {
+        this.accountService.Login();
     }
 
 }
