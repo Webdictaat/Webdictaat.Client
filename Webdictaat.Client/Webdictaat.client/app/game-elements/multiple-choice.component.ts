@@ -7,6 +7,15 @@ import { AccountService } from '../services/account.service';
 
 @Component({
     selector: "wd-multiple-choice",
+    styles: [`
+
+.answers {
+    list-style-type:none;
+    padding-left:5px;
+    padding-right:5px;
+}    
+
+    `],
     template: `
         <div class='wd-component'>
 
@@ -16,15 +25,26 @@ import { AccountService } from '../services/account.service';
 
             <p *ngIf="!error && isAuth && !question" class='default'>Loading...</p>
       
-            <div *ngIf="question" >
-                <p>{{question.text}}</p>
+            <div class="bs-callout bs-callout-primary" *ngIf="question" >
+  
+                <h4>{{question.text}}</h4>
 
                 <div *ngIf="!isAuth">
                     <button class='btn btn-info btn-raised' (click)="login()">Login to submit answers</button>
                 </div>
 
                 <div *ngIf="isAuth">
-                    <div *ngIf="selectedAnswer && selectedAnswer.isCorrect">
+                    <div *ngFor='let answer of question.answers'>
+                        <button class="btn btn-raised btn-default" (click)="giveAnswer(answer)"
+                                [ngClass]="{ 
+                                    'btn-success' :  selectedAnswer == answer  && selectedAnswer.isCorrect,
+                                    'btn-danger' : selectedAnswer == answer  && !selectedAnswer.isCorrect
+                                }">
+                            {{answer.text}}
+                        </button>
+                    </div>
+
+                     <div *ngIf="selectedAnswer && selectedAnswer.isCorrect">
                         {{selectedAnswer.text}} is correct!
                     </div>
 
@@ -32,12 +52,7 @@ import { AccountService } from '../services/account.service';
                         {{selectedAnswer.text}} is not correct.
                         Feel free to try again!
                     </div>
-
-                    <ul>
-                        <li *ngFor='let answer of question.answers' (click)="giveAnswer(answer)">
-                            {{answer.text}}
-                        </li>
-                    </ul>
+                    
                 </div>
             </div>
 
