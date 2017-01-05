@@ -18,7 +18,7 @@ export class DictatenComponent implements OnInit {
     public dictaten: DictaatSummary[];
     public selectedDictaat: DictaatSummary;
 
-    private user: User;
+    public isAuth: boolean;
 
     constructor(
         private accountService: AccountService,
@@ -29,7 +29,8 @@ export class DictatenComponent implements OnInit {
 
     public ngOnInit(): void {
 
-        this.accountService.getUser().subscribe(user => this.user = user);
+        this.accountService.getUser().subscribe(user => this.isAuth = user != null);
+        this.accountService.update();
 
         this.dictatenService.getDictaten()
             .then(dictaten => this.dictaten = dictaten);

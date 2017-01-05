@@ -24,8 +24,14 @@
 
                     <h2>{{dictaat.name}}</h2>
 
-                    <p>
+                    <p *ngIf="isAuth">
                         <button type="button" class="btn btn-raised btn-info" (click)="gotoDetail(dictaat)">Details</button>
+                    </p>
+
+                    <p>
+                        <a target="_blank" href="http://webdictaat.azurewebsites.net/dictaten/{{dictaat.name}}">
+                            webdictaat.nl/dictaten/{{dictaat.name}}
+                        </a>
                     </p>
                 </div>
 

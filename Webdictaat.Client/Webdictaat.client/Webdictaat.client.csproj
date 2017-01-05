@@ -58,11 +58,11 @@
     <Content Include="app\dialog\dialog.component.html" />
     <Content Include="app\dictaat\dictaat.component.css" />
     <Content Include="app\dictaat\dictaat.component.html" />
+    <Content Include="app\dictaat\dictaat.component.js">
+      <DependentUpon>dictaat.component.ts</DependentUpon>
+    </Content>
     <Content Include="app\dictaten\add-dictaat.component.html" />
     <Content Include="app\dictaten\add-dictaat.component.js">
-      <DependentUpon>add-dictaat.component.ts</DependentUpon>
-    </Content>
-    <Content Include="app\dictaten\app.component.js">
       <DependentUpon>add-dictaat.component.ts</DependentUpon>
     </Content>
     <Content Include="app\dictaten\dictaten.component.css" />
