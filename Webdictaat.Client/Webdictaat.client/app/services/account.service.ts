@@ -34,12 +34,8 @@ export class AccountService {
     }
 
     public Logoff(): void {
-        this.http.post(this.accountUrl + "/LogOff", null)
-            .toPromise()
-            .then(response => {
-                //reload browser after logoff
-                location.reload();
-            }).catch(this.handleError);
+        //redrict to home after logout
+        window.location.href = this.accountUrl + "LogOff?returnurl=" + window.location;
     }
 
     public getUser(): Observable<User> {

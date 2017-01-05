@@ -31,12 +31,8 @@ var AccountService = (function () {
         window.location.href = this.accountUrl + "ExternalLogin?returnurl=" + window.location;
     };
     AccountService.prototype.Logoff = function () {
-        this.http.post(this.accountUrl + "/LogOff", null)
-            .toPromise()
-            .then(function (response) {
-            //reload browser after logoff
-            location.reload();
-        }).catch(this.handleError);
+        //redrict to home after logout
+        window.location.href = this.accountUrl + "LogOff?returnurl=" + window.location;
     };
     AccountService.prototype.getUser = function () {
         return this.subject.asObservable();
