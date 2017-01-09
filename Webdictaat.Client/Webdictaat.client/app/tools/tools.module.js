@@ -17,6 +17,7 @@ var html_outlet_directive_1 = require('../core/html-outlet.directive');
 var html_component_1 = require('./html.component');
 var header_component_1 = require('./default-tools/header.component');
 var text_component_1 = require('./default-tools/text.component');
+var card_component_1 = require('./default-tools/card.component');
 var column_component_1 = require('./default-tools/column.component');
 var multiple_choice_component_1 = require('./game-tools/multiple-choice.component');
 var rating_component_1 = require('./game-tools/rating.component');
@@ -29,10 +30,10 @@ var ToolsModule = (function () {
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
             declarations: [
-                html_outlet_directive_1.HtmlOutlet, column_component_1.ColumnComponent, text_component_1.TextComponent, header_component_1.HeaderComponent, html_component_1.HtmlComponent,
+                html_outlet_directive_1.HtmlOutlet, column_component_1.ColumnComponent, text_component_1.TextComponent, header_component_1.HeaderComponent, html_component_1.HtmlComponent, card_component_1.CardComponent,
                 multiple_choice_component_1.MultipleChoiceToolComponent, trash_component_1.TrashComponent, img_component_1.ImgComponent, rating_component_1.RatingToolComponent
             ],
-            exports: [column_component_1.ColumnComponent, text_component_1.TextComponent, header_component_1.HeaderComponent, html_component_1.HtmlComponent,
+            exports: [column_component_1.ColumnComponent, text_component_1.TextComponent, header_component_1.HeaderComponent, html_component_1.HtmlComponent, card_component_1.CardComponent,
                 multiple_choice_component_1.MultipleChoiceToolComponent, html_outlet_directive_1.HtmlOutlet, trash_component_1.TrashComponent, img_component_1.ImgComponent, rating_component_1.RatingToolComponent
             ]
         }), 

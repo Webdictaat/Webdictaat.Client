@@ -162,6 +162,9 @@
     <Content Include="app\tools\default-tools\img.component.js">
       <DependentUpon>img.component.ts</DependentUpon>
     </Content>
+    <Content Include="app\tools\default-tools\text.component - Copy %282%29.js">
+      <DependentUpon>card.component.ts</DependentUpon>
+    </Content>
     <Content Include="app\tools\default-tools\text.component.js">
       <DependentUpon>text.component.ts</DependentUpon>
     </Content>
@@ -210,6 +213,7 @@
     <TypeScriptCompile Include="app\services\account.service.ts" />
     <TypeScriptCompile Include="app\tools\default-tools\column.component.ts" />
     <TypeScriptCompile Include="app\tools\default-tools\img.component.ts" />
+    <TypeScriptCompile Include="app\tools\default-tools\card.component.ts" />
     <TypeScriptCompile Include="app\tools\default-tools\trash.component.ts" />
     <TypeScriptCompile Include="app\tools\game-tools\rating.component.ts" />
     <TypeScriptCompile Include="app\tools\default-tools\header.component.ts" />

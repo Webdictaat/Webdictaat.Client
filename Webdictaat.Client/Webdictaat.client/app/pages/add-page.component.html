@@ -24,10 +24,10 @@
 
 
                 <div class="form-group">
-                    <label for="menu">Select a menu *optional</label>
+                    <label for="menu">Select a sub menu *optional</label>
                     <select class="form-control" name="menu" id="menu" placeholder="Name of the page"
                             [(ngModel)]="menuName" #name="ngModel">
-                        <option value="null">None</option>
+                        <option></option>
                         <option *ngFor="let menu of dictaat.menu.subMenus" value="{{menu.name}}">
                             {{menu.name}}
                         </option> 
