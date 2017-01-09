@@ -7,8 +7,8 @@ declare var $: JQueryStatic;
     template: `
         <div  id='wd-columnn' class='wd-component'>
             <div class='wd-row'>
-                <div class='wd-flex-1 wd-container'></div>
-                <div class='wd-flex-1 wd-container'></div>
+                <div class='col-md-6 wd-container'></div>
+                <div class='col-md-6 wd-container'></div>
             </div>
         </div>
     `

@@ -1,4 +1,6 @@
 ﻿import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 //custom modules
 import { HtmlOutlet } from '../core/html-outlet.directive';
@@ -15,6 +17,7 @@ import { TrashComponent } from './default-tools/trash.component';
 import { ImgComponent } from './default-tools/img.component';
 
 @NgModule({
+    imports: [BrowserModule, FormsModule],
     declarations: [
         HtmlOutlet, ColumnComponent, TextComponent, HeaderComponent, HtmlComponent,
         MultipleChoiceToolComponent, TrashComponent, ImgComponent, RatingToolComponent

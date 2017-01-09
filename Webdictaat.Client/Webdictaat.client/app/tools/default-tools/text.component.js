@@ -25,7 +25,7 @@ var TextComponent = (function () {
     //returns a promise with a boolean, to recompile or not
     TextComponent.prototype.onDrop = function (ui) {
         return new Promise(function (resolve, reject) {
-            var newItem = $("<div class='wd-component'><p>Change me!</p></div>");
+            var newItem = $("<div class='wd-component'><div class='wd-editable'>Change me!</div></div>");
             ui.item.replaceWith(newItem);
             newItem.focus();
             resolve(false);

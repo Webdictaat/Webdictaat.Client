@@ -9,6 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var platform_browser_1 = require('@angular/platform-browser');
+var forms_1 = require('@angular/forms');
 //custom modules
 var html_outlet_directive_1 = require('../core/html-outlet.directive');
 //components
@@ -25,6 +27,7 @@ var ToolsModule = (function () {
     }
     ToolsModule = __decorate([
         core_1.NgModule({
+            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
             declarations: [
                 html_outlet_directive_1.HtmlOutlet, column_component_1.ColumnComponent, text_component_1.TextComponent, header_component_1.HeaderComponent, html_component_1.HtmlComponent,
                 multiple_choice_component_1.MultipleChoiceToolComponent, trash_component_1.TrashComponent, img_component_1.ImgComponent, rating_component_1.RatingToolComponent

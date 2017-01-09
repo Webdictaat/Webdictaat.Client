@@ -113,12 +113,18 @@
     <Content Include="app\models\user.js">
       <DependentUpon>user.ts</DependentUpon>
     </Content>
+    <Content Include="app\pages\add-page.component.js">
+      <DependentUpon>add-page.component.ts</DependentUpon>
+    </Content>
     <Content Include="app\pages\edit-page.component.html" />
     <Content Include="app\file-preview\file-preview.component.css" />
     <Content Include="app\file-preview\file-preview.component.html" />
     <Content Include="app\nav-menu\nav-menu.component.html" />
     <Content Include="app\pages\add-page.component.css" />
     <Content Include="app\pages\add-page.component.html" />
+    <Content Include="app\pages\edit-page.component.js">
+      <DependentUpon>edit-page.component.ts</DependentUpon>
+    </Content>
     <Content Include="app\pages\pages.component.html" />
     <Content Include="app\page\page.component.html" />
     <Content Include="app\questions\add-question.component.html" />
@@ -147,9 +153,27 @@
     <Content Include="app\services\rating.service.js">
       <DependentUpon>rating.service.ts</DependentUpon>
     </Content>
+    <Content Include="app\tools\default-tools\column.component.js">
+      <DependentUpon>column.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\tools\default-tools\header.component.js">
+      <DependentUpon>header.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\tools\default-tools\img.component.js">
+      <DependentUpon>img.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\tools\default-tools\text.component.js">
+      <DependentUpon>text.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\tools\default-tools\trash.component.js">
+      <DependentUpon>trash.component.ts</DependentUpon>
+    </Content>
     <Content Include="app\tools\game-tools\game-tools.service.js" />
     <Content Include="app\tools\game-tools\rating.component.js">
       <DependentUpon>rating.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\tools\html.component.js">
+      <DependentUpon>html.component.ts</DependentUpon>
     </Content>
     <Content Include="app\tools\tools.module.js">
       <DependentUpon>tools.module.ts</DependentUpon>

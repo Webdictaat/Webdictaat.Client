@@ -7,7 +7,7 @@
 
 <div class="row" *ngIf="page">
     <div class="col-md-9">
-            <wd-html [innerHTML]="page.source" (pageEdited)="updateSource($event)"></wd-html>
+            <wd-html [innerHTML]="page.source" (pageEdited)="updateSource($event)" [hidden]="htmlMode" ></wd-html>
     </div>
     <div class="col-md-3 text-center" >
         <div class="panel panel-default fixed">

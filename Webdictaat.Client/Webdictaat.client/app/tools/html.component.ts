@@ -6,9 +6,23 @@ declare var $: JQueryStatic;
 
 @Component({
     selector: "wd-html",
+    styles: [`
+    .code-editor{
+        width:100%;
+        max-width:100%;
+    }
+`],
     template: `
-        <div id='page'>
+        <div class="togglebutton">
+            <label>
+                <input type="checkbox" [(ngModel)]="htmlMode" ><span class="toggle"></span> Toggle button
+            </label>
+        </div>
+        <div id='page'  [hidden]="htmlMode">
             <html-outlet [html]="innerHTML" (afterCompile)="afterCompile()"></html-outlet>
+        </div>
+        <div [hidden]="!htmlMode">
+            <textarea class="code-editor" rows="15" [(ngModel)]="innerHTML" > </textarea>
         </div>
         <div class='panel-footer'>
             <button class="btn btn-lg btn-success btn-raised" (click)='savePage()'>
@@ -19,8 +33,10 @@ declare var $: JQueryStatic;
 })
 export class HtmlComponent implements OnInit{
 
-    public editableElements =  "p, span, h1, h2, h3, h4, h5";
+    public editableElements =  ".wd-editable, p, span, h1, h2, h3, h4, h5";
     public containerElements = ".wd-container";
+
+    public htmlMode: boolean = false;
 
     @Input()
     public innerHTML: string;
@@ -77,6 +93,8 @@ export class HtmlComponent implements OnInit{
                 setTimeout(() => ui.item.focus(), 0);
                 
             }
+
+            this.recompile();
         })
     }
 

@@ -23,7 +23,7 @@ export class TextComponent {
     public onDrop(ui): Promise<boolean> {
 
         return new Promise((resolve, reject) => {
-            var newItem = $("<div class='wd-component'><p>Change me!</p></div>");
+            var newItem = $("<div class='wd-component'><div class='wd-editable'>Change me!</div></div>");
             ui.item.replaceWith(newItem);
             newItem.focus();
             resolve(false);
