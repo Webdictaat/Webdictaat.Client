@@ -153,6 +153,9 @@
     <Content Include="app\services\rating.service.js">
       <DependentUpon>rating.service.ts</DependentUpon>
     </Content>
+    <Content Include="app\tools\default-tools\card.component.js">
+      <DependentUpon>card.component.ts</DependentUpon>
+    </Content>
     <Content Include="app\tools\default-tools\column.component.js">
       <DependentUpon>column.component.ts</DependentUpon>
     </Content>
@@ -161,9 +164,6 @@
     </Content>
     <Content Include="app\tools\default-tools\img.component.js">
       <DependentUpon>img.component.ts</DependentUpon>
-    </Content>
-    <Content Include="app\tools\default-tools\text.component - Copy %282%29.js">
-      <DependentUpon>card.component.ts</DependentUpon>
     </Content>
     <Content Include="app\tools\default-tools\text.component.js">
       <DependentUpon>text.component.ts</DependentUpon>
@@ -249,6 +249,54 @@
     <Content Include="tsconfig.json" />
     <Content Include="js\cms.systemjs.config.js" />
     <Content Include="css\custom-bootstrap.less" />
+    <Content Include="app\tools\default-tools\card.component.js.map">
+      <DependentUpon>card.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\tools\default-tools\column.component.js.map">
+      <DependentUpon>column.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\tools\default-tools\header.component.js.map">
+      <DependentUpon>header.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\tools\default-tools\img.component.js.map">
+      <DependentUpon>img.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\tools\default-tools\text.component.js.map">
+      <DependentUpon>text.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\tools\default-tools\trash.component.js.map">
+      <DependentUpon>trash.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\tools\html.component.js.map">
+      <DependentUpon>html.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\tools\tools.module.js.map">
+      <DependentUpon>tools.module.ts</DependentUpon>
+    </Content>
+    <Content Include="app\services\account.service.js.map">
+      <DependentUpon>account.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\services\dialog.service.js.map">
+      <DependentUpon>dialog.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\services\dictaat.service.js.map">
+      <DependentUpon>dictaat.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\services\file-preview.service.js.map">
+      <DependentUpon>file-preview.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\services\images.service.js.map">
+      <DependentUpon>images.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\services\question.service.js.map">
+      <DependentUpon>question.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\services\rating.service.js.map">
+      <DependentUpon>rating.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\avatar\avatar.component.js.map">
+      <DependentUpon>avatar.component.ts</DependentUpon>
+    </Content>
     <None Include="avans.pubxml" />
     <Content Include="css\callouts.less" />
     <None Include="web.Debug.config">
