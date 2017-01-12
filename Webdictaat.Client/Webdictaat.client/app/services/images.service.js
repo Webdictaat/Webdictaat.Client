@@ -60,6 +60,7 @@ var ImageService = (function () {
             };
             var url = _this.dictatenUrl + dictaatName + '/upload';
             xhr.open('POST', url, true);
+            xhr.withCredentials = true;
             xhr.send(formData);
         });
     };

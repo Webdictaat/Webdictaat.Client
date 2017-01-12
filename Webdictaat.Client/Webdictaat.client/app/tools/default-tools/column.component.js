@@ -33,7 +33,7 @@ var ColumnComponent = (function () {
     ColumnComponent = __decorate([
         core_1.Component({
             selector: "wd-column",
-            template: "\n        <div  id='wd-columnn' class='wd-component'>\n            <div class='wd-row'>\n                <div class='col-md-6 wd-container'></div>\n                <div class='col-md-6 wd-container'></div>\n            </div>\n        </div>\n    "
+            template: "\n        <div  id='wd-columnn' class='wd-component'>\n            <div class='row'>\n                <div class='col-md-6 wd-container'></div>\n                <div class='col-md-6 wd-container'></div>\n            </div>\n        </div>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], ColumnComponent);

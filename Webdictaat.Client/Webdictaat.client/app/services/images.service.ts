@@ -67,6 +67,7 @@ export class ImageService {
             let url: string = this.dictatenUrl + dictaatName + '/upload';
 
             xhr.open('POST', url, true);
+            xhr.withCredentials = true;
             xhr.send(formData);
         });
     }

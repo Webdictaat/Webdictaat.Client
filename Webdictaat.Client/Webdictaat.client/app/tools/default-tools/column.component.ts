@@ -6,7 +6,7 @@ declare var $: JQueryStatic;
     selector: "wd-column",
     template: `
         <div  id='wd-columnn' class='wd-component'>
-            <div class='wd-row'>
+            <div class='row'>
                 <div class='col-md-6 wd-container'></div>
                 <div class='col-md-6 wd-container'></div>
             </div>
