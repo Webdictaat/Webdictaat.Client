@@ -297,7 +297,6 @@
     <Content Include="app\avatar\avatar.component.js.map">
       <DependentUpon>avatar.component.ts</DependentUpon>
     </Content>
-    <None Include="avans.pubxml" />
     <Content Include="css\callouts.less" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
@@ -305,7 +304,6 @@
     <None Include="web.Release.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
-    <None Include="webdictaat - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
