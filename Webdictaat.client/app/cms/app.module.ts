@@ -14,7 +14,6 @@ import { AddRatingComponent } from '../rating/add-rating.component';
 import { AppComponent } from './app.component';
 import { AddDictaatComponent } from '../dictaten/add-dictaat.component';
 import { DictatenComponent } from '../dictaten/dictaten.component';
-import { FilePreviewComponent } from '../file-preview/file-preview.component';
 import { DialogComponent } from '../dialog/dialog.component';
 import { DictaatComponent } from '../dictaat/dictaat.component';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
@@ -25,12 +24,11 @@ import { AvatarComponent }  from '../avatar/avatar.component';
 //services
 import { routing } from './app.routing';
 import { DialogService } from '../services/dialog.service';
-import { FilePreviewService } from '../services/file-preview.service';
 import { QuestionsService } from '../services/question.service';
 import { RatingService } from '../services/rating.service';
 import { ImageService } from '../services/images.service';
 import { AccountService } from '../services/account.service';
-
+import { wdApi } from '../core/wdapi.service';
 
 @NgModule({
     imports: [
@@ -39,10 +37,10 @@ import { AccountService } from '../services/account.service';
     ],
     declarations: [
         AddDictaatComponent, DialogComponent, AvatarComponent, AddRatingComponent,
-        AppComponent, DictatenComponent, FilePreviewComponent, DictaatComponent, EditPageComponent
+        AppComponent, DictatenComponent, DictaatComponent, EditPageComponent
     ],
     providers: [
-        FilePreviewService, DialogService, QuestionsService, ImageService, AccountService,
+        DialogService, QuestionsService, ImageService, AccountService, wdApi,
         RatingService,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
     ],

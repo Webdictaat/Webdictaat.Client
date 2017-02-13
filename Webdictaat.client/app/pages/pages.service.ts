@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
-//Nodig om een object om te toveren in een promise.
 
+import { wdApi } from '../core/wdapi.service';
 import { Page } from '../models/page';
 import { PageSummary } from '../models/page-summary';
 
@@ -12,17 +12,13 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class PagesService {
 
-    constructor(private http: Http) { }
-
-    private dictatenUrl = 'http://webdictaat.azurewebsites.net/api/dictaten/';
+    constructor(private wdapi: wdApi) { }
 
     public getPages(dictaatName: String): Promise<PageSummary[]> {
-        let url: string = this.dictatenUrl + dictaatName + '/pages';
-        return this.http.get(url, { withCredentials: true })
+
+        return this.wdapi.get("/dictaten/" + dictaatName + "/pages")
             .toPromise()
-            .then(response =>
-                response.json() as PageSummary[]
-            ).catch(this.handleError);
+            .then(response => response.json() as PageSummary[]);
     }
 
     public addPage(dictaatName: String, page: Page, menuName: string): Promise<Page> {
@@ -32,45 +28,38 @@ export class PagesService {
             subMenu: menuName
         };
 
-        let url: string = this.dictatenUrl + dictaatName + '/pages';
+        let url: string = "/dictaten/" + dictaatName + '/pages';
 
-        return this.http.post(url, data, { withCredentials: true })
+        return this.wdapi.post(url, data)
             .toPromise()
-            .then(response =>
-                response.json() as Page
-            ).catch(this.handleError);
+            .then(response => response.json() as Page )
     }
 
     public editPage(dictaatName: String, page: Page): Promise<Page> {
-        let url: string = this.dictatenUrl + dictaatName + '/pages/' + page.name;
-        return this.http.put(url, page, { withCredentials: true })
+        let url: string = "/dictaten/" + dictaatName + '/pages/' + page.name;
+        return this.wdapi.put(url, page)
             .toPromise()
-            .then(response =>
-                response.json() as Page
-            ).catch(this.handleError);
+            .then(response => response.json() as Page);
+
     }
 
     public getPage(dictaatName: String, pageName: string): Promise<Page> {
-        let url: string = this.dictatenUrl + dictaatName + '/pages/' + pageName;
-        return this.http.get(url, { withCredentials: true })
+
+        let url: string = "/dictaten/" + dictaatName + '/pages/' + pageName;
+
+        return this.wdapi.get(url)
             .toPromise()
-            .then(response =>
-                response.json() as Page
-            ).catch(this.handleError);
+            .then(response => response.json() as Page);
+
     }
 
 
     public deletePage(dictaatName: String, pageName: String): Promise<Response>{
-        let url: string = this.dictatenUrl + dictaatName + '/pages/' + pageName;
-        return this.http.delete(url, { withCredentials: true })
+
+        let url: string = "/dictaten/" + dictaatName + '/pages' + pageName;
+
+        return this.wdapi.delete(url)
             .toPromise()
-            .then(response => response)
-            .catch(this.handleError);
+            .then(response => response);
     }
-
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
-    }
-
 }

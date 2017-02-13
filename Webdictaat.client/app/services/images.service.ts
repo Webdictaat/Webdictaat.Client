@@ -1,8 +1,9 @@
 ﻿import { Injectable } from '@angular/core';
 import { Headers, Http, Response, RequestOptions } from '@angular/http';
-//Nodig om een object om te toveren in een promise.
+
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
+import { wdApi } from '../core/wdapi.service';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
@@ -11,9 +12,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ImageService {
 
-    constructor(private http: Http) { }
+    constructor(private wdapi: wdApi) { }
 
-    private dictatenUrl = 'http://webdictaat.azurewebsites.net/api/dictaten/';
 
     public isModalVisible: boolean = false;
     private subject: Subject<boolean> = new Subject<boolean>();
@@ -48,28 +48,10 @@ export class ImageService {
     }
 
     public addImages(dictaatName: string, image: File): Promise<any> {
-        return new Promise((resolve, reject) => {
-            let formData: FormData = new FormData(),
-                xhr: XMLHttpRequest = new XMLHttpRequest();
 
-            formData.append("file", image, image.name);
-            
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        resolve(xhr.response);
-                    } else {
-                        reject(xhr.response);
-                    }
-                }
-            };
-
-            let url: string = this.dictatenUrl + dictaatName + '/upload';
-
-            xhr.open('POST', url, true);
-            xhr.withCredentials = true;
-            xhr.send(formData);
-        });
+        let url: string = "/dictaten/" + dictaatName + '/upload';
+        return this.wdapi.postFile(url, image);
+        
     }
 
 

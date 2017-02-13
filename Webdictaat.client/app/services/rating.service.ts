@@ -3,6 +3,7 @@ import { Headers, Http, Response } from '@angular/http';
 //Nodig om een object om te toveren in een promise.
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
+import { wdApi } from '../core/wdapi.service';
 
 import { Rating, Rate } from '../models/rating';
 
@@ -13,9 +14,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class RatingService {
 
-    constructor(private http: Http) { }
-
-    private dictatenUrl = 'http://webdictaat.azurewebsites.net/api/dictaten/';
+    constructor(private wdapi: wdApi) { }
 
     public isModalVisible: boolean = false;
     private subject: Subject<boolean> = new Subject<boolean>();
@@ -50,9 +49,9 @@ export class RatingService {
 
     public addRating(dictaatName: String, rating: Rating): Promise<Rating> {
 
-        let url: string = this.dictatenUrl + dictaatName + '/rating';
+        let url: string = "/dictaten/" + dictaatName + '/rating';
 
-        return this.http.post(url, rating, { withCredentials: true })
+        return this.wdapi.post(url, rating)
             .toPromise()
             .then(response => {
                 return response.json() as Rating
@@ -65,9 +64,9 @@ export class RatingService {
 
     public SendRate(dictaatName: String, ratingId: number, rate: Rate): Promise<Rate> {
 
-        let url: string = this.dictatenUrl + dictaatName + '/rating/' + ratingId + '/rates';
+        let url: string = "/dictaten/" + dictaatName + '/rating/' + ratingId + '/rates';
 
-        return this.http.post(url, rate, { withCredentials: true })
+        return this.wdapi.post(url, rate)
             .toPromise()
             .then(response => {
                 return response.json() as Rate
@@ -85,13 +84,12 @@ export class RatingService {
             });
         }
 
-        let url: string = this.dictatenUrl + dictaatName + '/rating/' + ratingId;
+        let url: string = "/dictaten/" + dictaatName + '/rating/' + ratingId;
 
-        return this.http.get(url)
+        return this.wdapi.get(url)
             .toPromise()
-            .then(response =>
-                response.json() as Rating
-            ).catch(this.handleError);
+            .then(response => response.json() as Rating);
+
     }
 
 

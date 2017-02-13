@@ -22,7 +22,6 @@ var add_rating_component_1 = require('../rating/add-rating.component');
 var app_component_1 = require('./app.component');
 var add_dictaat_component_1 = require('../dictaten/add-dictaat.component');
 var dictaten_component_1 = require('../dictaten/dictaten.component');
-var file_preview_component_1 = require('../file-preview/file-preview.component');
 var dialog_component_1 = require('../dialog/dialog.component');
 var dictaat_component_1 = require('../dictaat/dictaat.component');
 var common_1 = require('@angular/common');
@@ -31,11 +30,11 @@ var avatar_component_1 = require('../avatar/avatar.component');
 //services
 var app_routing_1 = require('./app.routing');
 var dialog_service_1 = require('../services/dialog.service');
-var file_preview_service_1 = require('../services/file-preview.service');
 var question_service_1 = require('../services/question.service');
 var rating_service_1 = require('../services/rating.service');
 var images_service_1 = require('../services/images.service');
 var account_service_1 = require('../services/account.service');
+var wdapi_service_1 = require('../core/wdapi.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -47,10 +46,10 @@ var AppModule = (function () {
             ],
             declarations: [
                 add_dictaat_component_1.AddDictaatComponent, dialog_component_1.DialogComponent, avatar_component_1.AvatarComponent, add_rating_component_1.AddRatingComponent,
-                app_component_1.AppComponent, dictaten_component_1.DictatenComponent, file_preview_component_1.FilePreviewComponent, dictaat_component_1.DictaatComponent, edit_page_component_1.EditPageComponent
+                app_component_1.AppComponent, dictaten_component_1.DictatenComponent, dictaat_component_1.DictaatComponent, edit_page_component_1.EditPageComponent
             ],
             providers: [
-                file_preview_service_1.FilePreviewService, dialog_service_1.DialogService, question_service_1.QuestionsService, images_service_1.ImageService, account_service_1.AccountService,
+                dialog_service_1.DialogService, question_service_1.QuestionsService, images_service_1.ImageService, account_service_1.AccountService, wdapi_service_1.wdApi,
                 rating_service_1.RatingService,
                 { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
             ],

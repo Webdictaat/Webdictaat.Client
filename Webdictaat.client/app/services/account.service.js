@@ -9,30 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
+var wdapi_service_1 = require('../core/wdapi.service');
 //Nodig om een object om te toveren in een promise.
 var Subject_1 = require('rxjs/Subject');
 require('rxjs/add/operator/toPromise');
 require('rxjs/add/operator/map');
 var AccountService = (function () {
-    function AccountService(http) {
+    function AccountService(wdapi) {
         var _this = this;
-        this.http = http;
-        this.accountUrl = 'http://webdictaat.azurewebsites.net/api/account/';
+        this.wdapi = wdapi;
         this.subject = new Subject_1.Subject();
-        this.http.get(this.accountUrl + "Current", { withCredentials: true })
+        this.wdapi.get("/account/Current")
             .toPromise()
             .then(function (response) {
             _this.user = response.json();
             _this.subject.next(_this.user);
-        }).catch(this.handleError);
+        });
     }
     AccountService.prototype.Login = function () {
-        window.location.href = this.accountUrl + "ExternalLogin?returnurl=" + window.location;
+        window.location.href = this.wdapi.urlPrefix + "/account/ExternalLogin?returnurl=" + window.location;
     };
     AccountService.prototype.Logoff = function () {
         //redrict to home after logout
-        window.location.href = this.accountUrl + "LogOff?returnurl=" + window.location;
+        window.location.href = this.wdapi.urlPrefix + "/account/LogOff?returnurl=" + window.location;
     };
     AccountService.prototype.getUser = function () {
         return this.subject.asObservable();
@@ -40,12 +39,9 @@ var AccountService = (function () {
     AccountService.prototype.update = function () {
         this.subject.next(this.user);
     };
-    AccountService.prototype.handleError = function () {
-        console.log("not logged in ");
-    };
     AccountService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [wdapi_service_1.wdApi])
     ], AccountService);
     return AccountService;
 }());

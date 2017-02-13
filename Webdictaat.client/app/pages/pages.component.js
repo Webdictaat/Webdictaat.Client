@@ -11,12 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var pages_service_1 = require('./pages.service');
 var dictaat_1 = require('../models/dictaat');
-var file_preview_service_1 = require('../services/file-preview.service');
 var router_1 = require('@angular/router');
 var PagesComponent = (function () {
-    function PagesComponent(pagesSevice, filePreviewService, router) {
+    function PagesComponent(pagesSevice, router) {
         this.pagesSevice = pagesSevice;
-        this.filePreviewService = filePreviewService;
         this.router = router;
         this.pageSelected = new core_1.EventEmitter();
     }
@@ -51,7 +49,7 @@ var PagesComponent = (function () {
             templateUrl: "./app/pages/pages.component.html",
             providers: [pages_service_1.PagesService]
         }), 
-        __metadata('design:paramtypes', [pages_service_1.PagesService, file_preview_service_1.FilePreviewService, router_1.Router])
+        __metadata('design:paramtypes', [pages_service_1.PagesService, router_1.Router])
     ], PagesComponent);
     return PagesComponent;
 }());

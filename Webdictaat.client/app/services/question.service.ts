@@ -3,6 +3,7 @@ import { Headers, Http, Response } from '@angular/http';
 //Nodig om een object om te toveren in een promise.
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
+import { wdApi } from '../core/wdapi.service';
 
 import { Question } from '../models/question';
 
@@ -13,9 +14,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class QuestionsService {
 
-    constructor(private http: Http) { }
+    constructor(private wdapi: wdApi) { }
 
-    private dictatenUrl = 'http://webdictaat.azurewebsites.net/api/dictaten/';
 
     public isModalVisible: boolean = false;
     private subject: Subject<boolean> = new Subject<boolean>();
@@ -50,16 +50,15 @@ export class QuestionsService {
 
     public addQuestion(dictaatName: String, question: Question): Promise<Question> {
 
-        let url: string = this.dictatenUrl + dictaatName + '/questions';
+        let url: string = "/dictaten/" + dictaatName + '/questions';
 
-        return this.http.post(url, question, { withCredentials: true } )
+        return this.wdapi.post(url, question)
             .toPromise()
             .then(response => {
                 return response.json() as Question
             })
             .catch(() => {
                 this.resolveCancel(); //hier nog niet bij mee
-                return this.handleError;
             });
     }
 
@@ -71,18 +70,11 @@ export class QuestionsService {
             });
         }
 
-        let url: string = this.dictatenUrl + dictaatName + '/questions/' + questionId;
+        let url: string = "/dictaten/" + dictaatName + '/questions/' + questionId;
 
-        return this.http.get(url)
+        return this.wdapi.get(url)
             .toPromise()
-            .then(response =>
-                response.json() as Question
-            ).catch(this.handleError);
-    }
-
-
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
+            .then(response => response.json() as Question)
+            
     }
 }

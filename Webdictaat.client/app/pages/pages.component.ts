@@ -3,7 +3,6 @@
 import { PagesService} from './pages.service';
 import { Dictaat } from '../models/dictaat';
 import { Page } from '../models/page';
-import { FilePreviewService } from '../services/file-preview.service';
 import { Router } from '@angular/router';
 
 
@@ -29,7 +28,6 @@ export class PagesComponent {
 
     constructor(
         private pagesSevice: PagesService,
-        private filePreviewService: FilePreviewService,
         private router : Router
      ) { }
 

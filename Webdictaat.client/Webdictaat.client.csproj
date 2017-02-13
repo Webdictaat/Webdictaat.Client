@@ -25,6 +25,7 @@
     <TypeScriptCompile Include="app\avatar\avatar.component.ts" />
     <TypeScriptCompile Include="app\cms\app.component.ts" />
     <TypeScriptCompile Include="app\cms\app.module.ts" />
+    <TypeScriptCompile Include="app\cms\app.options.ts" />
     <TypeScriptCompile Include="app\cms\app.routing.ts" />
     <TypeScriptCompile Include="app\cms\main.ts" />
     <TypeScriptCompile Include="app\client\app.component.ts" />
@@ -117,8 +118,6 @@
       <DependentUpon>add-page.component.ts</DependentUpon>
     </Content>
     <Content Include="app\pages\edit-page.component.html" />
-    <Content Include="app\file-preview\file-preview.component.css" />
-    <Content Include="app\file-preview\file-preview.component.html" />
     <Content Include="app\nav-menu\nav-menu.component.html" />
     <Content Include="app\pages\add-page.component.css" />
     <Content Include="app\pages\add-page.component.html" />
@@ -140,9 +139,6 @@
     </Content>
     <Content Include="app\services\dictaat.service.js">
       <DependentUpon>dictaat.service.ts</DependentUpon>
-    </Content>
-    <Content Include="app\services\file-preview.service.js">
-      <DependentUpon>file-preview.service.ts</DependentUpon>
     </Content>
     <Content Include="app\services\images.service.js">
       <DependentUpon>images.service.ts</DependentUpon>
@@ -191,6 +187,7 @@
     <TypeScriptCompile Include="app\client\app.routing.ts" />
     <TypeScriptCompile Include="app\context-menu\context-menu.component.ts" />
     <TypeScriptCompile Include="app\context-menu\context-menu.service.ts" />
+    <TypeScriptCompile Include="app\core\wdapi.service.ts" />
     <TypeScriptCompile Include="app\dialog\dialog.component.ts" />
     <TypeScriptCompile Include="app\game-elements\rating.component.ts" />
     <TypeScriptCompile Include="app\images\add-image.component.ts" />
@@ -231,13 +228,11 @@
     <TypeScriptCompile Include="app\services\dictaat.service.ts" />
     <TypeScriptCompile Include="app\dictaten\dictaten.component.ts" />
     <TypeScriptCompile Include="app\dictaten\dictaten.service.ts" />
-    <TypeScriptCompile Include="app\file-preview\file-preview.component.ts" />
     <TypeScriptCompile Include="app\pages\pages.component.ts" />
     <TypeScriptCompile Include="app\pages\pages.module.ts" />
     <TypeScriptCompile Include="app\pages\pages.service.ts" />
     <TypeScriptCompile Include="app\page\page.component.ts" />
     <TypeScriptCompile Include="app\page\page.service.ts" />
-    <TypeScriptCompile Include="app\services\file-preview.service.ts" />
     <TypeScriptCompile Include="app\client\main.ts" />
     <TypeScriptCompile Include="app\models\dictaat-summary.ts" />
     <TypeScriptCompile Include="app\models\dictaat.ts" />
@@ -281,9 +276,6 @@
     </Content>
     <Content Include="app\services\dictaat.service.js.map">
       <DependentUpon>dictaat.service.ts</DependentUpon>
-    </Content>
-    <Content Include="app\services\file-preview.service.js.map">
-      <DependentUpon>file-preview.service.ts</DependentUpon>
     </Content>
     <Content Include="app\services\images.service.js.map">
       <DependentUpon>images.service.ts</DependentUpon>

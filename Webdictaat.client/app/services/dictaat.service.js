@@ -9,28 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
+var wdapi_service_1 = require('../core/wdapi.service');
 require('rxjs/add/operator/toPromise');
 require('rxjs/add/operator/map');
 var DictaatService = (function () {
-    function DictaatService(http) {
-        this.http = http;
-        this.dictatenUrl = 'http://webdictaat.azurewebsites.net/api/dictaten/';
+    function DictaatService(wdapi) {
+        this.wdapi = wdapi;
     }
     DictaatService.prototype.getDictaat = function (dictaatName) {
-        return this.http.get(this.dictatenUrl + dictaatName, { withCredentials: true })
+        return this.wdapi.get("/dictaten/" + dictaatName)
             .toPromise()
-            .then(function (response) {
-            return response.json();
-        }).catch(this.handleError);
-    };
-    DictaatService.prototype.handleError = function (error) {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
+            .then(function (response) { return response.json(); });
     };
     DictaatService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [wdapi_service_1.wdApi])
     ], DictaatService);
     return DictaatService;
 }());

@@ -15,8 +15,6 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class AvatarComponent implements OnInit {
 
     public user: User;
-
-    private accountUrl: string = "http://webdictaat.azurewebsites.net/api/Account/";
    
     constructor(private accountService: AccountService) { }
 

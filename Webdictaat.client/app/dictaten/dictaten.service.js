@@ -9,35 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
+var wdapi_service_1 = require('../core/wdapi.service');
+//Nodig om een object om te toveren in een promise.
 require('rxjs/add/operator/toPromise');
 require('rxjs/add/operator/map');
 var DictatenService = (function () {
-    function DictatenService(http) {
-        this.http = http;
-        this.dictatenUrl = 'http://webdictaat.azurewebsites.net/api/dictaten';
+    function DictatenService(wdapi) {
+        this.wdapi = wdapi;
     }
     DictatenService.prototype.addDictaat = function (dictaatName) {
-        return this.http.post(this.dictatenUrl, { name: dictaatName }, { withCredentials: true })
+        return this.wdapi.post('/dictaten', { name: dictaatName })
             .toPromise()
             .then(function (response) {
             return response.json();
-        }).catch(this.handleError);
+        });
     };
     DictatenService.prototype.getDictaten = function () {
-        return this.http.get(this.dictatenUrl, { withCredentials: true })
+        return this.wdapi.get('/dictaten')
             .toPromise()
             .then(function (response) {
             return response.json();
-        }).catch(this.handleError);
-    };
-    DictatenService.prototype.handleError = function (error) {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
+        });
     };
     DictatenService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [wdapi_service_1.wdApi])
     ], DictatenService);
     return DictatenService;
 }());

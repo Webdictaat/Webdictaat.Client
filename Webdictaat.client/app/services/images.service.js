@@ -9,15 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-//Nodig om een object om te toveren in een promise.
 var Subject_1 = require('rxjs/Subject');
+var wdapi_service_1 = require('../core/wdapi.service');
 require('rxjs/add/operator/toPromise');
 require('rxjs/add/operator/map');
 var ImageService = (function () {
-    function ImageService(http) {
-        this.http = http;
-        this.dictatenUrl = 'http://webdictaat.azurewebsites.net/api/dictaten/';
+    function ImageService(wdapi) {
+        this.wdapi = wdapi;
         this.isModalVisible = false;
         this.subject = new Subject_1.Subject();
     }
@@ -44,25 +42,8 @@ var ImageService = (function () {
         this.subject.next(this.isModalVisible);
     };
     ImageService.prototype.addImages = function (dictaatName, image) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            var formData = new FormData(), xhr = new XMLHttpRequest();
-            formData.append("file", image, image.name);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        resolve(xhr.response);
-                    }
-                    else {
-                        reject(xhr.response);
-                    }
-                }
-            };
-            var url = _this.dictatenUrl + dictaatName + '/upload';
-            xhr.open('POST', url, true);
-            xhr.withCredentials = true;
-            xhr.send(formData);
-        });
+        var url = "/dictaten/" + dictaatName + '/upload';
+        return this.wdapi.postFile(url, image);
     };
     ImageService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
@@ -70,7 +51,7 @@ var ImageService = (function () {
     };
     ImageService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [wdapi_service_1.wdApi])
     ], ImageService);
     return ImageService;
 }());

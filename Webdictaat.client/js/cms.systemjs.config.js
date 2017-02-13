@@ -31,11 +31,6 @@
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
 
-        'ng2-dragula': {
-
-            defaultExtension: 'js'
-        },
-       
         app: {
             main: './cms/main.js',
             defaultExtension: 'js'

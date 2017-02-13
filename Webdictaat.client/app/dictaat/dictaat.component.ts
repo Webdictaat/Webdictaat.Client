@@ -3,7 +3,6 @@ import { Dictaat } from '../models/dictaat';
 import { Page } from '../models/page';
 
 import { DictaatService } from '../services/dictaat.service';
-import { FilePreviewService } from '../services/file-preview.service';
 import { ActivatedRoute, Params } from '@angular/router';
 
 
@@ -24,8 +23,7 @@ export class DictaatComponent implements OnInit {
 
     constructor(
         private dictaatService: DictaatService,
-        private route: ActivatedRoute,
-        private filePreviewService: FilePreviewService) { }
+        private route: ActivatedRoute) { }
 
     public selectPage(page : Page): void {
         this.selectedPage = page;

@@ -9,15 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
 //Nodig om een object om te toveren in een promise.
 var Subject_1 = require('rxjs/Subject');
+var wdapi_service_1 = require('../core/wdapi.service');
 require('rxjs/add/operator/toPromise');
 require('rxjs/add/operator/map');
 var RatingService = (function () {
-    function RatingService(http) {
-        this.http = http;
-        this.dictatenUrl = 'http://webdictaat.azurewebsites.net/api/dictaten/';
+    function RatingService(wdapi) {
+        this.wdapi = wdapi;
         this.isModalVisible = false;
         this.subject = new Subject_1.Subject();
     }
@@ -45,8 +44,8 @@ var RatingService = (function () {
     };
     RatingService.prototype.addRating = function (dictaatName, rating) {
         var _this = this;
-        var url = this.dictatenUrl + dictaatName + '/rating';
-        return this.http.post(url, rating, { withCredentials: true })
+        var url = "/dictaten/" + dictaatName + '/rating';
+        return this.wdapi.post(url, rating)
             .toPromise()
             .then(function (response) {
             return response.json();
@@ -58,8 +57,8 @@ var RatingService = (function () {
     };
     RatingService.prototype.SendRate = function (dictaatName, ratingId, rate) {
         var _this = this;
-        var url = this.dictatenUrl + dictaatName + '/rating/' + ratingId + '/rates';
-        return this.http.post(url, rate, { withCredentials: true })
+        var url = "/dictaten/" + dictaatName + '/rating/' + ratingId + '/rates';
+        return this.wdapi.post(url, rate)
             .toPromise()
             .then(function (response) {
             return response.json();
@@ -74,12 +73,10 @@ var RatingService = (function () {
                 reject("Cannot load rating without ratingId");
             });
         }
-        var url = this.dictatenUrl + dictaatName + '/rating/' + ratingId;
-        return this.http.get(url)
+        var url = "/dictaten/" + dictaatName + '/rating/' + ratingId;
+        return this.wdapi.get(url)
             .toPromise()
-            .then(function (response) {
-            return response.json();
-        }).catch(this.handleError);
+            .then(function (response) { return response.json(); });
     };
     RatingService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
@@ -87,7 +84,7 @@ var RatingService = (function () {
     };
     RatingService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [wdapi_service_1.wdApi])
     ], RatingService);
     return RatingService;
 }());
