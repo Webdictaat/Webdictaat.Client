@@ -14,11 +14,14 @@ import { AvatarComponent }  from '../avatar/avatar.component';
 import { QuestionsService } from '../services/question.service';
 import { AccountService } from '../services/account.service';
 import { RatingService } from '../services/rating.service';
+import { wdApi } from '../core/wdapi.service';
 
 @NgModule({
     imports: [BrowserModule, HttpModule, routing],
     declarations: [HtmlOutlet, AppComponent, PageComponent, NavMenuComponent, AvatarComponent],
-    providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, QuestionsService, AccountService, RatingService],
+    providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },
+        QuestionsService, AccountService, RatingService, wdApi
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

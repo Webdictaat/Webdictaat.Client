@@ -167,3 +167,16 @@ img.wd-logo{
 .fixed{
     position:fixed;
 }
+
+.item-hover{
+    opacity:1;
+}
+
+.item-hover:hover{
+    cursor:pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+    .item-hover *:hover {
+        cursor:pointer;
+    }

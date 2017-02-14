@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { ToolParams } from '../../models/tool-params';
 import { QuestionsService } from '../../services/question.service';
-
+import { Question } from '../../models/question';
 
 declare var $: JQueryStatic;
 
@@ -35,7 +35,7 @@ export class MultipleChoiceToolComponent {
 
         return new Promise((resolve, reject) => {
             this.questionsService.ShowModal()
-                .then((question) => {
+                .then((question: Question) => {                  
                     ui.item.replaceWith("<wd-multiple-choice class='wd-game-component' [qid]='" + question.id + "' />");
                     resolve(true);
                 })

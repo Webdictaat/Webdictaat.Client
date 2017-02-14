@@ -20,7 +20,4 @@ export class DictaatService {
             .then(response => response.json() as Dictaat);
 
     }
-
-
-
 }

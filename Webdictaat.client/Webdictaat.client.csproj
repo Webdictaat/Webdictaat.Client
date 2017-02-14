@@ -71,7 +71,7 @@
     <Content Include="app\dictaten\dictaten.component.js">
       <DependentUpon>dictaten.component.ts</DependentUpon>
     </Content>
-    <Content Include="app\dictaten\dictaten.service.js">
+    <Content Include="app\services\dictaten.service.js">
       <DependentUpon>dictaten.service.ts</DependentUpon>
     </Content>
     <Content Include="app\game-elements\game-elements.module.js">
@@ -126,6 +126,7 @@
     </Content>
     <Content Include="app\pages\pages.component.html" />
     <Content Include="app\page\page.component.html" />
+    <Content Include="app\profile\profile.component.html" />
     <Content Include="app\questions\add-question.component.html" />
     <Content Include="app\rating\add-rating.component.html" />
     <Content Include="app\rating\add-rating.component.js">
@@ -194,7 +195,9 @@
     <TypeScriptCompile Include="app\images\images.module.ts" />
     <TypeScriptCompile Include="app\models\rating.ts" />
     <TypeScriptCompile Include="app\models\user.ts" />
+    <TypeScriptCompile Include="app\profile\profile.component.ts" />
     <TypeScriptCompile Include="app\rating\add-rating.component.ts" />
+    <TypeScriptCompile Include="app\core\basemodal.service.ts" />
     <TypeScriptCompile Include="app\services\images.service.ts" />
     <TypeScriptCompile Include="app\models\question.ts" />
     <TypeScriptCompile Include="app\models\tool-params.ts" />
@@ -227,7 +230,7 @@
     <TypeScriptCompile Include="app\dictaat\dictaat.component.ts" />
     <TypeScriptCompile Include="app\services\dictaat.service.ts" />
     <TypeScriptCompile Include="app\dictaten\dictaten.component.ts" />
-    <TypeScriptCompile Include="app\dictaten\dictaten.service.ts" />
+    <TypeScriptCompile Include="app\services\dictaten.service.ts" />
     <TypeScriptCompile Include="app\pages\pages.component.ts" />
     <TypeScriptCompile Include="app\pages\pages.module.ts" />
     <TypeScriptCompile Include="app\pages\pages.service.ts" />
@@ -290,6 +293,7 @@
       <DependentUpon>avatar.component.ts</DependentUpon>
     </Content>
     <Content Include="css\callouts.less" />
+    <None Include="student.aii.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

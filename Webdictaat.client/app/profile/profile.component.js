@@ -9,33 +9,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var dictaten_service_1 = require('../services/dictaten.service');
 var account_service_1 = require('../services/account.service');
-var AvatarComponent = (function () {
-    function AvatarComponent(accountService) {
+var ProfileComponent = (function () {
+    function ProfileComponent(dictatenService, accountService) {
+        this.dictatenService = dictatenService;
         this.accountService = accountService;
+        this.msg = "hello world";
     }
-    AvatarComponent.prototype.ngOnInit = function () {
+    ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.accountService.getUser()
-            .subscribe(function (user) {
-            _this.user = user;
-        });
+            .subscribe(function (user) { return _this.user = user; });
+        this.dictatenService.getDictaten()
+            .then(function (dictaten) { return _this.dictaten = dictaten; });
     };
-    AvatarComponent.prototype.Login = function () {
-        this.accountService.Login();
-    };
-    AvatarComponent.prototype.Logout = function () {
-        this.accountService.Logoff();
-    };
-    AvatarComponent = __decorate([
+    ProfileComponent = __decorate([
         core_1.Component({
-            selector: "wd-avatar",
-            templateUrl: "./app/avatar/avatar.component.html",
+            selector: "wd-profile",
+            templateUrl: "./app/profile/profile.component.html",
             providers: []
         }), 
-        __metadata('design:paramtypes', [account_service_1.AccountService])
-    ], AvatarComponent);
-    return AvatarComponent;
+        __metadata('design:paramtypes', [dictaten_service_1.DictatenService, account_service_1.AccountService])
+    ], ProfileComponent);
+    return ProfileComponent;
 }());
-exports.AvatarComponent = AvatarComponent;
-//# sourceMappingURL=avatar.component.js.map
+exports.ProfileComponent = ProfileComponent;
+//# sourceMappingURL=profile.component.js.map

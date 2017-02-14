@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var dictaten_service_1 = require('./dictaten.service');
+var dictaten_service_1 = require('../services/dictaten.service');
 var account_service_1 = require('../services/account.service');
 var http_1 = require('@angular/http');
 var router_1 = require('@angular/router');
@@ -51,7 +51,7 @@ var DictatenComponent = (function () {
             selector: "wd-dictaten",
             templateUrl: "./app/dictaten/dictaten.component.html",
             styleUrls: ["./app/dictaten/dictaten.component.css"],
-            providers: [dictaten_service_1.DictatenService]
+            providers: []
         }), 
         __metadata('design:paramtypes', [account_service_1.AccountService, dictaten_service_1.DictatenService, http_1.Http, router_1.Router])
     ], DictatenComponent);

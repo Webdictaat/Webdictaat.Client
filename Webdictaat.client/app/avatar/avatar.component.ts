@@ -9,7 +9,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
     selector: "wd-avatar",
-    templateUrl: "http://student.aii.avans.nl/doc/ssmulder/app/avatar/avatar.component.html",
+    templateUrl: "./app/avatar/avatar.component.html",
     providers: []
 })
 export class AvatarComponent implements OnInit {

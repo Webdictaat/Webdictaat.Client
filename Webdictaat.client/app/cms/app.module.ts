@@ -19,6 +19,7 @@ import { DictaatComponent } from '../dictaat/dictaat.component';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { EditPageComponent }  from '../pages/edit-page.component';
 import { AvatarComponent }  from '../avatar/avatar.component';
+import { ProfileComponent }  from '../profile/profile.component';
 
 
 //services
@@ -27,6 +28,7 @@ import { DialogService } from '../services/dialog.service';
 import { QuestionsService } from '../services/question.service';
 import { RatingService } from '../services/rating.service';
 import { ImageService } from '../services/images.service';
+import { DictatenService } from '../services/dictaten.service';
 import { AccountService } from '../services/account.service';
 import { wdApi } from '../core/wdapi.service';
 
@@ -36,12 +38,12 @@ import { wdApi } from '../core/wdapi.service';
         BrowserModule, HttpModule, routing, PagesModule, FormsModule
     ],
     declarations: [
-        AddDictaatComponent, DialogComponent, AvatarComponent, AddRatingComponent,
+        AddDictaatComponent, DialogComponent, AvatarComponent, AddRatingComponent, ProfileComponent,
         AppComponent, DictatenComponent, DictaatComponent, EditPageComponent
     ],
     providers: [
         DialogService, QuestionsService, ImageService, AccountService, wdApi,
-        RatingService,
+        RatingService, DictatenService,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
     ],
     bootstrap: [

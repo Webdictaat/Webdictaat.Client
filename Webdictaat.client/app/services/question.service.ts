@@ -4,6 +4,7 @@ import { Headers, Http, Response } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { wdApi } from '../core/wdapi.service';
+import { BaseModalService } from '../core/basemodal.service';
 
 import { Question } from '../models/question';
 
@@ -12,40 +13,11 @@ import 'rxjs/add/operator/map';
 
 
 @Injectable()
-export class QuestionsService {
+export class QuestionsService extends BaseModalService{
 
-    constructor(private wdapi: wdApi) { }
-
-
-    public isModalVisible: boolean = false;
-    private subject: Subject<boolean> = new Subject<boolean>();
-
-    public getIsModalVisible(): Observable<boolean> {
-        return this.subject.asObservable();
-    }
-
-    private resolveAddQuestion;
-    private resolveCancel;
-
-    public ShowModal(): Promise<Question> {
-        this.isModalVisible = true;
-        this.subject.next(this.isModalVisible);
-        return new Promise<Question>((resolve, reject) => {
-            this.resolveAddQuestion = resolve;
-            this.resolveCancel = reject;
-        });
-    }
-
-    public CancelModal(): void {
-        this.resolveCancel();
-        this.isModalVisible = false;
-        this.subject.next(this.isModalVisible);
-    }
-
-    public CompleteModal(question: Question) {
-        this.resolveAddQuestion(question);
-        this.isModalVisible = false;
-        this.subject.next(this.isModalVisible);
+    constructor(private wdapi: wdApi)
+    {
+        super();
     }
 
     public addQuestion(dictaatName: String, question: Question): Promise<Question> {

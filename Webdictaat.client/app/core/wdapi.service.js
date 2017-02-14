@@ -16,7 +16,7 @@ require('rxjs/add/operator/map');
 var wdApi = (function () {
     function wdApi(http) {
         this.http = http;
-        //private urlPrefix = 'http://webdictaat.azurewebsites.net/api';
+        //public urlPrefix = 'http://webdictaat.azurewebsites.net/api';
         this.urlPrefix = 'http://localhost:65418/api';
     }
     wdApi.prototype.get = function (url) {
@@ -26,6 +26,7 @@ var wdApi = (function () {
         return this.http.post(this.urlPrefix + url, data, { withCredentials: true }).catch(this.handleError);
     };
     wdApi.prototype.postFile = function (url, file) {
+        var _this = this;
         return new Promise(function (resolve, reject) {
             var formData = new FormData();
             var xhr = new XMLHttpRequest();
@@ -40,7 +41,8 @@ var wdApi = (function () {
                     }
                 }
             };
-            xhr.open('POST', url, true);
+            debugger;
+            xhr.open('POST', _this.urlPrefix + url, true);
             xhr.withCredentials = true;
             xhr.send(formData);
         });

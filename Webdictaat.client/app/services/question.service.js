@@ -1,4 +1,9 @@
 "use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,39 +14,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-//Nodig om een object om te toveren in een promise.
-var Subject_1 = require('rxjs/Subject');
 var wdapi_service_1 = require('../core/wdapi.service');
+var basemodal_service_1 = require('../core/basemodal.service');
 require('rxjs/add/operator/toPromise');
 require('rxjs/add/operator/map');
-var QuestionsService = (function () {
+var QuestionsService = (function (_super) {
+    __extends(QuestionsService, _super);
     function QuestionsService(wdapi) {
+        _super.call(this);
         this.wdapi = wdapi;
-        this.isModalVisible = false;
-        this.subject = new Subject_1.Subject();
     }
-    QuestionsService.prototype.getIsModalVisible = function () {
-        return this.subject.asObservable();
-    };
-    QuestionsService.prototype.ShowModal = function () {
-        var _this = this;
-        this.isModalVisible = true;
-        this.subject.next(this.isModalVisible);
-        return new Promise(function (resolve, reject) {
-            _this.resolveAddQuestion = resolve;
-            _this.resolveCancel = reject;
-        });
-    };
-    QuestionsService.prototype.CancelModal = function () {
-        this.resolveCancel();
-        this.isModalVisible = false;
-        this.subject.next(this.isModalVisible);
-    };
-    QuestionsService.prototype.CompleteModal = function (question) {
-        this.resolveAddQuestion(question);
-        this.isModalVisible = false;
-        this.subject.next(this.isModalVisible);
-    };
     QuestionsService.prototype.addQuestion = function (dictaatName, question) {
         var _this = this;
         var url = "/dictaten/" + dictaatName + '/questions';
@@ -70,6 +52,6 @@ var QuestionsService = (function () {
         __metadata('design:paramtypes', [wdapi_service_1.wdApi])
     ], QuestionsService);
     return QuestionsService;
-}());
+}(basemodal_service_1.BaseModalService));
 exports.QuestionsService = QuestionsService;
 //# sourceMappingURL=question.service.js.map

@@ -11,7 +11,7 @@ export class wdApi {
 
     constructor(private http: Http) { }
 
-    //private urlPrefix = 'http://webdictaat.azurewebsites.net/api';
+    //public urlPrefix = 'http://webdictaat.azurewebsites.net/api';
     public urlPrefix = 'http://localhost:65418/api';
 
     public get(url) {
@@ -41,7 +41,9 @@ export class wdApi {
                 }
             };
 
-            xhr.open('POST', url, true);
+            debugger;
+
+            xhr.open('POST', this.urlPrefix + url, true);
             xhr.withCredentials = true;
             xhr.send(formData);
 

@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { DictatenService } from './dictaten.service';
+import { DictatenService } from '../services/dictaten.service';
 import { AccountService } from '../services/account.service';
 import { DictaatSummary } from '../models/dictaat-summary';
 import { Headers, Http } from '@angular/http';
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/rx';
     selector: "wd-dictaten",
     templateUrl: "./app/dictaten/dictaten.component.html",
     styleUrls: ["./app/dictaten/dictaten.component.css"],
-    providers: [DictatenService]
+    providers: []
 })
 export class DictatenComponent implements OnInit {
 

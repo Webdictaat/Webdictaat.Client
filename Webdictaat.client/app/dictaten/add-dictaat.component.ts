@@ -1,13 +1,13 @@
 ﻿import { Component, EventEmitter, Output } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { DictatenService } from './dictaten.service';
+import { DictatenService } from '../services/dictaten.service';
 
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
     selector: "wd-add-dictaat",
     templateUrl: "./app/dictaten/add-dictaat.component.html",
-    providers: [DictatenService]
+    providers: []
 })
 export class AddDictaatComponent {
 
