@@ -9,7 +9,27 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
     selector: "wd-avatar",
-    templateUrl: "./app/avatar/avatar.component.html",
+    template: `
+<div *ngIf="user">
+    <ul class="nav navbar-nav navbar-right">
+        <li class="item-hover" routerLink="/profile">
+            <p class="navbar-text">Signed in as {{user.email}}</p>
+        </li>
+        <li>
+            <button class="btn btn-default navbar-btn" (click)="Logout()">Logout</button>
+             
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="!user">
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <button class="btn btn-default navbar-btn" (click)="Login()">Login</button>
+        </li>
+    </ul>
+</div>
+`,
     providers: []
 })
 export class AvatarComponent implements OnInit {

@@ -4,7 +4,7 @@ import { PageService } from './page.service';
 
 @Component({
     selector: "wd-page",
-    templateUrl: "http://student.aii.avans.nl/doc/ssmulder/app/page/page.component.html",
+    templateUrl: "/app/page/page.component.html",
     providers: [PageService]
 })
 export class PageComponent implements OnInit {

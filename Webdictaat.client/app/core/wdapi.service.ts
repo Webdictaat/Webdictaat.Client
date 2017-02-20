@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { Headers, Http, Response, RequestOptions } from '@angular/http';
 //Nodig om een object om te toveren in een promise.
-
+import 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 
@@ -12,7 +12,8 @@ export class wdApi {
     constructor(private http: Http) { }
 
     //public urlPrefix = 'http://webdictaat.azurewebsites.net/api';
-    public urlPrefix = 'http://localhost:65418/api';
+    //public urlPrefix = 'http://localhost:65418/api';
+    public urlPrefix = 'http://localhost:8001/api';
 
     public get(url) {
         return this.http.get(this.urlPrefix + url, { withCredentials: true }).catch(this.handleError);

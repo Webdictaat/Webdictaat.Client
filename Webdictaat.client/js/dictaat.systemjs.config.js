@@ -4,7 +4,8 @@
  */
 (function (global) {
     System.config({
-    baseURL: 'http://student.aii.avans.nl/doc/ssmulder',
+    baseURL: '/',
+    //baseURL: 'http://student.aii.avans.nl/doc/ssmulder',
     paths: {
       // paths serve as alias
       'npm:': 'node_modules/'

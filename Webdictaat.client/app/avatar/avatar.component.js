@@ -30,7 +30,7 @@ var AvatarComponent = (function () {
     AvatarComponent = __decorate([
         core_1.Component({
             selector: "wd-avatar",
-            templateUrl: "./app/avatar/avatar.component.html",
+            template: "\n<div *ngIf=\"user\">\n    <ul class=\"nav navbar-nav navbar-right\">\n        <li class=\"item-hover\" routerLink=\"/profile\">\n            <p class=\"navbar-text\">Signed in as {{user.email}}</p>\n        </li>\n        <li>\n            <button class=\"btn btn-default navbar-btn\" (click)=\"Logout()\">Logout</button>\n             \n        </li>\n    </ul>\n</div>\n\n<div *ngIf=\"!user\">\n    <ul class=\"nav navbar-nav navbar-right\">\n        <li>\n            <button class=\"btn btn-default navbar-btn\" (click)=\"Login()\">Login</button>\n        </li>\n    </ul>\n</div>\n",
             providers: []
         }), 
         __metadata('design:paramtypes', [account_service_1.AccountService])

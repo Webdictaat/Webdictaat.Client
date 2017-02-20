@@ -11,13 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 //Nodig om een object om te toveren in een promise.
+require('rxjs/Rx');
 require('rxjs/add/operator/toPromise');
 require('rxjs/add/operator/map');
 var wdApi = (function () {
     function wdApi(http) {
         this.http = http;
         //public urlPrefix = 'http://webdictaat.azurewebsites.net/api';
-        this.urlPrefix = 'http://localhost:65418/api';
+        //public urlPrefix = 'http://localhost:65418/api';
+        this.urlPrefix = 'http://localhost:8001/api';
     }
     wdApi.prototype.get = function (url) {
         return this.http.get(this.urlPrefix + url, { withCredentials: true }).catch(this.handleError);

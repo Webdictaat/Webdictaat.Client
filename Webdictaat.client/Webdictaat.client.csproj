@@ -10,7 +10,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -29,7 +29,6 @@
     <TypeScriptCompile Include="app\cms\app.routing.ts" />
     <TypeScriptCompile Include="app\cms\main.ts" />
     <TypeScriptCompile Include="app\client\app.component.ts" />
-    <Content Include="app\avatar\avatar.component.html" />
     <Content Include="app\avatar\avatar.component.js">
       <DependentUpon>avatar.component.ts</DependentUpon>
     </Content>
@@ -53,8 +52,20 @@
     <Content Include="app\cms\app.module.js">
       <DependentUpon>app.module.ts</DependentUpon>
     </Content>
+    <Content Include="app\core\basemodal.service.js">
+      <DependentUpon>basemodal.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\core\basemodal.service.js.map">
+      <DependentUpon>basemodal.service.ts</DependentUpon>
+    </Content>
     <Content Include="app\core\html-outlet.directive.js">
       <DependentUpon>html-outlet.directive.ts</DependentUpon>
+    </Content>
+    <Content Include="app\core\wdapi.service.js">
+      <DependentUpon>wdapi.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\core\wdapi.service.js.map">
+      <DependentUpon>wdapi.service.ts</DependentUpon>
     </Content>
     <Content Include="app\dialog\dialog.component.html" />
     <Content Include="app\dictaat\dictaat.component.css" />
@@ -70,6 +81,30 @@
     <Content Include="app\dictaten\dictaten.component.html" />
     <Content Include="app\dictaten\dictaten.component.js">
       <DependentUpon>dictaten.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\nav-menu\nav-menu.component.js">
+      <DependentUpon>nav-menu.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\nav-menu\nav-menu.component.js.map">
+      <DependentUpon>nav-menu.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\nav-menu\nav-menu.service.js">
+      <DependentUpon>nav-menu.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\nav-menu\nav-menu.service.js.map">
+      <DependentUpon>nav-menu.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\page\page.component.js">
+      <DependentUpon>page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\page\page.component.js.map">
+      <DependentUpon>page.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\page\page.service.js">
+      <DependentUpon>page.service.ts</DependentUpon>
+    </Content>
+    <Content Include="app\page\page.service.js.map">
+      <DependentUpon>page.service.ts</DependentUpon>
     </Content>
     <Content Include="app\services\dictaten.service.js">
       <DependentUpon>dictaten.service.ts</DependentUpon>
@@ -293,7 +328,7 @@
       <DependentUpon>avatar.component.ts</DependentUpon>
     </Content>
     <Content Include="css\callouts.less" />
-    <None Include="student.aii.pubxml" />
+    <None Include="localiis.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

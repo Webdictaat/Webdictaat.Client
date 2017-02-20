@@ -29,7 +29,7 @@ var PageComponent = (function () {
     PageComponent = __decorate([
         core_1.Component({
             selector: "wd-page",
-            templateUrl: "http://student.aii.avans.nl/doc/ssmulder/app/page/page.component.html",
+            templateUrl: "/app/page/page.component.html",
             providers: [page_service_1.PageService]
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, page_service_1.PageService])
