@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var wdapi_service_1 = require('../core/wdapi.service');
+var core_1 = require("@angular/core");
+var wdapi_service_1 = require("../core/wdapi.service");
 //Nodig om een object om te toveren in een promise.
-require('rxjs/add/operator/toPromise');
-require('rxjs/add/operator/map');
+require("rxjs/add/operator/toPromise");
+require("rxjs/add/operator/map");
 var DictatenService = (function () {
     function DictatenService(wdapi) {
         this.wdapi = wdapi;
@@ -31,11 +31,11 @@ var DictatenService = (function () {
             return response.json();
         });
     };
-    DictatenService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [wdapi_service_1.wdApi])
-    ], DictatenService);
     return DictatenService;
 }());
+DictatenService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [wdapi_service_1.wdApi])
+], DictatenService);
 exports.DictatenService = DictatenService;
 //# sourceMappingURL=dictaten.service.js.map

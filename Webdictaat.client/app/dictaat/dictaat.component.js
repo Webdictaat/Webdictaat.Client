@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var dictaat_service_1 = require('../services/dictaat.service');
-var router_1 = require('@angular/router');
+var core_1 = require("@angular/core");
+var dictaat_service_1 = require("../services/dictaat.service");
+var router_1 = require("@angular/router");
 var DictaatComponent = (function () {
     function DictaatComponent(dictaatService, route) {
         this.dictaatService = dictaatService;
@@ -31,20 +31,21 @@ var DictaatComponent = (function () {
             });
         });
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], DictaatComponent.prototype, "dictaatName", void 0);
-    DictaatComponent = __decorate([
-        core_1.Component({
-            selector: "wd-dictaat",
-            templateUrl: "./app/dictaat/dictaat.component.html",
-            styleUrls: ["./app/dictaat/dictaat.component.css"],
-            providers: [dictaat_service_1.DictaatService]
-        }), 
-        __metadata('design:paramtypes', [dictaat_service_1.DictaatService, router_1.ActivatedRoute])
-    ], DictaatComponent);
     return DictaatComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], DictaatComponent.prototype, "dictaatName", void 0);
+DictaatComponent = __decorate([
+    core_1.Component({
+        selector: "wd-dictaat",
+        templateUrl: "./app/dictaat/dictaat.component.html",
+        styleUrls: ["./app/dictaat/dictaat.component.css"],
+        providers: [dictaat_service_1.DictaatService]
+    }),
+    __metadata("design:paramtypes", [dictaat_service_1.DictaatService,
+        router_1.ActivatedRoute])
+], DictaatComponent);
 exports.DictaatComponent = DictaatComponent;
 //# sourceMappingURL=dictaat.component.js.map

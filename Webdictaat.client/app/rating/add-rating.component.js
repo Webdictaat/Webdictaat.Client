@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var rating_service_1 = require('../services/rating.service');
-var rating_1 = require('../models/rating');
-var router_1 = require('@angular/router');
+var core_1 = require("@angular/core");
+var rating_service_1 = require("../services/rating.service");
+var rating_1 = require("../models/rating");
+var router_1 = require("@angular/router");
 var AddRatingComponent = (function () {
     function AddRatingComponent(ratingService, route, changeDetector) {
         this.ratingService = ratingService;
@@ -42,14 +42,16 @@ var AddRatingComponent = (function () {
     AddRatingComponent.prototype.Cancel = function () {
         this.ratingService.CancelModal();
     };
-    AddRatingComponent = __decorate([
-        core_1.Component({
-            selector: "wd-add-rating",
-            templateUrl: "./app/rating/add-rating.component.html",
-        }), 
-        __metadata('design:paramtypes', [rating_service_1.RatingService, router_1.ActivatedRoute, core_1.ChangeDetectorRef])
-    ], AddRatingComponent);
     return AddRatingComponent;
 }());
+AddRatingComponent = __decorate([
+    core_1.Component({
+        selector: "wd-add-rating",
+        templateUrl: "./app/rating/add-rating.component.html",
+    }),
+    __metadata("design:paramtypes", [rating_service_1.RatingService,
+        router_1.ActivatedRoute,
+        core_1.ChangeDetectorRef])
+], AddRatingComponent);
 exports.AddRatingComponent = AddRatingComponent;
 //# sourceMappingURL=add-rating.component.js.map

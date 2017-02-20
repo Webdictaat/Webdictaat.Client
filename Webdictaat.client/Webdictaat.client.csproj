@@ -329,6 +329,7 @@
     </Content>
     <Content Include="css\callouts.less" />
     <None Include="localiis.pubxml" />
+    <None Include="student.aii.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

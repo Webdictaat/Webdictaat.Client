@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var pages_service_1 = require('./pages.service');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var pages_service_1 = require("./pages.service");
 var EditPageComponent = (function () {
     function EditPageComponent(route, pagesService) {
         this.route = route;
@@ -34,19 +34,20 @@ var EditPageComponent = (function () {
         this.page.source = pageSource;
         this.savePage();
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], EditPageComponent.prototype, "pageName", void 0);
-    EditPageComponent = __decorate([
-        core_1.Component({
-            selector: "wd-edit-page",
-            templateUrl: "app/pages/edit-page.component.html",
-            providers: [pages_service_1.PagesService]
-        }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, pages_service_1.PagesService])
-    ], EditPageComponent);
     return EditPageComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], EditPageComponent.prototype, "pageName", void 0);
+EditPageComponent = __decorate([
+    core_1.Component({
+        selector: "wd-edit-page",
+        templateUrl: "app/pages/edit-page.component.html",
+        providers: [pages_service_1.PagesService]
+    }),
+    __metadata("design:paramtypes", [router_1.ActivatedRoute,
+        pages_service_1.PagesService])
+], EditPageComponent);
 exports.EditPageComponent = EditPageComponent;
 //# sourceMappingURL=edit-page.component.js.map

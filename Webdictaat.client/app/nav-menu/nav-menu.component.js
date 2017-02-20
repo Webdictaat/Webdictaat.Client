@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var nav_menu_service_1 = require('./nav-menu.service');
-var nav_menu_1 = require('../models/nav-menu');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var nav_menu_service_1 = require("./nav-menu.service");
+var nav_menu_1 = require("../models/nav-menu");
 var NavMenuComponent = (function () {
     function NavMenuComponent(route, navMenuService) {
         this.route = route;
@@ -29,27 +29,28 @@ var NavMenuComponent = (function () {
     NavMenuComponent.prototype.toggleMenu = function () {
         this.showMenu = false;
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', nav_menu_1.NavMenu)
-    ], NavMenuComponent.prototype, "navMenu", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Boolean)
-    ], NavMenuComponent.prototype, "isRoot", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Boolean)
-    ], NavMenuComponent.prototype, "showMenu", void 0);
-    NavMenuComponent = __decorate([
-        core_1.Component({
-            selector: "wd-nav-menu",
-            templateUrl: "/app/nav-menu/nav-menu.component.html",
-            providers: [nav_menu_service_1.NavMenuService]
-        }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, nav_menu_service_1.NavMenuService])
-    ], NavMenuComponent);
     return NavMenuComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", nav_menu_1.NavMenu)
+], NavMenuComponent.prototype, "navMenu", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], NavMenuComponent.prototype, "isRoot", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], NavMenuComponent.prototype, "showMenu", void 0);
+NavMenuComponent = __decorate([
+    core_1.Component({
+        selector: "wd-nav-menu",
+        templateUrl: "/app/nav-menu/nav-menu.component.html",
+        providers: [nav_menu_service_1.NavMenuService]
+    }),
+    __metadata("design:paramtypes", [router_1.ActivatedRoute,
+        nav_menu_service_1.NavMenuService])
+], NavMenuComponent);
 exports.NavMenuComponent = NavMenuComponent;
 //# sourceMappingURL=nav-menu.component.js.map

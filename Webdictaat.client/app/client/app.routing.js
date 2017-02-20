@@ -1,6 +1,6 @@
 "use strict";
-var router_1 = require('@angular/router');
-var page_component_1 = require('../page/page.component');
+var router_1 = require("@angular/router");
+var page_component_1 = require("../page/page.component");
 var appRoutes = [
     {
         path: ':pageName',

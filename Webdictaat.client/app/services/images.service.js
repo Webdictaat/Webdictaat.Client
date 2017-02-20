@@ -13,16 +13,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var wdapi_service_1 = require('../core/wdapi.service');
-var basemodal_service_1 = require('../core/basemodal.service');
-require('rxjs/add/operator/toPromise');
-require('rxjs/add/operator/map');
+var core_1 = require("@angular/core");
+var wdapi_service_1 = require("../core/wdapi.service");
+var basemodal_service_1 = require("../core/basemodal.service");
+require("rxjs/add/operator/toPromise");
+require("rxjs/add/operator/map");
 var ImageService = (function (_super) {
     __extends(ImageService, _super);
     function ImageService(wdapi) {
-        _super.call(this);
-        this.wdapi = wdapi;
+        var _this = _super.call(this) || this;
+        _this.wdapi = wdapi;
+        return _this;
     }
     ImageService.prototype.addImages = function (dictaatName, image) {
         var url = "/dictaten/" + dictaatName + '/upload';
@@ -32,11 +33,11 @@ var ImageService = (function (_super) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     };
-    ImageService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [wdapi_service_1.wdApi])
-    ], ImageService);
     return ImageService;
 }(basemodal_service_1.BaseModalService));
+ImageService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [wdapi_service_1.wdApi])
+], ImageService);
 exports.ImageService = ImageService;
 //# sourceMappingURL=images.service.js.map

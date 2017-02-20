@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var rating_service_1 = require('../../services/rating.service');
+var core_1 = require("@angular/core");
+var rating_service_1 = require("../../services/rating.service");
 var RatingToolComponent = (function () {
     function RatingToolComponent(ratingService) {
         this.ratingService = ratingService;
@@ -44,14 +44,14 @@ var RatingToolComponent = (function () {
             });
         });
     };
-    RatingToolComponent = __decorate([
-        core_1.Component({
-            selector: "wd-rating-tool",
-            template: "<div id='wd-rating-tool' class='wd-component'>Rating</div>",
-        }), 
-        __metadata('design:paramtypes', [rating_service_1.RatingService])
-    ], RatingToolComponent);
     return RatingToolComponent;
 }());
+RatingToolComponent = __decorate([
+    core_1.Component({
+        selector: "wd-rating-tool",
+        template: "<div id='wd-rating-tool' class='wd-component'>Rating</div>",
+    }),
+    __metadata("design:paramtypes", [rating_service_1.RatingService])
+], RatingToolComponent);
 exports.RatingToolComponent = RatingToolComponent;
 //# sourceMappingURL=rating.component.js.map

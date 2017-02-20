@@ -1,9 +1,9 @@
 "use strict";
-var router_1 = require('@angular/router');
-var dictaten_component_1 = require('../dictaten/dictaten.component');
-var dictaat_component_1 = require('../dictaat/dictaat.component');
-var edit_page_component_1 = require('../pages/edit-page.component');
-var profile_component_1 = require('../profile/profile.component');
+var router_1 = require("@angular/router");
+var dictaten_component_1 = require("../dictaten/dictaten.component");
+var dictaat_component_1 = require("../dictaat/dictaat.component");
+var edit_page_component_1 = require("../pages/edit-page.component");
+var profile_component_1 = require("../profile/profile.component");
 var appRoutes = [
     { path: '', redirectTo: '/dictaten', pathMatch: 'full' },
     {

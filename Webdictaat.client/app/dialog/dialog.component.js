@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var dialog_service_1 = require('../services/dialog.service');
+var core_1 = require("@angular/core");
+var dialog_service_1 = require("../services/dialog.service");
 var DialogComponent = (function () {
     function DialogComponent(dialogService, changeDetector) {
         this.dialogService = dialogService;
@@ -27,14 +27,14 @@ var DialogComponent = (function () {
     DialogComponent.prototype.hideDialog = function () {
         this.isVisible = false;
     };
-    DialogComponent = __decorate([
-        core_1.Component({
-            selector: "wd-dialog",
-            templateUrl: "./app/dialog/dialog.component.html",
-        }), 
-        __metadata('design:paramtypes', [dialog_service_1.DialogService, core_1.ChangeDetectorRef])
-    ], DialogComponent);
     return DialogComponent;
 }());
+DialogComponent = __decorate([
+    core_1.Component({
+        selector: "wd-dialog",
+        templateUrl: "./app/dialog/dialog.component.html",
+    }),
+    __metadata("design:paramtypes", [dialog_service_1.DialogService, core_1.ChangeDetectorRef])
+], DialogComponent);
 exports.DialogComponent = DialogComponent;
 //# sourceMappingURL=dialog.component.js.map

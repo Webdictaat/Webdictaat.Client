@@ -8,12 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 //Nodig om een object om te toveren in een promise.
-var Subject_1 = require('rxjs/Subject');
-var wdapi_service_1 = require('../core/wdapi.service');
-require('rxjs/add/operator/toPromise');
-require('rxjs/add/operator/map');
+var Subject_1 = require("rxjs/Subject");
+var wdapi_service_1 = require("../core/wdapi.service");
+require("rxjs/add/operator/toPromise");
+require("rxjs/add/operator/map");
 var RatingService = (function () {
     function RatingService(wdapi) {
         this.wdapi = wdapi;
@@ -82,11 +82,11 @@ var RatingService = (function () {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     };
-    RatingService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [wdapi_service_1.wdApi])
-    ], RatingService);
     return RatingService;
 }());
+RatingService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [wdapi_service_1.wdApi])
+], RatingService);
 exports.RatingService = RatingService;
 //# sourceMappingURL=rating.service.js.map
