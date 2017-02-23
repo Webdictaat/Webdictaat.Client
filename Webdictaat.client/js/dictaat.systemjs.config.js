@@ -4,7 +4,7 @@
  */
 (function (global) {
     System.config({
-    baseURL: '/',
+    baseURL: '/doc/ssmulder',
     //baseURL: 'http://student.aii.avans.nl/doc/ssmulder',
     paths: {
       // paths serve as alias

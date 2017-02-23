@@ -29,6 +29,7 @@ var common_1 = require('@angular/common');
 var edit_page_component_1 = require('../pages/edit-page.component');
 var avatar_component_1 = require('../avatar/avatar.component');
 var profile_component_1 = require('../profile/profile.component');
+var demo_component_1 = require('../demo/demo.component');
 //services
 var app_routing_1 = require('./app.routing');
 var dialog_service_1 = require('../services/dialog.service');
@@ -48,6 +49,7 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule, http_1.HttpModule, app_routing_1.routing, pages_module_1.PagesModule, forms_1.FormsModule
             ],
             declarations: [
+                demo_component_1.DemoComponent,
                 add_dictaat_component_1.AddDictaatComponent, dialog_component_1.DialogComponent, avatar_component_1.AvatarComponent, add_rating_component_1.AddRatingComponent, profile_component_1.ProfileComponent,
                 app_component_1.AppComponent, dictaten_component_1.DictatenComponent, dictaat_component_1.DictaatComponent, edit_page_component_1.EditPageComponent
             ],

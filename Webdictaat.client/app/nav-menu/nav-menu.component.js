@@ -44,7 +44,7 @@ var NavMenuComponent = (function () {
     NavMenuComponent = __decorate([
         core_1.Component({
             selector: "wd-nav-menu",
-            templateUrl: "/app/nav-menu/nav-menu.component.html",
+            template: "\n<ul class=\"nav navbar-nav\" *ngIf=\"navMenu\" [ngClass]=\"{'dropdown-menu ': !isRoot}\">\n\n    <li *ngFor=\"let item of navMenu.MenuItems\" >\n        <a routerLink=\"{{item.Url}}\" routerLinkActive=\"active\">{{item.Name}}</a>\n    </li>\n\n    {{showMenu}}\n\n    <li class=\"dropdown\" *ngFor=\"let menu of navMenu.SubMenus\">\n\n        <a  (click)=\"menu.show = !menu.show\" class=\"dropdown-toggle\">{{menu.Name}}<span class=\"caret\"></span></a>\n      \n        <wd-nav-menu [navMenu]=\"menu\" [showMenu]=\"showMenu\"  (click)=\"menu.show = !menu.show\" *ngIf=\"menu.show\">\n        </wd-nav-menu>\n    </li>\n</ul>\n",
             providers: [nav_menu_service_1.NavMenuService]
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, nav_menu_service_1.NavMenuService])

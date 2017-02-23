@@ -10,9 +10,9 @@ import { AchievementsComponent } from './achievements.component';
 
 @NgModule({
     imports: [BrowserModule, FormsModule],
-    declarations: [MultipleChoiceComponent, RatingComponent, AchievementsComponent ],
+    declarations: [MultipleChoiceComponent, RatingComponent, AchievementsComponent],
     exports: [MultipleChoiceComponent, RatingComponent, AchievementsComponent]
 })
-export class GameElementsModule {
+export class GameElementsModule {                                                                                                                                                                                                                        
 
 }

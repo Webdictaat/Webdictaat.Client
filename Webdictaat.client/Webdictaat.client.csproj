@@ -52,6 +52,12 @@
     <Content Include="app\cms\app.module.js">
       <DependentUpon>app.module.ts</DependentUpon>
     </Content>
+    <Content Include="app\cms\app.routing.js">
+      <DependentUpon>app.routing.ts</DependentUpon>
+    </Content>
+    <Content Include="app\cms\app.routing.js.map">
+      <DependentUpon>app.routing.ts</DependentUpon>
+    </Content>
     <Content Include="app\core\basemodal.service.js">
       <DependentUpon>basemodal.service.ts</DependentUpon>
     </Content>
@@ -67,6 +73,12 @@
     <Content Include="app\core\wdapi.service.js.map">
       <DependentUpon>wdapi.service.ts</DependentUpon>
     </Content>
+    <Content Include="app\demo\demo.component.js">
+      <DependentUpon>demo.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\demo\demo.component.js.map">
+      <DependentUpon>demo.component.ts</DependentUpon>
+    </Content>
     <Content Include="app\dialog\dialog.component.html" />
     <Content Include="app\dictaat\dictaat.component.css" />
     <Content Include="app\dictaat\dictaat.component.html" />
@@ -81,6 +93,9 @@
     <Content Include="app\dictaten\dictaten.component.html" />
     <Content Include="app\dictaten\dictaten.component.js">
       <DependentUpon>dictaten.component.ts</DependentUpon>
+    </Content>
+    <Content Include="app\game-elements\achievements.component.js">
+      <DependentUpon>achievements.component.ts</DependentUpon>
     </Content>
     <Content Include="app\game-elements\achievements.component.js.map">
       <DependentUpon>achievements.component.ts</DependentUpon>
@@ -156,14 +171,12 @@
       <DependentUpon>add-page.component.ts</DependentUpon>
     </Content>
     <Content Include="app\pages\edit-page.component.html" />
-    <Content Include="app\nav-menu\nav-menu.component.html" />
     <Content Include="app\pages\add-page.component.css" />
     <Content Include="app\pages\add-page.component.html" />
     <Content Include="app\pages\edit-page.component.js">
       <DependentUpon>edit-page.component.ts</DependentUpon>
     </Content>
     <Content Include="app\pages\pages.component.html" />
-    <Content Include="app\page\page.component.html" />
     <Content Include="app\profile\profile.component.html" />
     <Content Include="app\questions\add-question.component.html" />
     <Content Include="app\rating\add-rating.component.html" />
@@ -227,6 +240,7 @@
     <TypeScriptCompile Include="app\context-menu\context-menu.component.ts" />
     <TypeScriptCompile Include="app\context-menu\context-menu.service.ts" />
     <TypeScriptCompile Include="app\core\wdapi.service.ts" />
+    <TypeScriptCompile Include="app\demo\demo.component.ts" />
     <TypeScriptCompile Include="app\dialog\dialog.component.ts" />
     <TypeScriptCompile Include="app\game-elements\achievements.component.ts" />
     <TypeScriptCompile Include="app\game-elements\rating.component.ts" />
@@ -332,7 +346,6 @@
       <DependentUpon>avatar.component.ts</DependentUpon>
     </Content>
     <Content Include="css\callouts.less" />
-    <None Include="localiis.pubxml" />
     <None Include="student.aii.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>

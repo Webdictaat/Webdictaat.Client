@@ -6,7 +6,24 @@ import { NavMenu } from '../models/nav-menu';
 
 @Component({
     selector: "wd-nav-menu",
-    templateUrl: "/app/nav-menu/nav-menu.component.html",
+    template: `
+<ul class="nav navbar-nav" *ngIf="navMenu" [ngClass]="{'dropdown-menu ': !isRoot}">
+
+    <li *ngFor="let item of navMenu.MenuItems" >
+        <a routerLink="{{item.Url}}" routerLinkActive="active">{{item.Name}}</a>
+    </li>
+
+    {{showMenu}}
+
+    <li class="dropdown" *ngFor="let menu of navMenu.SubMenus">
+
+        <a  (click)="menu.show = !menu.show" class="dropdown-toggle">{{menu.Name}}<span class="caret"></span></a>
+      
+        <wd-nav-menu [navMenu]="menu" [showMenu]="showMenu"  (click)="menu.show = !menu.show" *ngIf="menu.show">
+        </wd-nav-menu>
+    </li>
+</ul>
+`,
     providers: [NavMenuService]
 })
 export class NavMenuComponent implements OnInit {

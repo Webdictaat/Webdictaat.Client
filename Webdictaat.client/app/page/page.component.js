@@ -29,7 +29,7 @@ var PageComponent = (function () {
     PageComponent = __decorate([
         core_1.Component({
             selector: "wd-page",
-            templateUrl: "/app/page/page.component.html",
+            template: "\n    <div *ngIf=\"page\">\n        <html-outlet [html]=\"page\"></html-outlet>\n    </div>\n",
             providers: [page_service_1.PageService]
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, page_service_1.PageService])

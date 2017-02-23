@@ -4,6 +4,7 @@ var dictaten_component_1 = require('../dictaten/dictaten.component');
 var dictaat_component_1 = require('../dictaat/dictaat.component');
 var edit_page_component_1 = require('../pages/edit-page.component');
 var profile_component_1 = require('../profile/profile.component');
+var demo_component_1 = require('../demo/demo.component');
 var appRoutes = [
     { path: '', redirectTo: '/dictaten', pathMatch: 'full' },
     {
@@ -22,6 +23,7 @@ var appRoutes = [
         path: 'dictaten/:dictaatName/pages/:pageName',
         component: edit_page_component_1.EditPageComponent
     },
+    { path: 'demo', component: demo_component_1.DemoComponent }
 ];
 exports.routing = router_1.RouterModule.forRoot(appRoutes);
 //# sourceMappingURL=app.routing.js.map

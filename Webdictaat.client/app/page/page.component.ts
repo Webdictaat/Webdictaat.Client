@@ -4,7 +4,11 @@ import { PageService } from './page.service';
 
 @Component({
     selector: "wd-page",
-    templateUrl: "/app/page/page.component.html",
+    template: `
+    <div *ngIf="page">
+        <html-outlet [html]="page"></html-outlet>
+    </div>
+`,
     providers: [PageService]
 })
 export class PageComponent implements OnInit {

@@ -21,7 +21,7 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { EditPageComponent }  from '../pages/edit-page.component';
 import { AvatarComponent }  from '../avatar/avatar.component';
 import { ProfileComponent }  from '../profile/profile.component';
-
+import { DemoComponent } from '../demo/demo.component';
 
 //services
 import { routing } from './app.routing';
@@ -39,6 +39,7 @@ import { wdApi } from '../core/wdapi.service';
         BrowserModule, HttpModule, routing, PagesModule, FormsModule
     ],
     declarations: [
+        DemoComponent,
         AddDictaatComponent, DialogComponent, AvatarComponent, AddRatingComponent, ProfileComponent,
         AppComponent, DictatenComponent, DictaatComponent, EditPageComponent
     ],
