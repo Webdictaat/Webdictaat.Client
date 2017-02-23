@@ -8,6 +8,7 @@ import { QuestionsModule } from '../questions/questions.module';
 import { ImagesModule } from '../images/images.module';
 import { PagesModule } from '../pages/pages.module';
 import { ToolsModule } from '../tools/tools.module';
+import { GameElementsModule } from '../game-elements/game-elements.module';
 
 //components
 import { AddRatingComponent } from '../rating/add-rating.component';
@@ -34,7 +35,7 @@ import { wdApi } from '../core/wdapi.service';
 
 @NgModule({
     imports: [
-        ToolsModule, QuestionsModule, ImagesModule, 
+        ToolsModule, QuestionsModule, ImagesModule, GameElementsModule,
         BrowserModule, HttpModule, routing, PagesModule, FormsModule
     ],
     declarations: [

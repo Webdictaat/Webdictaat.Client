@@ -14,14 +14,15 @@ var forms_1 = require('@angular/forms');
 //components
 var multiple_choice_component_1 = require('./multiple-choice.component');
 var rating_component_1 = require('./rating.component');
+var achievements_component_1 = require('./achievements.component');
 var GameElementsModule = (function () {
     function GameElementsModule() {
     }
     GameElementsModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
-            declarations: [multiple_choice_component_1.MultipleChoiceComponent, rating_component_1.RatingComponent],
-            exports: [multiple_choice_component_1.MultipleChoiceComponent, rating_component_1.RatingComponent]
+            declarations: [multiple_choice_component_1.MultipleChoiceComponent, rating_component_1.RatingComponent, achievements_component_1.AchievementsComponent],
+            exports: [multiple_choice_component_1.MultipleChoiceComponent, rating_component_1.RatingComponent, achievements_component_1.AchievementsComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], GameElementsModule);

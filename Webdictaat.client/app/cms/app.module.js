@@ -17,6 +17,7 @@ var questions_module_1 = require('../questions/questions.module');
 var images_module_1 = require('../images/images.module');
 var pages_module_1 = require('../pages/pages.module');
 var tools_module_1 = require('../tools/tools.module');
+var game_elements_module_1 = require('../game-elements/game-elements.module');
 //components
 var add_rating_component_1 = require('../rating/add-rating.component');
 var app_component_1 = require('./app.component');
@@ -43,7 +44,7 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [
-                tools_module_1.ToolsModule, questions_module_1.QuestionsModule, images_module_1.ImagesModule,
+                tools_module_1.ToolsModule, questions_module_1.QuestionsModule, images_module_1.ImagesModule, game_elements_module_1.GameElementsModule,
                 platform_browser_1.BrowserModule, http_1.HttpModule, app_routing_1.routing, pages_module_1.PagesModule, forms_1.FormsModule
             ],
             declarations: [

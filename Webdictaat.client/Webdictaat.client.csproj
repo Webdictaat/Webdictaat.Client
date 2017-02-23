@@ -82,6 +82,9 @@
     <Content Include="app\dictaten\dictaten.component.js">
       <DependentUpon>dictaten.component.ts</DependentUpon>
     </Content>
+    <Content Include="app\game-elements\achievements.component.js.map">
+      <DependentUpon>achievements.component.ts</DependentUpon>
+    </Content>
     <Content Include="app\nav-menu\nav-menu.component.js">
       <DependentUpon>nav-menu.component.ts</DependentUpon>
     </Content>
@@ -225,6 +228,7 @@
     <TypeScriptCompile Include="app\context-menu\context-menu.service.ts" />
     <TypeScriptCompile Include="app\core\wdapi.service.ts" />
     <TypeScriptCompile Include="app\dialog\dialog.component.ts" />
+    <TypeScriptCompile Include="app\game-elements\achievements.component.ts" />
     <TypeScriptCompile Include="app\game-elements\rating.component.ts" />
     <TypeScriptCompile Include="app\images\add-image.component.ts" />
     <TypeScriptCompile Include="app\images\images.module.ts" />

@@ -5,12 +5,13 @@ import { FormsModule } from '@angular/forms';
 //components
 import { MultipleChoiceComponent } from './multiple-choice.component';
 import { RatingComponent } from './rating.component';
+import { AchievementsComponent } from './achievements.component';
 
 
 @NgModule({
     imports: [BrowserModule, FormsModule],
-    declarations: [MultipleChoiceComponent, RatingComponent],
-    exports: [MultipleChoiceComponent, RatingComponent]
+    declarations: [MultipleChoiceComponent, RatingComponent, AchievementsComponent ],
+    exports: [MultipleChoiceComponent, RatingComponent, AchievementsComponent]
 })
 export class GameElementsModule {
 
