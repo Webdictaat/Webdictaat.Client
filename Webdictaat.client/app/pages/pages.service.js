@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var wdapi_service_1 = require("../core/wdapi.service");
-require("rxjs/add/operator/toPromise");
-require("rxjs/add/operator/map");
+var core_1 = require('@angular/core');
+var wdapi_service_1 = require('../core/wdapi.service');
+require('rxjs/add/operator/toPromise');
+require('rxjs/add/operator/map');
 var PagesService = (function () {
     function PagesService(wdapi) {
         this.wdapi = wdapi;
@@ -49,11 +49,11 @@ var PagesService = (function () {
             .toPromise()
             .then(function (response) { return response; });
     };
+    PagesService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [wdapi_service_1.wdApi])
+    ], PagesService);
     return PagesService;
 }());
-PagesService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [wdapi_service_1.wdApi])
-], PagesService);
 exports.PagesService = PagesService;
 //# sourceMappingURL=pages.service.js.map

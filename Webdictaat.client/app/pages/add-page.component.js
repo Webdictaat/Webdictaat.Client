@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var pages_service_1 = require("./pages.service");
-var dictaat_service_1 = require("../services/dictaat.service");
-var page_1 = require("../models/page");
-var router_1 = require("@angular/router");
+var core_1 = require('@angular/core');
+var pages_service_1 = require('./pages.service');
+var dictaat_service_1 = require('../services/dictaat.service');
+var page_1 = require('../models/page');
+var router_1 = require('@angular/router');
 var AddPageComponent = (function () {
     function AddPageComponent(pageService, dictaatService, route) {
         this.pageService = pageService;
@@ -42,22 +42,20 @@ var AddPageComponent = (function () {
             _this.pageAdded.emit(page);
         });
     };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], AddPageComponent.prototype, "pageAdded", void 0);
+    AddPageComponent = __decorate([
+        core_1.Component({
+            selector: "wd-add-page",
+            styleUrls: ['./app/pages/add-page.component.css'],
+            templateUrl: "./app/pages/add-page.component.html",
+            providers: [pages_service_1.PagesService, dictaat_service_1.DictaatService]
+        }), 
+        __metadata('design:paramtypes', [pages_service_1.PagesService, dictaat_service_1.DictaatService, router_1.ActivatedRoute])
+    ], AddPageComponent);
     return AddPageComponent;
 }());
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", Object)
-], AddPageComponent.prototype, "pageAdded", void 0);
-AddPageComponent = __decorate([
-    core_1.Component({
-        selector: "wd-add-page",
-        styleUrls: ['./app/pages/add-page.component.css'],
-        templateUrl: "./app/pages/add-page.component.html",
-        providers: [pages_service_1.PagesService, dictaat_service_1.DictaatService]
-    }),
-    __metadata("design:paramtypes", [pages_service_1.PagesService,
-        dictaat_service_1.DictaatService,
-        router_1.ActivatedRoute])
-], AddPageComponent);
 exports.AddPageComponent = AddPageComponent;
 //# sourceMappingURL=add-page.component.js.map

@@ -13,17 +13,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var wdapi_service_1 = require("../core/wdapi.service");
-var basemodal_service_1 = require("../core/basemodal.service");
-require("rxjs/add/operator/toPromise");
-require("rxjs/add/operator/map");
+var core_1 = require('@angular/core');
+var wdapi_service_1 = require('../core/wdapi.service');
+var basemodal_service_1 = require('../core/basemodal.service');
+require('rxjs/add/operator/toPromise');
+require('rxjs/add/operator/map');
 var QuestionsService = (function (_super) {
     __extends(QuestionsService, _super);
     function QuestionsService(wdapi) {
-        var _this = _super.call(this) || this;
-        _this.wdapi = wdapi;
-        return _this;
+        _super.call(this);
+        this.wdapi = wdapi;
     }
     QuestionsService.prototype.addQuestion = function (dictaatName, question) {
         var _this = this;
@@ -48,11 +47,11 @@ var QuestionsService = (function (_super) {
             .toPromise()
             .then(function (response) { return response.json(); });
     };
+    QuestionsService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [wdapi_service_1.wdApi])
+    ], QuestionsService);
     return QuestionsService;
 }(basemodal_service_1.BaseModalService));
-QuestionsService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [wdapi_service_1.wdApi])
-], QuestionsService);
 exports.QuestionsService = QuestionsService;
 //# sourceMappingURL=question.service.js.map

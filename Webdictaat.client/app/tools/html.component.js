@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var dialog_service_1 = require("../services/dialog.service");
+var core_1 = require('@angular/core');
+var dialog_service_1 = require('../services/dialog.service');
 var HtmlComponent = (function () {
     function HtmlComponent(dialogService, changeDetector, zone) {
         var _this = this;
@@ -152,25 +152,23 @@ var HtmlComponent = (function () {
             }
         });
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], HtmlComponent.prototype, "innerHTML", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], HtmlComponent.prototype, "pageEdited", void 0);
+    HtmlComponent = __decorate([
+        core_1.Component({
+            selector: "wd-html",
+            styles: ["\n    .code-editor{\n        width:100%;\n        max-width:100%;\n    }\n"],
+            template: "\n        <div class=\"togglebutton\">\n            <label>\n                <input type=\"checkbox\" [(ngModel)]=\"htmlMode\" ><span class=\"toggle\"></span> Toggle button\n            </label>\n        </div>\n        <div id='page'  [hidden]=\"htmlMode\">\n            <html-outlet [html]=\"innerHTML\" (afterCompile)=\"afterCompile()\"></html-outlet>\n        </div>\n        <div [hidden]=\"!htmlMode\">\n            <textarea class=\"code-editor\" rows=\"15\" [(ngModel)]=\"innerHTML\" > </textarea>\n        </div>\n        <div class='panel-footer'>\n            <button class=\"btn btn-lg btn-success btn-raised\" (click)='savePage()'>\n                <span class=\"glyphicon glyphicon-floppy-disk pull-left\"></span>&nbsp;Save page\n            </button>\n        </div>\n    ",
+        }), 
+        __metadata('design:paramtypes', [dialog_service_1.DialogService, core_1.ChangeDetectorRef, core_1.NgZone])
+    ], HtmlComponent);
     return HtmlComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", String)
-], HtmlComponent.prototype, "innerHTML", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", Object)
-], HtmlComponent.prototype, "pageEdited", void 0);
-HtmlComponent = __decorate([
-    core_1.Component({
-        selector: "wd-html",
-        styles: ["\n    .code-editor{\n        width:100%;\n        max-width:100%;\n    }\n"],
-        template: "\n        <div class=\"togglebutton\">\n            <label>\n                <input type=\"checkbox\" [(ngModel)]=\"htmlMode\" ><span class=\"toggle\"></span> Toggle button\n            </label>\n        </div>\n        <div id='page'  [hidden]=\"htmlMode\">\n            <html-outlet [html]=\"innerHTML\" (afterCompile)=\"afterCompile()\"></html-outlet>\n        </div>\n        <div [hidden]=\"!htmlMode\">\n            <textarea class=\"code-editor\" rows=\"15\" [(ngModel)]=\"innerHTML\" > </textarea>\n        </div>\n        <div class='panel-footer'>\n            <button class=\"btn btn-lg btn-success btn-raised\" (click)='savePage()'>\n                <span class=\"glyphicon glyphicon-floppy-disk pull-left\"></span>&nbsp;Save page\n            </button>\n        </div>\n    ",
-    }),
-    __metadata("design:paramtypes", [dialog_service_1.DialogService,
-        core_1.ChangeDetectorRef,
-        core_1.NgZone])
-], HtmlComponent);
 exports.HtmlComponent = HtmlComponent;
 //# sourceMappingURL=html.component.js.map

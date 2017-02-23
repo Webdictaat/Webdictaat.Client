@@ -8,12 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var dictaten_service_1 = require("../services/dictaten.service");
-var account_service_1 = require("../services/account.service");
-var http_1 = require("@angular/http");
-var router_1 = require("@angular/router");
-var rx_1 = require("rxjs/rx");
+var core_1 = require('@angular/core');
+var dictaten_service_1 = require('../services/dictaten.service');
+var account_service_1 = require('../services/account.service');
+var http_1 = require('@angular/http');
+var router_1 = require('@angular/router');
+var rx_1 = require('rxjs/rx');
 var DictatenComponent = (function () {
     function DictatenComponent(accountService, dictatenService, httpService, router) {
         this.accountService = accountService;
@@ -46,19 +46,16 @@ var DictatenComponent = (function () {
     DictatenComponent.prototype.login = function () {
         this.accountService.Login();
     };
+    DictatenComponent = __decorate([
+        core_1.Component({
+            selector: "wd-dictaten",
+            templateUrl: "./app/dictaten/dictaten.component.html",
+            styleUrls: ["./app/dictaten/dictaten.component.css"],
+            providers: []
+        }), 
+        __metadata('design:paramtypes', [account_service_1.AccountService, dictaten_service_1.DictatenService, http_1.Http, router_1.Router])
+    ], DictatenComponent);
     return DictatenComponent;
 }());
-DictatenComponent = __decorate([
-    core_1.Component({
-        selector: "wd-dictaten",
-        templateUrl: "./app/dictaten/dictaten.component.html",
-        styleUrls: ["./app/dictaten/dictaten.component.css"],
-        providers: []
-    }),
-    __metadata("design:paramtypes", [account_service_1.AccountService,
-        dictaten_service_1.DictatenService,
-        http_1.Http,
-        router_1.Router])
-], DictatenComponent);
 exports.DictatenComponent = DictatenComponent;
 //# sourceMappingURL=dictaten.component.js.map

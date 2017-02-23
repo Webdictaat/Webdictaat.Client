@@ -4,11 +4,11 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var http_1 = require("@angular/http");
+var http_1 = require('@angular/http');
 var AppRequestOptions = (function (_super) {
     __extends(AppRequestOptions, _super);
     function AppRequestOptions() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        _super.apply(this, arguments);
     }
     AppRequestOptions.prototype.merge = function (options) {
         options.url = 'http://localhost:65418/api' + options.url;
