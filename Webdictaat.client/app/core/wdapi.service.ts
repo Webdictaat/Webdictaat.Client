@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class wdApi {
 
-    constructor(private http: Http) {  }
+    constructor(private http: Http) { } 
 
     //public urlPrefix = 'http://student.aii.avans.nl/doc/ssmulder/api';
     //public urlPrefix = 'http://localhost:65418/api';

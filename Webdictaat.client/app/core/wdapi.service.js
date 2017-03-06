@@ -23,10 +23,6 @@ var wdApi = (function () {
         //public urlPrefix = 'http://localhost:8001/api';
         //public urlPrefix = 'http://webdictaat.azurewebsites.net/api';
         this.urlPrefix = "http://webdictaat.aii.avans.nl/api";
-        //public urlPrefix = 'http://student.aii.avans.nl/doc/ssmulder/api';
-        //public urlPrefix = 'http://localhost:65418/api';
-        //public urlPrefix = 'http://localhost:8001/api';
-        //public urlPrefix = 'http://webdictaat.azurewebsites.net/api';
     }
     wdApi.prototype.get = function (url) {
         return this.http.get(this.urlPrefix + url, { withCredentials: true }).catch(this.handleError);
