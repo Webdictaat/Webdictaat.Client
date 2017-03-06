@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var pages_service_1 = require("./pages.service");
+var html_component_1 = require("../tools/html.component");
 var EditPageComponent = (function () {
     function EditPageComponent(route, pagesService, router) {
         this.route = route;
@@ -20,7 +21,9 @@ var EditPageComponent = (function () {
         this.selectedTab = "text";
     }
     EditPageComponent.prototype.isDirty = function () {
-        return this.originalSource != this.page.source;
+        var editedSource = this.htmlComponent.decompileHtml();
+        var dirty = this.originalSource != editedSource;
+        return dirty;
     };
     EditPageComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -28,13 +31,19 @@ var EditPageComponent = (function () {
             _this.pageName = params['pageName'];
             _this.dictaatName = params['dictaatName'];
             _this.pagesService.getPage(_this.dictaatName, _this.pageName)
-                .then(function (page) { _this.page = page; _this.originalSource = _this.page.source; });
+                .then(function (page) {
+                _this.page = page;
+                _this.originalSource = _this.page.source; //required for the dirty flag
+            });
         });
     };
     EditPageComponent.prototype.savePage = function () {
         var _this = this;
         this.pagesService.editPage(this.dictaatName, this.page)
-            .then(function (page) { return _this.page = page; });
+            .then(function (page) {
+            _this.page = page;
+            _this.originalSource = _this.page.source; //required for the dirty flag
+        });
     };
     EditPageComponent.prototype.updateSource = function (pageSource) {
         this.page.source = pageSource;
@@ -42,6 +51,10 @@ var EditPageComponent = (function () {
     };
     return EditPageComponent;
 }());
+__decorate([
+    core_1.ViewChild(html_component_1.HtmlComponent),
+    __metadata("design:type", html_component_1.HtmlComponent)
+], EditPageComponent.prototype, "htmlComponent", void 0);
 EditPageComponent = __decorate([
     core_1.Component({
         selector: "wd-edit-page",

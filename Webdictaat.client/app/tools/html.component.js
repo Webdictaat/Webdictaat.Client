@@ -19,7 +19,6 @@ var HtmlComponent = (function () {
         this.zone = zone;
         this.editableElements = ".wd-editable, p, span, h1, h2, h3, h4, h5";
         this.containerElements = ".wd-container";
-        this.htmlMode = false;
         this.pageEdited = new core_1.EventEmitter();
         this.onDrop = function (event, ui) {
             var target = ui.item.data("component");
@@ -42,6 +41,8 @@ var HtmlComponent = (function () {
                     _this.enableContainers(ui.item);
                     //Helaas nodig omdat browsers stom doen omtrent content editable
                     _this.solveEnterIssue(ui.item);
+                    //waarom moet dit?
+                    //setTimeout(() => ui.item.focus(), 0);
                 }
                 _this.recompile();
             });
@@ -70,7 +71,10 @@ var HtmlComponent = (function () {
         var pageObject = this.pageElement.find("dynamic-html");
         var lin = $(this).attr('href'); //verwijderen van ng-reflect voor id's
         pageObject.find(".wd-game-component").empty(); //leeg maken van gecompileerde componenten
-        pageObject.find(this.editableElements).removeAttr("contenteditable");
+        pageObject.find('*').removeAttr("contenteditable");
+        pageObject.find('*').removeClass(function (index, className) {
+            return (className.match(/(^|\s)ui-\S+/g) || []).join(' ');
+        });
         var htmlString = pageObject.html();
         htmlString = htmlString.replace(/ng-reflect-(.+?)=/g, '[$1]=');
         return htmlString;
@@ -103,7 +107,7 @@ var HtmlComponent = (function () {
      * Deze methode is nodig om beter om te gaan met de user input 'enter'.
      * Origineel zal de browser een div toevoegen. Dit is geen nette valide html.
      * Deze code snippet vervangt de div door een span.
-     * @param element
+     * @param element waarbij 'enters' vervangen moeten worden
      */
     HtmlComponent.prototype.solveEnterIssue = function (element) {
         element.on("keypress", function (e) {
@@ -166,7 +170,7 @@ HtmlComponent = __decorate([
     core_1.Component({
         selector: "wd-html",
         styles: ["\n    .code-editor{\n        width:100%;\n        max-width:100%;\n    }\n"],
-        template: "\n  \n        <html-outlet [html]=\"innerHTML\" (afterCompile)=\"afterCompile()\"></html-outlet>\n      \n        <div class='panel-footer'>\n            <button class=\"btn btn-lg btn-success btn-raised\" (click)='savePage()'>\n                <span class=\"glyphicon glyphicon-floppy-disk pull-left\"></span>&nbsp;Save page\n            </button>\n        </div>\n    ",
+        template: "\n  \n        <div id='page'>\n            <html-outlet  [html]=\"innerHTML\" (afterCompile)=\"afterCompile()\"></html-outlet>\n        </div>\n        <div class='panel-footer'>\n            <button class=\"btn btn-lg btn-success btn-raised\" (click)='savePage()'>\n                <span class=\"glyphicon glyphicon-floppy-disk pull-left\"></span>&nbsp;Save page\n            </button>\n        </div>\n    ",
     }),
     __metadata("design:paramtypes", [dialog_service_1.DialogService,
         core_1.ChangeDetectorRef,

@@ -10,15 +10,11 @@ var core_1 = require("@angular/core");
 var DirtyGuard = (function () {
     function DirtyGuard() {
     }
-    DirtyGuard.prototype.canDeactivate = function (component, route, state) {
+    DirtyGuard.prototype.canDeactivate = function (component) {
         if (component.isDirty()) {
-            if (confirm("You have unsaved changes. Would you like to discard these changes?")) {
-                return true;
-            }
-            else {
-                return false;
-            }
+            return confirm("You have unsaved changes. Would you like to discard these changes?");
         }
+        return true;
     };
     return DirtyGuard;
 }());

@@ -5,7 +5,7 @@
 
 <ul class="breadcrumb" style="margin-bottom: 5px;">
   <li><a href="#">Webdictaat</a></li>
-  <li><a href="#/dictaten/{{dictaatName}})">{{dictaatName}}</a></li>
+  <li><a href="#/dictaten/{{dictaatName}}">{{dictaatName}}</a></li>
   <li class="active">{{pageName}}</li>
 </ul>
 
@@ -36,7 +36,7 @@
     </div>
 
     <div class="page-content">
-            <wd-html [innerHTML]="page.source" (pageEdited)="updateSource($event)" ></wd-html>
+        <wd-html [innerHTML]="page.source" (pageEdited)="updateSource($event)" ></wd-html>
     </div>
 </div>
 

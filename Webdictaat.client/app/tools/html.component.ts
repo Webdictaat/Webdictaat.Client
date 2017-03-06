@@ -14,8 +14,9 @@ declare var $: JQueryStatic;
 `],
     template: `
   
-        <html-outlet [html]="innerHTML" (afterCompile)="afterCompile()"></html-outlet>
-      
+        <div id='page'>
+            <html-outlet  [html]="innerHTML" (afterCompile)="afterCompile()"></html-outlet>
+        </div>
         <div class='panel-footer'>
             <button class="btn btn-lg btn-success btn-raised" (click)='savePage()'>
                 <span class="glyphicon glyphicon-floppy-disk pull-left"></span>&nbsp;Save page
@@ -27,8 +28,6 @@ export class HtmlComponent implements OnInit{
 
     public editableElements =  ".wd-editable, p, span, h1, h2, h3, h4, h5";
     public containerElements = ".wd-container";
-
-    public htmlMode: boolean = false;
 
     @Input()
     public innerHTML: string;
@@ -79,6 +78,10 @@ export class HtmlComponent implements OnInit{
 
                 //Helaas nodig omdat browsers stom doen omtrent content editable
                 this.solveEnterIssue(ui.item);
+
+                //waarom moet dit?
+                //setTimeout(() => ui.item.focus(), 0);
+
             }
 
             this.recompile();
@@ -95,6 +98,7 @@ export class HtmlComponent implements OnInit{
      */
     public afterCompile() {
 
+
         this.enableContainers(this.pageElement);
 
         this.pageElement.find('.wd-container').find(this.editableElements)
@@ -105,11 +109,14 @@ export class HtmlComponent implements OnInit{
         this.zone.run(() => { }); //Get back into angular running context
     }
 
-    private decompileHtml(): string {
+    public decompileHtml(): string {
         var pageObject: JQuery = this.pageElement.find("dynamic-html");
         var lin = $(this).attr('href'); //verwijderen van ng-reflect voor id's
         pageObject.find(".wd-game-component").empty(); //leeg maken van gecompileerde componenten
-        pageObject.find(this.editableElements).removeAttr("contenteditable");
+        pageObject.find('*').removeAttr("contenteditable");
+        pageObject.find('*').removeClass (function (index, className) {
+            return (className.match (/(^|\s)ui-\S+/g) || []).join(' ');
+        });
         var htmlString = pageObject.html();
         htmlString = htmlString.replace(/ng-reflect-(.+?)=/g, '[$1]=')
         return htmlString;
@@ -148,7 +155,7 @@ export class HtmlComponent implements OnInit{
      * Deze methode is nodig om beter om te gaan met de user input 'enter'.
      * Origineel zal de browser een div toevoegen. Dit is geen nette valide html.
      * Deze code snippet vervangt de div door een span.
-     * @param element
+     * @param element waarbij 'enters' vervangen moeten worden
      */
     private solveEnterIssue(element): void {
 

@@ -1,10 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, Params , NavigationStart} from '@angular/router';
 import { PagesService } from './pages.service';
 import { Page } from '../models/page';
 import { DirtyComp } from "../core/security/dirty.guard";
-
-
+import { HtmlComponent } from "../tools/html.component";
 
 
 @Component({
@@ -16,9 +15,14 @@ import { DirtyComp } from "../core/security/dirty.guard";
 export class EditPageComponent implements DirtyComp {
     
     public isDirty(): boolean{
-        return this.originalSource != this.page.source;
+
+        var editedSource = this.htmlComponent.decompileHtml();
+        var dirty = this.originalSource != editedSource;
+        return dirty;
     }
 
+    @ViewChild(HtmlComponent)
+    private htmlComponent: HtmlComponent;
 
     private pageElement;
     public page: Page;
@@ -41,14 +45,20 @@ export class EditPageComponent implements DirtyComp {
             this.pageName = params['pageName'];
             this.dictaatName = params['dictaatName'];
             this.pagesService.getPage(this.dictaatName, this.pageName)
-                .then(page => { this.page = page; this.originalSource = this.page.source});
+                .then(page => { 
+                    this.page = page; 
+                    this.originalSource = this.page.source //required for the dirty flag
+                });
         });
 
     }
 
     public savePage(): void {
         this.pagesService.editPage(this.dictaatName, this.page)
-            .then((page) =>this.page = page );
+            .then((page) => {
+                  this.page = page; 
+                  this.originalSource = this.page.source //required for the dirty flag
+             });
     }
 
     public updateSource(pageSource): void {
