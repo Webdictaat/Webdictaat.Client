@@ -13,13 +13,11 @@ var core_1 = require("@angular/core");
 var dictaat_service_1 = require("../services/dictaat.service");
 var router_1 = require("@angular/router");
 var DictaatComponent = (function () {
-    function DictaatComponent(dictaatService, route) {
+    function DictaatComponent(dictaatService, route, Router) {
         this.dictaatService = dictaatService;
         this.route = route;
+        this.Router = Router;
     }
-    DictaatComponent.prototype.selectPage = function (page) {
-        this.selectedPage = page;
-    };
     //event
     DictaatComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -28,16 +26,11 @@ var DictaatComponent = (function () {
             _this.dictaatService.getDictaat(name)
                 .then(function (dictaat) {
                 _this.dictaat = dictaat;
-                _this.selectedPage = dictaat.pages[0];
             });
         });
     };
     return DictaatComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", String)
-], DictaatComponent.prototype, "dictaatName", void 0);
 DictaatComponent = __decorate([
     core_1.Component({
         selector: "wd-dictaat",
@@ -46,7 +39,8 @@ DictaatComponent = __decorate([
         providers: [dictaat_service_1.DictaatService]
     }),
     __metadata("design:paramtypes", [dictaat_service_1.DictaatService,
-        router_1.ActivatedRoute])
+        router_1.ActivatedRoute,
+        router_1.Router])
 ], DictaatComponent);
 exports.DictaatComponent = DictaatComponent;
 //# sourceMappingURL=dictaat.component.js.map

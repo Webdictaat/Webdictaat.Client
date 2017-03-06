@@ -6,6 +6,7 @@ var dictaat_component_1 = require("../dictaat/dictaat.component");
 var edit_page_component_1 = require("../pages/edit-page.component");
 var profile_component_1 = require("../profile/profile.component");
 var demo_component_1 = require("../demo/demo.component");
+var dirty_guard_1 = require("../core/security/dirty.guard");
 var appRoutes = [
     { path: '', redirectTo: '/dictaten', pathMatch: 'full' },
     {
@@ -15,6 +16,11 @@ var appRoutes = [
     {
         path: 'dictaten/:dictaatName',
         component: dictaat_component_1.DictaatComponent
+    },
+    {
+        path: 'dictaten/:dictaatName/pages/:pageName',
+        component: edit_page_component_1.EditPageComponent,
+        canDeactivate: [dirty_guard_1.DirtyGuard],
     },
     {
         path: 'profile',

@@ -13,17 +13,22 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var pages_service_1 = require("./pages.service");
 var EditPageComponent = (function () {
-    function EditPageComponent(route, pagesService) {
+    function EditPageComponent(route, pagesService, router) {
         this.route = route;
         this.pagesService = pagesService;
+        this.router = router;
+        this.selectedTab = "text";
     }
-    EditPageComponent.prototype.ngOnChanges = function () {
+    EditPageComponent.prototype.isDirty = function () {
+        return this.originalSource != this.page.source;
+    };
+    EditPageComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.forEach(function (params) {
-            var name = params['pageName'];
+            _this.pageName = params['pageName'];
             _this.dictaatName = params['dictaatName'];
             _this.pagesService.getPage(_this.dictaatName, _this.pageName)
-                .then(function (page) { _this.page = page; });
+                .then(function (page) { _this.page = page; _this.originalSource = _this.page.source; });
         });
     };
     EditPageComponent.prototype.savePage = function () {
@@ -37,18 +42,16 @@ var EditPageComponent = (function () {
     };
     return EditPageComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", String)
-], EditPageComponent.prototype, "pageName", void 0);
 EditPageComponent = __decorate([
     core_1.Component({
         selector: "wd-edit-page",
         templateUrl: "app/pages/edit-page.component.html",
+        styleUrls: ["app/pages/edit-page.component.css"],
         providers: [pages_service_1.PagesService]
     }),
     __metadata("design:paramtypes", [router_1.ActivatedRoute,
-        pages_service_1.PagesService])
+        pages_service_1.PagesService,
+        router_1.Router])
 ], EditPageComponent);
 exports.EditPageComponent = EditPageComponent;
 //# sourceMappingURL=edit-page.component.js.map

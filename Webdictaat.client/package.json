@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run http-server\" ",
-    "http-server": "http-server --cors -p 3000 -o",
+    "start": "tsc && concurrently \"npm run http-server\"  \"npm run tsc:w\" ",
+    "http-server": "http-server -p 3000",
     "postinstall": "typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",

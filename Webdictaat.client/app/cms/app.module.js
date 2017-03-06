@@ -37,6 +37,7 @@ var images_service_1 = require("../services/images.service");
 var dictaten_service_1 = require("../services/dictaten.service");
 var account_service_1 = require("../services/account.service");
 var wdapi_service_1 = require("../core/wdapi.service");
+var dirty_guard_1 = require("../core/security/dirty.guard");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -55,7 +56,7 @@ AppModule = __decorate([
         ],
         providers: [
             dialog_service_1.DialogService, question_service_1.QuestionsService, images_service_1.ImageService, account_service_1.AccountService, wdapi_service_1.wdApi,
-            rating_service_1.RatingService, dictaten_service_1.DictatenService,
+            rating_service_1.RatingService, dictaten_service_1.DictatenService, dirty_guard_1.DirtyGuard,
             { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
         ],
         bootstrap: [

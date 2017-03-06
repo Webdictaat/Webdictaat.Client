@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Router, Params , NavigationStart} from '@angular/router';
 import { PagesService } from './pages.service';
 import { Page } from '../models/page';
+import { DirtyComp } from "../core/security/dirty.guard";
 
 
 
@@ -9,35 +10,40 @@ import { Page } from '../models/page';
 @Component({
     selector: "wd-edit-page",
     templateUrl: "app/pages/edit-page.component.html",
+    styleUrls: [ "app/pages/edit-page.component.css"],
     providers: [PagesService]
 })
-export class EditPageComponent {
+export class EditPageComponent implements DirtyComp {
+    
+    public isDirty(): boolean{
+        return this.originalSource != this.page.source;
+    }
 
-    @Input()
-    public pageName: string;
 
     private pageElement;
+    public page: Page;
+    public originalSource: string;
 
-    private page: Page;
+    public pageName: string;
+    public dictaatName: string;
 
-    private dictaatName: string;
+    public selectedTab: string = "text";
 
     constructor(
         private route: ActivatedRoute,
-        private pagesService: PagesService
-    ) {
+        private pagesService: PagesService,
+        private router: Router
+    ) {}
 
-    }
+    public ngOnInit(): void {
 
-    public ngOnChanges(): void {
         this.route.params.forEach((params: Params) => {
-            let name = params['pageName'];
+            this.pageName = params['pageName'];
             this.dictaatName = params['dictaatName'];
             this.pagesService.getPage(this.dictaatName, this.pageName)
-                .then(page => { this.page = page; });
+                .then(page => { this.page = page; this.originalSource = this.page.source});
         });
-      
-     
+
     }
 
     public savePage(): void {

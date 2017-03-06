@@ -17,12 +17,7 @@ var PagesComponent = (function () {
     function PagesComponent(pagesSevice, router) {
         this.pagesSevice = pagesSevice;
         this.router = router;
-        this.pageSelected = new core_1.EventEmitter();
     }
-    PagesComponent.prototype.selectPage = function (page) {
-        this.selectedPage = page;
-        this.pageSelected.emit(page);
-    };
     PagesComponent.prototype.getPages = function () {
         var _this = this;
         this.pagesSevice.getPages(this.dictaat.name)
@@ -42,10 +37,6 @@ __decorate([
     core_1.Input(),
     __metadata("design:type", dictaat_1.Dictaat)
 ], PagesComponent.prototype, "dictaat", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", Object)
-], PagesComponent.prototype, "pageSelected", void 0);
 PagesComponent = __decorate([
     core_1.Component({
         selector: "wd-pages",

@@ -13,28 +13,15 @@ import { Router } from '@angular/router';
 })
 export class PagesComponent {
 
-    public selectedFile;
+    public newPage: Page;
 
     @Input()
     public dictaat: Dictaat;
-
-    @Output()
-    public pageSelected = new EventEmitter();
-
-    public selectedPage: Page;
-
-
-    public newPage: Page;
 
     constructor(
         private pagesSevice: PagesService,
         private router : Router
      ) { }
-
-    public selectPage(page): void {
-        this.selectedPage = page;
-        this.pageSelected.emit(page);
-    }
 
     public getPages(): void {
         this.pagesSevice.getPages(this.dictaat.name)

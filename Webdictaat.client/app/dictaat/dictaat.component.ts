@@ -3,7 +3,7 @@ import { Dictaat } from '../models/dictaat';
 import { Page } from '../models/page';
 
 import { DictaatService } from '../services/dictaat.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 
 @Component({
@@ -14,20 +14,13 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class DictaatComponent implements OnInit {
 
-    @Input()
-    public dictaatName: String;
-
     public dictaat: Dictaat;
-
-    public selectedPage;
 
     constructor(
         private dictaatService: DictaatService,
-        private route: ActivatedRoute) { }
+        private route: ActivatedRoute, 
+        private Router: Router) { }
 
-    public selectPage(page : Page): void {
-        this.selectedPage = page;
-    }
 
     //event
     public ngOnInit(): void {
@@ -36,7 +29,6 @@ export class DictaatComponent implements OnInit {
             this.dictaatService.getDictaat(name)
                 .then(dictaat => {
                     this.dictaat = dictaat
-                    this.selectedPage = dictaat.pages[0]
                 });
         });
     }

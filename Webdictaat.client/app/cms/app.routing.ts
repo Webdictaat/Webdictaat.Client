@@ -6,6 +6,7 @@ import { DictaatComponent }  from '../dictaat/dictaat.component';
 import { EditPageComponent }  from '../pages/edit-page.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { DemoComponent } from '../demo/demo.component';
+import { DirtyGuard } from "../core/security/dirty.guard";
 
 
 const appRoutes: Routes = [
@@ -17,6 +18,11 @@ const appRoutes: Routes = [
     {
         path: 'dictaten/:dictaatName',
         component: DictaatComponent
+    },
+    {
+        path: 'dictaten/:dictaatName/pages/:pageName',
+        component: EditPageComponent,
+        canDeactivate: [DirtyGuard],
     },
     {
         path: 'profile',

@@ -13,17 +13,9 @@ declare var $: JQueryStatic;
     }
 `],
     template: `
-        <div class="togglebutton">
-            <label>
-                <input type="checkbox" [(ngModel)]="htmlMode" ><span class="toggle"></span> Toggle button
-            </label>
-        </div>
-        <div id='page'  [hidden]="htmlMode">
-            <html-outlet [html]="innerHTML" (afterCompile)="afterCompile()"></html-outlet>
-        </div>
-        <div [hidden]="!htmlMode">
-            <textarea class="code-editor" rows="15" [(ngModel)]="innerHTML" > </textarea>
-        </div>
+  
+        <html-outlet [html]="innerHTML" (afterCompile)="afterCompile()"></html-outlet>
+      
         <div class='panel-footer'>
             <button class="btn btn-lg btn-success btn-raised" (click)='savePage()'>
                 <span class="glyphicon glyphicon-floppy-disk pull-left"></span>&nbsp;Save page
@@ -85,13 +77,8 @@ export class HtmlComponent implements OnInit{
                 //Als het gedropte item sub containers bevat, even drop enable
                 this.enableContainers(ui.item);
 
-               
-
                 //Helaas nodig omdat browsers stom doen omtrent content editable
                 this.solveEnterIssue(ui.item);
-
-                setTimeout(() => ui.item.focus(), 0);
-                
             }
 
             this.recompile();
@@ -136,7 +123,6 @@ export class HtmlComponent implements OnInit{
     private savePage(): void {
         this.pageEdited.emit(this.decompileHtml());
     }
-
 
     private enableContainers(element): void {
 

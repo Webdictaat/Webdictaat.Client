@@ -32,6 +32,7 @@ import { ImageService } from '../services/images.service';
 import { DictatenService } from '../services/dictaten.service';
 import { AccountService } from '../services/account.service';
 import { wdApi } from '../core/wdapi.service';
+import { DirtyGuard } from "../core/security/dirty.guard";
 
 @NgModule({
     imports: [
@@ -45,7 +46,7 @@ import { wdApi } from '../core/wdapi.service';
     ],
     providers: [
         DialogService, QuestionsService, ImageService, AccountService, wdApi,
-        RatingService, DictatenService,
+        RatingService, DictatenService, DirtyGuard,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
     ],
     bootstrap: [

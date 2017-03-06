@@ -42,7 +42,6 @@ var HtmlComponent = (function () {
                     _this.enableContainers(ui.item);
                     //Helaas nodig omdat browsers stom doen omtrent content editable
                     _this.solveEnterIssue(ui.item);
-                    setTimeout(function () { return ui.item.focus(); }, 0);
                 }
                 _this.recompile();
             });
@@ -167,7 +166,7 @@ HtmlComponent = __decorate([
     core_1.Component({
         selector: "wd-html",
         styles: ["\n    .code-editor{\n        width:100%;\n        max-width:100%;\n    }\n"],
-        template: "\n        <div class=\"togglebutton\">\n            <label>\n                <input type=\"checkbox\" [(ngModel)]=\"htmlMode\" ><span class=\"toggle\"></span> Toggle button\n            </label>\n        </div>\n        <div id='page'  [hidden]=\"htmlMode\">\n            <html-outlet [html]=\"innerHTML\" (afterCompile)=\"afterCompile()\"></html-outlet>\n        </div>\n        <div [hidden]=\"!htmlMode\">\n            <textarea class=\"code-editor\" rows=\"15\" [(ngModel)]=\"innerHTML\" > </textarea>\n        </div>\n        <div class='panel-footer'>\n            <button class=\"btn btn-lg btn-success btn-raised\" (click)='savePage()'>\n                <span class=\"glyphicon glyphicon-floppy-disk pull-left\"></span>&nbsp;Save page\n            </button>\n        </div>\n    ",
+        template: "\n  \n        <html-outlet [html]=\"innerHTML\" (afterCompile)=\"afterCompile()\"></html-outlet>\n      \n        <div class='panel-footer'>\n            <button class=\"btn btn-lg btn-success btn-raised\" (click)='savePage()'>\n                <span class=\"glyphicon glyphicon-floppy-disk pull-left\"></span>&nbsp;Save page\n            </button>\n        </div>\n    ",
     }),
     __metadata("design:paramtypes", [dialog_service_1.DialogService,
         core_1.ChangeDetectorRef,
