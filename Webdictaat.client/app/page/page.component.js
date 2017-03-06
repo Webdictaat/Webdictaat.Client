@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var page_service_1 = require('./page.service');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var page_service_1 = require("./page.service");
 var PageComponent = (function () {
     function PageComponent(route, pageService) {
         this.route = route;
@@ -26,15 +27,16 @@ var PageComponent = (function () {
             });
         });
     };
-    PageComponent = __decorate([
-        core_1.Component({
-            selector: "wd-page",
-            template: "\n    <div *ngIf=\"page\">\n        <html-outlet [html]=\"page\"></html-outlet>\n    </div>\n",
-            providers: [page_service_1.PageService]
-        }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, page_service_1.PageService])
-    ], PageComponent);
     return PageComponent;
 }());
+PageComponent = __decorate([
+    core_1.Component({
+        selector: "wd-page",
+        template: "\n    <div *ngIf=\"page\">\n        <html-outlet [html]=\"page\"></html-outlet>\n    </div>\n",
+        providers: [page_service_1.PageService]
+    }),
+    __metadata("design:paramtypes", [router_1.ActivatedRoute,
+        page_service_1.PageService])
+], PageComponent);
 exports.PageComponent = PageComponent;
 //# sourceMappingURL=page.component.js.map

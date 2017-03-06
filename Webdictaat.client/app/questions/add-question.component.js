@@ -8,10 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var question_service_1 = require('../services/question.service');
-var question_1 = require('../models/question');
-var router_1 = require('@angular/router');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var question_service_1 = require("../services/question.service");
+var question_1 = require("../models/question");
+var router_1 = require("@angular/router");
 var AddQuestionComponent = (function () {
     function AddQuestionComponent(questionsService, route, changeDetector) {
         this.questionsService = questionsService;
@@ -43,18 +44,20 @@ var AddQuestionComponent = (function () {
     AddQuestionComponent.prototype.Cancel = function () {
         this.questionsService.CancelModal();
     };
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], AddQuestionComponent.prototype, "questionAdded", void 0);
-    AddQuestionComponent = __decorate([
-        core_1.Component({
-            selector: "wd-add-question",
-            templateUrl: "./app/questions/add-question.component.html",
-        }), 
-        __metadata('design:paramtypes', [question_service_1.QuestionsService, router_1.ActivatedRoute, core_1.ChangeDetectorRef])
-    ], AddQuestionComponent);
     return AddQuestionComponent;
 }());
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], AddQuestionComponent.prototype, "questionAdded", void 0);
+AddQuestionComponent = __decorate([
+    core_1.Component({
+        selector: "wd-add-question",
+        templateUrl: "./app/questions/add-question.component.html",
+    }),
+    __metadata("design:paramtypes", [question_service_1.QuestionsService,
+        router_1.ActivatedRoute,
+        core_1.ChangeDetectorRef])
+], AddQuestionComponent);
 exports.AddQuestionComponent = AddQuestionComponent;
 //# sourceMappingURL=add-question.component.js.map

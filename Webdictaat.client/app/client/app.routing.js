@@ -1,6 +1,7 @@
 "use strict";
-var router_1 = require('@angular/router');
-var page_component_1 = require('../page/page.component');
+Object.defineProperty(exports, "__esModule", { value: true });
+var router_1 = require("@angular/router");
+var page_component_1 = require("../page/page.component");
 var appRoutes = [
     {
         path: ':pageName',

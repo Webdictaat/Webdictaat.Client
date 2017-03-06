@@ -8,10 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var pages_service_1 = require('./pages.service');
-var dictaat_1 = require('../models/dictaat');
-var router_1 = require('@angular/router');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var pages_service_1 = require("./pages.service");
+var dictaat_1 = require("../models/dictaat");
+var router_1 = require("@angular/router");
 var PagesComponent = (function () {
     function PagesComponent(pagesSevice, router) {
         this.pagesSevice = pagesSevice;
@@ -35,23 +36,24 @@ var PagesComponent = (function () {
     PagesComponent.prototype.editPage = function (page) {
         this.router.navigateByUrl("/dictaten/" + this.dictaat.name + "/pages/" + page.name);
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', dictaat_1.Dictaat)
-    ], PagesComponent.prototype, "dictaat", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], PagesComponent.prototype, "pageSelected", void 0);
-    PagesComponent = __decorate([
-        core_1.Component({
-            selector: "wd-pages",
-            templateUrl: "./app/pages/pages.component.html",
-            providers: [pages_service_1.PagesService]
-        }), 
-        __metadata('design:paramtypes', [pages_service_1.PagesService, router_1.Router])
-    ], PagesComponent);
     return PagesComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", dictaat_1.Dictaat)
+], PagesComponent.prototype, "dictaat", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], PagesComponent.prototype, "pageSelected", void 0);
+PagesComponent = __decorate([
+    core_1.Component({
+        selector: "wd-pages",
+        templateUrl: "./app/pages/pages.component.html",
+        providers: [pages_service_1.PagesService]
+    }),
+    __metadata("design:paramtypes", [pages_service_1.PagesService,
+        router_1.Router])
+], PagesComponent);
 exports.PagesComponent = PagesComponent;
 //# sourceMappingURL=pages.component.js.map

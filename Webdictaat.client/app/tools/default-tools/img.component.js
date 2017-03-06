@@ -8,8 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var images_service_1 = require('../../services/images.service');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var images_service_1 = require("../../services/images.service");
 var ImgComponent = (function () {
     function ImgComponent(imageServie) {
         this.imageServie = imageServie;
@@ -42,14 +43,14 @@ var ImgComponent = (function () {
             });
         });
     };
-    ImgComponent = __decorate([
-        core_1.Component({
-            selector: "wd-img-tool",
-            template: "<div id='wd-img-tool' class='wd-component' >Img</div>",
-        }), 
-        __metadata('design:paramtypes', [images_service_1.ImageService])
-    ], ImgComponent);
     return ImgComponent;
 }());
+ImgComponent = __decorate([
+    core_1.Component({
+        selector: "wd-img-tool",
+        template: "<div id='wd-img-tool' class='wd-component' >Img</div>",
+    }),
+    __metadata("design:paramtypes", [images_service_1.ImageService])
+], ImgComponent);
 exports.ImgComponent = ImgComponent;
 //# sourceMappingURL=img.component.js.map

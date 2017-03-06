@@ -8,10 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var question_service_1 = require('../services/question.service');
-var router_1 = require('@angular/router');
-var account_service_1 = require('../services/account.service');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var question_service_1 = require("../services/question.service");
+var router_1 = require("@angular/router");
+var account_service_1 = require("../services/account.service");
 var MultipleChoiceComponent = (function () {
     function MultipleChoiceComponent(questionsService, route, accountService) {
         this.questionsService = questionsService;
@@ -40,19 +41,21 @@ var MultipleChoiceComponent = (function () {
     MultipleChoiceComponent.prototype.login = function () {
         this.accountService.Login();
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Number)
-    ], MultipleChoiceComponent.prototype, "qid", void 0);
-    MultipleChoiceComponent = __decorate([
-        core_1.Component({
-            selector: "wd-multiple-choice",
-            styles: ["\n\n.answer {\n   max-width:100%;\n   white-space:normal;\n}    \n\n\n    "],
-            template: "\n        <div class='wd-component'>\n\n            <div *ngIf=\"error\" class=\"alert alert-danger\">\n                <p>{{error}}</p>\n            </div>\n\n            <p *ngIf=\"!error && isAuth && !question\" class='default'>Loading...</p>\n      \n            <div class=\"bs-callout bs-callout-primary\" *ngIf=\"question\" >\n  \n                <h4>{{question.text}}</h4>\n\n                <div *ngIf=\"!isAuth\">\n                    <button class='btn btn-info btn-raised' (click)=\"login()\">Login to submit answers</button>\n                </div>\n\n                <div *ngIf=\"isAuth\">\n                    <div *ngFor='let answer of question.answers'>\n                        <button class=\"btn btn-raised btn-default answer\" (click)=\"giveAnswer(answer)\"\n                                [ngClass]=\"{ \n                                    'btn-success' :  selectedAnswer == answer  && selectedAnswer.isCorrect,\n                                    'btn-danger' : selectedAnswer == answer  && !selectedAnswer.isCorrect\n                                }\">\n                            {{answer.text}}\n                        </button>\n                    </div>\n\n                     <div *ngIf=\"selectedAnswer && selectedAnswer.isCorrect\">\n                        {{selectedAnswer.text}} is correct!\n                    </div>\n\n                    <div *ngIf=\"selectedAnswer && !selectedAnswer.isCorrect\">\n                        {{selectedAnswer.text}} is not correct.\n                        Feel free to try again!\n                    </div>\n                    \n                </div>\n            </div>\n\n        </div>\n    "
-        }), 
-        __metadata('design:paramtypes', [question_service_1.QuestionsService, router_1.ActivatedRoute, account_service_1.AccountService])
-    ], MultipleChoiceComponent);
     return MultipleChoiceComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], MultipleChoiceComponent.prototype, "qid", void 0);
+MultipleChoiceComponent = __decorate([
+    core_1.Component({
+        selector: "wd-multiple-choice",
+        styles: ["\n\n.answer {\n   max-width:100%;\n   white-space:normal;\n}    \n\n\n    "],
+        template: "\n        <div class='wd-component'>\n\n            <div *ngIf=\"error\" class=\"alert alert-danger\">\n                <p>{{error}}</p>\n            </div>\n\n            <p *ngIf=\"!error && isAuth && !question\" class='default'>Loading...</p>\n      \n            <div class=\"bs-callout bs-callout-primary\" *ngIf=\"question\" >\n  \n                <h4>{{question.text}}</h4>\n\n                <div *ngIf=\"!isAuth\">\n                    <button class='btn btn-info btn-raised' (click)=\"login()\">Login to submit answers</button>\n                </div>\n\n                <div *ngIf=\"isAuth\">\n                    <div *ngFor='let answer of question.answers'>\n                        <button class=\"btn btn-raised btn-default answer\" (click)=\"giveAnswer(answer)\"\n                                [ngClass]=\"{ \n                                    'btn-success' :  selectedAnswer == answer  && selectedAnswer.isCorrect,\n                                    'btn-danger' : selectedAnswer == answer  && !selectedAnswer.isCorrect\n                                }\">\n                            {{answer.text}}\n                        </button>\n                    </div>\n\n                     <div *ngIf=\"selectedAnswer && selectedAnswer.isCorrect\">\n                        {{selectedAnswer.text}} is correct!\n                    </div>\n\n                    <div *ngIf=\"selectedAnswer && !selectedAnswer.isCorrect\">\n                        {{selectedAnswer.text}} is not correct.\n                        Feel free to try again!\n                    </div>\n                    \n                </div>\n            </div>\n\n        </div>\n    "
+    }),
+    __metadata("design:paramtypes", [question_service_1.QuestionsService,
+        router_1.ActivatedRoute,
+        account_service_1.AccountService])
+], MultipleChoiceComponent);
 exports.MultipleChoiceComponent = MultipleChoiceComponent;
 //# sourceMappingURL=multiple-choice.component.js.map

@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var images_service_1 = require('../services/images.service');
-var router_1 = require('@angular/router');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var images_service_1 = require("../services/images.service");
+var router_1 = require("@angular/router");
 var AddImageComponent = (function () {
     function AddImageComponent(imageService, route, changeDetector) {
         this.imageService = imageService;
@@ -43,14 +44,16 @@ var AddImageComponent = (function () {
     AddImageComponent.prototype.Cancel = function () {
         this.imageService.CancelModal();
     };
-    AddImageComponent = __decorate([
-        core_1.Component({
-            selector: "wd-add-image",
-            templateUrl: "./app/images/add-image.component.html",
-        }), 
-        __metadata('design:paramtypes', [images_service_1.ImageService, router_1.ActivatedRoute, core_1.ChangeDetectorRef])
-    ], AddImageComponent);
     return AddImageComponent;
 }());
+AddImageComponent = __decorate([
+    core_1.Component({
+        selector: "wd-add-image",
+        templateUrl: "./app/images/add-image.component.html",
+    }),
+    __metadata("design:paramtypes", [images_service_1.ImageService,
+        router_1.ActivatedRoute,
+        core_1.ChangeDetectorRef])
+], AddImageComponent);
 exports.AddImageComponent = AddImageComponent;
 //# sourceMappingURL=add-image.component.js.map

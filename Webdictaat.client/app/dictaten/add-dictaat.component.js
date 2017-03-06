@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var dictaten_service_1 = require('../services/dictaten.service');
-var router_1 = require('@angular/router');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var dictaten_service_1 = require("../services/dictaten.service");
+var router_1 = require("@angular/router");
 var AddDictaatComponent = (function () {
     function AddDictaatComponent(dictatenService, route) {
         this.dictatenService = dictatenService;
@@ -35,19 +36,20 @@ var AddDictaatComponent = (function () {
             _this.dictaatAdded.emit(dictaten);
         });
     };
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], AddDictaatComponent.prototype, "dictaatAdded", void 0);
-    AddDictaatComponent = __decorate([
-        core_1.Component({
-            selector: "wd-add-dictaat",
-            templateUrl: "./app/dictaten/add-dictaat.component.html",
-            providers: []
-        }), 
-        __metadata('design:paramtypes', [dictaten_service_1.DictatenService, router_1.ActivatedRoute])
-    ], AddDictaatComponent);
     return AddDictaatComponent;
 }());
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], AddDictaatComponent.prototype, "dictaatAdded", void 0);
+AddDictaatComponent = __decorate([
+    core_1.Component({
+        selector: "wd-add-dictaat",
+        templateUrl: "./app/dictaten/add-dictaat.component.html",
+        providers: []
+    }),
+    __metadata("design:paramtypes", [dictaten_service_1.DictatenService,
+        router_1.ActivatedRoute])
+], AddDictaatComponent);
 exports.AddDictaatComponent = AddDictaatComponent;
 //# sourceMappingURL=add-dictaat.component.js.map

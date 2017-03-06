@@ -8,8 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var question_service_1 = require('../../services/question.service');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var question_service_1 = require("../../services/question.service");
 var MultipleChoiceToolComponent = (function () {
     function MultipleChoiceToolComponent(questionsService) {
         this.questionsService = questionsService;
@@ -43,14 +44,14 @@ var MultipleChoiceToolComponent = (function () {
             });
         });
     };
-    MultipleChoiceToolComponent = __decorate([
-        core_1.Component({
-            selector: "wd-multiple-choice-tool",
-            template: "<div id='wd-multiple-choice-tool' class='wd-component'>Multiple choice</div>",
-        }), 
-        __metadata('design:paramtypes', [question_service_1.QuestionsService])
-    ], MultipleChoiceToolComponent);
     return MultipleChoiceToolComponent;
 }());
+MultipleChoiceToolComponent = __decorate([
+    core_1.Component({
+        selector: "wd-multiple-choice-tool",
+        template: "<div id='wd-multiple-choice-tool' class='wd-component'>Multiple choice</div>",
+    }),
+    __metadata("design:paramtypes", [question_service_1.QuestionsService])
+], MultipleChoiceToolComponent);
 exports.MultipleChoiceToolComponent = MultipleChoiceToolComponent;
 //# sourceMappingURL=multiple-choice.component.js.map

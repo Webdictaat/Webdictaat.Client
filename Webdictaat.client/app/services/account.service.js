@@ -8,12 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var wdapi_service_1 = require('../core/wdapi.service');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var wdapi_service_1 = require("../core/wdapi.service");
 //Nodig om een object om te toveren in een promise.
-var Subject_1 = require('rxjs/Subject');
-require('rxjs/add/operator/toPromise');
-require('rxjs/add/operator/map');
+var Subject_1 = require("rxjs/Subject");
+require("rxjs/add/operator/toPromise");
+require("rxjs/add/operator/map");
 var AccountService = (function () {
     function AccountService(wdapi) {
         var _this = this;
@@ -39,11 +40,11 @@ var AccountService = (function () {
     AccountService.prototype.update = function () {
         this.subject.next(this.user);
     };
-    AccountService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [wdapi_service_1.wdApi])
-    ], AccountService);
     return AccountService;
 }());
+AccountService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [wdapi_service_1.wdApi])
+], AccountService);
 exports.AccountService = AccountService;
 //# sourceMappingURL=account.service.js.map

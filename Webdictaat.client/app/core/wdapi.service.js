@@ -8,20 +8,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
 //Nodig om een object om te toveren in een promise.
-require('rxjs/Rx');
-require('rxjs/add/operator/toPromise');
-require('rxjs/add/operator/map');
+require("rxjs/Rx");
+require("rxjs/add/operator/toPromise");
+require("rxjs/add/operator/map");
 var wdApi = (function () {
     function wdApi(http) {
         this.http = http;
-        this.urlPrefix = 'http://student.aii.avans.nl/doc/ssmulder/api';
+        //public urlPrefix = 'http://student.aii.avans.nl/doc/ssmulder/api';
+        //public urlPrefix = 'http://localhost:65418/api';
+        //public urlPrefix = 'http://localhost:8001/api';
+        //public urlPrefix = 'http://webdictaat.azurewebsites.net/api';
+        this.urlPrefix = "http://webdictaat.aii.avans.nl/api";
+        //public urlPrefix = 'http://student.aii.avans.nl/doc/ssmulder/api';
+        //public urlPrefix = 'http://localhost:65418/api';
+        //public urlPrefix = 'http://localhost:8001/api';
+        //public urlPrefix = 'http://webdictaat.azurewebsites.net/api';
     }
-    //public urlPrefix = 'http://localhost:65418/api';
-    //public urlPrefix = 'http://localhost:8001/api';
-    //public urlPrefix = 'http://webdictaat.azurewebsites.net/api';
     wdApi.prototype.get = function (url) {
         return this.http.get(this.urlPrefix + url, { withCredentials: true }).catch(this.handleError);
     };
@@ -60,11 +66,11 @@ var wdApi = (function () {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     };
-    wdApi = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], wdApi);
     return wdApi;
 }());
+wdApi = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], wdApi);
 exports.wdApi = wdApi;
 //# sourceMappingURL=wdapi.service.js.map
