@@ -79,8 +79,9 @@ export class HtmlComponent implements OnInit{
                 //Helaas nodig omdat browsers stom doen omtrent content editable
                 this.solveEnterIssue(ui.item);
 
-                //waarom moet dit?
-                //setTimeout(() => ui.item.focus(), 0);
+                //Omdat het soms even duurt voordat een component kan renderen, moeten we hier even op wachten.
+                //De focues 'refresht' het scherm zogenaamd. 
+                setTimeout(() => ui.item.focus(), 0);
 
             }
 
@@ -110,13 +111,20 @@ export class HtmlComponent implements OnInit{
     }
 
     public decompileHtml(): string {
+        //ophalen html
         var pageObject: JQuery = this.pageElement.find("dynamic-html");
-        var lin = $(this).attr('href'); //verwijderen van ng-reflect voor id's
+
+        //var lin = $(this).attr('href'); //verwijderen van ng-reflect voor id's
+
         pageObject.find(".wd-game-component").empty(); //leeg maken van gecompileerde componenten
-        pageObject.find('*').removeAttr("contenteditable");
+
+        pageObject.find('*').removeAttr("contenteditable"); //verwijder contenteditable van elementen
+        //verwijder alle classes van jquery-ui (beginnnen met ui)
         pageObject.find('*').removeClass (function (index, className) {
             return (className.match (/(^|\s)ui-\S+/g) || []).join(' ');
         });
+    
+        
         var htmlString = pageObject.html();
         htmlString = htmlString.replace(/ng-reflect-(.+?)=/g, '[$1]=')
         return htmlString;

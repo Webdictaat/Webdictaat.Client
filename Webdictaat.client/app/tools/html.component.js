@@ -41,8 +41,9 @@ var HtmlComponent = (function () {
                     _this.enableContainers(ui.item);
                     //Helaas nodig omdat browsers stom doen omtrent content editable
                     _this.solveEnterIssue(ui.item);
-                    //waarom moet dit?
-                    //setTimeout(() => ui.item.focus(), 0);
+                    //Omdat het soms even duurt voordat een component kan renderen, moeten we hier even op wachten.
+                    //De focues 'refresht' het scherm zogenaamd. 
+                    setTimeout(function () { return ui.item.focus(); }, 0);
                 }
                 _this.recompile();
             });
@@ -68,10 +69,12 @@ var HtmlComponent = (function () {
         this.zone.run(function () { }); //Get back into angular running context
     };
     HtmlComponent.prototype.decompileHtml = function () {
+        //ophalen html
         var pageObject = this.pageElement.find("dynamic-html");
-        var lin = $(this).attr('href'); //verwijderen van ng-reflect voor id's
+        //var lin = $(this).attr('href'); //verwijderen van ng-reflect voor id's
         pageObject.find(".wd-game-component").empty(); //leeg maken van gecompileerde componenten
-        pageObject.find('*').removeAttr("contenteditable");
+        pageObject.find('*').removeAttr("contenteditable"); //verwijder contenteditable van elementen
+        //verwijder alle classes van jquery-ui (beginnnen met ui)
         pageObject.find('*').removeClass(function (index, className) {
             return (className.match(/(^|\s)ui-\S+/g) || []).join(' ');
         });
