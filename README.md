@@ -36,7 +36,7 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+TODO: fill in test steps 
 
 ### Break down into end to end tests
 
@@ -56,7 +56,9 @@ Give an example
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Additional notes about how to deploy this on a live system.
+
+
 
 ## Built With
 

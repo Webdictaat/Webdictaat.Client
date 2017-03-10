@@ -1,12 +1,12 @@
 ﻿import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DictatenComponent }  from '../dictaten/dictaten.component';
-import { DictaatComponent }  from '../dictaat/dictaat.component';
-import { EditPageComponent }  from '../pages/edit-page.component';
-import { ProfileComponent } from '../profile/profile.component';
-import { DemoComponent } from '../demo/demo.component';
-import { DirtyGuard } from "../core/security/dirty.guard";
+import { DictatenComponent }  from '../shared/dictaten/dictaten.component';
+import { DictaatComponent }  from '../shared/dictaat/dictaat.component';
+import { EditPageComponent }  from '../shared/pages/edit-page.component';
+import { ProfileComponent } from '../shared/profile/profile.component';
+import { DemoComponent } from '../shared/demo/demo.component';
+import { DirtyGuard } from "../shared/core/security/dirty.guard";
 
 
 const appRoutes: Routes = [

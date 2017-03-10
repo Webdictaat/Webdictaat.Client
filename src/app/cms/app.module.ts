@@ -1,38 +1,38 @@
-﻿import { NgModule }      from '@angular/core';
+import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }    from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 //modules
-import { QuestionsModule } from '../questions/questions.module';
-import { ImagesModule } from '../images/images.module';
-import { PagesModule } from '../pages/pages.module';
-import { ToolsModule } from '../tools/tools.module';
-import { GameElementsModule } from '../game-elements/game-elements.module';
+import { QuestionsModule } from '../shared/questions/questions.module';
+import { ImagesModule } from '../shared/images/images.module';
+import { PagesModule } from '../shared/pages/pages.module';
+import { ToolsModule } from '../shared/tools/tools.module';
+import { GameElementsModule } from '../shared/game-elements/game-elements.module';
 
 //components
-import { AddRatingComponent } from '../rating/add-rating.component';
 import { AppComponent } from './app.component';
-import { AddDictaatComponent } from '../dictaten/add-dictaat.component';
-import { DictatenComponent } from '../dictaten/dictaten.component';
-import { DialogComponent } from '../dialog/dialog.component';
-import { DictaatComponent } from '../dictaat/dictaat.component';
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';
-import { EditPageComponent }  from '../pages/edit-page.component';
-import { AvatarComponent }  from '../avatar/avatar.component';
-import { ProfileComponent }  from '../profile/profile.component';
-import { DemoComponent } from '../demo/demo.component';
+import { AddRatingComponent } from '../shared/rating/add-rating.component';
+import { AddDictaatComponent } from '../shared/dictaten/add-dictaat.component';
+import { DictatenComponent } from '../shared/dictaten/dictaten.component';
+import { DialogComponent } from '../shared/dialog/dialog.component';
+import { DictaatComponent } from '../shared/dictaat/dictaat.component';
+import { EditPageComponent }  from '../shared/pages/edit-page.component';
+import { AvatarComponent }  from '../shared/avatar/avatar.component';
+import { ProfileComponent }  from '../shared/profile/profile.component';
+import { DemoComponent } from '../shared/demo/demo.component';
 
 //services
 import { routing } from './app.routing';
-import { DialogService } from '../services/dialog.service';
-import { QuestionsService } from '../services/question.service';
-import { RatingService } from '../services/rating.service';
-import { ImageService } from '../services/images.service';
-import { DictatenService } from '../services/dictaten.service';
-import { AccountService } from '../services/account.service';
-import { wdApi } from '../core/wdapi.service';
-import { DirtyGuard } from "../core/security/dirty.guard";
+import { DialogService } from '../shared/services/dialog.service';
+import { QuestionsService } from '../shared/services/question.service';
+import { RatingService } from '../shared/services/rating.service';
+import { ImageService } from '../shared/services/images.service';
+import { DictatenService } from '../shared/services/dictaten.service';
+import { AccountService } from '../shared/services/account.service';
+import { wdApi } from '../shared/core/wdapi.service';
+import { DirtyGuard } from "../shared/core/security/dirty.guard";
 
 @NgModule({
     imports: [
@@ -53,6 +53,6 @@ import { DirtyGuard } from "../core/security/dirty.guard";
         AppComponent
     ]
 })
-export class AppModule {
+export class CMSModule {
 
 }

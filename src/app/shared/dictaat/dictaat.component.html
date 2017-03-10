@@ -1,0 +1,20 @@
+﻿<ul class="breadcrumb" style="margin-bottom: 5px;">
+  <li><a href="#">Webdictaat</a></li>
+  <li  *ngIf="dictaat" class="active">{{dictaat.name}}</li>
+</ul>
+
+<div class="container">
+  
+    <div class="panel panel-default sidebar" *ngIf="dictaat">
+        <div class="panel-body text-center">
+            <h1>{{dictaat.name}}</h1>
+            <a target="_blank" href="/dictaten/{{dictaat.name}}">
+                webdictaat.aii.avans.nl/dictaten/{{dictaat.name}}
+            </a>
+        </div>
+    </div>
+    <div class="panel panel-default sidebar" *ngIf="dictaat">
+        <wd-pages [dictaat]="dictaat"></wd-pages>
+    </div>
+
+</div>

@@ -1,0 +1,54 @@
+﻿
+
+<div class="panel panel-default navbar-sub">
+    <div class="panel-body text-center">
+        <h1>Welkom op de site van Webdictaat!</h1>
+
+        <p>Maak nu een nieuw webdictaat, of bekijk de lijst van bestaande dictaten!</p>
+
+        <p *ngIf="isAuth">
+            <wd-add-dictaat (dictaatAdded)="setDictaten($event)"></wd-add-dictaat>
+        </p>
+
+        <p *ngIf="!isAuth">
+            <button class="btn btn-primary btn-raised" (click)="login()">Login to get started!</button>
+        </p>
+
+        <img src="img/wd-logo.png" class="wd-logo" />
+    </div>
+    <div class="progress" [hidden]="dictaten">
+        <div class="progress-bar"  [style.width]="loaderValue + '%'"></div>
+    </div>
+</div>
+
+<div class="container">
+
+    
+    <div class="dictaten row">
+        <div class="col-xs-12 col-sm-6 col-md-4 text-center"  *ngFor="let  dictaat of dictaten">
+            <div class="panel panel-default" >
+                <div class="panel-body">
+
+                    <h2>{{dictaat.name}}</h2>
+
+                    <p *ngIf="isAuth">
+                        <button type="button" class="btn btn-raised btn-info" (click)="gotoDetail(dictaat)">Details</button>
+                    </p>
+
+                    <p>
+                        <a target="_blank" href="/dictaten/{{dictaat.name}}">
+                            webdictaat.nl/dictaten/{{dictaat.name}}
+                        </a>
+                    </p>
+                </div>
+
+                <div class="panel-footer">
+                    <p>
+                        Updates N days ago
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

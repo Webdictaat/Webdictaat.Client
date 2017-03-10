@@ -6,15 +6,15 @@ import { LocationStrategy, HashLocationStrategy} from '@angular/common';
 //components
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
-import { PageComponent } from '../page/page.component';
-import { HtmlOutlet } from '../core/html-outlet.directive';
-import { NavMenuComponent } from '../nav-menu/nav-menu.component';
-import { AvatarComponent }  from '../avatar/avatar.component';
+import { PageComponent } from '../shared/page/page.component';
+import { HtmlOutlet } from '../shared/core/html-outlet.directive';
+import { NavMenuComponent } from '../shared/nav-menu/nav-menu.component';
+import { AvatarComponent }  from '../shared/avatar/avatar.component';
 
-import { QuestionsService } from '../services/question.service';
-import { AccountService } from '../services/account.service';
-import { RatingService } from '../services/rating.service';
-import { wdApi } from '../core/wdapi.service';
+import { QuestionsService } from '../shared/services/question.service';
+import { AccountService } from '../shared/services/account.service';
+import { RatingService } from '../shared/services/rating.service';
+import { wdApi } from '../shared/core/wdapi.service';
 
 @NgModule({
     imports: [BrowserModule, HttpModule, routing],
@@ -24,6 +24,6 @@ import { wdApi } from '../core/wdapi.service';
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule {
+export class ClientsModule {
 
 }

@@ -1,8 +1,8 @@
 ﻿import { Component  } from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
-    selector: "wd-app",
-    templateUrl: "pages/shared/layout.html",
+    selector: "wd-client-app",
+    templateUrl: "./app.component.html",
 })
 export class AppComponent {
 

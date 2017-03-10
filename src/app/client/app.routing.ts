@@ -1,6 +1,6 @@
 ﻿import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PageComponent } from '../page/page.component';
+import { PageComponent } from '../shared/page/page.component';
 
 const appRoutes: Routes = [
     {
