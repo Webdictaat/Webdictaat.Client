@@ -1,10 +1,8 @@
 # Webdictaat.Client
 
-An Angular2 web application that consumes the Webdictaat.Client
+An Angular2 web application that consumes the Webdictaat.CMS
 
-The client is currently up and running on: 
-
-[http://webdictaat.aii.avans.nl/cms/](http://webdictaat.aii.avans.nl/cms/)
+The client is currently up and running on [http://webdictaat.aii.avans.nl/cms/](http://webdictaat.aii.avans.nl/cms/).
 
 
 ## Getting Started
@@ -48,8 +46,8 @@ TODO: implement e2e tests
 Additional notes about how to deploy this on a live system.
 
 The build has been seperated in to two parts:
-* Build of the CMS 
-* Build of the client dictaat sources
+* Build of the CMS web application
+* Build of the Client javascript sources
 
 To build the CMS application run:
 
