@@ -1,6 +1,11 @@
 # Webdictaat.Client
 
-An Angular2 web application that consumes the Webdictaat.API
+An Angular2 web application that consumes the Webdictaat.Client
+
+The client is currently up and running on: 
+
+[http://webdictaat.aii.avans.nl/cms/](http://webdictaat.aii.avans.nl/cms/)
+
 
 ## Getting Started
 
@@ -60,21 +65,24 @@ npm run build:client
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Angular2](https://angular.io) - The web framework used
+* [NPM](https://www.npmjs.com) - Dependency Management
+* [Webpack](https://webpack.github.io/) - Module bundler
+* [Bootstrap-material-design](http://fezvrasta.github.io/bootstrap-material-design) - The syling framework
+
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+This webdictaat project is an opensource githtub project, where any one can contribute. 
+Please contact me ]ssmulder@avans.nl](ssmulder@avans.nl) for information on how to pitch in.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We are in the most early phases of development, and an officiel version is not yet released. 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Stijn Smulders** - *Initial work* - [Linksonder](https://github.com/linksonder)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
@@ -84,6 +92,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* Shout out to Michel du Croix, for being the first student to join in on the platform development
+
