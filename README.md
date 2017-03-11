@@ -13,52 +13,50 @@ What things you need to install the software and how to install them
 ```
 npm install webpack -g
 npm install webpack-dev-server -g
-npm install angular-cli -g
 ```
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
+How to get a development env running
 
 ```
-Give the example
+npm install
 ```
 
-And repeat
+After that you can run the cms application with the following command.
 
 ```
-until finished
+npm start
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-TODO: fill in test steps 
+TODO: implement js tests
 
 ### Break down into end to end tests
 
-Explain what these tests test and why
+TODO: implement e2e tests
 
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
 Additional notes about how to deploy this on a live system.
 
+The build has been seperated in to two parts:
+* Build of the CMS 
+* Build of the client dictaat sources
 
+To build the CMS application run:
+
+```
+npm run build
+```
+
+To build the client dictaat application run:
+
+```
+npm run build:client
+```
 
 ## Built With
 

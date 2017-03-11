@@ -6,7 +6,6 @@
     "ng": "ng",
     "start": "webpack-dev-server --config webpack.cms.config.js",
     "build": "webpack  --config webpack.cms.config.js",
-    "start:client": "webpack-dev-server --config webpack.client.config.js",
     "build:client": "webpack --config webpack.client.config.js",
     "test": "karma start ./karma.conf.js",
     "lint": "ng lint",

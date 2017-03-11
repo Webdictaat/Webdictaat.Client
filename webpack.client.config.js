@@ -21,12 +21,6 @@ const deployUrl = undefined;
 module.exports = {
   "devtool": "source-map",
   "resolve": {
-     "alias": {
-        // bind version of jquery-ui
-        "jquery-ui": "jquery-ui-bundle/jquery-ui.min.js",      
-        // bind to modules;
-        modules: path.join(__dirname, "node_modules"),
-     },
     "extensions": [
       ".ts",
       ".js"
@@ -206,11 +200,6 @@ module.exports = {
              { from: './src\\img', to: 'img' },
             
     ]),
-    new webpack.ProvidePlugin({
-      jQuery: 'jquery',
-      $: 'jquery',
-      jquery: 'jquery'
-    }),
     new NoEmitOnErrorsPlugin(),
     new GlobCopyWebpackPlugin({
       "patterns": [
