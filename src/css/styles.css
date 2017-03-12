@@ -9,6 +9,18 @@ body {
     background-color: rgba(128, 128, 128, 0.4);
 }
 
+.close-modal-button{
+    position: absolute;
+    top:24px;
+    right:24px;
+   
+    color:darkgray;
+}
+
+.close-modal-button:hover{
+     cursor:pointer;
+}
+
 .wd-container{
     padding:15px;
     border:1px dashed #ccc;
@@ -36,7 +48,7 @@ body {
     display:block;
  }
 
-.wd-row{
+.wd-flex{
     display:flex;
 }
 
@@ -157,7 +169,13 @@ img.wd-logo{
     cursor: pointer;
 }
 
-.wd-component h1, h2, h3, h4, h5, p, span{
+.wd-component h1, 
+.wd-component h2, 
+.wd-component h3, 
+.wd-component h4, 
+.wd-component h5, 
+.wd-component p, 
+.wd-component span{
     cursor: default;
 }
 

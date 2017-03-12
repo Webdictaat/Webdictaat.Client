@@ -18,6 +18,7 @@ import { AddDictaatComponent } from '../shared/dictaten/add-dictaat.component';
 import { DictatenComponent } from '../shared/dictaten/dictaten.component';
 import { DialogComponent } from '../shared/dialog/dialog.component';
 import { DictaatComponent } from '../shared/dictaat/dictaat.component';
+import { RemoveDictaatComponent } from '../shared/dictaat/remove-dictaat.component';
 import { EditPageComponent }  from '../shared/pages/edit-page.component';
 import { AvatarComponent }  from '../shared/avatar/avatar.component';
 import { ProfileComponent }  from '../shared/profile/profile.component';
@@ -40,7 +41,7 @@ import { DirtyGuard } from "../shared/core/security/dirty.guard";
         BrowserModule, HttpModule, routing, PagesModule, FormsModule
     ],
     declarations: [
-        DemoComponent,
+        DemoComponent, RemoveDictaatComponent,
         AddDictaatComponent, DialogComponent, AvatarComponent, AddRatingComponent, ProfileComponent,
         AppComponent, DictatenComponent, DictaatComponent, EditPageComponent
     ],

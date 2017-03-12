@@ -10,10 +10,10 @@ export class wdApi {
     constructor(private http: Http) { } 
 
     //public urlPrefix = 'http://student.aii.avans.nl/doc/ssmulder/api';
-    //public urlPrefix = 'http://localhost:65418/api';
+    public urlPrefix = 'http://localhost:65418/api';
     //public urlPrefix = 'http://localhost:8001/api';
     //public urlPrefix = 'http://webdictaat.azurewebsites.net/api';
-    public urlPrefix = "http://webdictaat.aii.avans.nl/api";
+    //public urlPrefix = "http://webdictaat.aii.avans.nl/api";
 
     public get(url) {
         return this.http.get(this.urlPrefix + url, { withCredentials: true }).catch(this.handleError);
@@ -57,7 +57,7 @@ export class wdApi {
         return this.http.put(this.urlPrefix + url, data, { withCredentials: true }).catch(this.handleError);
     }
 
-    delete(url) {
+    public delete(url) {
         return this.http.delete(this.urlPrefix + url, { withCredentials: true }).catch(this.handleError);
     }
 

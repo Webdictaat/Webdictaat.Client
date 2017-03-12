@@ -7,6 +7,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 @Component({
     selector: "wd-add-dictaat",
     templateUrl: "./add-dictaat.component.html",
+    host: {
+        '(document:click)': 'outsideModal($event)',
+    },
     providers: []
 })
 export class AddDictaatComponent {
@@ -32,6 +35,19 @@ export class AddDictaatComponent {
 
  
     }
+
+    public outsideModal($event){
+        //if showing, and some one clicked outside the modal container
+        if(this.showModal && $event.srcElement.className == "modal")
+        {
+            this.cancel();
+        }
+    }
+
+    public cancel(){
+        this.showModal = false;
+    }
+
 
     public add(): void {
         this.showModal = false;

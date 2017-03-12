@@ -10,7 +10,11 @@ import { DirtyGuard } from "../shared/core/security/dirty.guard";
 
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/dictaten', pathMatch: 'full' },
+    { 
+        path: '', 
+        redirectTo: '/dictaten', 
+        pathMatch: 'full' 
+    },
     {
         path: 'dictaten',
         component: DictatenComponent
@@ -22,7 +26,7 @@ const appRoutes: Routes = [
     {
         path: 'dictaten/:dictaatName/pages/:pageName',
         component: EditPageComponent,
-        canDeactivate: [DirtyGuard],
+        canDeactivate: [DirtyGuard], //EditPageComponent implements the DirtyComponent interface
     },
     {
         path: 'profile',
@@ -32,7 +36,10 @@ const appRoutes: Routes = [
         path: 'dictaten/:dictaatName/pages/:pageName',
         component: EditPageComponent
     },
-    { path: 'demo', component: DemoComponent }
+    { 
+        path: 'demo', 
+        component: DemoComponent 
+    }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

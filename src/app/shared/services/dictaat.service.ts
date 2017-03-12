@@ -20,4 +20,10 @@ export class DictaatService {
             .then(response => response.json() as Dictaat);
 
     }
+
+    public removeDictaat(dictaatName: String): Promise<any> {
+          return this.wdapi.delete("/dictaten/" + dictaatName)
+            .toPromise()
+            .then(response => response.json() as any);
+    }
 }

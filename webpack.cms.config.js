@@ -227,7 +227,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       "template": "./src\\index.cms.html",
       "filename": "./index.html",
-      "hash": false,
+      "hash": true,
       "inject": true,
       "compile": true,
       "favicon": false,

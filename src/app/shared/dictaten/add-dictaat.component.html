@@ -2,11 +2,14 @@
     <span class="glyphicon glyphicon-plus pull-left"></span>&nbsp;Create a new Dictaat
 </button>
 
-<div class="modal" *ngIf="showModal">
-    <div class="modal-dialog" role="document">
+<div class="modal" *ngIf="showModal" >
+    <div class="modal-dialog text-left" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+             <div class="modal-header">
                 <h4 class="modal-title">Add new dictaat</h4>
+                <div class="close-modal-button" (click)="cancel()">
+                    <span  class="glyphicon glyphicon-remove"></span>
+                </div>
             </div>
             <div class="modal-body">
 
