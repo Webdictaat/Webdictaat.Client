@@ -34,6 +34,7 @@ import { DictatenService } from '../shared/services/dictaten.service';
 import { AccountService } from '../shared/services/account.service';
 import { wdApi } from '../shared/core/wdapi.service';
 import { DirtyGuard } from "../shared/core/security/dirty.guard";
+import { AchievementService } from "../shared/services/achievement.service";
 
 @NgModule({
     imports: [
@@ -46,7 +47,7 @@ import { DirtyGuard } from "../shared/core/security/dirty.guard";
         AppComponent, DictatenComponent, DictaatComponent, EditPageComponent
     ],
     providers: [
-        DialogService, QuestionsService, ImageService, AccountService, wdApi,
+        DialogService, QuestionsService, ImageService, AchievementService, AccountService, wdApi,
         RatingService, DictatenService, DirtyGuard,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
     ],
