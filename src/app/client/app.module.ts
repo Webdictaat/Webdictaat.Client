@@ -24,6 +24,6 @@ import { wdApi } from '../shared/core/wdapi.service';
     ],
     bootstrap: [AppComponent]
 })
-export class ClientsModule {
+export class ClientModule {
 
 }
