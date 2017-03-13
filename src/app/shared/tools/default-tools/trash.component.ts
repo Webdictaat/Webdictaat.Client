@@ -14,16 +14,13 @@ export class TrashComponent {
     private content: string;
 
     public ngOnInit(): void {
-        // $('#wd-trash').sortable({
-        //     receive: this.removeElement
-        // });
+        $('#wd-trash').sortable({
+            receive: this.removeElement
+        });
     }
 
     public removeElement(event, ui): void {
-        //If ancestor is .tools, dont remove
-        var parentsWithTools = $(ui.item).parents('.tools');
-        if (!parentsWithTools.length)
-            ui.item.remove();
+        ui.item.remove();
     }
 
 }
