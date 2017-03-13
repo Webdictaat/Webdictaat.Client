@@ -72,7 +72,7 @@ npm run build:client
 ## Contributing
 
 This webdictaat project is an opensource githtub project, where any one can contribute. 
-Please contact me ]ssmulder@avans.nl](ssmulder@avans.nl) for information on how to pitch in.
+Please contact me [ssmulder@avans.nl](ssmulder@avans.nl) for information on how to pitch in.
 
 ## Versioning
 
@@ -90,5 +90,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Shout out to Michel du Croix, for being the first student to join in on the platform development
+* Shout out to Michel du Croix - [mlcroix](https://github.com/mlcroix), for being the first student to join in on the platform development
 
