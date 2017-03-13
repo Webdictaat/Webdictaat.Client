@@ -25,6 +25,6 @@ import { AchievementService } from '../shared/servicees/achievement.service';
     ],
     bootstrap: [AppComponent]
 })
-export class ClientsModule {
+export class ClientModule {
 
 }

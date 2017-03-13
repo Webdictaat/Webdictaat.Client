@@ -12,6 +12,7 @@ export class wdApi {
     //public urlPrefix = 'http://student.aii.avans.nl/doc/ssmulder/api';
     //public urlPrefix = 'http://localhost:65418/api';
     //public urlPrefix = 'http://localhost:8001/api';
+    //public urlPrefix = 'http://webdictaat.azurewebsites.net/api';
     public urlPrefix = "http://webdictaat.aii.avans.nl/api";
 
     public get(url) {
