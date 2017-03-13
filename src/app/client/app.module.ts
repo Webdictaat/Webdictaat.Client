@@ -15,12 +15,13 @@ import { QuestionsService } from '../shared/services/question.service';
 import { AccountService } from '../shared/services/account.service';
 import { RatingService } from '../shared/services/rating.service';
 import { wdApi } from '../shared/core/wdapi.service';
+import { AchievementService } from '../shared/servicees/achievement.service';
 
 @NgModule({
     imports: [BrowserModule, HttpModule, routing],
     declarations: [HtmlOutlet, AppComponent, PageComponent, NavMenuComponent, AvatarComponent],
     providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },
-        QuestionsService, AccountService, RatingService, wdApi
+        QuestionsService, AccountService, RatingService, wdApi, AchievementService
     ],
     bootstrap: [AppComponent]
 })

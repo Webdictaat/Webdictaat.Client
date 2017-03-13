@@ -1,0 +1,41 @@
+<div>
+    <h2>Achievements</h2>
+    <div class="container">
+        <div class="buttoncontainer">
+            <button class="listbutton" (click)="toggleLayout()" id="layoutbutton">list</button>
+        </div>
+        <div *ngIf="grid">
+            <div class="achievementscontainer">
+                <div *ngFor="let achievement of achievements">
+                    <div>
+                        <div class="achievement" (mouseover)="message(achievement)">
+                        </div>
+                        <div class="achievementinfo">
+                            <p>{{achievement.name}}</p>
+                            <p>{{achievement.opdracht}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!grid">
+            <div class="achievementscontainer">
+                <div *ngFor="let group of achievementlist">
+                    <div class="listgroup">
+                        <h2>{{group.name}}</h2>
+                        <div *ngFor="let a of group.Achievements">
+                            <div class="achievement" (mouseover)="message(achievement)">
+                            </div>
+                            <div class="achievementinfo">
+                                <p>{{a.name}}</p>
+                                <p>{{a.opdracht}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
