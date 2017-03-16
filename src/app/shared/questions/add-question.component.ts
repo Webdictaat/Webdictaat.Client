@@ -1,17 +1,18 @@
-﻿import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef  } from '@angular/core';
+﻿import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { QuestionsService } from '../services/question.service';
 import { DictaatService } from '../services/dictaat.service';
 
 
-import { Question } from '../models/question';
+import { Question, QuestionAnswer } from '../models/question';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
     selector: "wd-add-question",
     templateUrl: "./add-question.component.html",
 })
-export class AddQuestionComponent implements OnInit   {
+export class AddQuestionComponent implements OnInit {
+       
 
     private dictaatName: string;
 
@@ -24,7 +25,8 @@ export class AddQuestionComponent implements OnInit   {
     constructor(
         private questionsService: QuestionsService,
         private route: ActivatedRoute,
-        private changeDetector: ChangeDetectorRef
+        private changeDetector: ChangeDetectorRef,
+        private  zone: NgZone
     ) {}
 
     //event
@@ -34,11 +36,14 @@ export class AddQuestionComponent implements OnInit   {
         });
 
         this.questionsService.getIsModalVisible().subscribe((isModalVisible: boolean) => {
+            
             this.isModalVisible = isModalVisible;
             if (isModalVisible) {
                 this.question = new Question();  
-                this.changeDetector.detectChanges();
+                
             }
+
+            this.zone.run(() => {});
           
         });
     }
@@ -50,6 +55,11 @@ export class AddQuestionComponent implements OnInit   {
                 this.questionsService.CompleteModal(question);
             });
     }
+
+    
+    AddAnswer(): void {
+        this.question.answers.push(new QuestionAnswer());
+    };
 
     public Cancel(): void {
         this.questionsService.CancelModal();

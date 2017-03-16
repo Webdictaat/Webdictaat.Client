@@ -15,7 +15,8 @@ var $ : any;
 `],
     template: `
   
-        <div id='page'>
+        <!-- most bootstrap elements only work when inside a container!! -->
+        <div id='page' class='container-fluid'>
             <html-outlet  [html]="innerHTML" (afterCompile)="afterCompile()"></html-outlet>
         </div>
         <div class='panel-footer'>
@@ -125,7 +126,6 @@ export class HtmlComponent implements OnInit{
             return (className.match (/(^|\s)ui-\S+/g) || []).join(' ');
         });
     
-        
         var htmlString = pageObject.html();
         htmlString = htmlString.replace(/ng-reflect-(.+?)=/g, '[$1]=')
         return htmlString;
