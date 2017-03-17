@@ -2,19 +2,15 @@
 import { DialogService } from '../services/dialog.service';
 import { ToolParams } from '../models/tool-params';
 
-var $ : any;
-
+declare var $ : any;
+declare var CKEDITOR : any;
 
 @Component({
     selector: "wd-html",
-    styles: [`
-    .code-editor{
-        width:100%;
-        max-width:100%;
-    }
-`],
     template: `
   
+      
+
         <!-- most bootstrap elements only work when inside a container!! -->
         <div id='page' class='container-fluid'>
             <html-outlet  [html]="innerHTML" (afterCompile)="afterCompile()"></html-outlet>
@@ -28,7 +24,7 @@ var $ : any;
 })
 export class HtmlComponent implements OnInit{
 
-    public editableElements =  ".wd-editable, p, span, h1, h2, h3, h4, h5";
+    public editableElements =  ".wd-editable, h1, h2, h3, h4, h5";
     public containerElements = ".wd-container";
 
     @Input()
@@ -46,6 +42,7 @@ export class HtmlComponent implements OnInit{
 
     public ngOnInit(): void{
         this.pageElement = $('#page'); //.html(this.innerHTML);
+        CKEDITOR.disableAutoInline = true;
     }
 
     public ngOnChanges() : void{
@@ -71,15 +68,17 @@ export class HtmlComponent implements OnInit{
                     .removeAttr('style')
                     .find(this.editableElements)
                     .attr("contenteditable", "true");
+                   // .each((editableElement) => CKEDITOR.inline(editableElement));
 
                 this.pageElement.find('.wd-container').find(this.editableElements)
                     .attr("contenteditable", "true");
+                    //.each((editableElement) => CKEDITOR.inline(editableElement));
 
                 //Als het gedropte item sub containers bevat, even drop enable
                 this.enableContainers(ui.item);
 
                 //Helaas nodig omdat browsers stom doen omtrent content editable
-                this.solveEnterIssue(ui.item);
+                //this.solveEnterIssue(ui.item);
 
                 //Omdat het soms even duurt voordat een component kan renderen, moeten we hier even op wachten.
                 //De focues 'refresht' het scherm zogenaamd. 
@@ -101,15 +100,22 @@ export class HtmlComponent implements OnInit{
      */
     public afterCompile() {
 
-
         this.enableContainers(this.pageElement);
 
         this.pageElement.find('.wd-container').find(this.editableElements)
             .attr("contenteditable", "true");
 
-        this.solveEnterIssue(this.pageElement.find(this.editableElements));
+        this.pageElement.find("[contenteditable='true']")
+            .each((k, editableElement) => {
+                CKEDITOR.inline(editableElement)
+            });
+
+
+        //this.solveEnterIssue(this.pageElement.find(this.editableElements));
 
         this.zone.run(() => { }); //Get back into angular running context
+
+       
     }
 
     public decompileHtml(): string {
@@ -121,13 +127,25 @@ export class HtmlComponent implements OnInit{
         pageObject.find(".wd-game-component").empty(); //leeg maken van gecompileerde componenten
 
         pageObject.find('*').removeAttr("contenteditable"); //verwijder contenteditable van elementen
-        //verwijder alle classes van jquery-ui (beginnnen met ui)
+        
+        //verwijder alle classes van jquery-ui (beginnnen met ui) en CKEditor
+        pageObject.find('*').removeClass (function (index, className) {
+            return (className.match (/(^|\s)ui-\S+/g) || className.match (/(^|\s)ui-\S+/g)  || []).join(' ');
+        });
+
+        pageObject.find('.handle').remove();//remove all handles
         pageObject.find('*').removeClass (function (index, className) {
             return (className.match (/(^|\s)ui-\S+/g) || []).join(' ');
         });
+
+        //CKEditor places allot of classes on our editable elements, we want to remove these
+        
     
+        //Angular replaces input attributes with an ng-reflect attributes
+        //to get our valid html back, we need to remove these ng-reflect attributes
         var htmlString = pageObject.html();
         htmlString = htmlString.replace(/ng-reflect-(.+?)=/g, '[$1]=')
+
         return htmlString;
     }
 
@@ -137,12 +155,15 @@ export class HtmlComponent implements OnInit{
 
 
     private savePage(): void {
-        this.pageEdited.emit(this.decompileHtml());
+        var html = this.decompileHtml()
+        this.pageEdited.emit(html);
+        this.compileHtml(html);
     }
 
     private enableContainers(element): void {
 
         element.find('.wd-container').sortable({
+            handle: ".handle",
             connectWith: '.wd-container, #wd-trash',
             cancel: this.editableElements,
             hoverClass: "ui-state-hover",
@@ -158,6 +179,11 @@ export class HtmlComponent implements OnInit{
                 ui.item.removeClass('dragged');
             }
         });
+
+        //remove and add handles
+        element.find('.handle').remove();
+        element.find('.wd-container > .wd-component')
+            	.append("<div class='handle'><i class='fa fa-ellipsis-h' aria-hidden='true'></i></div>");
     }  
 
     /**

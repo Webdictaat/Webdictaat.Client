@@ -22,13 +22,12 @@ body {
 }
 
 .wd-container{
-    padding:15px;
-    border:1px dashed #ccc;
+    padding:2px;
 }
 
 .drop-container{
    padding:2px;
-   border:1px dashed black;
+   border:1px dashed gray;
 }
 
 .tools .wd-component{
@@ -36,12 +35,13 @@ body {
 }
 
  .wd-component {
-     border:1px dashed black;
+     border:1px dashed gray;
      border-color: transparent;
      padding:2px;
+     position: relative;
 }
  .wd-component:hover{
-    border:1px dashed black;
+    /*border:1px dashed gray;*/
 }
 
  .wd-game-component{
@@ -165,20 +165,6 @@ img.wd-logo{
     border-bottom:2px solid #00AEED;
 }
 
-.wd-component{
-    cursor: pointer;
-}
-
-.wd-component h1, 
-.wd-component h2, 
-.wd-component h3, 
-.wd-component h4, 
-.wd-component h5, 
-.wd-component p, 
-.wd-component span{
-    cursor: default;
-}
-
 .elements > tbody > tr > td{
     padding:2px;
 }
@@ -199,3 +185,46 @@ img.wd-logo{
     .item-hover *:hover {
         cursor:pointer;
     }
+
+
+.focus{
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    background-color:white;
+    padding:3px;
+}
+
+*:hover > .handle{
+    display: flex;
+}
+
+.handle:hover{
+    color:#00AEED;
+}
+
+
+ .handle{
+    display: none;
+    position:absolute;
+    width:40%;
+    height:15px;
+    color:gray;
+    top:-15px;
+    left:30%;
+    cursor:move;
+    align-items: center;
+    justify-content: center;
+}
+
+/** override rows from bootstrap */
+
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
