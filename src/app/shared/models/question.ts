@@ -12,10 +12,6 @@ export class Question {
     text: string;
     answers: QuestionAnswer[] = [];
 
-    AddAnswer(): void {
-        this.answers.push(new QuestionAnswer());
-    };
-
     RemoveAnswer(answer: QuestionAnswer): void {
         var index = this.answers.indexOf(answer);
         this.answers.splice(index, 1) 

@@ -3,8 +3,10 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" (click)="Cancel()">&times;</button>
-                <h4 class="modal-title">Add Question</h4>
+                <h4 class="modal-title">Add Question ({{isModalVisible}})</h4>
+                <div class="close-modal-button" (click)="Cancel()">
+                    <span  class="glyphicon glyphicon-remove"></span>
+                </div>
             </div>
             <div class="modal-body">
               
@@ -17,7 +19,7 @@
                     <div class="form-group">
                         <label for="isInMenu">Possible answers</label>
 
-                        <button class="btn btn-success btn-sm pull-right" (click)="question.AddAnswer()">
+                        <button class="btn btn-success btn-sm pull-right" (click)="AddAnswer()">
                             <span class="glyphicon glyphicon-plus"></span>
                         </button>
 

@@ -42,8 +42,6 @@ export class wdApi {
                 }
             };
 
-            debugger;
-
             xhr.open('POST', this.urlPrefix + url, true);
             xhr.withCredentials = true;
             xhr.send(formData);

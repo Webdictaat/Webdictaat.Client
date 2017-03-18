@@ -58,7 +58,6 @@ export class RemoveDictaatComponent {
         this.dictaatService.removeDictaat(this.dictaat.name)
             .then((success) => {
                 if(success){
-                    debugger;
                     this.showModal = false;
                     this.router.navigateByUrl('/');
                 }
