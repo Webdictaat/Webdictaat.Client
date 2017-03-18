@@ -1,8 +1,9 @@
 export class Achievement {
     id: number;
     name: string;
-    opdracht: string;
-    //trigger: string;
-    group: string;
+    trigger: string;
+    hidden: boolean;
+    completed: boolean;
     image: string;
+
 }
