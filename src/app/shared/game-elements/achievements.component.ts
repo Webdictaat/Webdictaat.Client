@@ -12,7 +12,6 @@ import {AchievementGroup} from "../models/AchievementGroup";
 
 export class AchievementsComponent implements OnInit {
     abstract;
-    achievementlist: AchievementGroup[] = [];
     achievementgroups: AchievementGroup[];
     grid: boolean = true;
 
@@ -25,13 +24,9 @@ export class AchievementsComponent implements OnInit {
     }
 
     getAchievements(): void {
-        //this.achievementService.getAchievements().then(achievements => this.achievements = achievements);
         this.achievementService.getAchievements().then((achievements) => {
             this.achievementgroups = achievements;
             console.log(achievements);
-
-            //this.createList();
-            this.orderList();
         });
     }
 
@@ -49,6 +44,11 @@ export class AchievementsComponent implements OnInit {
             this.grid = true;
             button.innerText = "list";
         }
+    }
+
+    achievementinfo(achiev: Achievement)
+    {
+
     }
 
     /*
@@ -82,28 +82,20 @@ export class AchievementsComponent implements OnInit {
 
         console.log(this.achievementlist);
     }
+
+     checkStructure(groupname: String)
+     {
+     for(let entry of this.achievementlist)
+     {
+     if(entry.name == groupname) {
+     return true;
+     }
+     }
+
+     return false;
+
+     }
     */
-
-    orderList(): void
-    {
-        this.achievementlist = this.achievementgroups;
-    }
-
-
-    checkStructure(groupname: String)
-    {
-        for(let entry of this.achievementlist)
-        {
-            if(entry.name == groupname) {
-                return true;
-            }
-        }
-
-        return false;
-
-    }
-
-
-
+    
 }
 

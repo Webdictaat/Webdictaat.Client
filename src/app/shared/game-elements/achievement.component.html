@@ -6,29 +6,58 @@
         </div>
         <div *ngIf="grid">
             <div class="achievementscontainer">
-                <div *ngFor="let achievement of achievements">
-                    <div>
-                        <div class="achievement" (mouseover)="message(achievement)">
+                <div *ngFor="let group of achievementgroups">
+                    <div *ngFor="let achievement of group.Achievements">
+                        <div *ngIf="achievement.hidden && achievement.completed || !achievement.hidden">
+
+                            <div *ngIf="!achievement.completed">
+                                <div class="achievement notcompleted" (mouseover)="achievementinfo(achievement)">
+                                </div>
+                                <div class="achievementinfo">
+                                    <p>{{achievement.name}}</p>
+                                    <p>{{achievement.opdracht}}</p>
+                                </div>
+                            </div>
+                            <div *ngIf="achievement.completed">
+                                <div class="achievement" (mouseover)="achievementinfo(achievement)">
+                                </div>
+                                <div class="achievementinfo">
+                                    <p>{{achievement.name}}</p>
+                                    <p>{{achievement.opdracht}}</p>
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="achievementinfo">
-                            <p>{{achievement.name}}</p>
-                            <p>{{achievement.opdracht}}</p>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
         <div *ngIf="!grid">
             <div class="achievementscontainer">
-                <div *ngFor="let group of achievementlist">
+                <div *ngFor="let group of achievementgroups">
                     <div class="listgroup">
                         <h2>{{group.name}}</h2>
-                        <div *ngFor="let a of group.Achievements">
-                            <div class="achievement" (mouseover)="message(achievement)">
-                            </div>
-                            <div class="achievementinfo">
-                                <p>{{a.name}}</p>
-                                <p>{{a.opdracht}}</p>
+                        <div *ngFor="let achievement of group.Achievements">
+                            <div *ngIf="achievement.hidden && achievement.completed || !achievement.hidden">
+
+                                <div *ngIf="!achievement.completed">
+                                    <div class="achievement notcompleted" (mouseover)="achievementinfo(achievement)">
+                                    </div>
+                                    <div class="achievementinfo">
+                                        <p>{{achievement.name}}</p>
+                                        <p>{{achievement.opdracht}}</p>
+                                    </div>
+                                </div>
+                                <div *ngIf="achievement.completed">
+                                    <div class="achievement" (mouseover)="achievementinfo(achievement)">
+                                    </div>
+                                    <div class="achievementinfo">
+                                        <p>{{achievement.name}}</p>
+                                        <p>{{achievement.opdracht}}</p>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

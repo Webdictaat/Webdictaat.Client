@@ -29,6 +29,10 @@
     overflow: visible;
 }
 
+.notcompleted {
+    opacity: 0.5;
+}
+
 .achievementinfo {
     background-color: white;
     width: 150px;
