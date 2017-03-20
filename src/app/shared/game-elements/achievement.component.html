@@ -10,11 +10,13 @@
                     <div *ngFor="let achievement of group.Achievements">
                         <div *ngIf="achievement.hidden && achievement.completed || !achievement.hidden">
 
-                            <div class="achievement" [ngClass]="{'notcompleted': !achievement.completed}" (mouseover)="achievementinfo(achievement)">
-                            </div>
-                            <div class="achievementinfo">
-                                <p>{{achievement.name}}</p>
-                                <p>{{achievement.opdracht}}</p>
+                            <div class="achievement" (mouseover)="achievementinfo(achievement.name)">
+                                <div class="achievementimage" [ngClass]="{'completed':  achievement.completed}">
+                                </div>
+                                <div class="achievementinfo">
+                                    <p>{{achievement.name}}</p>
+                                    <p>{{achievement.opdracht}}</p>
+                                </div>
                             </div>
 
                         </div>

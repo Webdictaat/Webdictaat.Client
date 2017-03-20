@@ -30,9 +30,12 @@ export class AchievementsComponent implements OnInit {
         });
     }
 
-    achievementinfo(achiev: Achievement)
-    {
-
+    achievementinfo(achiev: Achievement) {
+        $(".achievement").on("mouseover", function () {
+            $(".achievementinfo").slideDown(300);
+        }).on("mouseout", function () {
+            $(".achievementinfo").slideUp(300);
+        });
     }
 }
 
