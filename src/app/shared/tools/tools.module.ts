@@ -17,11 +17,12 @@ import { MultipleChoiceToolComponent } from './game-tools/multiple-choice.compon
 import { RatingToolComponent } from './game-tools/rating.component';
 import { TrashComponent } from './default-tools/trash.component';
 import { ImgComponent } from './default-tools/img.component';
+import { VideoComponent } from "./default-tools/video.component";
 
 @NgModule({
     imports: [BrowserModule, FormsModule],
     declarations: [
-        HtmlOutlet, ColumnComponent, TextComponent, HeaderComponent, HtmlComponent, CardComponent,
+        HtmlOutlet, ColumnComponent, TextComponent, HeaderComponent, HtmlComponent, CardComponent, VideoComponent,
         MultipleChoiceToolComponent, TrashComponent, ImgComponent, RatingToolComponent
     ],
     exports: [ColumnComponent, TextComponent, HeaderComponent, HtmlComponent, CardComponent,

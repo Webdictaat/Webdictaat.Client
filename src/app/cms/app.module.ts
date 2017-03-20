@@ -34,6 +34,7 @@ import { DictatenService } from '../shared/services/dictaten.service';
 import { AccountService } from '../shared/services/account.service';
 import { wdApi } from '../shared/core/wdapi.service';
 import { DirtyGuard } from "../shared/core/security/dirty.guard";
+import { VideoService } from "../shared/services/video.service";
 
 @NgModule({
     imports: [
@@ -47,7 +48,7 @@ import { DirtyGuard } from "../shared/core/security/dirty.guard";
     ],
     providers: [
         DialogService, QuestionsService, ImageService, AccountService, wdApi,
-        RatingService, DictatenService, DirtyGuard,
+        RatingService, DictatenService, DirtyGuard, VideoService,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
     ],
     bootstrap: [

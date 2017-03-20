@@ -6,12 +6,14 @@ import { FormsModule }   from '@angular/forms';
 //components
 import { PagesComponent } from './pages.component';
 import { AddPageComponent } from './add-page.component';
+import { AddVideoComponent } from "../videos/add-video.component";
+
 
 
 @NgModule({
     imports: [BrowserModule, HttpModule, FormsModule],
-    declarations: [PagesComponent, AddPageComponent],
-    exports: [PagesComponent]
+    declarations: [PagesComponent, AddPageComponent, AddVideoComponent],
+    exports: [PagesComponent, AddVideoComponent]
 })
 export class PagesModule {
 
