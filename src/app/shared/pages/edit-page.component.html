@@ -3,29 +3,26 @@
 <wd-add-rating></wd-add-rating>
 <wd-add-image></wd-add-image>
 
-<ul class="breadcrumb" style="margin-bottom: 5px;">
-  <li><a href="#">Webdictaat</a></li>
-  <li><a href="#/dictaten/{{dictaatName}}">{{dictaatName}}</a></li>
-  <li class="active">{{pageName}}</li>
-</ul>
-
 <div *ngIf="page">
     <div class="panel panel-default fixed tools text-center">
         <div class="panel-body bordered">
-            <h3>Elements</h3>
+            <h3>Tools</h3>
         </div>
-        <div class="btn-group btn-group-justified btn-group">
+        <!--<div class="btn-group btn-group-justified btn-group">
             <a [ngClass]="{'selected': selectedTab == 'text'}" (click)="selectedTab = 'text'" class="btn ">Text<div class="ripple-container"></div></a>
             <a [ngClass]="{'selected': selectedTab == 'tools'}" (click)="selectedTab = 'tools'" class="btn ">Tools</a>
-        </div>
-        <table class="table table-hover elements" *ngIf="selectedTab == 'text'">
+        </div>-->
+        <!--<table class="table table-hover elements" *ngIf="selectedTab == 'text'">
             <tr><td> <wd-header></wd-header> </td></tr>
             <tr><td> <wd-text></wd-text> </td></tr>
             <tr><td> <wd-card></wd-card> </td></tr>
             <tr><td> <wd-column></wd-column> </td></tr>  
-        </table>
+        </table>-->
 
-         <table class="table table-hover elements" *ngIf="selectedTab == 'tools'">
+         <table class="table table-hover elements" *ngIf="selectedTab == 'text'">
+            <tr><td> <wd-text></wd-text> </td></tr>
+            <tr><td> <wd-card></wd-card> </td></tr>
+            <tr><td> <wd-column></wd-column> </td></tr>  
             <tr><td> <wd-multiple-choice-tool></wd-multiple-choice-tool> </td></tr>
             <tr><td> <wd-rating-tool></wd-rating-tool> </td></tr>
             <tr><td> <wd-img-tool></wd-img-tool> </td></tr>
@@ -34,8 +31,13 @@
         <wd-trash></wd-trash>
 
     </div>
-
     <div class="page-content">
+        
+        <ul class="breadcrumb" style="margin-bottom: 5px;">
+        <li><a href="#">Webdictaat</a></li>
+        <li><a href="#/dictaten/{{dictaatName}}">{{dictaatName}}</a></li>
+        <li class="active">{{pageName}}</li>
+        </ul>
         <wd-html [innerHTML]="page.source" (pageEdited)="updateSource($event)" ></wd-html>
     </div>
 </div>

@@ -32,7 +32,14 @@ body {
 
 .tools .wd-component{
       text-align:center;
+      cursor: move;
+      display:inline-block;
 }
+
+.tools .wd-component:hover{
+      color: #00AEED;
+}
+
 
  .wd-component {
      border:1px dashed gray;
@@ -71,6 +78,10 @@ body {
 .tools{
     list-style:none;
     padding:0; margin:0;
+    height:100%;
+    left:0px;
+    top:0px;
+    margin-top:50px;
 }
 
 .tools li {
@@ -103,9 +114,9 @@ body {
     display:block;
 }
 
-img{
-    max-width:100%;
-    max-height:100%;
+.wd-component > img{
+    width:100%;
+    height:100%;
 }
 
 /** tools */
@@ -227,4 +238,10 @@ img.wd-logo{
 .row > [class*='col-'] {
   display: flex;
   flex-direction: column;
+  min-height: 50px;
+  border:1px dashed lightgray;
+}
+
+.maxed{
+    max-width:100%;
 }

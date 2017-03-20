@@ -12,7 +12,7 @@ declare var CKEDITOR : any;
       
 
         <!-- most bootstrap elements only work when inside a container!! -->
-        <div id='page' class='container-fluid'>
+        <div id='page' class='container maxed'>
             <html-outlet  [html]="innerHTML" (afterCompile)="afterCompile()"></html-outlet>
         </div>
         <div class='panel-footer'>
@@ -66,6 +66,7 @@ export class HtmlComponent implements OnInit{
 
                 ui.item
                     .removeAttr('style')
+                    .append("<div class='handle'><i class='fa fa-ellipsis-h' aria-hidden='true'></i></div>")
                     .find(this.editableElements)
                     .attr("contenteditable", "true");
                    // .each((editableElement) => CKEDITOR.inline(editableElement));
@@ -83,7 +84,6 @@ export class HtmlComponent implements OnInit{
                 //Omdat het soms even duurt voordat een component kan renderen, moeten we hier even op wachten.
                 //De focues 'refresht' het scherm zogenaamd. 
                 setTimeout(() => ui.item.focus(), 0);
-
             }
 
             this.recompile();
