@@ -30,72 +30,9 @@ export class AchievementsComponent implements OnInit {
         });
     }
 
-    toggleLayout()
-    {
-        var button = document.getElementById("layoutbutton");
-
-        if(this.grid)
-        {
-            this.grid = false;
-            button.innerText = "grid";
-        }
-        else
-        {
-            this.grid = true;
-            button.innerText = "list";
-        }
-    }
-
     achievementinfo(achiev: Achievement)
     {
 
     }
-
-    /*
-    createList(): void
-    {
-        for(let entry of this.achievements)
-        {
-            if(this.checkStructure(entry.group))
-            {
-                console.log("meep");
-                for(let list of this.achievementlist)
-                {
-                    if(entry.group == list.name)
-                    {
-                        list.Achievements.push(entry);
-                    }
-                }
-            }
-            else
-            {
-                console.log("moop");
-                var achievarray: Achievement[] = [];
-                var a = new AchievementGroup();
-                a.name = entry.group;
-                a.Achievements = achievarray;
-                a.Achievements.push(entry);
-
-                this.achievementlist.push(a);
-            }
-        }
-
-        console.log(this.achievementlist);
-    }
-
-     checkStructure(groupname: String)
-     {
-     for(let entry of this.achievementlist)
-     {
-     if(entry.name == groupname) {
-     return true;
-     }
-     }
-
-     return false;
-
-     }
-    */
-    
 }
 

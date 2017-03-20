@@ -1,49 +1,44 @@
 <div class="wd-component">
-    <h2>Achievements</h2>
     <div class="container">
         <div class="buttoncontainer">
-            <button class="listbutton" (click)="toggleLayout()" id="layoutbutton">list</button>
+            <button class="listbutton" *ngIf="grid" (click)="grid = false">list</button>
+            <button class="listbutton" *ngIf="!grid" (click)="grid = true">grid</button>
         </div>
-        <div *ngIf="grid">
-            <div class="achievementscontainer">
+        <div class="achievementscontainer">
+            <div *ngIf="grid">
                 <div *ngFor="let group of achievementgroups">
                     <div *ngFor="let achievement of group.Achievements">
                         <div *ngIf="achievement.hidden && achievement.completed || !achievement.hidden">
 
-                                <div class="achievement" [ngClass]="{'notcompleted': !achievement.completed}" (mouseover)="achievementinfo(achievement)">
-                                </div>
-                                <div class="achievementinfo">
-                                    <p>{{achievement.name}}</p>
-                                    <p>{{achievement.opdracht}}</p>
-                                </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div *ngIf="!grid">
-            <div class="achievementscontainer">
-                <div *ngFor="let group of achievementgroups">
-                    <div class="listgroup">
-                        <h2>{{group.name}}</h2>
-                        <div *ngFor="let achievement of group.Achievements">
-                            <div *ngIf="achievement.hidden && achievement.completed || !achievement.hidden">
-
-                                <div class="achievement" [ngClass]="{'notcompleted': !achievement.completed}" (mouseover)="achievementinfo(achievement)">
-                                </div>
-                                <div class="achievementinfo">
-                                    <p>{{achievement.name}}</p>
-                                    <p>{{achievement.opdracht}}</p>
-                                </div>
-
+                            <div class="achievement" [ngClass]="{'notcompleted': !achievement.completed}" (mouseover)="achievementinfo(achievement)">
                             </div>
+                            <div class="achievementinfo">
+                                <p>{{achievement.name}}</p>
+                                <p>{{achievement.opdracht}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div *ngIf="!grid">
+            <div *ngFor="let group of achievementgroups">
+                <div class="listgroup">
+                    <h2>{{group.name}}</h2>
+                    <div *ngFor="let achievement of group.Achievements">
+                        <div *ngIf="achievement.hidden && achievement.completed || !achievement.hidden">
+
+                            <div class="achievement" [ngClass]="{'notcompleted': !achievement.completed}" (mouseover)="achievementinfo(achievement)">
+                            </div>
+                            <div class="achievementinfo">
+                                <p>{{achievement.name}}</p>
+                                <p>{{achievement.opdracht}}</p>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>

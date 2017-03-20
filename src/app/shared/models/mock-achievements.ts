@@ -1,18 +1,6 @@
 import {Achievement} from "../models/achievement";
 import {AchievementGroup} from "../models/AchievementGroup";
 
-/*
- export var ACHIEVEMENTS: Achievement[] = [
- {id:1, name: 'FirstBlood', opdracht: 'hallo world', group: 'week 1', image: 'img'} ,
- {id:2, name: 'HalloWorld1', opdracht: 'hallo world', group: 'week 1', image: 'img' },
- {id:3, name: 'hallo world 2', opdracht: 'hallo world', group: 'week 2',  image: 'img' },
- {id:4, name: 'meep3', opdracht: 'hallo world', group: 'week 2', image: 'img' },
- {id:5, name: 'blaap', opdracht: 'hallo world', group: 'week 2', image: 'img' },
- {id:6, name: 'insert achievement name here', opdracht: 'hallo world', group: 'week 3', image: 'img' },
- {id:7, name: 'insert achievement', opdracht: 'hallo world', group: 'week 3', image: 'img' },
- ];
- */
-
 var ach1 = {id:1, name: 'FirstBlood', trigger: 'hallo world', hidden: false, completed: true, image: 'img'};
 var ach2 = {id:2, name: 'hallo world 1', trigger: 'hallo world', hidden: false, completed: false, image: 'img'};
 var ach3 = {id:3, name: 'hallo world 2', trigger: 'hallo world', hidden: false, completed: false, image: 'img'};
