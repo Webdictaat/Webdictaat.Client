@@ -7,10 +7,10 @@ var $ : any;
     selector: "wd-column",
     template: `
         <div  id='wd-columnn2' class='wd-component'>
-            <i class="fa fa-columns" aria-hidden="true"></i>2
-        </div>
+            <i class="fa fa-columns" aria-hidden="true"></i> 2
+        </div> | 
         <div  id='wd-columnn3' class='wd-component'>
-            <i class="fa fa-columns" aria-hidden="true"></i>3
+            <i class="fa fa-columns" aria-hidden="true"></i> 3
         </div>
     `
 })

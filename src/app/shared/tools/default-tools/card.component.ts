@@ -5,7 +5,7 @@ var $ : any;
 @Component({
     selector: "wd-card",
     template: `<div id='wd-card-tool' class='wd-component'>
-    <i class="fa fa-square-o" aria-hidden="true"></i>Card
+    <i class="fa fa-square-o" aria-hidden="true"></i> Card
     </div>`
 })
 export class CardComponent {

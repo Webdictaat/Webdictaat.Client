@@ -4,7 +4,9 @@ var $ : any;
 
 @Component({
     selector: "wd-img-tool",
-    template: "<div id='wd-img-tool' class='wd-component' >Image</div>",
+    template: `<div id='wd-img-tool' class='wd-component' >
+        <i class="fa fa-picture-o" aria-hidden="true"></i> Image
+    </div>`
 })
 export class ImgComponent implements OnInit  {
 

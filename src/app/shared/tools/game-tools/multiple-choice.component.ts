@@ -7,7 +7,9 @@ var $ : any;
 
 @Component({
     selector: "wd-multiple-choice-tool",
-    template: "<div id='wd-multiple-choice-tool' class='wd-component'>Multiple choice</div>",
+    template: `<div id='wd-multiple-choice-tool' class='wd-component'>
+        <i class="fa fa-question-circle-o" aria-hidden="true"></i> Multiple choice
+    </div>`
 })
 export class MultipleChoiceToolComponent {
 
