@@ -157,7 +157,7 @@ export class HtmlComponent implements OnInit {
 
     private enableContainers(element): void {
 
-        element.find('.wd-container').sortable({
+        element.find('.wd-container').addBack('.wd-container').sortable({
             handle: ".handle",
             connectWith: '.wd-container, #wd-trash',
             cancel: this.editableElements,

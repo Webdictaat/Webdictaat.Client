@@ -195,6 +195,7 @@ module.exports = {
       new CopyWebpackPlugin([
             // copy css
             { from: './src\\css\\styles.css', to: 'css' },
+            { from: './src\\css\\cms.styles.css', to: 'css' },
             { from: './src\\css\\custom-bootstrap.min.css', to: 'css' },
             { from: 'node_modules\\bootstrap-material-design\\dist\\css\\ripples.min.css', to: 'css' },
 

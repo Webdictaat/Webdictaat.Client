@@ -26,7 +26,7 @@ const appRoutes: Routes = [
     {
         path: 'dictaten/:dictaatName/pages/:pageName',
         component: EditPageComponent,
-        canDeactivate: [DirtyGuard], //EditPageComponent implements the DirtyComponent interface
+        // canDeactivate: [DirtyGuard], //EditPageComponent implements the DirtyComponent interface
     },
     {
         path: 'profile',

@@ -1,0 +1,166 @@
+/** Sortable and draggable handle **/
+
+*:hover > .handle{
+    display: flex;
+}
+
+.handle:hover{
+    color:#00AEED;
+}
+
+
+ .handle{
+    display: none;
+    position:absolute;
+    width:40%;
+    height:15px;
+    color:gray;
+    top:-15px;
+    left:30%;
+    cursor:move;
+    align-items: center;
+    justify-content: center;
+}
+
+/** Home page **/
+.navbar-sub{
+    margin-top: -20px;
+    margin-bottom: 65px;
+}
+
+img.wd-logo{
+    position:relative;
+    width: 100px;
+    top:65px;
+    margin-top:-65px;
+}
+
+
+/** tools */
+
+.trashcan{
+    padding:15px;
+    border:1px dashed #ccc;
+    text-align:center;
+    position:relative;
+    min-height:100px;
+    color:darkred;
+}
+
+.trashcan span{
+    position:absolute;
+    font-size:20px;
+    width:100%;
+    text-align:center;
+    left:0px;
+    line-height:100px;
+}
+
+.trashcan .highlight{
+    border:2px dashed darkred;
+    min-height:100px;
+}
+
+
+.dragged{
+    transform: scale(0.8, 0.8);
+      position: absolute;
+      opacity: 0.5;
+      z-index: 2000;
+}
+
+.tools{
+    list-style:none;
+    padding:0; margin:0;
+    height:100%;
+    left:0px;
+    top:0px;
+    margin-top:50px;
+}
+
+.tools li {
+    border:1px solid gray;
+    padding:5px;
+    margin:5px;
+    cursor:pointer;
+}
+
+.tools li .row{
+    width:100%;
+    margin-left:0px;
+}
+
+.remove{
+    border:1px dashed red;
+}
+
+.ui-state-hover{
+    border:1px dashed black;
+}
+
+.ui-state-hover .wd-component{
+    border:1px dashed #ccc;
+}
+
+.highlight{
+    border:1px dashed darkgreen;
+    display:block;
+}
+
+body { 
+    padding-top: 70px; 
+    padding-bottom: 70px;
+}
+
+.modal{
+    display:block;
+    background-color: rgba(128, 128, 128, 0.4);
+}
+
+.close-modal-button{
+    position: absolute;
+    top:24px;
+    right:24px;
+   
+    color:darkgray;
+}
+
+.close-modal-button:hover{
+     cursor:pointer;
+}
+
+.wd-container{
+    padding:2px;
+}
+
+.drop-container{
+   padding:2px;
+   border:1px dashed gray;
+}
+
+.tools .wd-component{
+      text-align:center;
+      cursor: move;
+      display:inline-block;
+}
+
+.tools .wd-component:hover{
+      color: #00AEED;
+}
+
+
+ .wd-component {
+     border:1px dashed gray;
+     border-color: transparent;
+     padding:2px;
+     position: relative;
+}
+
+ .wd-game-component{
+    display:block;
+ }
+
+.row > [class*='col-'] {
+  min-height: 50px;
+  border:1px dashed lightgray;
+}
