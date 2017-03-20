@@ -34,7 +34,6 @@ export class VideoComponent implements OnInit  {
         return new Promise((resolve, reject) => {
             this.videoService.ShowModal()
                 .then((videoTag) => {
-                    debugger;
                     var newItem = $("<div class='wd-component'>" + videoTag + "</div>");
                     ui.item.replaceWith(newItem);
                     ui.item = newItem;

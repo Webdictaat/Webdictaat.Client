@@ -40,7 +40,6 @@ export class AddQuestionComponent implements OnInit {
             this.isModalVisible = isModalVisible;
             if (isModalVisible) {
                 this.question = new Question();  
-                
             }
 
             this.zone.run(() => {});

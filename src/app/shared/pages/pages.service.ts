@@ -7,12 +7,15 @@ import { PageSummary } from '../models/page-summary';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
+import { BaseModalService } from "../core/basemodal.service";
 
 
 @Injectable()
-export class PagesService {
+export class PagesService extends BaseModalService {
 
-    constructor(private wdapi: wdApi) { }
+    constructor(private wdapi: wdApi) { 
+        super();
+    }
 
     public getPages(dictaatName: String): Promise<PageSummary[]> {
 

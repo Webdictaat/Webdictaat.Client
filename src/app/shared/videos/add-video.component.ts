@@ -44,7 +44,6 @@ export class AddVideoComponent implements OnInit {
     }
 
     public Add(): void {
-        debugger;
         this.videoService.CompleteModal(this.videoTag); 
     }
 

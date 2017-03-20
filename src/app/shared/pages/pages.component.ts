@@ -8,8 +8,7 @@ import { Router } from '@angular/router';
 
 @Component({
     selector: "wd-pages",
-    templateUrl: "./pages.component.html",
-    providers: [PagesService]
+    templateUrl: "./pages.component.html"
 })
 export class PagesComponent {
 
@@ -35,6 +34,10 @@ export class PagesComponent {
 
     public editPage(page: Page): void {
         this.router.navigateByUrl("/dictaten/" + this.dictaat.name + "/pages/" + page.name); 
+    }
+
+    public addPage(){
+        this.pagesSevice.ShowModal().then((page) => this.getPages());
     }
 
 

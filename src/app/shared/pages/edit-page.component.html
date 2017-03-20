@@ -7,20 +7,21 @@
 <div *ngIf="page">
     <div class="panel panel-default fixed tools text-center">
         <div class="panel-body bordered">
-            <h3>Tools</h3>
+            <h3 class="title">
+                {{pageName}}            
+            </h3>
+            <a href="http://webdictaat.aii.avans.nl/dictaten/test/#/{{pageName}}" target="_blank">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+                Preview
+            </a> 
+            <!--<button class="btn-link" (click)="showModal = true">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+                Settings
+            </button>-->
         </div>
-        <!--<div class="btn-group btn-group-justified btn-group">
-            <a [ngClass]="{'selected': selectedTab == 'text'}" (click)="selectedTab = 'text'" class="btn ">Text<div class="ripple-container"></div></a>
-            <a [ngClass]="{'selected': selectedTab == 'tools'}" (click)="selectedTab = 'tools'" class="btn ">Tools</a>
-        </div>-->
-        <!--<table class="table table-hover elements" *ngIf="selectedTab == 'text'">
-            <tr><td> <wd-header></wd-header> </td></tr>
-            <tr><td> <wd-text></wd-text> </td></tr>
-            <tr><td> <wd-card></wd-card> </td></tr>
-            <tr><td> <wd-column></wd-column> </td></tr>  
-        </table>-->
 
-         <table class="table table-hover elements" *ngIf="selectedTab == 'text'">
+
+         <table class="table table-hover elements text-center">
             <tr><td> <wd-text></wd-text> </td></tr>
             <tr><td> <wd-card></wd-card> </td></tr>
             <tr><td> <wd-column></wd-column> </td></tr>  
