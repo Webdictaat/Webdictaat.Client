@@ -25,7 +25,7 @@ import { VideoComponent } from "./default-tools/video.component";
         HtmlOutlet, ColumnComponent, TextComponent, HeaderComponent, HtmlComponent, CardComponent, VideoComponent,
         MultipleChoiceToolComponent, TrashComponent, ImgComponent, RatingToolComponent
     ],
-    exports: [ColumnComponent, TextComponent, HeaderComponent, HtmlComponent, CardComponent,
+    exports: [ColumnComponent, TextComponent, HeaderComponent, HtmlComponent, CardComponent, VideoComponent,
         MultipleChoiceToolComponent, HtmlOutlet, TrashComponent, ImgComponent, RatingToolComponent
     ]
 })

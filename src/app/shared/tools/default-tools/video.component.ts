@@ -5,8 +5,8 @@ var $ : any;
 
 @Component({
     selector: "wd-video-tool",
-    template: `<div id='wd-img-tool' class='wd-component' >
-        <i class="fa fa-video" aria-hidden="true"></i> Video
+    template: `<div id='wd-video-tool' class='wd-component' >
+        <i class="fa fa-youtube" aria-hidden="true"></i> Youtube
     </div>`
 })
 export class VideoComponent implements OnInit  {
@@ -20,11 +20,11 @@ export class VideoComponent implements OnInit  {
     public ngOnInit(): void {
         var component = this;
 
-        $('#wd-img-tool').draggable({
+        $('#wd-video-tool').draggable({
             helper: "clone",
             connectToSortable: ".wd-container",
             start: function (e, ui) {
-                ui.helper.data("component", component);
+                ui.helper.data("component", component); 
             }
         })
     }
@@ -34,6 +34,7 @@ export class VideoComponent implements OnInit  {
         return new Promise((resolve, reject) => {
             this.videoService.ShowModal()
                 .then((videoTag) => {
+                    debugger;
                     ui.item.replaceWith("<div class='wd-component'>" + videoTag + "</div>");
                     resolve(false);
                 })
