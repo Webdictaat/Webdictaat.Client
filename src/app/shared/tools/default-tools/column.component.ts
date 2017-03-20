@@ -40,21 +40,21 @@ export class ColumnComponent {
                 start: function (e, ui) {
                     component.columnCount = 3;
                     ui.helper.data("component", component);
-                }
+                } 
             })
     }
 
     //returns a promise with a boolean, to recompile or not
     public onDrop(ui): Promise<boolean> {
         return new Promise((resolve, reject) => {
-            var newItem = $("");
+            var newItem = null;
             switch(this.columnCount){
-                case 2: newItem = $("<div class='row wd-component'><div class='col-md-6 wd-container'></div><div class='col-md-6 wd-container'></div></div>"); break;
-                case 3: newItem = $("<div class='row wd-component'><div class='col-md-4 wd-container'></div><div class='col-md-4 wd-container'></div><div class='col-md-4 wd-container'></div></div>"); break;
+                case 2: newItem = $("<div class='wd-component'><div class='row'><div class='col-md-6 wd-container'></div><div class='col-md-6 wd-container'></div></div></div>"); break;
+                case 3: newItem = $("<div class='wd-component'><div class='row'><div class='col-md-4 wd-container'></div><div class='col-md-4 wd-container'></div><div class='col-md-4 wd-container'></div></div></div>"); break;
             }
            
             ui.item.replaceWith(newItem);
-            newItem.focus();
+            ui.item = newItem;
             resolve(false);
         });
     }

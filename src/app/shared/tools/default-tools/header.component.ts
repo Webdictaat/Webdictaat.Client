@@ -22,7 +22,9 @@ export class HeaderComponent {
     //returns a promise with a boolean, to recompile or not
     public onDrop(ui): Promise<boolean> {
         return new Promise((resolve, reject) => {
-            ui.item.replaceWith("<div class='wd-component'><h1>Header</h1></div>");
+            var newItem = "<div>Header</div>";
+            ui.item.replaceWith(newItem);
+            ui.item = newItem;
             resolve(false);
         });
     }    

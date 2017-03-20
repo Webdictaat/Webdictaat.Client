@@ -27,7 +27,7 @@ export class CardComponent {
         return new Promise((resolve, reject) => {
             var newItem = $("<div class='wd-component well wd-container'></div>");
             ui.item.replaceWith(newItem);
-            newItem.focus();
+            ui.item = newItem;
             resolve(false);
         });
 

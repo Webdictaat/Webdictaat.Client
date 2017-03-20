@@ -33,7 +33,9 @@ export class ImgComponent implements OnInit  {
         return new Promise((resolve, reject) => {
             this.imageServie.ShowModal()
                 .then((imgName) => {
-                    ui.item.replaceWith("<div class='wd-component'><img src='http://webdictaat.aii.avans.nl//images//" + imgName + "'/></div>");
+                    var newItem = $("<div class='wd-component'><img src='http://webdictaat.aii.avans.nl//images//" + imgName + "'/></div>");
+                    ui.item.replaceWith(newItem);
+                    ui.item = newItem;
                     resolve(false);
                 })
                 .catch(() => {

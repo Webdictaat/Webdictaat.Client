@@ -24,7 +24,7 @@ export class TextComponent {
         return new Promise((resolve, reject) => {
             var newItem = $("<div class='wd-component'><div class='wd-editable'>Change me!</div></div>");
             ui.item.replaceWith(newItem);
-            newItem.focus();
+            ui.item = newItem;
             resolve(false);
         });
 
