@@ -1,28 +1,21 @@
-<div class="wd-component">
+<div class="wd-component" *ngIf="achievementgroups">
     <div class="container">
         <div class="buttoncontainer">
             <button class="listbutton" *ngIf="grid" (click)="grid = false">list</button>
             <button class="listbutton" *ngIf="!grid" (click)="grid = true">grid</button>
         </div>
         <div class="achievementscontainer">
-            <div *ngIf="grid">
-                <div *ngFor="let group of achievementgroups">
-                    <div *ngFor="let achievement of group.Achievements">
-                        <div *ngIf="achievement.hidden && achievement.completed || !achievement.hidden">
-
-                            <div class="achievement" (mouseover)="achievementinfo(achievement.name)">
-                                <div class="achievementimage" [ngClass]="{'completed':  achievement.completed}">
-                                </div>
-                                <div class="achievementinfo">
-                                    <p>{{achievement.name}}</p>
-                                    <p>{{achievement.opdracht}}</p>
-                                </div>
-                            </div>
-
-                        </div>
+            <div *ngIf="grid" class="flex1">
+                <div *ngFor="let achievement of getAllAchievements()"  [hidden]="achievement.hidden">
+                    <div class="achievement" (mouseover)="achievementinfo(achievement.name)">
+                    <div class="achievementimage" [ngClass]="{'completed':  achievement.completed}"></div>
+                    <div class="achievementinfo">
+                        <p>{{achievement.name}}</p>
+                        <p>{{achievement.opdracht}}</p>
                     </div>
                 </div>
             </div>
+        </div>
         <div *ngIf="!grid">
             <div *ngFor="let group of achievementgroups">
                 <div class="listgroup">

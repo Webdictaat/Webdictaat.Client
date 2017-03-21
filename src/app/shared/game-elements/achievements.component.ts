@@ -12,7 +12,7 @@ import {AchievementGroup} from "../models/AchievementGroup";
 
 export class AchievementsComponent implements OnInit {
     abstract;
-    achievementgroups: AchievementGroup[];
+    private achievementgroups: AchievementGroup[];
     grid: boolean = true;
 
     constructor(
@@ -28,6 +28,20 @@ export class AchievementsComponent implements OnInit {
             this.achievementgroups = achievements;
             console.log(achievements);
         });
+    }
+
+    public getAllAchievements() {
+        var Achievemements = [];
+
+        for(let group of this.achievementgroups)
+        {
+            for(let achiev of group.Achievements)
+            {
+                Achievemements.push(achiev);
+            }
+        }
+
+        return Achievemements;
     }
 
     achievementinfo(achiev: Achievement) {
