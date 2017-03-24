@@ -12,12 +12,13 @@
     height: 300px;
     width: 100%;
     overflow: auto;
-    -webkit-flex-flow: row wrap;
-    align-content: space-between;
+}
 
-    padding: 0;
-    margin: 0;
-    list-style: none;
+.flex1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
 }
 
 .achievement {
@@ -38,13 +39,6 @@
 .completed {
     opacity: 0;
 }
-
-/* // hover without js
-
-.achievement:hover + .achievementinfo
-{display: block; }
-
-*/
 
 .achievementinfo {
     background-color: #a9a9a9;
@@ -69,13 +63,6 @@
 .listgroup {
     float: left;
     width: 100%;
-}
-
-.gridbutton {
-    float: right;
-    margin-right: 10px;
-    margin-top: 5px;
-
 }
 
 .listbutton {

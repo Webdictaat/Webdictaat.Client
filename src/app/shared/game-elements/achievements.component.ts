@@ -44,8 +44,10 @@ export class AchievementsComponent implements OnInit {
         return Achievemements;
     }
 
-    achievementinfo(achiev: Achievement) {
-        $(".achievement").on("mouseover", function () {
+    achievementinfo(achiev) {
+        console.log(achiev);
+
+        $(achiev).on("mouseover", function () {
             $(".achievementinfo").slideDown(300);
         }).on("mouseout", function () {
             $(".achievementinfo").slideUp(300);

@@ -7,11 +7,10 @@
         <div class="achievementscontainer">
             <div *ngIf="grid" class="flex1">
                 <div *ngFor="let achievement of getAllAchievements()"  [hidden]="achievement.hidden">
-                    <div class="achievement" (mouseover)="achievementinfo(achievement.name)">
+                    <div class="achievement" (mouseover)="achievementinfo(achievement)">
                     <div class="achievementimage" [ngClass]="{'completed':  achievement.completed}"></div>
                     <div class="achievementinfo">
                         <p>{{achievement.name}}</p>
-                        <p>{{achievement.opdracht}}</p>
                     </div>
                 </div>
             </div>
@@ -27,7 +26,6 @@
                             </div>
                             <div class="achievementinfo">
                                 <p>{{achievement.name}}</p>
-                                <p>{{achievement.opdracht}}</p>
                             </div>
 
                         </div>
