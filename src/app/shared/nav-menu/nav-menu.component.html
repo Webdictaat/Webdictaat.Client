@@ -1,40 +1,21 @@
-<!--<ul class="wd-nav">
-    <li *ngFor="let item of menuItems" >
-
-        <div  *ngIf="item.MenuItems.length == 0">
-            <a routerLink="{{item.Url}}" routerLinkActive="active">
-                {{item.Name}}
-            </a>
-        </div>
-      
-
-        <div *ngIf="item.MenuItems.length > 0">
-            <a class="dropdown-toggle" (click)="item.show = !item.show" >
-                {{item.Name}}<span class="caret"></span>
-            </a>
-            <wd-nav-menu [menuItems]="item.MenuItems" [hidden]="!item.show" ></wd-nav-menu>
-        </div>
-    </li>    
-</ul>-->
-
 <ul class="nav navbar-nav" *ngIf="menuItems">
 
-    <li *ngFor="let item of menuItems"  [ngClass]="{dropdown: item.MenuItems.length > 0}">
+    <li *ngFor="let item of menuItems"  [ngClass]="{dropdown: item.menuItems.length > 0}">
 
         <!-- menu item -->
-        <a routerLink="{{item.Url}}" routerLinkActive="active" *ngIf="item.MenuItems.length == 0">
+        <a routerLink="{{item.url}}" routerLinkActive="active" *ngIf="item.menuItems.length == 0">
             {{item.Name}}
         </a>
 
         <!-- sub menu -->
-        <a  (click)="item.show = !item.show" class="dropdown-toggle" *ngIf="item.MenuItems.length > 0">
+        <a  (click)="item.show = !item.show" class="dropdown-toggle" *ngIf="item.menuItems.length > 0">
             {{item.Name}}<span class="caret"></span>
         </a>
 
         <ul class="nav navbar-nav dropdown-menu" *ngIf="item.show" (click)="item.show = false">
-            <li *ngFor="let subItem of item.MenuItems">
+            <li *ngFor="let subItem of item.menuItems">
                 <!-- menu item -->
-                <a routerLink="{{subItem.Url}}" routerLinkActive="active">
+                <a routerLink="{{subItem.url}}" routerLinkActive="active">
                     {{subItem.Name}}
                 </a>
             </li>

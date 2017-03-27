@@ -1,4 +1,4 @@
-﻿import { Component, EventEmitter, Output, NgZone } from '@angular/core';
+﻿import { Component, EventEmitter, Output, NgZone, Input } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { PagesService } from './pages.service';
 import { DictaatService } from '../services/dictaat.service';
@@ -20,6 +20,8 @@ export class AddPageComponent extends BaseModalComponent {
     public page: Page = new Page();
     public menus: string[] = [];
     public menuName: string;
+
+    @Input()
     private dictaat: Dictaat;
 
     constructor(
@@ -39,23 +41,28 @@ export class AddPageComponent extends BaseModalComponent {
     //event
     public ngOnInit(): void {
         super.wdOnInit(this.pageService, this.zone);
-        this.route.params.forEach((params: Params) => {
-            this.dictaatService.getDictaat(params['dictaatName'])
-                .then(dictaat => {
-                    this.dictaat = dictaat;
-                });
-        });
     }
 
     public add(): void {
 
         this.errors = [];
 
-        this.dictaat.pages.forEach((page) => {
-            if(page.name == this.page.name){
-                this.errors.push("Page with name " + this.page.name + " already excists");
+        //check for duplicate
+        this.dictaat.menuItems.forEach((menuItem) => {
+
+            if(menuItem.name == this.page.name){
+                this.errors.push("Page with name '" + this.page.name + "' already excists");
+            }
+            else if(!menuItem.url){
+                menuItem.menuItems.forEach((subMenuItem) => {
+                    if(subMenuItem.name == this.page.name){
+                        this.errors.push("Page with name '" + this.page.name + "' already excists");
+                    }
+                });
             }
         });
+
+
 
         if(this.errors.length != 0)
             return;
@@ -66,9 +73,10 @@ export class AddPageComponent extends BaseModalComponent {
         };
 
         this.pageService.addPage(this.dictaat.name, page, this.menuName)
-            .then(page => {
+            .then(menuItems => {
                 this.page = new Page();
-                this.pageService.CompleteModal(page);
+                this.dictaat.menuItems = menuItems;
+                this.pageService.CompleteModal(menuItems);
             });
     }
 }

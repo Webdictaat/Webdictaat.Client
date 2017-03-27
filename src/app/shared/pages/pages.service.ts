@@ -8,6 +8,7 @@ import { PageSummary } from '../models/page-summary';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { BaseModalService } from "../core/basemodal.service";
+import { NavMenuItem } from "../models/nav-menu";
 
 
 @Injectable()
@@ -24,7 +25,7 @@ export class PagesService extends BaseModalService {
             .then(response => response.json() as PageSummary[]);
     }
 
-    public addPage(dictaatName: String, page: any, menuName: string): Promise<Page> {
+    public addPage(dictaatName: String, page: any, menuName: string): Promise<NavMenuItem[]> {
 
         var data = {
             page: page,
@@ -57,12 +58,12 @@ export class PagesService extends BaseModalService {
     }
 
 
-    public deletePage(dictaatName: String, pageName: String): Promise<Response>{
+    public deletePage(dictaatName: String, pageName: String): Promise<NavMenuItem[]>{
 
-        let url: string = "/dictaten/" + dictaatName + '/pages' + pageName;
+        let url: string = "/dictaten/" + dictaatName + '/pages/' + pageName;
 
         return this.wdapi.delete(url)
             .toPromise()
-            .then(response => response);
+            .then(response => response.json() as NavMenuItem[]);
     }
 }

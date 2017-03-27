@@ -58,6 +58,10 @@ export class AddDictaatComponent {
             .then(dictaten => {
                 this.dictaatName = null;
                 this.dictaatAdded.emit(dictaten)
+            })
+            .catch(reason => {
+                console.log(reason);
+               
             });
     }
 }

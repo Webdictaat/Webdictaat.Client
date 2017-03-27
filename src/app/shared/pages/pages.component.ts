@@ -32,7 +32,7 @@ export class PagesComponent{
     @Input()
     public dictaat: Dictaat;
 
-    public selectedItem: String;
+    public selectedItem: any;
 
     public constructor(
         private pagesSevice: PagesService,
@@ -52,7 +52,7 @@ export class PagesComponent{
     }
 
     public toggleItem(item){
-        if(this.selectedItem == item){
+        if(this.selectedItem && this.selectedItem.name == item.name){
             this.selectedItem = null;
         }
         else{
@@ -75,13 +75,15 @@ export class PagesComponent{
     }
 
     public addPage(){
-        this.pagesSevice.ShowModal().then((menuItems) => { 
+        this.pagesSevice.ShowModal().then((menuItems) => {
             this.dictaat.menuItems = menuItems;
          });
     }
 
     public deletePage(page): void {
-        this.pagesSevice.deletePage(this.dictaat.name, page.url);
+        this.pagesSevice.deletePage(this.dictaat.name, page.url).then((menuItems) => {
+            this.dictaat.menuItems = menuItems;
+        })
            
     }
 

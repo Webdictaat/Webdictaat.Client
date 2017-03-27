@@ -1,6 +1,6 @@
 ﻿
 export class NavMenuItem {
-    public Name: string;
-    public Url: string;
-    MenuItems: NavMenuItem[] = [];
-}
+    public name: string;
+    public url: string;
+    public menuItems: NavMenuItem[] = [];
+} 

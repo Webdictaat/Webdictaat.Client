@@ -17,8 +17,12 @@
                            [(ngModel)]="page.name">
                 </div>
 
-                <p class="text-info" *ngIf="page.name.indexOf(' ') >= 0">
+                <p class="text-info" *ngIf="page.name && page.name.indexOf(' ') >= 0">
                     The <b>url</b> of the page can't contain any white spaces, and will be converted into <strong>{{trim(page.name)}}</strong>
+                </p>
+
+                <p class="text-danger" [hidden]="errors.length == 0" *ngFor="let err of errors">
+                   {{err}}
                 </p>
 
 
