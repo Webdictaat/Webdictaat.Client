@@ -15,8 +15,8 @@ import { BaseModalService, BaseModalComponent } from "../core/basemodal.service"
     providers: [DictaatService]
 })
 export class AddPageComponent extends BaseModalComponent {
+        errors: any[];
     
-    public isModalVisible: boolean;
     public page: Page = new Page();
     public menus: string[] = [];
     public menuName: string;
@@ -48,8 +48,24 @@ export class AddPageComponent extends BaseModalComponent {
     }
 
     public add(): void {
-        this.page.name = this.trim(this.page.name);
-        this.pageService.addPage(this.dictaat.name, this.page, this.menuName)
+
+        this.errors = [];
+
+        this.dictaat.pages.forEach((page) => {
+            if(page.name == this.page.name){
+                this.errors.push("Page with name " + this.page.name + " already excists");
+            }
+        });
+
+        if(this.errors.length != 0)
+            return;
+
+        var page = {
+            name: this.page.name, 
+            url: this.trim(this.page.name)
+        };
+
+        this.pageService.addPage(this.dictaat.name, page, this.menuName)
             .then(page => {
                 this.page = new Page();
                 this.pageService.CompleteModal(page);

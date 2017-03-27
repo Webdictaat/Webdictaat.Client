@@ -1,0 +1,46 @@
+<!-- modals -->
+<wd-add-page></wd-add-page>
+
+<div class="text-center">
+    <button class="btn btn-xs btn-success" (click)="addPage()">
+        <span class="glyphicon glyphicon-plus"></span>&nbsp;Create a new page
+    </button>
+</div>
+
+
+
+<ul class="menu" [dragula]='"first-level"' [dragulaModel]='dictaat.menuItems' [dragulaOptions]="getDragOptions()">
+    <li *ngFor="let item of dictaat.menuItems" >
+        <!-- menu item -->
+        <div class="menu-item" *ngIf="item.menuItems.length == 0">
+            <div (click)="editPage(item)">
+                <i class="fa fa-files-o" aria-hidden="true"></i>
+                <span class="title">{{item.name}}</span>
+            </div>
+            <div class="actions text-center">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </div>
+        </div>
+        <!-- menu item end -->
+        <!-- sub menus -->
+        <div class="sub-menu-item" (click)="item.toggle = !item.toggle" *ngIf="item.menuItems.length > 0"  >
+            <i *ngIf="!item.toggle" class="fa fa-folder-o" aria-hidden="true"></i>
+            <i *ngIf="item.toggle" class="fa fa-folder-open-o" aria-hidden="true"></i>
+            <span class="title">{{item.name}}</span>
+            <ul class="sub-menu" class="sub-menu" [dragula]='"second-level"' [dragulaModel]='item.menuItems' *ngIf="item.toggle">
+                <li *ngFor="let item of item.menuItems" class="sub">
+                    <!-- menu item -->
+                    <div class="menu-item sub">
+                        <div (click)="editPage(item)">
+                            <i class="fa fa-files-o" aria-hidden="true"></i>
+                            <span class="title">{{item.name}}</span>
+                        </div>
+                        <div class="actions text-center">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </li>
+</ul>

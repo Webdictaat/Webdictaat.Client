@@ -4,20 +4,29 @@
 </ul>
 
 <div class="container">
-  
-    <div class="panel panel-default sidebar" *ngIf="dictaat">
-        <div class="panel-body text-center">
-            <h1>{{dictaat.name}}</h1>
-            <a target="_blank" href="/dictaten/{{dictaat.name}}">
-                webdictaat.aii.avans.nl/dictaten/{{dictaat.name}}
-            </a>
-        </div>
-    </div>
-    
-    <div class="panel panel-default sidebar" *ngIf="dictaat">
-        <wd-pages [dictaat]="dictaat"></wd-pages>
-    </div>
 
+    <div *ngIf="dictaat">
+
+        <div class="panel panel-default sidebar" >
+            <div class="panel-body text-center">
+                <h1>{{dictaat.name}}</h1>
+                <a target="_blank" href="/dictaten/{{dictaat.name}}">
+                    webdictaat.aii.avans.nl/dictaten/{{dictaat.name}}
+                </a>
+            </div>
+        </div>
+        
+        <div class="panel panel-default sidebar">
+            <wd-pages [dictaat]="dictaat"></wd-pages>
+        </div>
+
+        <!--<div class="panel panel-default sidebar">
+            <wd-edit-nav-menu [dictaat]="dictaat"></wd-edit-nav-menu>
+        </div>-->
+
+    </div>
+  
+    
     <div class="panel panel-danger">
     <div class="panel-heading">
         <h3 class="panel-title">Danger zone</h3>

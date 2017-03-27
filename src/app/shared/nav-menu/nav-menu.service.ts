@@ -4,31 +4,41 @@ import { Router} from '@angular/router';
 
 //Nodig om een object om te toveren in een promise.
 
-import { NavMenu, NavMenuItem } from '../models/nav-menu';
+import { NavMenuItem } from '../models/nav-menu';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
+import { wdApi } from "../core/wdapi.service";
 
 @Injectable()
 export class NavMenuService {
 
     constructor(
         private http: Http,
-        private router: Router) { }
+        private router: Router,
+        private api: wdApi) { }
 
-    private menu: NavMenu; 
+    private menuItems: NavMenuItem[]; 
 
-    public getNavMenu() : Promise<NavMenu>{
-        if (this.menu != null) {
-            return Promise.resolve(this.menu);
+    public getLocalNavMenu() : Promise<NavMenuItem[]>{
+        if (this.menuItems != null) {
+            return Promise.resolve(this.menuItems);
         }
         else{
             return this.http.get('nav-menu.json')
                 .toPromise()
                 .then((response) => 
-                    this.menu = response.json() as NavMenu
+                    this.menuItems = response.json() as NavMenuItem[]
                 ).catch(this.handleError);
         }
+    }
+
+    public updateNavMenu(dictaatName: string, menuItems: NavMenuItem[]){
+        var resource = "/dictaten/" + dictaatName + "/menu";
+        return this.api.put(resource, menuItems)
+            .toPromise()
+            .then((response) => response.json() as NavMenuItem[])
+            
     }
 
 

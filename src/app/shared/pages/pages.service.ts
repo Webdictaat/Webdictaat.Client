@@ -24,7 +24,7 @@ export class PagesService extends BaseModalService {
             .then(response => response.json() as PageSummary[]);
     }
 
-    public addPage(dictaatName: String, page: Page, menuName: string): Promise<Page> {
+    public addPage(dictaatName: String, page: any, menuName: string): Promise<Page> {
 
         var data = {
             page: page,

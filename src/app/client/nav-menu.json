@@ -1,0 +1,28 @@
+[
+  {
+    "Name": "Home",
+    "Url": "home",
+    "MenuItems": []
+  },
+  {
+    "Name": "Dropdown",
+    "Url": null,
+    "MenuItems": [
+      {
+        "Name": "Item One",
+        "Url": "one",
+        "MenuItems": []
+      },
+      {
+        "Name": "Item Two",
+        "Url": "two",
+        "MenuItems": []
+      },
+      {
+        "Name": "Item Tree",
+        "Url": "tree",
+        "MenuItems": []
+      }
+    ]
+  }
+]

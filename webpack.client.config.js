@@ -187,6 +187,10 @@ module.exports = {
   },
   "plugins": [
       new CopyWebpackPlugin([
+            //files easy for testing
+            { from: './src\\app\\client\\nav-menu.json', to: ''},
+            { from: './src\\app\\client\\pages', to: 'pages'},
+            
             // copy css
             { from: './src\\css\\styles.css', to: 'css' },
             { from: './src\\css\\custom-bootstrap.min.css', to: 'css' },
@@ -213,6 +217,34 @@ module.exports = {
       }
     }),
     new ProgressPlugin(),
+      new HtmlWebpackPlugin({
+      "template": "./src\\index.client.html",
+      "filename": "./index.html",
+      "hash": true,
+      "inject": true,
+      "compile": true,
+      "favicon": false,
+      "minify": false,
+      "cache": true,
+      "showErrors": true,
+      "chunks": "all",
+      "excludeChunks": [],
+      "title": "Webpack App",
+      "xhtml": true,
+      "chunksSortMode": function sort(left, right) {
+        let leftIndex = entryPoints.indexOf(left.names[0]);
+        let rightindex = entryPoints.indexOf(right.names[0]);
+        if (leftIndex > rightindex) {
+            return 1;
+        }
+        else if (leftIndex < rightindex) {
+            return -1;
+        }
+        else {
+            return 0;
+        }
+    }
+    }),
     new BaseHrefWebpackPlugin({}),
     new CommonsChunkPlugin({
       "name": "inline",
@@ -255,7 +287,7 @@ module.exports = {
       }
     }),
     new AotPlugin({
-      "mainPath": "main.cms.ts",
+      "mainPath": "main.client.ts",
       "hostReplacementPaths": {
         "environments\\environment.ts": "environments\\environment.ts"
       },

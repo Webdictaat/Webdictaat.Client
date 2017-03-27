@@ -160,7 +160,7 @@ body {
     display:block;
  }
 
-.row > [class*='col-'] {
+#page .row > [class*='col-'] {
   min-height: 50px;
   border:1px dashed lightgray;
 }

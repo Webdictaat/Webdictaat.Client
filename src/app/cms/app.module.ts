@@ -10,6 +10,7 @@ import { ImagesModule } from '../shared/images/images.module';
 import { PagesModule } from '../shared/pages/pages.module';
 import { ToolsModule } from '../shared/tools/tools.module';
 import { GameElementsModule } from '../shared/game-elements/game-elements.module';
+import { DragulaModule , DragulaService } from 'ng2-dragula/ng2-dragula';
 
 //components
 import { AppComponent } from './app.component';
@@ -23,6 +24,8 @@ import { EditPageComponent }  from '../shared/pages/edit-page.component';
 import { AvatarComponent }  from '../shared/avatar/avatar.component';
 import { ProfileComponent }  from '../shared/profile/profile.component';
 import { DemoComponent } from '../shared/demo/demo.component';
+import { AddVideoComponent } from "../shared/videos/add-video.component";
+
 
 //services
 import { routing } from './app.routing';
@@ -35,20 +38,22 @@ import { AccountService } from '../shared/services/account.service';
 import { wdApi } from '../shared/core/wdapi.service';
 import { DirtyGuard } from "../shared/core/security/dirty.guard";
 import { VideoService } from "../shared/services/video.service";
+import { EditNavMenuComponent } from "../shared/nav-menu/edit-nav-menu.component";
+import { NavMenuService } from "../shared/nav-menu/nav-menu.service";
 
 @NgModule({
     imports: [
-        ToolsModule, QuestionsModule, ImagesModule, GameElementsModule,
+        ToolsModule, QuestionsModule, ImagesModule, GameElementsModule, DragulaModule,
         BrowserModule, HttpModule, routing, PagesModule, FormsModule
     ],
     declarations: [
         DemoComponent, RemoveDictaatComponent,
-        AddDictaatComponent, DialogComponent, AvatarComponent, AddRatingComponent, ProfileComponent,
-        AppComponent, DictatenComponent, DictaatComponent, EditPageComponent
+        AddDictaatComponent, DialogComponent, AvatarComponent, AddRatingComponent, ProfileComponent, AddVideoComponent,
+        AppComponent, DictatenComponent, DictaatComponent, EditPageComponent, EditNavMenuComponent
     ],
     providers: [
         DialogService, QuestionsService, ImageService, AccountService, wdApi,
-        RatingService, DictatenService, DirtyGuard, VideoService,
+        RatingService, DictatenService, DirtyGuard, VideoService, NavMenuService,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
     ],
     bootstrap: [
