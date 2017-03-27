@@ -173,3 +173,7 @@ body {
         background-color:transparent !important;
         color:white;
     }
+
+.container{
+    max-width: 100%;
+}

@@ -38,7 +38,6 @@ import { AccountService } from '../shared/services/account.service';
 import { wdApi } from '../shared/core/wdapi.service';
 import { DirtyGuard } from "../shared/core/security/dirty.guard";
 import { VideoService } from "../shared/services/video.service";
-import { EditNavMenuComponent } from "../shared/nav-menu/edit-nav-menu.component";
 import { NavMenuService } from "../shared/nav-menu/nav-menu.service";
 
 @NgModule({
@@ -49,7 +48,7 @@ import { NavMenuService } from "../shared/nav-menu/nav-menu.service";
     declarations: [
         DemoComponent, RemoveDictaatComponent,
         AddDictaatComponent, DialogComponent, AvatarComponent, AddRatingComponent, ProfileComponent, AddVideoComponent,
-        AppComponent, DictatenComponent, DictaatComponent, EditPageComponent, EditNavMenuComponent
+        AppComponent, DictatenComponent, DictaatComponent, EditPageComponent
     ],
     providers: [
         DialogService, QuestionsService, ImageService, AccountService, wdApi,
