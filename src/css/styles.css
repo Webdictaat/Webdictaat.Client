@@ -127,6 +127,22 @@ hr{
     margin-top: 15px; margin-bottom: 15px;
 }
 
+.wd-banner{
+    height:200px;
+    overflow:hidden;
+    position: relative;
+}
+
+.wd-banner .wd-component{
+    position: relative;
+}
+
+.wd-banner img{
+    width:100%;
+    position:absolute;
+    top:-50%;
+}
+
 
 @media (max-width:767px) {
 

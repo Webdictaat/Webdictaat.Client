@@ -15,7 +15,7 @@ export class NavMenuComponent implements OnInit {
     private page;
 
     @Input()
-    public menuItems: NavMenuItem[];
+    public MenuItems: NavMenuItem[];
 
     constructor(
         private route: ActivatedRoute,
@@ -23,9 +23,9 @@ export class NavMenuComponent implements OnInit {
     ) { }
 
     public ngOnInit(): void {
-        if(!this.menuItems) {
+        if(!this.MenuItems) {
             this.navMenuService.getLocalNavMenu().then(menuItems => {
-                    this.menuItems = menuItems
+                    this.MenuItems = menuItems
             });
         }
     }

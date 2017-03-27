@@ -15,7 +15,9 @@ import { BaseModalService, BaseModalComponent } from "../core/basemodal.service"
     providers: [DictaatService]
 })
 export class AddPageComponent extends BaseModalComponent {
-        errors: any[];
+    
+    public template: string = "default";
+    public errors: any[];
     
     public page: Page = new Page();
     public menus: string[] = [];
@@ -72,7 +74,7 @@ export class AddPageComponent extends BaseModalComponent {
             url: this.trim(this.page.name)
         };
 
-        this.pageService.addPage(this.dictaat.name, page, this.menuName)
+        this.pageService.addPage(this.dictaat.name, page, this.menuName, this.template)
             .then(menuItems => {
                 this.page = new Page();
                 this.dictaat.menuItems = menuItems;

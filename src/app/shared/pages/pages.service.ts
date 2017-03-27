@@ -25,11 +25,12 @@ export class PagesService extends BaseModalService {
             .then(response => response.json() as PageSummary[]);
     }
 
-    public addPage(dictaatName: String, page: any, menuName: string): Promise<NavMenuItem[]> {
+    public addPage(dictaatName: String, page: any, menuName: string, templateName: string): Promise<NavMenuItem[]> {
 
         var data = {
             page: page,
-            subMenu: menuName
+            subMenu: menuName,
+            templateName: templateName
         };
 
         let url: string = "/dictaten/" + dictaatName + '/pages';
