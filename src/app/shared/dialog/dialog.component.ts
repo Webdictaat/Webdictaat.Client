@@ -1,9 +1,10 @@
-﻿import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+﻿import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { DialogService, DialogData } from '../services/dialog.service';
 
 @Component({
     selector: "wd-dialog",
     templateUrl: "./dialog.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DialogComponent implements OnInit {
 
@@ -18,7 +19,7 @@ export class DialogComponent implements OnInit {
             this.isVisible = true;
             this.Content = dialogData.Content;
             this.Title = dialogData.Title;
-            this.changeDetector.detectChanges();
+            this.changeDetector.markForCheck(); // marks path
 
         });
     }

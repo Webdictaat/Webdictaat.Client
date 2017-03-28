@@ -82,7 +82,7 @@ export class HtmlComponent implements OnInit {
 
     private compileHtml(html : string): void {
         this.innerHTML = html;
-        this.changeDetector.detectChanges();
+        this.changeDetector.markForCheck(); // marks path
     }
 
     /**

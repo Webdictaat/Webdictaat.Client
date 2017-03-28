@@ -62,14 +62,14 @@ export class RatingService {
             });
     }
 
-    public SendRate(dictaatName: String, ratingId: number, rate: Rate): Promise<Rate> {
+    public SendRate(dictaatName: String, ratingId: number, rate: Rate): Promise<Rating> {
 
         let url: string = "/dictaten/" + dictaatName + '/rating/' + ratingId + '/rates';
 
         return this.wdapi.post(url, rate)
             .toPromise()
             .then(response => {
-                return response.json() as Rate
+                return response.json() as Rating
             })
             .catch(() => {
                 return this.handleError;

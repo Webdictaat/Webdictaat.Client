@@ -15,7 +15,7 @@
         <ul class="nav navbar-nav dropdown-menu" *ngIf="item.show" (click)="!item.Url">
             <li *ngFor="let subItem of item.MenuItems">
                 <!-- menu item -->
-                <a routerLink="{{subItem.Url}}" routerLinkActive="active">
+                <a routerLink="{{subItem.Url}}" routerLinkActive="active" (click)="item.show = false">
                     {{subItem.Name}}
                 </a>
             </li>

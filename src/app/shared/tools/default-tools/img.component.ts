@@ -32,8 +32,8 @@ export class ImgComponent implements OnInit  {
     public onDrop(ui): Promise<boolean> {
         return new Promise((resolve, reject) => {
             this.imageServie.ShowModal()
-                .then((imgName) => {
-                    var newItem = $("<div class='wd-component'><img src='http://webdictaat.aii.avans.nl//images//" + imgName + "'/></div>");
+                .then((result) => {
+                    var newItem = $("<div class='wd-component'><img src='http://webdictaat.aii.avans.nl//dictaten//"+ result.dictaatName+"//images//" + result.imageLocation + "'/></div>");
                     ui.item.replaceWith(newItem);
                     ui.item = newItem;
                     resolve(false);
