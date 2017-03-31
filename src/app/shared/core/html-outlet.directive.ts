@@ -23,13 +23,14 @@ import { GameElementsModule } from '../game-elements/game-elements.module';
 
 import { QuestionsService } from '../services/question.service';
 import { RatingService } from '../services/rating.service';
+import { DatabModule } from "../../extern/databases/datab.module";
 
 export function createComponentFactory(compiler: Compiler, metadata: Component): Promise<ComponentFactory<any>> {
     const cmpClass = class DynamicComponent { };
     const decoratedCmp = Component(metadata)(cmpClass);
 
     @NgModule({
-        imports: [BrowserModule, CommonModule, RouterModule, GameElementsModule],
+        imports: [BrowserModule, CommonModule, RouterModule, GameElementsModule, DatabModule],
         providers: [QuestionsService, RatingService],
         declarations: [decoratedCmp]
     })
