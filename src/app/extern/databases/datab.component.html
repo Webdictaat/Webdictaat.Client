@@ -1,4 +1,6 @@
 <div class="datab" *ngIf="assignment">
     <h1>Assignment {{assignment.id}} </h1>
     <p>{{assignment.description}}</p>
+    <input [(ngModel)]="submission.query">
+    <button (click)="submit()">Submit</button>
 </div>

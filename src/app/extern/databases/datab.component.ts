@@ -1,6 +1,6 @@
 
 import { Component, OnInit, Input } from "@angular/core";
-import { DatabService, Assignment } from "./datab.service";
+import { DatabService, Assignment, Submission } from "./datab.service";
 
 @Component({
     selector: "wd-datab",
@@ -13,9 +13,10 @@ export class DatabComponent implements OnInit {
     public assignmentId: number;
 
     public assignment: Assignment;
+    public submission: Submission;
 
     constructor(private databService: DatabService){
-        
+        this.submission = new Submission();
     }
 
     ngOnInit(): void {
@@ -24,6 +25,14 @@ export class DatabComponent implements OnInit {
                 this.assignment = assignment;
             });
                 
+    }
+
+    public submit(){
+        this.submission.email = "stijn@info.nl";
+        this.databService.sendSubmission(this.assignmentId, this.submission)
+            .then((submission)=> {
+                this.submission = submission;
+            })
     }
 
 }

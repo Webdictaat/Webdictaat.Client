@@ -9,6 +9,12 @@ export class Assignment{
     public id: number;
 }
 
+export class Submission{
+    public email: string;
+    public query: string;
+}
+
+
 @Injectable()
 export class DatabService {
 
@@ -18,11 +24,18 @@ export class DatabService {
        
     }
 
-    public getAssignment(assignmenttId) : Promise<Assignment>
+    public getAssignment(assignmentId) : Promise<Assignment>
     {
-        return this.http.get(this.root + "/assignments/" + assignmenttId)
+        return this.http.get(this.root + "/assignments/" + assignmentId)
             .toPromise()
             .then(response => response.json() as Assignment);
+    }
+
+    public sendSubmission(assignmentId, submission : Submission ) : Promise<Submission>
+    {
+        return this.http.post(this.root + "/assignments/" + assignmentId + "/submissions", submission)
+            .toPromise()
+            .then(response => response.json() as Submission);
     }
 
 }
