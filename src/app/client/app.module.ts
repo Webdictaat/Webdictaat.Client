@@ -16,10 +16,10 @@ import { AccountService } from '../shared/services/account.service';
 import { RatingService } from '../shared/services/rating.service';
 import { wdApi } from '../shared/core/wdapi.service';
 import { DatabModule } from "../extern/databases/datab.module";
-
+import { QuizModule } from "../shared/quiz/quiz.module";
 
 @NgModule({
-    imports: [BrowserModule, HttpModule, routing, DatabModule],
+    imports: [BrowserModule, HttpModule, routing, DatabModule, QuizModule],
     declarations: [HtmlOutlet, AppComponent, PageComponent, NavMenuComponent, AvatarComponent],
     providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },
         QuestionsService, AccountService, RatingService, wdApi
