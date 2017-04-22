@@ -36,6 +36,24 @@
     opacity: 0.5;
 }
 
+.Materialachievement {
+    height: 200px;
+    width: 150px;
+    margin: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+    float: left;
+    text-align: center;
+    box-shadow: 5px 5px 5px #888888;
+    background-color: #dedece;
+    opacity: 0.5;
+}
+
+.Materialachievementimage {
+    height: 150px;
+    width: 150px;
+}
+
 .completed {
     opacity: 1;
 }
