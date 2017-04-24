@@ -39,6 +39,8 @@ import { wdApi } from '../shared/core/wdapi.service';
 import { DirtyGuard } from "../shared/core/security/dirty.guard";
 import { VideoService } from "../shared/services/video.service";
 import { NavMenuService } from "../shared/nav-menu/nav-menu.service";
+import { AchievementService } from "../shared/services/achievement.service";
+
 
 @NgModule({
     imports: [
@@ -51,7 +53,7 @@ import { NavMenuService } from "../shared/nav-menu/nav-menu.service";
         AppComponent, DictatenComponent, DictaatComponent, EditPageComponent
     ],
     providers: [
-        DialogService, QuestionsService, ImageService, AccountService, wdApi,
+        DialogService, QuestionsService, ImageService, AchievementService, AccountService, wdApi,
         RatingService, DictatenService, DirtyGuard, VideoService, NavMenuService,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
     ],

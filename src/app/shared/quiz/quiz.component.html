@@ -1,3 +1,53 @@
-<p>
+<p *ngIf="!quiz">
   Loading quiz with id {{qid}}
 </p>
+
+<div *ngIf="quiz" class="bs-callout bs-callout-primary">
+
+  <div *ngIf="quiz.status == 'idle'">
+    <h1>{{quiz.title}}</h1>
+    <p>{{quiz.description}}</p>
+    
+    <button *ngIf="isAuth"  (click)="start()" class='btn btn-info btn-raised'>Start</button>
+    <button *ngIf="!isAuth" (click)="login()" class='btn btn-info btn-raised'>Login to start Quiz</button>
+  </div>
+
+  <div *ngIf="quiz.status == 'started'">
+    <ul class="question-progress">
+      <li *ngFor="let q of quiz.questions; let i = index">
+        <button class="btn btn-raised btn-xs" [ngClass]="{'btn-info' :  q.selectedAnswer}" (click)="selectQuestion(i)">
+          {{i + 1}}
+        </button>
+      </li>
+      <li>
+        <button class="btn btn-raised btn-primary btn-xs" [disabled]="!canSubmit()" >
+          Submit
+        </button>
+      </li>
+    </ul>
+
+    <div *ngIf="questionIndex < quiz.questions.length">
+      <wd-quiz-question [question]="quiz.questions[questionIndex]" (onAnswer)="next($event)">
+      </wd-quiz-question>
+     
+    </div>
+    <div *ngIf="questionIndex == quiz.questions.length">
+      <p>All questions answered</p>
+      <p>You can now submit the quiz</p>
+      <button class="btn btn-info btn-xs" (click)="review()">Review answers</button>
+    </div>
+
+
+  </div>
+
+  <div *ngIf="quiz.status == 'pending'">
+   <p> Calculating score...</p>
+  </div>
+
+  <div *ngIf="quiz.status == 'finished'">
+    <p>You've scored {{correctAnswers}} out of a {{quiz.questions.length}}!</p>
+    <button (click)="retakeQuiz()">Retake quiz</button>
+  </div>
+
+</div>
+

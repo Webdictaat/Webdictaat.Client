@@ -1,0 +1,73 @@
+.container {
+    background-color: #fdfffd;
+    box-shadow: 5px 5px 5px #888888;
+    height: 300px;
+    min-width: 150px;
+    width: 100%;
+    overflow: hidden;
+    border: solid 1px;
+}
+
+.achievementscontainer {
+    height: 300px;
+    width: 100%;
+    overflow: auto;
+}
+
+.flex1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+}
+
+.achievement {
+    height: 75px;
+    width: 75px;
+    margin: 5px;
+    overflow: visible;
+    float: left;
+    border: solid 1px;
+}
+
+.achievementimage {
+    height: 75px;
+    width: 75px;
+    opacity: 0.5;
+}
+
+.completed {
+    opacity: 1;
+}
+
+.achievementinfo {
+    background-color: #a9a9a9;
+    width: 75px;
+    height: 40px;
+    position: absolute;
+    text-align: center;
+    display: none;
+}
+
+.achivementinfo p {
+    line-height: 0%;
+}
+
+.buttoncontainer {
+    padding-right: 10px;
+    width: 100%;
+    height: 40px;
+    float: left;
+}
+
+.listgroup {
+    float: left;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.listbutton {
+    margin-right: 10px;
+    margin-top: 5px;
+    float: right;
+}

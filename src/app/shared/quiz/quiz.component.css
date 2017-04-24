@@ -1,0 +1,8 @@
+.question-progress{
+    list-style-type: none;
+    padding:0px;
+}
+
+.question-progress li{
+    display: inline-block;
+}
