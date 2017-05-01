@@ -2,10 +2,12 @@
   Loading quiz with id {{qid}}
 </p>
 
-<div *ngIf="quiz" class="bs-callout bs-callout-primary">
+<div *ngIf="quiz" class="bs-callout bs-callout-primary" [ngClass]="{ 'bs-callout-success': quiz.status == 'finished'}">
+
+  <h1>{{quiz.title}}</h1>
 
   <div *ngIf="quiz.status == 'idle'">
-    <h1>{{quiz.title}}</h1>
+    
     <p>{{quiz.description}}</p>
     
     <button *ngIf="isAuth"  (click)="start()" class='btn btn-info btn-raised'>Start</button>
@@ -15,12 +17,12 @@
   <div *ngIf="quiz.status == 'started'">
     <ul class="question-progress">
       <li *ngFor="let q of quiz.questions; let i = index">
-        <button class="btn btn-raised btn-xs" [ngClass]="{'btn-info' :  q.selectedAnswer}" (click)="selectQuestion(i)">
+        <button class="btn btn-raised btn-xs" [ngClass]="{'btn-success' :  q.selectedAnswer, 'btn-info': q == quiz.questions[questionIndex] }" (click)="selectQuestion(i)">
           {{i + 1}}
         </button>
       </li>
       <li>
-        <button class="btn btn-raised btn-primary btn-xs" [disabled]="!canSubmit()" >
+        <button class="btn btn-raised btn-primary btn-xs" [disabled]="!canSubmit()" (click)="submit()" >
           Submit
         </button>
       </li>
@@ -45,8 +47,8 @@
   </div>
 
   <div *ngIf="quiz.status == 'finished'">
-    <p>You've scored {{correctAnswers}} out of a {{quiz.questions.length}}!</p>
-    <button (click)="retakeQuiz()">Retake quiz</button>
+    <p>You've scored {{quiz.myAttempts[0].correctAnswers}} out of a {{quiz.questions.length}}!</p>
+    <button (click)="retakeQuiz()" class="btn btn-info btn-sm btn-raised">Retake quiz</button>
   </div>
 
 </div>

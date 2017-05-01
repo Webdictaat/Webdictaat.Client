@@ -13,10 +13,10 @@ import { AvatarComponent }  from '../shared/avatar/avatar.component';
 
 //services
 import { AchievementService } from '../shared/services/achievement.service';
-import { QuestionsService } from '../shared/services/question.service';
 import { AccountService } from '../shared/services/account.service';
 import { RatingService } from '../shared/services/rating.service';
 import { wdApi } from '../shared/core/wdapi.service';
+import { QuizService } from "../shared/services/quiz.service";
 
 //modules
 import { DatabModule } from "../extern/databases/datab.module";
@@ -27,7 +27,7 @@ import { QuizModule } from "../shared/quiz/quiz.module";
     imports: [BrowserModule, HttpModule, routing, DatabModule, QuizModule],
     declarations: [HtmlOutlet, AppComponent, PageComponent, NavMenuComponent, AvatarComponent],
     providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },
-        QuestionsService, AccountService, RatingService, wdApi, AchievementService
+        QuizService, AccountService, RatingService, wdApi, AchievementService
     ],
     bootstrap: [AppComponent]
 })

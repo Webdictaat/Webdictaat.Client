@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { QuizService } from "./quiz.service";
 import { Quiz, Answer } from "./quiz";
 import { ActivatedRoute, Params } from "@angular/router";
 import { Question } from "../models/question";
 import { AccountService } from "../services/account.service";
+import { QuizService } from "../services/quiz.service";
 
 @Component({
   selector: 'wd-quiz',
@@ -19,6 +19,7 @@ export class QuizComponent implements OnInit {
   public isAuth: boolean;
   public questionIndex : number;
   public correctAnswers: number;
+  public givenAnswers : number[];
 
   constructor(
     private accountService: AccountService,
@@ -41,7 +42,7 @@ export class QuizComponent implements OnInit {
         this.quizService.getQuiz(this.dictaatName, this.qid)
           .then((q: Quiz) => { 
              this.quiz = q;
-             this.quiz.status = "idle";
+             this.quiz.myAttempts.length == 0 ? this.quiz.status = "idle" : this.quiz.status = "finished";
           });
 
     });
@@ -51,9 +52,12 @@ export class QuizComponent implements OnInit {
       this.questionIndex = 0;
       this.quiz.status = "started";
       this.correctAnswers = 0;
+      this.givenAnswers = [];
+      this.quiz.questions.forEach(q => q.selectedAnswer = null);
   }
 
   public next(answer: Answer){
+    this.givenAnswers.push(answer.id);
     this.questionIndex++
   }
 
@@ -76,7 +80,12 @@ export class QuizComponent implements OnInit {
   }
 
   public submit(){
-
+    this.quiz.status = 'pending';
+    this.quizService.submitAnswers(this.dictaatName ,this.quiz.id, this.givenAnswers)
+      .then((attempt) => {
+          this.quiz.myAttempts.unshift(attempt);
+          this.quiz.status = 'finished';
+      });
   }
 
 

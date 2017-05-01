@@ -1,21 +1,22 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { ToolParams } from '../../models/tool-params';
-import { QuestionsService } from '../../services/question.service';
 import { Question } from '../../models/question';
+import { Quiz } from "../../quiz/quiz";
+import { QuizService } from "../../services/quiz.service";
 
 var $ : any;
 
 @Component({
-    selector: "wd-multiple-choice-tool",
-    template: `<div id='wd-multiple-choice-tool' class='wd-component'>
-        <i class="fa fa-question-circle-o" aria-hidden="true"></i> Multiple choice
+    selector: "wd-quiz-tool",
+    template: `<div id='wd-quiz-tool' class='wd-component'>
+        <i class="fa fa-question-circle-o" aria-hidden="true"></i> Quiz
     </div>`
 })
-export class MultipleChoiceToolComponent {
+export class QuizToolComponent {
 
-    private template: String = "<wd-multiple-choice>";
+    private template: String = "<wd-quiz>";
 
-    constructor(private questionsService: QuestionsService) { }
+    constructor(private quizService: QuizService) { }
 
     /**
      * Omslachtige maar nodige manier om terug in de Angular2 context te komen.
@@ -23,7 +24,7 @@ export class MultipleChoiceToolComponent {
      */
     public ngOnInit(): void {
         var component = this;
-        $('#wd-multiple-choice-tool').draggable({
+        $('#wd-quiz-tool').draggable({
             helper: "clone",
             connectToSortable: ".wd-container",
             start: function (e, ui) {
@@ -36,9 +37,9 @@ export class MultipleChoiceToolComponent {
     public onDrop(ui): Promise<boolean> {
 
         return new Promise((resolve, reject) => {
-            this.questionsService.ShowModal()
-                .then((question: Question) => {                  
-                    ui.item.replaceWith("<wd-multiple-choice class='wd-game-component' [qid]='" + question.id + "' />");
+            this.quizService.ShowModal()
+                .then((quiz: Quiz) => {                  
+                    ui.item.replaceWith("<wd-quiz class='wd-game-component' [qid]='" + quiz.id + "' />");
                     resolve(true);
                 })
                 .catch(() => {
