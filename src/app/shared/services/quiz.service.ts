@@ -5,12 +5,9 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { wdApi } from '../core/wdapi.service';
 import { BaseModalService } from '../core/basemodal.service';
-
-import { Question } from '../models/question';
-
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import { Quiz, Attempt } from "../quiz/quiz";
+import { Quiz, Attempt, Question } from "../quiz/quiz";
 
 
 @Injectable()

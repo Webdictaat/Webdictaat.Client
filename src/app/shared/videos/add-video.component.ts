@@ -1,10 +1,6 @@
 import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { QuestionsService } from '../services/question.service';
 import { DictaatService } from '../services/dictaat.service';
-
-
-import { Question, QuestionAnswer } from '../models/question';
 import { ActivatedRoute, Params } from '@angular/router';
 import { VideoService } from "../services/video.service";
 

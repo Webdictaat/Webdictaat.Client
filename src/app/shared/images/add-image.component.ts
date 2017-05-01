@@ -1,9 +1,6 @@
 ﻿import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef, ElementRef, ChangeDetectionStrategy, NgZone } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { ImageService } from '../services/images.service';
-
-
-import { Question } from '../models/question';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({

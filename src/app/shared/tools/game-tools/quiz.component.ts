@@ -1,7 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { ToolParams } from '../../models/tool-params';
-import { Question } from '../../models/question';
-import { Quiz } from "../../quiz/quiz";
+import { Quiz, Question } from "../../quiz/quiz";
 import { QuizService } from "../../services/quiz.service";
 
 var $ : any;
