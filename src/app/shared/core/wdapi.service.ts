@@ -11,9 +11,11 @@ export class wdApi {
 
     //public urlPrefix = 'http://webdictaat.azurewebsites.net/api';
     //public urlPrefix = 'http://student.aii.avans.nl/doc/ssmulder/api';
-    public urlPrefix = 'http://localhost:65418/api';
+    public urlPrefix = window["rootVar"] ? window["rootVar"] : 'http://localhost:65418/api';
     //public urlPrefix = 'http://localhost:8001/api';
     //public urlPrefix = "http://webdictaat.aii.avans.nl/api";
+
+    
 
     public get(url) {
         return this.http.get(this.urlPrefix + url, { withCredentials: true }).catch(this.handleError);
