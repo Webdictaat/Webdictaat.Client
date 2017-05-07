@@ -6,7 +6,9 @@ var $ : any;
 
 @Component({
     selector: "wd-rating-tool",
-    template: "<div id='wd-rating-tool' class='wd-component'>Rating</div>",
+    template: `<div id='wd-rating-tool' class='wd-component'>
+        <i class="fa fa-smile-o" aria-hidden="true"></i> Rating
+    </div>`
 })
 export class RatingToolComponent {
 

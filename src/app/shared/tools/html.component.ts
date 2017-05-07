@@ -2,21 +2,17 @@
 import { DialogService } from '../services/dialog.service';
 import { ToolParams } from '../models/tool-params';
 
-var $ : any;
-
+declare var $ : any;
+declare var CKEDITOR : any;
 
 @Component({
     selector: "wd-html",
-    styles: [`
-    .code-editor{
-        width:100%;
-        max-width:100%;
-    }
-`],
     template: `
   
+      
+
         <!-- most bootstrap elements only work when inside a container!! -->
-        <div id='page' class='container-fluid'>
+        <div id='page'>
             <html-outlet  [html]="innerHTML" (afterCompile)="afterCompile()"></html-outlet>
         </div>
         <div class='panel-footer'>
@@ -26,9 +22,10 @@ var $ : any;
         </div>
     `,
 })
-export class HtmlComponent implements OnInit{
+export class HtmlComponent implements OnInit {
+        
 
-    public editableElements =  ".wd-editable, p, span, h1, h2, h3, h4, h5";
+    public editableElements =  ".wd-editable";
     public containerElements = ".wd-container";
 
     @Input()
@@ -46,6 +43,7 @@ export class HtmlComponent implements OnInit{
 
     public ngOnInit(): void{
         this.pageElement = $('#page'); //.html(this.innerHTML);
+        CKEDITOR.disableAutoInline = true;
     }
 
     public ngOnChanges() : void{
@@ -56,7 +54,7 @@ export class HtmlComponent implements OnInit{
         var target = ui.item.data("component");
 
         if (!target)
-            return; //Sometimes we drop components that do not need any enhancement
+            return; //If no target was added, return
 
         target.onDrop(ui).then((needsRecompile) => {
 
@@ -67,33 +65,24 @@ export class HtmlComponent implements OnInit{
             }
             else {
 
-                ui.item
-                    .removeAttr('style')
-                    .find(this.editableElements)
-                    .attr("contenteditable", "true");
+                //verwijder door jquery geplaatste stijl
+                ui.item.removeAttr('style');
 
-                this.pageElement.find('.wd-container').find(this.editableElements)
-                    .attr("contenteditable", "true");
-
-                //Als het gedropte item sub containers bevat, even drop enable
+                //enable 
+                this.enableEditor(ui.item);
                 this.enableContainers(ui.item);
-
-                //Helaas nodig omdat browsers stom doen omtrent content editable
-                this.solveEnterIssue(ui.item);
+                this.enableDragging(ui.item);
 
                 //Omdat het soms even duurt voordat een component kan renderen, moeten we hier even op wachten.
                 //De focues 'refresht' het scherm zogenaamd. 
                 setTimeout(() => ui.item.focus(), 0);
-
             }
-
-            this.recompile();
         })
     }
 
     private compileHtml(html : string): void {
         this.innerHTML = html;
-        this.changeDetector.detectChanges();
+        this.changeDetector.markForCheck(); // marks path
     }
 
     /**
@@ -101,15 +90,13 @@ export class HtmlComponent implements OnInit{
      */
     public afterCompile() {
 
-
+        this.enableEditor(this.pageElement);
         this.enableContainers(this.pageElement);
-
-        this.pageElement.find('.wd-container').find(this.editableElements)
-            .attr("contenteditable", "true");
-
-        this.solveEnterIssue(this.pageElement.find(this.editableElements));
+        this.enableDragging(this.pageElement);
 
         this.zone.run(() => { }); //Get back into angular running context
+
+       
     }
 
     public decompileHtml(): string {
@@ -121,13 +108,22 @@ export class HtmlComponent implements OnInit{
         pageObject.find(".wd-game-component").empty(); //leeg maken van gecompileerde componenten
 
         pageObject.find('*').removeAttr("contenteditable"); //verwijder contenteditable van elementen
-        //verwijder alle classes van jquery-ui (beginnnen met ui)
+        
+        //verwijder alle classes van jquery-ui (beginnnen met ui) en CKEditor
+        pageObject.find('*').removeClass (function (index, className) {
+            return (className.match (/(^|\s)ui-\S+/g) || className.match (/(^|\s)ui-\S+/g)  || []).join(' ');
+        });
+
+        pageObject.find('.handle').remove();//remove all handles
         pageObject.find('*').removeClass (function (index, className) {
             return (className.match (/(^|\s)ui-\S+/g) || []).join(' ');
         });
     
+        //Angular replaces input attributes with an ng-reflect attributes
+        //to get our valid html back, we need to remove these ng-reflect attributes
         var htmlString = pageObject.html();
         htmlString = htmlString.replace(/ng-reflect-(.+?)=/g, '[$1]=')
+
         return htmlString;
     }
 
@@ -137,12 +133,32 @@ export class HtmlComponent implements OnInit{
 
 
     private savePage(): void {
-        this.pageEdited.emit(this.decompileHtml());
+        var html = this.decompileHtml()
+        this.pageEdited.emit(html);
+        this.compileHtml(html);
+    }
+
+    private enableDragging(element): void {
+        //remove and add handles
+        element.find('.handle').remove();
+        element.find('.wd-component').addBack('.wd-component')
+            .append("<div class='handle'><i class='fa fa-ellipsis-h' aria-hidden='true'></i></div>");
+    }
+
+    private enableEditor(element): void{
+        
+        element.find(this.editableElements)
+            .attr("contenteditable", "true")
+            .each((k, editableElement) => {
+                CKEDITOR.inline(editableElement)
+            });
+
     }
 
     private enableContainers(element): void {
 
-        element.find('.wd-container').sortable({
+        element.find('.wd-container').addBack('.wd-container').sortable({
+            handle: ".handle",
             connectWith: '.wd-container, #wd-trash',
             cancel: this.editableElements,
             hoverClass: "ui-state-hover",
@@ -156,67 +172,6 @@ export class HtmlComponent implements OnInit{
             },
             stop: function (e, ui) {
                 ui.item.removeClass('dragged');
-            }
-        });
-    }  
-
-    /**
-     * Deze methode is nodig om beter om te gaan met de user input 'enter'.
-     * Origineel zal de browser een div toevoegen. Dit is geen nette valide html.
-     * Deze code snippet vervangt de div door een span.
-     * @param element waarbij 'enters' vervangen moeten worden
-     */
-    private solveEnterIssue(element): void {
-
-        element.on("keypress", function (e) {
-
-            var changedElement = $(this);
-            //if the last character is a zero-width space, remove it
-            var contentEditableHTML = changedElement.html();
-            var lastCharCode = contentEditableHTML.charCodeAt(contentEditableHTML.length - 1);
-            if (lastCharCode == 8203) {
-                changedElement.html(contentEditableHTML.slice(0, -1));
-            }
-            // handle "Enter" keypress
-            if (e.which == 13) {
-                if (window.getSelection) {
-                    var selection = window.getSelection();
-                    var range = selection.getRangeAt(0);
-                    var br = document.createElement("br");
-                    var zwsp = document.createTextNode("\u200B");
-                    var textNodeParent = document.getSelection().anchorNode.parentNode;
-                    var inSpan = textNodeParent.nodeName == "SPAN";
-                    var span = document.createElement("span");
-
-                    // if the carat is inside a <span>, move it out of the <span> tag
-                    if (inSpan) {
-                        range.setStartAfter(textNodeParent);
-                        range.setEndAfter(textNodeParent);
-                    }
-
-                    // insert the <br>
-                    range.deleteContents();
-                    range.insertNode(br);
-                    range.setStartAfter(br);
-                    range.setEndAfter(br);
-
-                    // create a new span on the next line
-                    if (inSpan) {
-                        range.insertNode(span);
-                        range.setStart(span, 0);
-                        range.setEnd(span, 0);
-                    }
-
-                    // add a zero-width character
-                    range.insertNode(zwsp);
-                    range.setStartBefore(zwsp);
-                    range.setEndBefore(zwsp);
-
-                    // insert the new range
-                    selection.removeAllRanges();
-                    selection.addRange(range);
-                    return false;
-                }
             }
         });
     }

@@ -7,12 +7,16 @@ import { PageSummary } from '../models/page-summary';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
+import { BaseModalService } from "../core/basemodal.service";
+import { NavMenuItem } from "../models/nav-menu";
 
 
 @Injectable()
-export class PagesService {
+export class PagesService extends BaseModalService {
 
-    constructor(private wdapi: wdApi) { }
+    constructor(private wdapi: wdApi) { 
+        super();
+    }
 
     public getPages(dictaatName: String): Promise<PageSummary[]> {
 
@@ -21,11 +25,12 @@ export class PagesService {
             .then(response => response.json() as PageSummary[]);
     }
 
-    public addPage(dictaatName: String, page: Page, menuName: string): Promise<Page> {
+    public addPage(dictaatName: String, page: any, menuName: string, templateName: string): Promise<NavMenuItem[]> {
 
         var data = {
             page: page,
-            subMenu: menuName
+            subMenu: menuName,
+            templateName: templateName
         };
 
         let url: string = "/dictaten/" + dictaatName + '/pages';
@@ -54,12 +59,12 @@ export class PagesService {
     }
 
 
-    public deletePage(dictaatName: String, pageName: String): Promise<Response>{
+    public deletePage(dictaatName: String, pageName: String): Promise<NavMenuItem[]>{
 
-        let url: string = "/dictaten/" + dictaatName + '/pages' + pageName;
+        let url: string = "/dictaten/" + dictaatName + '/pages/' + pageName;
 
         return this.wdapi.delete(url)
             .toPromise()
-            .then(response => response);
+            .then(response => response.json() as NavMenuItem[]);
     }
 }

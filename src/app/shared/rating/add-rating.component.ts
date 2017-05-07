@@ -1,4 +1,4 @@
-﻿import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef  } from '@angular/core';
+﻿import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { RatingService } from '../services/rating.service';
 import { DictaatService } from '../services/dictaat.service';
@@ -10,6 +10,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 @Component({
     selector: "wd-add-rating",
     templateUrl: "./add-rating.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddRatingComponent implements OnInit   {
 
@@ -33,11 +34,8 @@ export class AddRatingComponent implements OnInit   {
 
         this.ratingService.getIsModalVisible().subscribe((isModalVisible: boolean) => {
             this.isModalVisible = isModalVisible;
-            if (isModalVisible) {
-                this.rating = new Rating();  
-                this.changeDetector.detectChanges();
-            }
-          
+            this.rating = new Rating();  
+            this.changeDetector.markForCheck(); // marks path
         });
     }
 

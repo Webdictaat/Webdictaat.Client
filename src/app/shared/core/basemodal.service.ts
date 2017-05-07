@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+﻿import { Injectable, NgZone } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 //Nodig om een object om te toveren in een promise.
 import { Subject } from 'rxjs/Subject';
@@ -10,7 +10,6 @@ import 'rxjs/add/operator/map';
 
 
 @Injectable()
-
 export class BaseModalService {
 
     public isModalVisible: boolean = false;
@@ -18,6 +17,8 @@ export class BaseModalService {
 
     protected resolveComplete;
     protected resolveCancel;
+
+    public constructor(){}
 
     public getIsModalVisible(): Observable<boolean> {
         return this.subject.asObservable();
@@ -42,6 +43,26 @@ export class BaseModalService {
         this.resolveComplete(objectToResolve);
         this.isModalVisible = false;
         this.subject.next(this.isModalVisible);
+    }
+
+}
+
+export class BaseModalComponent {
+
+    public isModalVisible;
+    private baseService: BaseModalService;
+
+    ///call this method to initialize base component
+    protected wdOnInit(service: BaseModalService, zone: NgZone): void {
+        this.baseService = service;
+        service.getIsModalVisible().subscribe((isModalVisible: boolean) => {      
+            this.isModalVisible = isModalVisible;
+            zone.run(() => {});
+        });
+    }
+
+    public cancel(){
+        this.baseService.CancelModal();
     }
 
 }

@@ -1,52 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-body { 
-    padding-top: 70px; 
-    padding-bottom: 70px;
-}
-
-.modal{
-    display:block;
-    background-color: rgba(128, 128, 128, 0.4);
-}
-
-.close-modal-button{
-    position: absolute;
-    top:24px;
-    right:24px;
-   
-    color:darkgray;
-}
-
-.close-modal-button:hover{
-     cursor:pointer;
-}
-
-.wd-container{
-    padding:15px;
-    border:1px dashed #ccc;
-}
-
-.drop-container{
-   padding:2px;
-   border:1px dashed black;
-}
-
-.tools .wd-component{
-      text-align:center;
-}
-
- .wd-component {
-     border:1px dashed black;
-     border-color: transparent;
-     padding:2px;
-}
- .wd-component:hover{
-    border:1px dashed black;
-}
-
- .wd-game-component{
-    display:block;
- }
 
 .wd-flex{
     display:flex;
@@ -68,90 +20,11 @@ body {
     flex:4;
 }
 
-.tools{
-    list-style:none;
-    padding:0; margin:0;
-}
 
-.tools li {
-    border:1px solid gray;
-    padding:5px;
-    margin:5px;
-    cursor:pointer;
-}
-
-.tools li .row{
+.wd-component > img, .wd-component > iframe{
     width:100%;
-    margin-left:0px;
 }
 
-.remove{
-    border:1px dashed red;
-}
-
-
-.ui-state-hover{
-    border:1px dashed black;
-}
-
-.ui-state-hover .wd-component{
-    border:1px dashed #ccc;
-}
-
-.highlight{
-    border:1px dashed darkgreen;
-    display:block;
-}
-
-img{
-    max-width:100%;
-    max-height:100%;
-}
-
-/** tools */
-
-.trashcan{
-    padding:15px;
-    border:1px dashed #ccc;
-    text-align:center;
-    position:relative;
-    min-height:100px;
-    color:darkred;
-}
-
-.trashcan span{
-    position:absolute;
-    font-size:20px;
-    width:100%;
-    text-align:center;
-    left:0px;
-    line-height:100px;
-}
-
-.trashcan .highlight{
-    border:2px dashed darkred;
-    min-height:100px;
-}
-
-
-.dragged{
-    transform: scale(0.8, 0.8);
-      position: absolute;
-      opacity: 0.5;
-      z-index: 2000;
-}
-
-.navbar-sub{
-    margin-top: -20px;
-    margin-bottom: 65px;
-}
-
-img.wd-logo{
-    position:relative;
-    width: 100px;
-    top:65px;
-    margin-top:-65px;
-}
 
 .table-hover tr{
     cursor:pointer;
@@ -165,20 +38,6 @@ img.wd-logo{
     border-bottom:2px solid #00AEED;
 }
 
-.wd-component{
-    cursor: pointer;
-}
-
-.wd-component h1, 
-.wd-component h2, 
-.wd-component h3, 
-.wd-component h4, 
-.wd-component h5, 
-.wd-component p, 
-.wd-component span{
-    cursor: default;
-}
-
 .elements > tbody > tr > td{
     padding:2px;
 }
@@ -187,15 +46,147 @@ img.wd-logo{
     position:fixed;
 }
 
-.item-hover{
-    opacity:1;
+/** override rows from bootstrap */
+
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+
 }
 
-.item-hover:hover{
-    cursor:pointer;
-    background-color: rgba(0, 0, 0, 0.1);
+
+.maxed{
+    max-width:100%;
 }
 
-    .item-hover *:hover {
-        cursor:pointer;
-    }
+hr{
+    background-color:darkgray;
+}
+
+.dropdown-toggle{
+    cursor: pointer;
+}
+
+.dropdown-menu{
+    display:block;
+    float:none;
+}
+.dropdown-menu > li > a{
+    color:#777 !important;
+}
+
+.unhide{
+    display: block;
+}
+
+/** Sidebar **/
+
+.side-nav-wrapper{
+  width:500px;
+  position: fixed;
+  top:0px;
+  margin-top:50px;
+  right:-250px;
+  transition: all 0.4s ease 0s;
+  height: 100%;
+  max-width:200%;
+  z-index:1;
+}
+
+.side-nav{
+  position: absolute;
+  width:250px;
+  right:0px;
+  background-color:white;
+  transition: all 0.4s ease 0s;
+   height: 100%;
+   width:50%;
+  
+}
+
+.side-nav .navbar-nav{
+   margin-left:0px;
+}
+
+.side-nav.active{
+   transform: translate(-250px, 0);
+}
+
+.side-nav li{
+  line-height: 40px;
+  text-indent: 20px;
+}
+
+.navbar .navbar-text {
+    margin-top: 15px; margin-bottom: 15px;
+}
+
+.wd-banner{
+    height:200px;
+    overflow:hidden;
+    position: relative;
+}
+
+.wd-banner .wd-component{
+    position: relative;
+}
+
+.wd-banner img{
+    width:100%;
+    position:absolute;
+    top:-50%;
+}
+
+
+.text-baloon{
+   position: relative;
+   text-align: center;
+   padding: 0px;
+   background: #ffffff;
+   border-radius: 2px;
+   box-shadow: 0 1px 6px 0 rgba(0,0,0,0.12), 0 1px 6px 0 rgba(0,0,0,0.12);
+}
+
+.text-baloon::after {
+   content: '';
+   position: absolute;
+   border-style: solid;
+   border-width: 15px 15px 0;
+   border-color: #ffffff transparent;
+   display: block;
+   width: 0;
+   z-index: 1;
+   bottom: -10px;
+   left: 7px;
+}
+
+
+@media (max-width:767px) {
+
+  .side-nav{
+     transform: translate(0, 0);
+  }
+
+  .row{
+      margin-left:0px;
+      margin-right:0px;
+  }
+
+  .side-nav .dropdown-menu{
+      -webkit-box-shadow: none;
+      box-shadow:none;
+      border:none;
+      position:static;
+      margin:0px;
+      background-color:transparent;
+      padding-left:2px;
+  }
+
+}

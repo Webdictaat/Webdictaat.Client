@@ -4,7 +4,9 @@ var $ : any;
 
 @Component({
     selector: "wd-img-tool",
-    template: "<div id='wd-img-tool' class='wd-component' >Img</div>",
+    template: `<div id='wd-img-tool' class='wd-component' >
+        <i class="fa fa-picture-o" aria-hidden="true"></i> Image
+    </div>`
 })
 export class ImgComponent implements OnInit  {
 
@@ -30,8 +32,10 @@ export class ImgComponent implements OnInit  {
     public onDrop(ui): Promise<boolean> {
         return new Promise((resolve, reject) => {
             this.imageServie.ShowModal()
-                .then((imgName) => {
-                    ui.item.replaceWith("<div class='wd-component'><img src='http://webdictaat.aii.avans.nl//images//" + imgName + "'/></div>");
+                .then((result) => {
+                    var newItem = $("<div class='wd-component'><img src='http://webdictaat.aii.avans.nl//dictaten//"+ result.dictaatName+"//images//" + result.imageLocation + "'/></div>");
+                    ui.item.replaceWith(newItem);
+                    ui.item = newItem;
                     resolve(false);
                 })
                 .catch(() => {

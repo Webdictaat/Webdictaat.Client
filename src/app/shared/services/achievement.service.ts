@@ -12,7 +12,7 @@ export class AchievementService {
     getAchievementsSlowly(): Promise<AchievementGroup[]> {
         return new Promise(resolve => {
             // Simulate server latency with 2 second delay
-            setTimeout(() => resolve(this.getAchievements()), 2000);
+            setTimeout(() => resolve(this.getAchievements()), 200);
         });
     }
 

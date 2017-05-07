@@ -12,7 +12,7 @@ import { HtmlComponent } from "../tools/html.component";
     styleUrls: [ "./edit-page.component.css"],
     providers: [PagesService]
 })
-export class EditPageComponent implements DirtyComp {
+export class EditPageComponent implements DirtyComp  {
     
     public isDirty(): boolean{
 
@@ -30,8 +30,6 @@ export class EditPageComponent implements DirtyComp {
 
     public pageName: string;
     public dictaatName: string;
-
-    public selectedTab: string = "text";
 
     constructor(
         private route: ActivatedRoute,
@@ -65,5 +63,6 @@ export class EditPageComponent implements DirtyComp {
         this.page.source = pageSource;
         this.savePage();
     }
+    
 
 }

@@ -1,0 +1,23 @@
+
+<div class="well bs-callout bs-callout-primary" [ngClass]="{ 'bs-callout-success': assignment && assignment.mySubmission}" >
+
+
+    <div *ngIf="!assignment">
+        Loading assignment...
+    </div>
+
+    <div class="datab" *ngIf="assignment">
+        <h1>{{assignment.title}} </h1>
+        <p>{{assignment.description}}</p>
+        <textarea [(ngModel)]="submission.query" [disabled]="assignment.mySubmission"></textarea>
+        <div *ngIf="!assignment.external">
+            <button (click)="submit()">Submit</button>
+        </div>
+        <p *ngIf="assignment.mySubmission">
+            You completed this assignment on {{assignment.mySubmission.timestamp | date:'shortTime'}} 
+            and recieved {{assignment.mySubmission.pointsRecieved}} points
+        </p>
+  
+    </div>
+
+</div>

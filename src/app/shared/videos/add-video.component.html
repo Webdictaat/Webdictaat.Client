@@ -1,0 +1,34 @@
+<div id="myModal" class="modal fade in" role="dialog" *ngIf="isModalVisible">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Youtube video</h4>
+                <div class="close-modal-button" (click)="Cancel()">
+                    <span  class="glyphicon glyphicon-remove"></span>
+                </div>
+            </div>
+            <div class="modal-body">
+
+                <p>
+                    Share > Embed > Copy iFrame
+                </p>
+
+                <img src="img/embed-snippet.png" width="100%" />
+               
+              
+                 <div class="form-group">
+                    <input type="text" class="form-control" name="descritpion" placeholder="Embed html snippet from youtube"
+                            [(ngModel)]="videoTag" required>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" [disabled]="!videoTag || videoTag.length < 3" (click)="Add()">Save</button>
+                <button class="btn btn-default" (click)="Cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

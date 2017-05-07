@@ -21,16 +21,22 @@ import { RouterModule }  from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { GameElementsModule } from '../game-elements/game-elements.module';
 
-import { QuestionsService } from '../services/question.service';
+
 import { RatingService } from '../services/rating.service';
+import { DatabModule } from "../../extern/databases/datab.module";
+import { QuizModule } from "../quiz/quiz.module";
+import { QuizService } from "../services/quiz.service";
 
 export function createComponentFactory(compiler: Compiler, metadata: Component): Promise<ComponentFactory<any>> {
     const cmpClass = class DynamicComponent { };
     const decoratedCmp = Component(metadata)(cmpClass);
 
     @NgModule({
-        imports: [BrowserModule, CommonModule, RouterModule, GameElementsModule],
-        providers: [QuestionsService, RatingService],
+        imports: [
+            BrowserModule, CommonModule, RouterModule, GameElementsModule, DatabModule,
+            QuizModule
+        ],
+        providers: [QuizService, RatingService],
         declarations: [decoratedCmp]
     })
     class DynamicHtmlModule { }

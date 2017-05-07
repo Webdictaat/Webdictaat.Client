@@ -1,0 +1,12 @@
+<div *ngIf="question" >
+
+    <h4>{{question.text}}</h4>
+
+    <div *ngFor='let answer of question.answers'>
+        <button class="btn btn-raised btn-default answer" (click)="selectAnswer(answer)"  
+                [ngClass]="{'btn-info' :  question.selectedAnswer == answer}">
+            {{answer.text}}
+        </button>
+    </div>
+
+</div>

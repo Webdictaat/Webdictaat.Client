@@ -4,7 +4,9 @@ var $ : any;
 
 @Component({
     selector: "wd-card",
-    template: "<div id='wd-card-tool' class='wd-component'>Card</div>"
+    template: `<div id='wd-card-tool' class='wd-component'>
+    <i class="fa fa-square-o" aria-hidden="true"></i> Card
+    </div>`
 })
 export class CardComponent {
 
@@ -25,7 +27,7 @@ export class CardComponent {
         return new Promise((resolve, reject) => {
             var newItem = $("<div class='wd-component well wd-container'></div>");
             ui.item.replaceWith(newItem);
-            newItem.focus();
+            ui.item = newItem;
             resolve(false);
         });
 

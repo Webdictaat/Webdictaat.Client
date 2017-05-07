@@ -5,3 +5,28 @@
 .ng-invalid:not(form)  {
   border-left: 5px solid #a94442; /* red */
 }
+
+div.selected{
+  border:1px solid #00AEED;
+}
+
+div{
+  border:1px solid transparent;
+  padding:2px;
+  cursor: pointer;
+}
+
+.templates{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.templates > div {
+  width:30%;
+}
+
+.templates img{
+  width:100%;
+}
+

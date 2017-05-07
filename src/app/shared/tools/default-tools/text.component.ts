@@ -3,7 +3,7 @@ var $ : any;
 
 @Component({
     selector: "wd-text",
-    template: "<div id='wd-text-tool' class='wd-component'>Tekst</div>"
+    template: `<div id='wd-text-tool' class='wd-component'><i class="fa fa-file-text-o" aria-hidden="true"></i> Tekst</div>`
 })
 export class TextComponent {
 
@@ -24,7 +24,7 @@ export class TextComponent {
         return new Promise((resolve, reject) => {
             var newItem = $("<div class='wd-component'><div class='wd-editable'>Change me!</div></div>");
             ui.item.replaceWith(newItem);
-            newItem.focus();
+            ui.item = newItem;
             resolve(false);
         });
 

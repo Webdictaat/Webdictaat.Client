@@ -1,0 +1,24 @@
+<ul class="nav navbar-nav" *ngIf="MenuItems">
+
+    <li *ngFor="let item of MenuItems"  [ngClass]="{dropdown: !item.Url}">
+
+        <!-- menu item -->
+        <a routerLink="{{item.Url}}" routerLinkActive="active" *ngIf="item.Url">
+            {{item.Name}}
+        </a>
+
+        <!-- sub menu -->
+        <a  (click)="item.show = !item.show" class="dropdown-toggle" *ngIf="!item.Url">
+            {{item.Name}}<span class="caret"></span>
+        </a>
+
+        <ul class="nav navbar-nav dropdown-menu" *ngIf="item.show" (click)="!item.Url">
+            <li *ngFor="let subItem of item.MenuItems">
+                <!-- menu item -->
+                <a routerLink="{{subItem.Url}}" routerLinkActive="active" (click)="item.show = false">
+                    {{subItem.Name}}
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>

@@ -1,14 +1,12 @@
-﻿import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef, ElementRef  } from '@angular/core';
+﻿import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef, ElementRef, ChangeDetectionStrategy, NgZone } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { ImageService } from '../services/images.service';
-
-
-import { Question } from '../models/question';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
     selector: "wd-add-image",
     templateUrl: "./add-image.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddImageComponent implements OnInit   {
 
@@ -32,10 +30,8 @@ export class AddImageComponent implements OnInit   {
 
         this.imageService.getIsModalVisible().subscribe((isModalVisible: boolean) => {
             this.isModalVisible = isModalVisible;
-            if (isModalVisible) {
-                this.changeDetector.detectChanges();
-            }
-          
+            this.changeDetector.markForCheck(); // marks path
+
         });
     }
 
@@ -47,7 +43,10 @@ export class AddImageComponent implements OnInit   {
 
         this.imageService.addImages(this.dictaatName, this.selectedFile)
             .then((imageLocation: string) => {
-                this.imageService.CompleteModal(imageLocation);
+                this.imageService.CompleteModal( {
+                    dictaatName: this.dictaatName,
+                    imageLocation: imageLocation
+                });
             });
     }
 

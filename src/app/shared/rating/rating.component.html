@@ -1,0 +1,58 @@
+ <div class='wd-component'>
+
+        <div *ngIf="error" class="alert alert-danger">
+            <p>{{error}}</p>
+        </div>
+
+        <div class="bs-callout bs-callout-info" *ngIf="rating" >
+               
+            <h4>{{rating.title}}</h4>
+
+            <div *ngIf="!isAuth">
+                 <button class='btn btn-info btn-raised' (click)="login()">Login to give feedback</button>
+            </div>
+
+            <div *ngIf="isAuth">
+
+                <div *ngIf="!rating.myRate" class="rate">
+                    <span class="count">{{rating.sadCounter}}</span>
+                    <div class='emotion' [ngClass]="{ 'active' : rate.emotion == 'sad' }">       
+                        <img (click)="setEmotion('sad')"   src="http://webdictaat.azurewebsites.net/images/shared/sad.png">
+                       
+                        <div  *ngIf="rate.emotion == 'sad'" class="text-baloon">
+                             <div class="content">
+                                <input [(ngModel)]='rate.feedback' id="textArea" placeholder="I feel sad because..." />
+                                <button class='btn btn-info btn-raised' (click)="sendRate()" >Send rating</button>
+                             </div>
+                        </div>
+                    </div>
+                    <span class="count">{{rating.happyCounter}}</span>
+                    <div  class='emotion' [ngClass]="{ 'active' : rate.emotion == 'happy' }">
+                        <img (click)="setEmotion('happy')"  src="http://webdictaat.azurewebsites.net/images/shared/happy.png">
+                        
+                        <div  *ngIf="rate.emotion == 'happy'" class="text-baloon">
+                            <div class="content">
+                                <input [(ngModel)]='rate.feedback' id="textArea" placeholder="I feel happy because..." />
+                                <button class='btn btn-info btn-raised' (click)="sendRate()" >Send rating</button>
+                            </div>
+                        </div>
+                    </div>
+
+                 
+                </div>
+
+                <div *ngIf="rating.myRate">
+                    
+                    <p *ngIf="rating.myRate.feedback"> 
+                        <span class="count">{{rating.sadCounter}}</span>
+                        <img width="30px" src="http://webdictaat.azurewebsites.net/images/shared/sad.png">
+                        <span class="count">{{rating.happyCounter}}</span>
+                        <img width="30px" src="http://webdictaat.azurewebsites.net/images/shared/happy.png">
+                        - "{{rating.myRate.feedback}}"
+                    </p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>

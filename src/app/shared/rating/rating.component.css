@@ -1,0 +1,44 @@
+.emotion img{
+    width: 35px; cursor: pointer;
+    -webkit-transition: all 0.4s; /* Safari */
+    transition: all 0.4s;
+    margin:4px;
+}
+
+.emotion{
+    position: relative;
+}
+
+
+.emotion.active img{ 
+    transform: scale(1.1, 1.1); 
+}
+
+.rate{  
+    display:flex;
+    flex-direction: row;
+}
+
+.text-baloon{
+    position:absolute;
+    top:-61px;
+    left:0px;
+}
+
+.text-baloon .content{
+    display:flex;
+    padding:3px;
+}
+
+.text-baloon .content button{
+    margin:0px;
+}
+
+.text-baloon .content input{
+    height:100%;
+    padding:12px;
+    margin:2px;
+    width:300px;
+    max-width: 100%;
+    border:0px;
+}

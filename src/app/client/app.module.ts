@@ -11,17 +11,23 @@ import { HtmlOutlet } from '../shared/core/html-outlet.directive';
 import { NavMenuComponent } from '../shared/nav-menu/nav-menu.component';
 import { AvatarComponent }  from '../shared/avatar/avatar.component';
 
-import { QuestionsService } from '../shared/services/question.service';
+//services
+import { AchievementService } from '../shared/services/achievement.service';
 import { AccountService } from '../shared/services/account.service';
 import { RatingService } from '../shared/services/rating.service';
 import { wdApi } from '../shared/core/wdapi.service';
-import { AchievementService } from '../shared/servicees/achievement.service';
+import { QuizService } from "../shared/services/quiz.service";
+
+//modules
+import { DatabModule } from "../extern/databases/datab.module";
+import { QuizModule } from "../shared/quiz/quiz.module";
+
 
 @NgModule({
-    imports: [BrowserModule, HttpModule, routing],
+    imports: [BrowserModule, HttpModule, routing, DatabModule, QuizModule],
     declarations: [HtmlOutlet, AppComponent, PageComponent, NavMenuComponent, AvatarComponent],
     providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },
-        QuestionsService, AccountService, RatingService, wdApi, AchievementService
+        QuizService, AccountService, RatingService, wdApi, AchievementService
     ],
     bootstrap: [AppComponent]
 })
