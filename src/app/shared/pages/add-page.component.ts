@@ -79,6 +79,9 @@ export class AddPageComponent extends BaseModalComponent {
                 this.page = new Page();
                 this.dictaat.menuItems = menuItems;
                 this.pageService.CompleteModal(menuItems);
+            }, (error) => {
+                this.pageService.CancelModal();
+                alert("Something went wrong!");
             });
     }
 }

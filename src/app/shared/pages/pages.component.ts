@@ -6,33 +6,20 @@ import { Page } from '../models/page';
 import { Router } from '@angular/router';
 import { NavMenuService } from "../nav-menu/nav-menu.service";
 import { DragulaService } from "ng2-dragula";
+import { NavMenuItem } from "../models/nav-menu";
 
 
 @Component({
     selector: "wd-pages",
     templateUrl: "./pages.component.html",
-    styles: [`
-        ul{ list-style-type: none; padding: 0;}
-        ul ul{padding-left: 30px }
-        .sub-menu-item{ padding:10px; cursor: pointer; } span.title{ margin-left:10px; }
-        .menu-item{ padding:10px; position:relative; } 
-        .menu-item:hover{ background-color: #eee; cursor: pointer;} 
-        .actions{ 
-            position:absolute; right:0px; height:100%; width: 60px; top: 0px; 
-            padding:7px; color: #d9534f; font-size:130%; cursor: pointer; 
-        }
-        .actions:hover{ background-color:#d9534f; color: white; }
-        span.title{ margin-left:10px;  }
-        .gu-mirror{list-style-type:none;}
-        .gu-mirror .actions { display:none; }
-    `]
+    styleUrls: ['./pages.component.css']
 })
 export class PagesComponent{
 
     @Input()
     public dictaat: Dictaat;
 
-    public selectedItem: any;
+    public selectedItem: NavMenuItem;
 
     public constructor(
         private pagesSevice: PagesService,
@@ -51,13 +38,9 @@ export class PagesComponent{
         });
     }
 
-    public toggleItem(item){
-        if(this.selectedItem && this.selectedItem.name == item.name){
-            this.selectedItem = null;
-        }
-        else{
-            this.selectedItem = item;
-        }
+    public toggleItem(item: NavMenuItem){
+        item.isOpen = !item.isOpen;
+
     }
 
 
@@ -74,16 +57,49 @@ export class PagesComponent{
         }
     }
 
+    public enableEdit(item: NavMenuItem){
+       item.isEdit = !item.isEdit;
+    }
+
+    public updateMenu(item: NavMenuItem){
+        item.isEdit = false;
+        this.navMenuService.updateNavMenu(this.dictaat.name, this.dictaat.menuItems);
+    }
+
     public addPage(){
         this.pagesSevice.ShowModal().then((menuItems) => {
             this.dictaat.menuItems = menuItems;
          });
     }
 
-    public deletePage(page): void {
-        this.pagesSevice.deletePage(this.dictaat.name, page.url).then((menuItems) => {
-            this.dictaat.menuItems = menuItems;
+    public addMenu(){
+        var newItem = new NavMenuItem({name: "New menu item"});
+        this.dictaat.menuItems.push(newItem);
+        newItem.isEdit = true;
+    }
+
+    public deleteSubmenu(menuItem: NavMenuItem){
+        this.dictaat.menuItems.forEach((mi, index, list) => {
+            if(mi.name == menuItem.name){
+                if(mi.menuItems.length > 0){
+                    alert("Cannot delete a sub menu with pages inside!");
+                }
+                else{
+                    menuItem.isDeleted = true;
+                    list.splice(index, 1);
+                    this.navMenuService.updateNavMenu(this.dictaat.name, this.dictaat.menuItems);
+                }
+            }
         })
+    }
+
+    public deletePage(page: NavMenuItem): void {
+        page.isDeleted = true;
+
+        this.pagesSevice.deletePage(this.dictaat.name, page.url).then((menuItems) => {
+            if(!menuItems)
+              page.isDeleted = false;
+        }, (error) => page.isDeleted = false)
            
     }
 

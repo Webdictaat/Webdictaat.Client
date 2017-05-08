@@ -5,6 +5,9 @@
     <button class="btn btn-xs btn-success" (click)="addPage()">
         <span class="glyphicon glyphicon-plus"></span>&nbsp;Create a new page
     </button>
+    <button class="btn btn-xs btn-success" (click)="addMenu()">
+        <span class="glyphicon glyphicon-plus"></span>&nbsp;Create a new sub menu
+    </button>
 </div>
 
 
@@ -12,35 +15,75 @@
 <ul class="menu" [dragula]='"first-level"' [dragulaModel]='dictaat.menuItems' [dragulaOptions]="getDragOptions()">
     <li *ngFor="let item of dictaat.menuItems" >
         <!-- menu item -->
-        <div class="menu-item" *ngIf="item.url">
-            <div (click)="editPage(item)">
+        <div class="menu-item" *ngIf="item.url && !item.isDeleted">
+            <div (click)="editPage(item)" *ngIf="!item.isEdit">
                 <i class="fa fa-files-o" aria-hidden="true"></i>
-                <span class="title">{{item.name}}</span>
+                <span  class="title">{{item.name}}</span>
             </div>
-            <div class="actions text-center" (click)="deletePage(item)">
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
+            <span *ngIf="item.isEdit" class="title">
+                <input [(ngModel)]="item.name">
+                <button type="button" class="btn btn-success btn-raised btn-xs" (click)="updateMenu(item)">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true" ></span>&nbsp;
+                </button>
+            </span>
+           <div class="actions" >
+                  <!--<div class="action edit" (click)="enableEdit(item)">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </div>-->
+                <div class="action delete" (click)="deletePage(item)">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </div>
             </div>
         </div>
         <!-- menu item end -->
         <!-- sub menus -->
-        <div class="sub-menu-item" (click)="toggleItem(item)" *ngIf="!item.url"  >
-            <i *ngIf="!selectedItem || item.name != selectedItem.name" class="fa fa-folder-o" aria-hidden="true"></i>
-            <i *ngIf="selectedItem && item.name == selectedItem.name" class="fa fa-folder-open-o" aria-hidden="true"></i>
-            <span class="title">{{item.name}}</span>
-            <ul class="sub-menu" class="sub-menu" [dragula]='"second-level"' [dragulaModel]='item.menuItems' *ngIf="selectedItem && item.name == selectedItem.name">
-                <li *ngFor="let item of item.menuItems" class="sub">
-                    <!-- menu item -->
-                    <div class="menu-item sub">
-                        <div (click)="editPage(item)">
-                            <i class="fa fa-files-o" aria-hidden="true"></i>
-                            <span class="title">{{item.name}}</span>
-                        </div>
-                        <div class="actions text-center" (click)="deletePage(item)">
+        <div class="sub-menu-item" *ngIf="!item.url && !item.isDeleted"  >
+            <div (click)="toggleItem(item)" *ngIf="!item.isEdit">
+                <i *ngIf="!item.isOpen" class="fa fa-folder-o" aria-hidden="true"></i>
+                <i *ngIf="item.isOpen" class="fa fa-folder-open-o" aria-hidden="true"></i>
+                <span  class="title">{{item.name}}</span>
+            </div>
+            <span *ngIf="item.isEdit" class="title">
+                <input [(ngModel)]="item.name">
+                <button type="button" class="btn btn-success btn-raised btn-xs" (click)="updateMenu(item)">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true" ></span>&nbsp;
+                </button>
+            </span>
+            <div class="actions" >
+                <div class="action edit" (click)="enableEdit(item)">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </div>
+                <div class="action delete" (click)="deleteSubmenu(item)">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+        <!-- end of sub menus -->
+        <ul class="sub-menu" class="sub-menu" [dragula]='"second-level"' [dragulaModel]='item.menuItems' *ngIf="item.isOpen">
+            <li *ngFor="let item of item.menuItems" class="sub" >
+                <!-- Sub menu item -->
+                <div class="menu-item sub" *ngIf="!item.isDeleted">
+                    <div (click)="editPage(item)" *ngIf="!item.isEdit">
+                        <i class="fa fa-files-o" aria-hidden="true"></i>
+                        <span  class="title">{{item.name}}</span>
+                    </div>
+                    <span *ngIf="item.isEdit" class="title">
+                        <input [(ngModel)]="item.name">
+                        <button type="button" class="btn btn-success btn-raised btn-xs" (click)="updateMenu(item)">
+                            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true" ></span>&nbsp;
+                        </button>
+                    </span>
+                    <div class="actions" >
+                        <!--<div class="action edit" (click)="enableEdit(item)">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </div>-->
+                        <div class="action delete" (click)="deleteSubmenu(item)">
                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </div>
                     </div>
-                </li>
-            </ul>
-        </div>
+                </div>
+                <!-- End of Sub menu item -->
+            </li>
+        </ul>
     </li>
 </ul>
