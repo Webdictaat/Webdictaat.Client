@@ -15,6 +15,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 export class DictaatComponent implements OnInit {
 
     public dictaat: Dictaat;
+    public activeTab: string = "pages";
 
     constructor(
         private dictaatService: DictaatService,

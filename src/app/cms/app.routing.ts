@@ -1,7 +1,7 @@
 ﻿import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DictatenComponent }  from '../shared/dictaten/dictaten.component';
+import { DictatenComponent }  from '../shared/dictaat/dictaten.component';
 import { DictaatComponent }  from '../shared/dictaat/dictaat.component';
 import { EditPageComponent }  from '../shared/pages/edit-page.component';
 import { ProfileComponent } from '../shared/profile/profile.component';

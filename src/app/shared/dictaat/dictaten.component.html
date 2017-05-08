@@ -31,9 +31,11 @@
 
                     <h2>{{dictaat.name}}</h2>
 
-                    <p *ngIf="isAuth">
-                        <button type="button" class="btn btn-raised btn-info" (click)="gotoDetail(dictaat)">Details</button>
-                    </p>
+                    <div *ngIf="isAuth && dictaat.canEdit" class="hover-actions">
+                        <button type="button" class="btn btn-info btn-raised btn-sm" (click)="gotoDetail(dictaat)">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true" ></span> Edit
+                        </button>
+                    </div>
 
                     <p>
                         <a target="_blank" href="/dictaten/{{dictaat.name}}">
@@ -44,7 +46,7 @@
 
                 <div class="panel-footer">
                     <p>
-                        Updates N days ago
+                        Updated on: {{dictaat.lastChange | date: 'short'}}
                     </p>
                 </div>
             </div>

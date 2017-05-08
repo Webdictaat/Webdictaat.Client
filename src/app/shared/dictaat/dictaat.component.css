@@ -1,3 +1,23 @@
 ﻿.directory{
     background-color:gray;
 }
+
+.nav-pills {
+    display:flex;
+    justify-content: 
+}
+
+.nav-pills li {
+    margin:0px;
+    border-bottom:2px solid rgba(0,0,0, 0.87);
+}
+
+.nav-pills li.active {
+   border-color: #00AEED;
+}
+
+.nav-pills li:last-child{
+    width:100%;
+}
+
+

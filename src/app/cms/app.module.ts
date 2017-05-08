@@ -15,8 +15,8 @@ import { QuizModule } from "../shared/quiz/quiz.module";
 //components
 import { AppComponent } from './app.component';
 import { AddRatingComponent } from '../shared/rating/add-rating.component';
-import { AddDictaatComponent } from '../shared/dictaten/add-dictaat.component';
-import { DictatenComponent } from '../shared/dictaten/dictaten.component';
+import { AddDictaatComponent } from '../shared/dictaat/add-dictaat.component';
+import { DictatenComponent } from '../shared/dictaat/dictaten.component';
 import { DialogComponent } from '../shared/dialog/dialog.component';
 import { DictaatComponent } from '../shared/dictaat/dictaat.component';
 import { RemoveDictaatComponent } from '../shared/dictaat/remove-dictaat.component';

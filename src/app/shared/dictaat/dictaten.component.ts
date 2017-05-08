@@ -20,7 +20,7 @@ export class DictatenComponent implements OnInit {
     public selectedDictaat: DictaatSummary;
 
     public isAuth: boolean;
-
+ 
     public loaderValue: number = 0;
 
     constructor(

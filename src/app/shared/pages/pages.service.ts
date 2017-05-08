@@ -37,7 +37,7 @@ export class PagesService extends BaseModalService {
 
         return this.wdapi.post(url, data)
             .toPromise()
-            .then(response => response.json() as Page )
+            .then(response => response.json() as NavMenuItem[] )
     }
 
     public editPage(dictaatName: String, page: Page): Promise<Page> {
