@@ -1,16 +1,15 @@
 import { Component,  OnInit, Input } from '@angular/core';
-import { Dictaat } from '../models/dictaat';
-import { Page } from '../models/page';
 
-import { DictaatService } from '../services/dictaat.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { Dictaat } from "../../shared/models/dictaat";
+import { DictaatService } from "../../shared/services/dictaat.service";
 
 
 @Component({
     selector: "wd-dictaat",
     templateUrl: "./dictaat.component.html",
     styleUrls: ["./dictaat.component.css"],
-    providers: [DictaatService    ]
+    providers: [DictaatService]
 })
 export class DictaatComponent implements OnInit {
 

@@ -1,12 +1,12 @@
 ﻿import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
 import { PagesService} from './pages.service';
-import { Dictaat } from '../models/dictaat';
-import { Page } from '../models/page';
 import { Router } from '@angular/router';
-import { NavMenuService } from "../nav-menu/nav-menu.service";
 import { DragulaService } from "ng2-dragula";
-import { NavMenuItem } from "../models/nav-menu";
+import { Dictaat } from "../../shared/models/dictaat";
+import { NavMenuItem } from "../../shared/models/nav-menu";
+import { NavMenuService } from "../../shared/nav-menu/nav-menu.service";
+import { DictaatService } from "../../shared/services/dictaat.service";
+
 
 
 @Component({
@@ -16,7 +16,6 @@ import { NavMenuItem } from "../models/nav-menu";
 })
 export class PagesComponent{
 
-    @Input()
     public dictaat: Dictaat;
 
     public selectedItem: NavMenuItem;
@@ -25,10 +24,16 @@ export class PagesComponent{
         private pagesSevice: PagesService,
         private router : Router,
         private dragulaService: DragulaService,
-        private navMenuService: NavMenuService
+        private navMenuService: NavMenuService,
+        private dictaatService: DictaatService
     ){}
 
     public ngOnInit(){
+
+        this.dictaatService.CurrentDictaat.subscribe((dictaat: Dictaat) => {
+            this.dictaat = dictaat;
+        });
+
         this.dragulaService.drop.subscribe((value) => {
             //save menu
             this.navMenuService.updateNavMenu(this.dictaat.name, this.dictaat.menuItems)

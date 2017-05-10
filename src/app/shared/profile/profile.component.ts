@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
-import { DictatenService } from '../services/dictaten.service';
 import { AccountService } from '../services/account.service';
+import { DictaatService } from "../services/dictaat.service";
 
 @Component({
     selector: "wd-profile",
@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
     public user;
     public dictaten; 
 
-    constructor(private dictatenService: DictatenService, private accountService: AccountService) { }
+    constructor(private dictatenService: DictaatService, private accountService: AccountService) { }
 
     public ngOnInit(): void {
 

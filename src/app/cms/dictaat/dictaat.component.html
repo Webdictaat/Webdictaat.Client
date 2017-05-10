@@ -18,17 +18,20 @@
 
             <ul class="nav nav-pills">
                 <li><!-- filler --></li>
-                <li [ngClass]="{'active': activeTab == 'pages'}"><button class="btn btn-default" (click)="activeTab = 'pages'">Pages</button></li>
-                <li [ngClass]="{'active': activeTab == 'assignments'}"><button class="btn btn-default" (click)="activeTab = 'assignments'">Assignments</button></li>
-                <li [ngClass]="{'active': activeTab == 'ratings'}"><button class="btn btn-default" (click)="activeTab = 'ratings'">Ratings</button></li>
-                <li [ngClass]="{'active': activeTab == 'quizes'}"><button class="btn btn-default" (click)="activeTab = 'quizes'">Quizes</button></li>
-                <li [ngClass]="{'active': activeTab == 'settings'}"><button class="btn btn-default" (click)="activeTab = 'settings'">Settings</button></li>
+                <li [routerLink]="['pages']"  routerLinkActive='active'>
+                    <button class="btn btn-default" >Pages</button>
+                </li>
+                <li  [routerLink]="['quizes']"  routerLinkActive='active' >
+                    <button class="btn btn-default">Quizes</button>
+                </li>
                 <li><!-- filler --></li>
             </ul>
 
         </div>
+
         
-        <div class="panel panel-default sidebar" *ngIf="activeTab == 'pages'">
+        
+        <!--<div class="panel panel-default sidebar" *ngIf="activeTab == 'pages'">
             <wd-pages [dictaat]="dictaat"></wd-pages>
         </div>
 
@@ -48,8 +51,7 @@
 
         <div class="panel panel-default sidebar" *ngIf="activeTab == 'quizes'">
             <div class="panel-body">
-                <h4> Quizes will be back soon!</h4>
-                <p>Sorry, but we are maintaining this quizes overview page.</p>
+                <wd-quiz-list></wd-quiz-list>
             </div>
         </div>
 
@@ -59,7 +61,9 @@
 
     </div>
   
-    <div *ngIf="activeTab == 'settings'">
+    <router-outlet></router-outlet>
+
+    <!--<div *ngIf="activeTab == 'settings'">
         <div class="panel panel-default sidebar" >
             <div class="panel-body">
                 <h4>Owner</h4>
@@ -79,6 +83,6 @@
                     <wd-remove-dictaat [dictaat]="dictaat"></wd-remove-dictaat>
                 </div>
         </div>
-    </div>
+    </div>-->
 
 </div>

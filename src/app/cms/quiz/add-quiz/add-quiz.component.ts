@@ -1,10 +1,9 @@
 ﻿import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { DictaatService } from '../services/dictaat.service';
-
 import { ActivatedRoute, Params } from '@angular/router';
-import { QuizService } from "../services/quiz.service";
-import { Quiz, Question, Answer } from "./quiz";
+import { Question, Quiz, Answer } from "../../../shared/quiz/quiz";
+import { QuizService } from "../../../shared/services/quiz.service";
+
 
 @Component({
     selector: "wd-add-quiz",

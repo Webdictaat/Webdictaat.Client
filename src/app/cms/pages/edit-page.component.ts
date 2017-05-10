@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, Params , NavigationStart} from '@angular/router';
 import { PagesService } from './pages.service';
-import { Page } from '../models/page';
-import { DirtyComp } from "../core/security/dirty.guard";
-import { HtmlComponent } from "../tools/html.component";
+import { HtmlComponent } from "../../shared/tools/html.component";
+import { Page } from "../../shared/models/page";
 
 
 @Component({
@@ -12,14 +11,8 @@ import { HtmlComponent } from "../tools/html.component";
     styleUrls: [ "./edit-page.component.css"],
     providers: [PagesService]
 })
-export class EditPageComponent implements DirtyComp  {
+export class EditPageComponent   { //implements DirtyComp
     
-    public isDirty(): boolean{
-
-        var editedSource = this.htmlComponent.decompileHtml();
-        var dirty = this.originalSource != editedSource;
-        return dirty;
-    }
 
     @ViewChild(HtmlComponent)
     private htmlComponent: HtmlComponent;

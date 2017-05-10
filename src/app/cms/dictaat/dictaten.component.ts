@@ -1,11 +1,10 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { DictatenService } from '../services/dictaten.service';
-import { AccountService } from '../services/account.service';
-import { DictaatSummary } from '../models/dictaat-summary';
 import { Headers, Http } from '@angular/http';
 import { Router } from '@angular/router';
-import { User } from '../models/user';
 import { Observable } from 'rxjs/rx';
+import { DictaatService } from "../../shared/services/dictaat.service";
+import { AccountService } from "../../shared/services/account.service";
+import { DictaatSummary } from "../../shared/models/dictaat-summary";
 
 
 @Component({
@@ -25,7 +24,7 @@ export class DictatenComponent implements OnInit {
 
     constructor(
         private accountService: AccountService,
-        private dictatenService: DictatenService,
+        private dictatenService: DictaatService,
         private httpService: Http,
         private router: Router
     ) { }

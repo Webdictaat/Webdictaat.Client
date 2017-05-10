@@ -147,10 +147,8 @@ body {
 
 .wd-container{
     padding:2px;
+    padding-top:20px;
     min-height: 100px;
-}
-
-.wd-container{
     padding-bottom:50px;
 }
 

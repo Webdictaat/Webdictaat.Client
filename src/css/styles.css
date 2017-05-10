@@ -21,9 +21,14 @@
 }
 
 
-.wd-component > img, .wd-component > iframe{
+.wd-component > .image-local, .wd-component > iframe{
     width:100%;
 }
+
+.nav.navbar-nav.dropdown-menu{
+    width:auto;
+}
+
 
 
 .table-hover tr{
