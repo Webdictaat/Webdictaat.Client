@@ -15,11 +15,6 @@ declare var CKEDITOR : any;
         <div id='page'>
             <html-outlet  [html]="innerHTML" (afterCompile)="afterCompile()"></html-outlet>
         </div>
-        <div class='panel-footer'>
-            <button class="btn btn-lg btn-success btn-raised" (click)='savePage()'>
-                <span class="glyphicon glyphicon-floppy-disk pull-left"></span>&nbsp;Save page
-            </button>
-        </div>
     `,
 })
 export class HtmlComponent implements OnInit {
@@ -44,6 +39,9 @@ export class HtmlComponent implements OnInit {
     public ngOnInit(): void{
         this.pageElement = $('#page'); //.html(this.innerHTML);
         CKEDITOR.disableAutoInline = true;
+        this.pageElement.on('click', '.delete-this', (element) => {
+            element.target.closest('.wd-component').remove();
+        })
     }
 
     public ngOnChanges() : void{
@@ -95,13 +93,11 @@ export class HtmlComponent implements OnInit {
         this.enableDragging(this.pageElement);
 
         this.zone.run(() => { }); //Get back into angular running context
-
-       
     }
 
     public decompileHtml(): string {
         //ophalen html
-        var pageObject: any = this.pageElement.find("dynamic-html");
+        var pageObject: any = this.pageElement.find("dynamic-html").clone();
 
         //var lin = $(this).attr('href'); //verwijderen van ng-reflect voor id's
 
@@ -118,7 +114,12 @@ export class HtmlComponent implements OnInit {
         pageObject.find('*').removeClass (function (index, className) {
             return (className.match (/(^|\s)ui-\S+/g) || []).join(' ');
         });
-    
+
+        //verwijder alle CKeditor attributen, aria-describedby="" aria-label="", title=""
+        pageObject.find('*').removeAttr("aria-describedby"); 
+        pageObject.find('*').removeAttr("aria-label"); 
+        pageObject.find('*').removeAttr("title"); 
+
         //Angular replaces input attributes with an ng-reflect attributes
         //to get our valid html back, we need to remove these ng-reflect attributes
         var htmlString = pageObject.html();
@@ -142,7 +143,7 @@ export class HtmlComponent implements OnInit {
         //remove and add handles
         element.find('.handle').remove();
         element.find('.wd-component').addBack('.wd-component')
-            .append("<div class='handle'><i class='fa fa-ellipsis-h' aria-hidden='true'></i></div>");
+            .append("<div class='handle'><i class='fa fa-ellipsis-h' aria-hidden='true'></i><i class='fa fa-trash delete-this' aria-hidden='true'></i></div>");
     }
 
     private enableEditor(element): void{
@@ -160,11 +161,14 @@ export class HtmlComponent implements OnInit {
         element.find('.wd-container').addBack('.wd-container').sortable({
             handle: ".handle",
             connectWith: '.wd-container, #wd-trash',
+            revert: 100,
+            cursor: "move",
             cancel: this.editableElements,
             hoverClass: "ui-state-hover",
             beforeStop: this.onDrop,
             placeholder: "highlight",
             forcePlaceholderSize: true,
+            tolerance: 'pointer',
             forceHelperSize: true,
             start: function (e, ui) {
                 ui.placeholder.height(ui.item.outerHeight());

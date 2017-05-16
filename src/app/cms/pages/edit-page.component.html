@@ -8,7 +8,7 @@
     <div class="panel panel-default fixed tools text-center">
         <div class="panel-body bordered">
             <h3 class="title">
-                {{pageName}}            
+                {{pageName}}<span *ngIf="isDirty">*</span>            
             </h3>
             <a href="http://webdictaat.aii.avans.nl/dictaten/{{dictaatName}}/#/{{pageName}}" target="_blank">
                 <i class="fa fa-eye" aria-hidden="true"></i>
@@ -32,6 +32,10 @@
         </table>
 
         <wd-trash></wd-trash>
+
+        <button class="btn btn-lg btn-success btn-raised" (click)='savePage()' [disabled]="!isDirty">
+            <span class="glyphicon glyphicon-floppy-disk pull-left"></span>&nbsp;Save page
+        </button>
 
     </div>
     <div class="page-content">

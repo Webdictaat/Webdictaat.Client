@@ -42,3 +42,25 @@
     max-width: 100%;
     border:0px;
 }
+
+
+.text-baloon{
+   text-align: center;
+   padding: 0px;
+   background: #ffffff;
+   border-radius: 2px;
+   box-shadow: 0 1px 6px 0 rgba(0,0,0,0.12), 0 1px 6px 0 rgba(0,0,0,0.12);
+}
+
+.text-baloon::after {
+   content: '';
+   position: absolute;
+   border-style: solid;
+   border-width: 15px 15px 0;
+   border-color: #ffffff transparent;
+   display: block;
+   width: 0;
+   z-index: 1;
+   bottom: -10px;
+   left: 7px;
+}

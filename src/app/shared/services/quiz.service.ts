@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 //Nodig om een object om te toveren in een promise.
 import { Subject } from 'rxjs/Subject';
@@ -7,7 +7,7 @@ import { wdApi } from '../core/wdapi.service';
 import { BaseModalService } from '../core/basemodal.service';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import { Quiz, Attempt, Question } from "../quiz/quiz";
+import { Quiz, Attempt, Question, QuizSummary } from "../quiz/quiz";
 
 
 @Injectable()
@@ -16,6 +16,18 @@ export class QuizService extends BaseModalService{
     constructor(private wdapi: wdApi)
     {
         super();
+    }
+
+     public getQuizes(dictaatName: String): Promise<QuizSummary[]> {
+       
+        let url: string = "/dictaten/" + dictaatName + '/quiz';
+
+        return this.wdapi.get(url)
+            .toPromise()
+            .then(response => {
+                return response.json() as QuizSummary[]
+            })
+            
     }
 
     public addQuiz(dictaatName: String, quiz: Quiz): Promise<Quiz> {

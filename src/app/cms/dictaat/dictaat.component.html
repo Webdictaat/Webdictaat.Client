@@ -1,0 +1,88 @@
+﻿<ul class="breadcrumb" style="margin-bottom: 5px;">
+  <li><a href="#">Webdictaat</a></li>
+  <li  *ngIf="dictaat" class="active">{{dictaat.name}}</li>
+</ul>
+
+<div class="container">
+
+    <div *ngIf="dictaat">
+
+        <div class="panel panel-default sidebar" >
+            <div class="panel-body text-center">
+                <h1>{{dictaat.name}}</h1>
+                <a target="_blank" href="/dictaten/{{dictaat.name}}">
+                    webdictaat.aii.avans.nl/dictaten/{{dictaat.name}}
+                </a>
+            </div>
+       
+
+            <ul class="nav nav-pills">
+                <li><!-- filler --></li>
+                <li [routerLink]="['pages']"  routerLinkActive='active'>
+                    <button class="btn btn-default" >Pages</button>
+                </li>
+                <li  [routerLink]="['quizes']"  routerLinkActive='active' >
+                    <button class="btn btn-default">Quizes</button>
+                </li>
+                <li><!-- filler --></li>
+            </ul>
+
+        </div>
+
+        
+        
+        <!--<div class="panel panel-default sidebar" *ngIf="activeTab == 'pages'">
+            <wd-pages [dictaat]="dictaat"></wd-pages>
+        </div>
+
+        <div class="panel panel-default sidebar" *ngIf="activeTab == 'assignments'">
+            <div class="panel-body">
+                <h4> Assignments will be back soon!</h4>
+                <p>Sorry, but we are maintaining this assignments overview page.</p>
+            </div>
+        </div>
+
+        <div class="panel panel-default sidebar" *ngIf="activeTab == 'ratings'">
+            <div class="panel-body">
+                <h4> Ratings will be back soon!</h4>
+                <p>Sorry, but we are maintaining this ratings overview page.</p>
+            </div>
+        </div>
+
+        <div class="panel panel-default sidebar" *ngIf="activeTab == 'quizes'">
+            <div class="panel-body">
+                <wd-quiz-list></wd-quiz-list>
+            </div>
+        </div>
+
+        <!--<div class="panel panel-default sidebar">
+            <wd-edit-nav-menu [dictaat]="dictaat"></wd-edit-nav-menu>
+        </div>-->
+
+    </div>
+  
+    <router-outlet></router-outlet>
+
+    <!--<div *ngIf="activeTab == 'settings'">
+        <div class="panel panel-default sidebar" >
+            <div class="panel-body">
+                <h4>Owner</h4>
+                <p>Sorry, but we are maintaining this owner overview page.</p>
+            </div>
+        </div>
+        <div class="panel panel-danger" >
+            <div class="panel-heading">
+                <h3 class="panel-title">Danger zone</h3>
+            </div>
+            <div class="panel-body wd-flex">
+                <div> 
+                    <b>Delete this dictaat</b>
+                    <p>Once you delete a webdictaat, there is no going back. Please be certain.</p>
+                </div>
+                <div class="wd-flex-1">
+                    <wd-remove-dictaat [dictaat]="dictaat"></wd-remove-dictaat>
+                </div>
+        </div>
+    </div>-->
+
+</div>

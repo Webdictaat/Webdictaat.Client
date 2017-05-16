@@ -1,10 +1,9 @@
 ﻿import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { DictaatService } from '../services/dictaat.service';
-
 import { ActivatedRoute, Params } from '@angular/router';
-import { QuizService } from "../services/quiz.service";
-import { Quiz, Question, Answer } from "./quiz";
+import { Question, Quiz, Answer } from "../../../shared/quiz/quiz";
+import { QuizService } from "../../../shared/services/quiz.service";
+
 
 @Component({
     selector: "wd-add-quiz",
@@ -41,21 +40,7 @@ export class AddQuizComponent implements OnInit {
             if (isModalVisible) {
                 this.quiz = new Quiz();  
                 this.selectedIndex = 0;
-                this.selectedQuestion = this.quiz.questions[0];
-                this.selectedQuestion.answers.push(new Answer("A"));
-                this.selectedQuestion.answers.push(new Answer("B"));
-                this.quiz.questions[0].text = "Question one";
-                this.quiz.questions[0].answers[0].isCorrect = true;
-
-                var question2 = new Question();
-                question2.text = "Question two";
-                question2.answers.push(new Answer("A"));
-                question2.answers.push(new Answer("B"));
-                question2.answers[1].isCorrect = true;
-                this.quiz.questions.push(question2);
-
-                console.log(JSON.stringify(this.quiz));
-
+                this.selectedQuestion = this.quiz.questions[0];           
             }
 
             this.zone.run(() => {});

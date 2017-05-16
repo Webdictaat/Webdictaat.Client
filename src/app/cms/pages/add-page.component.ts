@@ -1,12 +1,11 @@
 ﻿import { Component, EventEmitter, Output, NgZone, Input } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { PagesService } from './pages.service';
-import { DictaatService } from '../services/dictaat.service';
-
-import { Dictaat } from '../models/dictaat';
-import { Page } from '../models/page';
 import { ActivatedRoute, Params } from '@angular/router';
-import { BaseModalService, BaseModalComponent } from "../core/basemodal.service";
+import { DictaatService } from "../../shared/services/dictaat.service";
+import { BaseModalComponent } from "../../shared/core/basemodal.service";
+import { Page } from "../../shared/models/page";
+import { Dictaat } from "../../shared/models/dictaat";
 
 @Component({
     selector: "wd-add-page",
@@ -79,6 +78,9 @@ export class AddPageComponent extends BaseModalComponent {
                 this.page = new Page();
                 this.dictaat.menuItems = menuItems;
                 this.pageService.CompleteModal(menuItems);
+            }, (error) => {
+                this.pageService.CancelModal();
+                alert("Something went wrong!");
             });
     }
 }

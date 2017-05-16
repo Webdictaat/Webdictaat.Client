@@ -1,0 +1,17 @@
+<div *ngIf="quizes" class="panel panel-default sidebar">
+
+  <table class="table">
+    <tr *ngFor="let quiz of quizes">
+      <td>
+        {{quiz.title}}
+      </td>
+      <td>
+        {{quiz.questionCount}} questions
+      </td>
+      <td>
+        Completed by {{quiz.completedByCount}} students
+      </td>
+    </tr>
+  </table>
+
+</div>

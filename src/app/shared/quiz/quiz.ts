@@ -21,6 +21,14 @@ export class Quiz{
     }
 }
 
+export class QuizSummary{
+    public id: number;
+    public title: string;
+    public description: string;
+    public questionCount: number;
+    public completedByCount: number;
+}
+
 export class Attempt{
     public quizId : number;
     public timestamp : Date;

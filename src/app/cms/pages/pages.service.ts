@@ -1,14 +1,13 @@
 ﻿import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
-
-import { wdApi } from '../core/wdapi.service';
-import { Page } from '../models/page';
-import { PageSummary } from '../models/page-summary';
-
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import { BaseModalService } from "../core/basemodal.service";
-import { NavMenuItem } from "../models/nav-menu";
+import { BaseModalService } from "../../shared/core/basemodal.service";
+import { wdApi } from "../../shared/core/wdapi.service";
+import { PageSummary } from "../../shared/models/page-summary";
+import { NavMenuItem } from "../../shared/models/nav-menu";
+import { Page } from "../../shared/models/page";
+
 
 
 @Injectable()
@@ -37,7 +36,7 @@ export class PagesService extends BaseModalService {
 
         return this.wdapi.post(url, data)
             .toPromise()
-            .then(response => response.json() as Page )
+            .then(response => response.json() as NavMenuItem[] )
     }
 
     public editPage(dictaatName: String, page: Page): Promise<Page> {

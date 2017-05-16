@@ -38,7 +38,7 @@ export class QuizToolComponent {
         return new Promise((resolve, reject) => {
             this.quizService.ShowModal()
                 .then((quiz: Quiz) => {                  
-                    ui.item.replaceWith("<wd-quiz class='wd-game-component' [qid]='" + quiz.id + "' />");
+                    ui.item.replaceWith("<wd-quiz class='wd-component wd-game-component' [qid]='" + quiz.id + "' />");
                     resolve(true);
                 })
                 .catch(() => {

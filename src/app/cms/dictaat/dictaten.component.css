@@ -1,0 +1,18 @@
+﻿td{
+    padding:5px;
+}
+
+.panel{
+    position: relative;
+}
+
+.panel:hover .hover-actions{
+    display: block;
+}
+
+.hover-actions{
+    position: absolute;
+    top:0px;
+    right:5px;
+    display: none;
+}

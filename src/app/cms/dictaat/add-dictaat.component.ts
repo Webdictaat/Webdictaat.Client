@@ -1,8 +1,10 @@
 ﻿import { Component, EventEmitter, Output } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { DictatenService } from '../services/dictaten.service';
+
 
 import { ActivatedRoute, Params } from '@angular/router';
+import { DictaatService } from "../../shared/services/dictaat.service";
+
 
 @Component({
     selector: "wd-add-dictaat",
@@ -22,7 +24,7 @@ export class AddDictaatComponent {
     public dictaatAdded = new EventEmitter();
 
     constructor(
-        private dictatenService: DictatenService,
+        private dictatenService: DictaatService,
         private route: ActivatedRoute
     ) { }
 

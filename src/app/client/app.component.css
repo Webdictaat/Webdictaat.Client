@@ -1,0 +1,59 @@
+.left-menu{
+    width:250px;
+    padding:10px;
+    left:0px;
+    position: fixed;
+}
+
+/** Sidebar **/
+
+.side-nav-wrapper{
+  width:500px;
+  position: fixed;
+  top:0px;
+  margin-top:50px;
+  right:-250px;
+  transition: all 0.4s ease 0s;
+  height: 100%;
+  max-width:200%;
+  z-index:1;
+}
+
+.side-nav{
+  position: absolute;
+  width:250px;
+  right:0px;
+  background-color:white;
+  transition: all 0.4s ease 0s;
+   height: 100%;
+   width:50%;
+  
+}
+
+.side-nav .navbar-nav{
+   margin-left:0px;
+}
+
+.side-nav.active{
+   transform: translate(-250px, 0);
+}
+
+.side-nav li{
+  line-height: 40px;
+  text-indent: 20px;
+}
+
+/** bigger than 767, so left side menu should be visible **/
+@media (min-width:767px) {
+    .main-content{
+        margin-left:250px;
+    }
+}
+
+/** Smaller than 767, so left side menu should be in hamburger menu **/
+@media (max-width:767px) {
+    .left-menu{
+        display: none;
+    }
+}
+
