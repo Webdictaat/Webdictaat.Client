@@ -12,6 +12,7 @@ import {AchievementGroup} from "../models/AchievementGroup";
 
 export class AchievementsComponent implements OnInit {
     abstract;
+    private Achievement: Achievements[];
     private achievementgroups: AchievementGroup[];
     grid: boolean = true;
 
@@ -24,8 +25,10 @@ export class AchievementsComponent implements OnInit {
     }
 
     getAchievements(): void {
-        this.achievementService.getAchievements().then((achievements) => {
-            this.achievementgroups = achievements;
+        this.achievementService.getDictaatAchievements("meep").then((achievements) => {
+            //this.achievementgroups = achievements;
+            a = new Achievementgroups();
+            a.id = 
             console.log(achievements);
         });
     }
