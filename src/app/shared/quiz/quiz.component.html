@@ -1,5 +1,5 @@
 <p *ngIf="!quiz">
-  Loading quiz with id {{qid}}
+  <wd-spinner></wd-spinner>
 </p>
 
 <div *ngIf="quiz" class="bs-callout bs-callout-primary" [ngClass]="{ 'bs-callout-success': quiz.status == 'finished'}">

@@ -26,7 +26,6 @@ export class AchievementsComponent implements OnInit {
     getAchievements(): void {
         this.achievementService.getAchievements().then((achievements) => {
             this.achievementgroups = achievements;
-            console.log(achievements);
         });
     }
 
@@ -45,8 +44,6 @@ export class AchievementsComponent implements OnInit {
     }
 
     achievementinfo(achiev) {
-        console.log(achiev);
-
         $(achiev).on("mouseover", function () {
             $(".achievementinfo").slideDown(300);
         }).on("mouseout", function () {

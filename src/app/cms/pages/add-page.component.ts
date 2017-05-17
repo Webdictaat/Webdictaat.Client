@@ -11,7 +11,7 @@ import { Dictaat } from "../../shared/models/dictaat";
     selector: "wd-add-page",
     styleUrls: ['./add-page.component.css'],
     templateUrl: "./add-page.component.html",
-    providers: [DictaatService]
+    providers: []
 })
 export class AddPageComponent extends BaseModalComponent {
     

@@ -8,6 +8,7 @@ import { DictatenComponent } from "./dictaat/dictaten.component";
 import { QuizListComponent } from "./quiz/quiz-list/quiz-list.component";
 import { PagesComponent } from "./pages/pages.component";
 import { EditPageComponent } from "./pages/edit-page.component";
+import { AssignmentListComponent } from "./assignments/assignment-list/assignment-list.component";
 
 const appRoutes: Routes = [
     { 
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
         children: [
             { path: '', redirectTo: 'pages', pathMatch: 'full' },
             { path: 'quizes', component: QuizListComponent  },
-            { path: 'pages', component: PagesComponent  }
+            { path: 'pages', component: PagesComponent  },
+            { path: 'assignments', component: AssignmentListComponent  }
         ]
     },
     {

@@ -41,7 +41,10 @@ export class QuizComponent implements OnInit {
         this.quizService.getQuiz(this.dictaatName, this.qid)
           .then((q: Quiz) => { 
              this.quiz = q;
-             this.quiz.myAttempts.length == 0 ? this.quiz.status = "idle" : this.quiz.status = "finished";
+             if(this.quiz.myAttempts){
+                this.quiz.myAttempts.length == 0 ? this.quiz.status = "idle" : this.quiz.status = "finished";
+             }
+             
           });
 
     });

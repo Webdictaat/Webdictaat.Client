@@ -196,3 +196,34 @@ body {
 .container{
     max-width: 100%;
 }
+
+/** Actions **/
+
+.table>tbody>tr>td.actions{
+    padding:0px;
+    float:right;
+}
+
+.action{
+    text-align: center;
+    display:inline-block;
+    height:100%;
+    width: 40px; 
+    padding:7px;
+    font-size:130%; cursor: pointer; 
+}
+
+.action.delete {
+     color: #d9534f; 
+}
+.action.delete:hover{   
+    background-color:#d9534f; color: white;
+}
+
+.action.edit {
+     color: #f0ad4e; 
+}
+
+.action.edit:hover{  
+    background-color: #f0ad4e; color: white;
+}

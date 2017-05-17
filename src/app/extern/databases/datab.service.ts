@@ -4,12 +4,9 @@ import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { wdApi } from "../../shared/core/wdapi.service";
+import { Assignment } from "../../shared/models/assignment";
 
-export class Assignment {
-    public id: number;
-    public title: string;
-    public description: string;
-    public mySubmission: any;
+export class DbAssignment extends Assignment {
     public external: DbSubmission;
 }
 
@@ -31,13 +28,13 @@ export class DatabService {
        
     }
 
-    public getAssignment(assignmentId, userId) : Promise<Assignment>
+    public getAssignment(assignmentId, userId) : Promise<DbAssignment>
     {
         return this.wdApi.get('/dictaten/test/assignment/' + assignmentId)
             .toPromise()
             .then((response) => {
 
-                var assignment = response.json() as Assignment;
+                var assignment = response.json() as DbAssignment;
 
                 return this.http.get(this.root + "/assignments/" + assignmentId + "/submissions/" + userId)
                     .toPromise()
@@ -56,12 +53,12 @@ export class DatabService {
             });
     }
 
-    private completeAssignment(assignment: Assignment) : Promise<Assignment>{
+    private completeAssignment(assignment: DbAssignment) : Promise<DbAssignment>{
         var external = assignment.external;
         return this.wdApi.post("/dictaten/test/assignment/" + assignment.id + "/submissions", { token: assignment.external.assignmentToken })
             .toPromise()
             .then((response) => {
-                var assignment = response.json() as Assignment;
+                var assignment = response.json() as DbAssignment;
                 assignment.external = external;
                 return assignment;
             });

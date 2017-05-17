@@ -21,6 +21,22 @@ span.title{ margin-left:10px; }
     cursor: pointer;
 } 
 
+span.title{ margin-left:10px;  }
+.gu-mirror{list-style-type:none;}
+.gu-mirror .actions { display:none; }
+
+
+.sub-menu-item{ 
+    padding:10px; position:relative;
+} 
+
+
+.sub-menu-item:hover .actions{ 
+    display:inline-block;
+    max-height: 100%;
+} 
+
+
 .actions{ 
     position:absolute; right:0px;
     height:100%;
@@ -50,18 +66,3 @@ span.title{ margin-left:10px; }
 .action.edit:hover{  
     background-color: #f0ad4e; color: white;
 }
-
-span.title{ margin-left:10px;  }
-.gu-mirror{list-style-type:none;}
-.gu-mirror .actions { display:none; }
-
-
-.sub-menu-item{ 
-    padding:10px; position:relative;
-} 
-
-
-.sub-menu-item:hover .actions{ 
-    display:inline-block;
-    max-height: 100%;
-} 

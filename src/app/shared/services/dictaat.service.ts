@@ -18,27 +18,21 @@ export class DictaatService {
 
 
     private _currentDictaat: Dictaat;
-    public CurrentDictaat = new BehaviorSubject(null);
+    public CurrentDictaat = new BehaviorSubject<Dictaat>(null);
 
-    constructor(private wdapi: wdApi, private route: ActivatedRoute, private router: Router) { 
-        this.router.events.subscribe((event) => {
-             this.route.params.forEach((params: Params) => {
-                if(params['dictaatName'] && (!this._currentDictaat || this._currentDictaat.name != params['dictaatName'])){
-                    this.getDictaat(params['dictaatName']).then((dictaat) => {
-                        debugger;
-                        this._currentDictaat = dictaat;
-                        this.CurrentDictaat.next(dictaat);
-                    })
-                }
-            });
-        });
-    }
+    constructor(
+        private wdapi: wdApi, 
+        private route: ActivatedRoute, 
+        private router: Router) {}
 
     public getDictaat(dictaatName: String): Promise<Dictaat> {
         return this.wdapi.get("/dictaten/" + dictaatName)
+            .map(response => new Dictaat(response.json()))
             .toPromise()
-            .then(response => response.json() as Dictaat);
-
+            .then(dictaat => {
+                this.CurrentDictaat.next(dictaat);
+                return dictaat;
+            })
     }
 
     public removeDictaat(dictaatName: String): Promise<any> {

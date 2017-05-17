@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from "../../../shared/services/quiz.service";
 import { DictaatService } from "../../../shared/services/dictaat.service";
-import { QuizSummary } from "../../../shared/quiz/quiz";
+import { QuizSummary, Quiz } from "../../../shared/quiz/quiz";
 
 @Component({
   selector: 'wd-quiz-list',
@@ -9,8 +9,9 @@ import { QuizSummary } from "../../../shared/quiz/quiz";
   styleUrls: ['./quiz-list.component.css']
 })
 export class QuizListComponent implements OnInit {
-  
-  quizes: QuizSummary[];
+
+  public selectedQuiz: Quiz;
+  public quizes: QuizSummary[];
 
   constructor(
     private quizService: QuizService, 
@@ -31,6 +32,25 @@ export class QuizListComponent implements OnInit {
           }
          
       });
+  }
+
+  public Update(quiz: Quiz): void{
+      this.quizService.update(quiz.dictaat, quiz)
+      .then((quiz) => {
+        this.selectedQuiz = null;
+      })
+  }
+
+  
+  public enableEdit(quiz: Quiz): void{
+    this.quizService.getQuiz(quiz.dictaat, quiz.id)
+      .then((quiz) => {
+        this.selectedQuiz = quiz;
+      })
+  }
+
+  public cancelEdit(): void{
+    this.selectedQuiz = null;
   }
 
 }

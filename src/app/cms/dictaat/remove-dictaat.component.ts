@@ -10,7 +10,7 @@ import { Dictaat } from "../../shared/models/dictaat";
         '(document:click)': 'outsideModal($event)',
     },
     templateUrl: "./remove-dictaat.component.html",
-    providers: [DictaatService]
+    providers: []
 })
 export class RemoveDictaatComponent {
     

@@ -62,8 +62,7 @@ export class AddDictaatComponent {
                 this.dictaatAdded.emit(dictaten)
             })
             .catch(reason => {
-                console.log(reason);
-               
+
             });
     }
 }

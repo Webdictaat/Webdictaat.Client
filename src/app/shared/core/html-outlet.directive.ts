@@ -26,6 +26,7 @@ import { RatingService } from '../services/rating.service';
 import { DatabModule } from "../../extern/databases/datab.module";
 import { QuizModule } from "../quiz/quiz.module";
 import { QuizService } from "../services/quiz.service";
+import { SpinnerComponent } from "../spinner/spinner.component";
 
 export function createComponentFactory(compiler: Compiler, metadata: Component): Promise<ComponentFactory<any>> {
     const cmpClass = class DynamicComponent { };
