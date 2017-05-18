@@ -26,7 +26,7 @@ export class AchievementService {
         return this.wdapi.get(url)
             .toPromise()
             .then(response =>
-                response.json() as Achievementgroup
+                response.json() as Achievement
             );
     }
 }
