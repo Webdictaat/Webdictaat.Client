@@ -14,7 +14,6 @@ export class AchievementsComponent implements OnInit {
     abstract;
     private achievementgroups: AchievementGroup[];
     grid: boolean = true;
-    loaded: boolean = false;
 
     constructor(
         private achievementService: AchievementService){ }
@@ -28,7 +27,6 @@ export class AchievementsComponent implements OnInit {
     getAchievements(): void {
         this.achievementService.getDictaatAchievements("meep").then((achievements) => {
             this.achievementgroups = achievements;
-            this.loaded = true;
         });
     }
 
@@ -45,8 +43,6 @@ export class AchievementsComponent implements OnInit {
     }
 
     achievementinfo(achiev) {
-        console.log(achiev);
-
         $(achiev).on("mouseover", function () {
             $(".achievementinfo").slideDown(300);
         }).on("mouseout", function () {

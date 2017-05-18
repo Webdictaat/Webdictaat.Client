@@ -14,7 +14,6 @@ import { HtmlComponent } from "../../shared/tools/html.component";
 
 //for the eit page
 import { AddRatingComponent } from "../../shared/rating/add-rating.component";
-import { AddQuizComponent } from "../quiz/add-quiz/add-quiz.component";
 import { AddVideoComponent } from "../../shared/videos/add-video.component";
 import { ImagesModule } from "../../shared/images/images.module";
 
@@ -22,8 +21,7 @@ import { ImagesModule } from "../../shared/images/images.module";
 @NgModule({
     imports: [BrowserModule, HttpModule, FormsModule, DragulaModule, ToolsModule, ImagesModule],
     declarations: [
-        PagesComponent, AddPageComponent, EditPageComponent, AddQuizComponent,
-        AddRatingComponent, AddVideoComponent
+        PagesComponent, EditPageComponent, AddPageComponent
     ],
     exports: [PagesComponent, AddPageComponent, EditPageComponent],
     providers: [ PagesService, DragulaService]

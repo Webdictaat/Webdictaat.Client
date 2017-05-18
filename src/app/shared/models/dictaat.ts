@@ -7,4 +7,11 @@ export class Dictaat {
     lastChange: Date;
     pages: PageSummary[];
     menuItems: NavMenuItem[];
+
+    constructor(json = null){
+        this.name = json.name;
+        this.location = json.locatoin;
+        this.pages = json.pages;
+        this.menuItems = json.menuItems;
+    }
 }

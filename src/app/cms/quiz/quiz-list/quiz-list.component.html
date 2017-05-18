@@ -1,15 +1,50 @@
+<div id="myModal" class="modal fade in" role="dialog" *ngIf="selectedQuiz">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Quiz </h4>
+                <div class="close-modal-button" (click)="cancelEdit()">
+                    <span  class="glyphicon glyphicon-remove"></span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <wd-edit-quiz [quiz]="selectedQuiz"></wd-edit-quiz>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" (click)="Update(selectedQuiz)" [disabled]="!selectedQuiz.title || !selectedQuiz.description">Save</button>
+                <button class="btn btn-default" (click)="cancelEdit()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div *ngIf="quizes" class="panel panel-default sidebar">
 
-  <table class="table">
+  
+    
+    <div class="text-center">
+        <button class="btn btn-xs btn-success" (click)="addAssignment()">
+            <span class="glyphicon glyphicon-plus"></span>&nbsp;Create a new Quiz
+        </button>
+    </div>
+
+  <table class="table table-hover">
     <tr *ngFor="let quiz of quizes">
       <td>
-        {{quiz.title}}
+        <b>{{quiz.title}}</b>
       </td>
       <td>
         {{quiz.questionCount}} questions
       </td>
       <td>
         Completed by {{quiz.completedByCount}} students
+      </td>
+      <td class="actions">
+          <div class="action edit" (click)="enableEdit(quiz)">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+          </div>
       </td>
     </tr>
   </table>

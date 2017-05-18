@@ -1,17 +1,42 @@
 export class Quiz{
 
-    constructor(){
+    constructor(json = null){
         this.questions = [];
-        this.questions.push(new Question());
+        if(json){
+            json.questions.forEach(q => {
+                this.questions.push(new Question(q));
+            })
+            this.dictaat = json.dictaat;
+            this.title = json.title;
+            this.description = json.description;
+            this.status = json.status;
+            this.id = json.id;
+        }
+        else{
+            //start with 1 question
+            this.questions.push(new Question());
+        }
+       
     }
 
 
     public id: number;
+    public dictaat: String;
     public title: string;
     public description: string;
     public status : string;
     public questions: Question[];
     public myAttempts: Attempt[];
+
+    public isValid() : boolean{
+        let response : boolean = (this.title && this.description && this.questions.length >= 1);
+        this.questions.forEach(question => {
+            if(!question.isValid()){
+                response = false; 
+            }
+        })
+        return response;
+    }
 
     public getLastAttempt(): Attempt{
         if(this.myAttempts && this.myAttempts.length > 0)
@@ -23,6 +48,7 @@ export class Quiz{
 
 export class QuizSummary{
     public id: number;
+    public dictaat: String;
     public title: string;
     public description: string;
     public questionCount: number;
@@ -38,8 +64,18 @@ export class Attempt{
 
 export class Question{
 
-    constructor(){
+    private original: string;
+
+    constructor(json = null){
         this.answers = [];
+        if(json){
+            this.id = json.id;
+            this.text = json.text;
+            json.answers.forEach(a => {
+                this.answers.push(new Answer(a));
+            })
+        }
+        this.original = JSON.stringify(this);
     }
 
     public id: number;
@@ -52,6 +88,11 @@ export class Question{
         this.answers.splice(index, 1) 
     }
 
+    public isValid(){
+        let response : boolean = (this.text && this.answers.length > 1);
+        return response;
+    }
+
 }
 
 export class Answer{
@@ -59,8 +100,10 @@ export class Answer{
     public text: string;
     public isCorrect: boolean;
 
-    constructor(text: string){
-        this.text = text;
+    constructor(json = null){
+        this.id = json.id;
+        this.text = json.text;
+        this.isCorrect = json.isCorrect;
     }
 
     toggle(): void {

@@ -1,0 +1,64 @@
+<div class="form-group">
+    <input type="text" class="form-control" name="quiz.title" id="quiz.title" placeholder="Title of the quiz"
+        [(ngModel)]="quiz.title" required>
+</div>
+
+<div class="form-group">
+    <input type="text" class="form-control" name="quiz.description" id="quiz.description" placeholder="Description of the quiz"
+        [(ngModel)]="quiz.description" required>
+</div>
+
+<h4>Questions</h4>
+
+<ul class="question-progress">
+    <li *ngFor="let q of quiz.questions; let i = index">
+        <button class="btn btn-raised btn-xs" [ngClass]="{'btn-info' :  q == selectedQuestion, 'invalid': !q.isValid() }" (click)="SelectQuestion(i)">
+            {{i + 1}}
+        </button>
+    </li>
+    <li>
+        <button class="btn btn-raised btn-success btn-xs" (click)="AddQuestion()" >
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </li>
+</ul>
+
+
+<fieldset>
+
+<div class="input-button">     
+    <input type="text" class="form-control" name="selectedQuestion" id="selectedQuestion" placeholder="Name of the question"
+        [(ngModel)]="selectedQuestion.text" required>
+</div>
+
+<div class="form-group">
+    
+</div>
+<div class="form-group">
+    <h4>Answers</h4>
+
+        <div *ngFor='let answer of selectedQuestion.answers'>
+            <button class="btn btn-raised btn-primary answer"  (click)="answer.toggle()"
+                    [ngClass]="{'btn-success' :  answer.isCorrect}">
+                {{answer.text}}
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="selectedQuestion.RemoveAnswer(answer)">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </div>  
+        <div class="input-button">     
+            <input type="text" class="form-control" name="newAnswerText" id="newAnswerText" placeholder="New answer"
+                [(ngModel)]="newAnswerText">
+            <button class="btn btn-raised btn-success btn-sm" (click)="AddAnswer(newAnswerText)" [disabled]="!newAnswerText" >
+                <span class="glyphicon glyphicon-plus"></span>&nbsp;Answer
+            </button>
+        </div>
+
+        <div>
+            <button class="btn btn-raised btn-danger btn-sm" (click)="DeleteQuestion()" >
+                <span class="glyphicon glyphicon-trash"></span>&nbsp; Remove question
+            </button>
+        </div>
+</div>
+                        
+

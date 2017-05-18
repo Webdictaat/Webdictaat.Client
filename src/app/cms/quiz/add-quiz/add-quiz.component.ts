@@ -3,6 +3,7 @@ import { Headers, Http } from '@angular/http';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Question, Quiz, Answer } from "../../../shared/quiz/quiz";
 import { QuizService } from "../../../shared/services/quiz.service";
+import { DictaatService } from "../../../shared/services/dictaat.service";
 
 
 @Component({
@@ -23,6 +24,7 @@ export class AddQuizComponent implements OnInit {
 
     constructor(
         private quizService: QuizService,
+         private dictaatService: DictaatService,
         private route: ActivatedRoute,
         private changeDetector: ChangeDetectorRef,
         private  zone: NgZone
@@ -30,9 +32,13 @@ export class AddQuizComponent implements OnInit {
 
     //event
     public ngOnInit(): void {
-        this.route.params.forEach((params: Params) => {
-            this.dictaatName = params['dictaatName'];
-        });
+
+
+        this.dictaatService.CurrentDictaat.subscribe((dictaat) => {
+            if(dictaat){
+                this.dictaatName = dictaat.name;
+            }
+        })
 
         this.quizService.getIsModalVisible().subscribe((isModalVisible: boolean) => {
             
@@ -56,7 +62,17 @@ export class AddQuizComponent implements OnInit {
             });
     }
 
-    
+    DeleteQuestion(): void{
+        var toDelete = this.quiz.questions[this.selectedIndex];
+        this.quiz.questions.splice(this.selectedIndex, 1);
+        this.selectedIndex--;
+        if(this.selectedIndex > 0){
+            this.selectedQuestion = this.quiz.questions[this.selectedIndex];
+        }
+        else{
+            this.selectedQuestion = null;
+        }
+    }
 
     SelectQuestion(i): void{
         this.selectedIndex = i;
@@ -65,10 +81,12 @@ export class AddQuizComponent implements OnInit {
 
     AddQuestion(): void{
         this.quiz.questions.push(new Question());
+        this.selectedIndex = this.quiz.questions.length - 1;
+        this.selectedQuestion = this.quiz.questions[this.selectedIndex];
     }
     
     AddAnswer(): void {
-        this.selectedQuestion.answers.push(new Answer(this.newAnswerText));
+        this.selectedQuestion.answers.push(new Answer({ text: this.newAnswerText}));
         this.newAnswerText = null;
     };
 

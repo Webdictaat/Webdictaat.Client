@@ -30,6 +30,16 @@ export class QuizService extends BaseModalService{
             
     }
 
+    public update(dictaatName: String, quiz: Quiz): Promise<Quiz> {
+        let url: string = "/dictaten/" + dictaatName + '/quiz/' + quiz.id ;
+
+        return this.wdapi.put(url, quiz)
+            .toPromise()
+            .then(response => {
+                return response.json() as Quiz
+            });
+    }
+
     public addQuiz(dictaatName: String, quiz: Quiz): Promise<Quiz> {
 
         let url: string = "/dictaten/" + dictaatName + '/quiz';
@@ -59,7 +69,9 @@ export class QuizService extends BaseModalService{
 
         return this.wdapi.get(url)
             .toPromise()
-            .then(response => response.json() as Quiz)
+            .then(response => {
+                return new Quiz(response.json());
+            })
             
     }
 
@@ -68,5 +80,19 @@ export class QuizService extends BaseModalService{
          return this.wdapi.post(url, { GivenAnswers: givenAnswers })
             .toPromise()
             .then(response => response.json() as Attempt)
+    }
+
+    public removeQuestion(dictaatName: string, quizId: number, question: Question){
+         let url: string = "/dictaten/" + dictaatName + '/quiz/' + quizId + '/questions/' + question.id;
+         return this.wdapi.delete(url)
+            .toPromise()
+            .then(response => response.json() as Question)
+    }
+
+    public updateQuestion(dictaatName: string, quizId: number, question: Question){
+         let url: string = "/dictaten/" + dictaatName + '/quiz/' + quizId + '/questions/' + question.id;
+         return this.wdapi.put(url, question)
+            .toPromise()
+            .then(response => response.json() as Question)
     }
 }

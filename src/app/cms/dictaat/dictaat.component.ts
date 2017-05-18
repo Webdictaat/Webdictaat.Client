@@ -9,7 +9,7 @@ import { DictaatService } from "../../shared/services/dictaat.service";
     selector: "wd-dictaat",
     templateUrl: "./dictaat.component.html",
     styleUrls: ["./dictaat.component.css"],
-    providers: [DictaatService]
+    providers: []
 })
 export class DictaatComponent implements OnInit {
 

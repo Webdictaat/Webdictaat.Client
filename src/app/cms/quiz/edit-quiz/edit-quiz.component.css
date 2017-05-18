@@ -1,0 +1,25 @@
+.question-progress{
+    list-style-type: none;
+    padding:0px;
+}
+
+.question-progress li{
+    display: inline-block;
+}
+
+fieldset{
+    padding:10px;
+    border:1px solid darkgray;
+}
+
+.form-group{
+    margin:0px;
+}
+
+.input-button{
+    display:flex;
+}
+
+.invalid{
+    border-bottom:2px solid orange;
+}

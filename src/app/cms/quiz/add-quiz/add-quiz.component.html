@@ -37,7 +37,7 @@
                         </ul>
 
                     
-                        <fieldset>
+                        <fieldset *ngIf="selectedQuestion">
 
 
                             <div class="form-group">
@@ -63,6 +63,13 @@
                                             <span class="glyphicon glyphicon-plus"></span>&nbsp;Answer
                                         </button>
                                     </div>
+
+
+                                <div>
+                                    <button class="btn btn-raised btn-danger btn-sm" (click)="DeleteQuestion()" >
+                                        <span class="glyphicon glyphicon-trash"></span>&nbsp; Remove question
+                                    </button>
+                                </div>
                             </div>
                                                  
 

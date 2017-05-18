@@ -66,6 +66,10 @@
 
 }
 
+img{
+    max-width: 100%;
+}
+
 
 .maxed{
     max-width:100%;

@@ -10,6 +10,7 @@ import { routing } from "../app.routing";
 import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpModule } from "@angular/http";
+import { DictaatService } from "../../shared/services/dictaat.service";
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { HttpModule } from "@angular/http";
     exports: [
          RemoveDictaatComponent, AddDictaatComponent, DictatenComponent, DictaatComponent
     ],
-    providers: []
+    providers: [DictaatService]
 })
 export class DictaatModule {
 

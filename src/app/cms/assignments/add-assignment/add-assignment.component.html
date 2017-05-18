@@ -1,0 +1,33 @@
+
+<div id="myModal" class="modal fade in" role="dialog" *ngIf="isModalVisible">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add assignment </h4>
+                <div class="close-modal-button" (click)="cancel()">
+                    <span  class="glyphicon glyphicon-remove"></span>
+                </div>
+            </div>
+            <div class="modal-body">
+  
+                <div class="form-group">
+                    <label for="assignment.title">Enter title of the assignment</label>
+                    <input type="text" class="form-control" name="assignment.title" id="assignment.title"
+                           [(ngModel)]="assignment.title">
+                </div>
+
+                <div class="form-group">
+                    <label for="assignment.title">Enter description of the assignment</label>
+                    <input type="text" class="form-control" name="assignment.description" id="assignment.description"
+                           [(ngModel)]="assignment.description">
+                </div>
+          
+            </div>
+            <div class="modal-footer" >
+                <button class="btn btn-success"  [disabled]="!assignment.title || !assignment.description" (click)="add()">Save</button>
+                <button class="btn btn-default" (click)="cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
