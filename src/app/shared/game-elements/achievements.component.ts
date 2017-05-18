@@ -12,39 +12,36 @@ import {AchievementGroup} from "../models/AchievementGroup";
 
 export class AchievementsComponent implements OnInit {
     abstract;
-    private Achievement: Achievements[];
     private achievementgroups: AchievementGroup[];
     grid: boolean = true;
+    loaded: boolean = false;
 
     constructor(
         private achievementService: AchievementService){ }
 
 
     public ngOnInit() {
+        this.achievementgroups = [];
         this.getAchievements();
     }
 
     getAchievements(): void {
         this.achievementService.getDictaatAchievements("meep").then((achievements) => {
-            //this.achievementgroups = achievements;
-            a = new Achievementgroups();
-            a.id = 
-            console.log(achievements);
+            this.achievementgroups = achievements;
+            this.loaded = true;
         });
     }
 
     public getAllAchievements() {
-        var Achievemements = [];
-
+        var Achievements = [];
         for(let group of this.achievementgroups)
         {
-            for(let achiev of group.Achievements)
+            for(let achiev of group.achievements)
             {
-                Achievemements.push(achiev);
+                Achievements.push(achiev);
             }
         }
-
-        return Achievemements;
+        return Achievements;
     }
 
     achievementinfo(achiev) {

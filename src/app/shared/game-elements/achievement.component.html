@@ -7,16 +7,8 @@
         <div class="achievementscontainer">
             <div *ngIf="grid" class="flex1">
                 <div *ngFor="let achievement of getAllAchievements()"  [hidden]="achievement.hidden">
-                    <!-- image only
-                    <div class="achievement" (mouseover)="achievementinfo(achievement)">
-                        <img class="achievementimage" [src]="'../../../src/img/'+achievement.image + '.jpg'" [ngClass]="{'completed':  achievement.completed}"/>
-                        <div class="achievementinfo">
-                            <p>{{achievement.name}}</p>
-                        </div>
-                    </div>
-                    -->
 
-                    <div class="Materialachievement" [ngClass]="{'completed':  achievement.completed}" (mouseover)="achievementinfo(achievement)">
+                    <div class="Materialachievement" [ngClass]="{'completed':  achievement.completed}">
                         <img class="Materialachievementimage" [src]="'../../../src/img/'+achievement.image + '.jpg'"/>
                         <p><b>{{achievement.name}}</b></p>
                     </div>

@@ -12,13 +12,13 @@ export class AchievementService {
 
     constructor(private wdapi: wdApi) { }
 
-    public getDictaatAchievements(dictaatName: string): Promise<Achievement> {
+    public getDictaatAchievements(dictaatName: string): Promise<AchievementGroup[]> {
         let url: string = "/dictaten/" + dictaatName + "/Achievement";
         return this.wdapi.get(url)
             .toPromise()
-            .then(response =>
-                response.json() as Achievement[]
-            );
+            .then(response => {
+                return response.json() as AchievementGroup[]
+            })
     }
 
     public getAchievement(dictaatName: string, id: number): Promise<Achievement> {
@@ -26,24 +26,7 @@ export class AchievementService {
         return this.wdapi.get(url)
             .toPromise()
             .then(response =>
-                response.json() as Achievement
+                response.json() as Achievementgroup
             );
     }
-    /*
-    getAchievements(): Promise<AchievementGroup[]> {
-        return Promise.resolve(ACHIEVEMENTS);
-    }
-
-    getAchievementsSlowly(): Promise<AchievementGroup[]> {
-        return new Promise(resolve => {
-            // Simulate server latency with 2 second delay
-            setTimeout(() => resolve(this.getAchievements()), 200);
-        });
-    }
-
-    getAchievement(id: number): Promise<AchievementGroup> {
-        return this.getAchievements()
-            .then(achievement => achievement.find(achievement => achievement.id === id));
-    }
-    */
 }
