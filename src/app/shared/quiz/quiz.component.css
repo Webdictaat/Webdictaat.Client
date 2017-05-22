@@ -10,3 +10,32 @@
 h1{
     margin: 0px;    
 }
+
+.quiz{
+    overflow: hidden;
+    display: flex;
+    
+}
+
+.quiz .header{
+    padding:10px;
+}
+
+.quiz .body{
+    padding:20px;
+    background-color:white;
+}
+
+.bs-callout{
+    padding:0px;
+}
+
+.bs-callout.idle{
+    border-left-color: #C6002A;
+}
+.bs-callout.finished{
+    border-left-color: green;
+}
+.bs-callout.started{
+    border-left-color: #00AEED;
+}
