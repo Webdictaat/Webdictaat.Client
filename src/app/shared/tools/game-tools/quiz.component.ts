@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, Input } from '@angular/core';
 import { ToolParams } from '../../models/tool-params';
 import { Quiz, Question } from "../../quiz/quiz";
 import { QuizService } from "../../services/quiz.service";
@@ -12,6 +12,9 @@ import { QuizService } from "../../services/quiz.service";
     </div>`
 })
 export class QuizToolComponent {
+
+    @Input()
+    public dictaatName: string;
 
     private template: String = "<wd-quiz>";
 
@@ -36,7 +39,9 @@ export class QuizToolComponent {
     public onDrop(ui): Promise<boolean> {
 
         return new Promise((resolve, reject) => {
-            this.quizService.ShowModal()
+            var params = [];
+            params['dictaatName'] = this.dictaatName;
+            this.quizService.ShowModal(params)
                 .then((quiz: Quiz) => {                  
                     ui.item.replaceWith("<wd-quiz class='wd-component wd-game-component' [qid]='" + quiz.id + "' />");
                     resolve(true);

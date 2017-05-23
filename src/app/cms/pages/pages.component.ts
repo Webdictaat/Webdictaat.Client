@@ -72,7 +72,9 @@ export class PagesComponent{
     }
 
     public addPage(){
-        this.pagesSevice.ShowModal().then((menuItems) => {
+        var params = [];
+        params['dictaatName'] = this.dictaat.name;
+        this.pagesSevice.ShowModal(params).then((menuItems) => {
             this.dictaat.menuItems = menuItems;
          });
     }

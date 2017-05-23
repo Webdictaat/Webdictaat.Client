@@ -32,7 +32,8 @@ export class VideoComponent implements OnInit  {
     //returns a promise with a boolean, to recompile or not
     public onDrop(ui): Promise<boolean> {
         return new Promise((resolve, reject) => {
-            this.videoService.ShowModal()
+            var params = [];
+            this.videoService.ShowModal([])
                 .then((videoTag) => {
                     var newItem = $("<div class='wd-component'>" + videoTag + "</div>");
                     ui.item.replaceWith(newItem);

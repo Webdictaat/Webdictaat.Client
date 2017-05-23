@@ -4,6 +4,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Question, Quiz, Answer } from "../../../shared/quiz/quiz";
 import { QuizService } from "../../../shared/services/quiz.service";
 import { DictaatService } from "../../../shared/services/dictaat.service";
+import { BaseModalService, BaseModalComponent } from "../../../shared/core/basemodal.service";
 
 
 @Component({
@@ -11,12 +12,8 @@ import { DictaatService } from "../../../shared/services/dictaat.service";
     styleUrls: ['./add-quiz.component.css'],
     templateUrl: "./add-quiz.component.html",
 })
-export class AddQuizComponent implements OnInit {
+export class AddQuizComponent extends  BaseModalComponent implements OnInit {
        
-
-    private dictaatName: string;
-
-    public isModalVisible: boolean;
     public quiz: Quiz;
     public selectedQuestion : Question;
     public selectedIndex: number;
@@ -24,39 +21,25 @@ export class AddQuizComponent implements OnInit {
 
     constructor(
         private quizService: QuizService,
-         private dictaatService: DictaatService,
-        private route: ActivatedRoute,
-        private changeDetector: ChangeDetectorRef,
         private  zone: NgZone
-    ) {}
+    ) {
+        super();
+    }
 
     //event
     public ngOnInit(): void {
+        this.resetQuiz();
+        this.wdOnInit(this.quizService, this.zone);
+    }
 
-        this.dictaatService.CurrentDictaat.subscribe((dictaat) => {
-            if(dictaat){
-               
-                this.dictaatName = dictaat.name;
-            }
-        })
-
-        this.quizService.getIsModalVisible().subscribe((isModalVisible: boolean) => {
-            
-            this.isModalVisible = isModalVisible;
-            if (isModalVisible) {
-                this.quiz = new Quiz();  
-                this.selectedIndex = 0;
-                this.selectedQuestion = this.quiz.questions[0];           
-            }
-
-            this.zone.run(() => {});
-          
-        });
+    private resetQuiz(){
+        this.quiz = new Quiz();  
+        this.selectedIndex = 0;
+        this.selectedQuestion = this.quiz.questions[0];
     }
 
     public Add(): void {
-    
-        this.quizService.addQuiz(this.dictaatName, this.quiz)
+        this.quizService.addQuiz(this.params['dictaatName'], this.quiz)
             .then((quiz: Quiz) => {
                 this.quizService.CompleteModal(quiz);
             });
@@ -91,6 +74,7 @@ export class AddQuizComponent implements OnInit {
     };
 
     public Cancel(): void {
+        this.resetQuiz();
         this.quizService.CancelModal();
     }
 }

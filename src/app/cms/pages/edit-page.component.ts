@@ -33,7 +33,7 @@ export class EditPageComponent   { //implements DirtyComp
 
     public ngOnInit(): void {
 
-        this.route.params.forEach((params: Params) => {
+        this.route.params.subscribe((params: Params) => {
             this.pageName = params['pageName'];
             this.dictaatName = params['dictaatName'];
             this.pagesService.getPage(this.dictaatName, this.pageName)
