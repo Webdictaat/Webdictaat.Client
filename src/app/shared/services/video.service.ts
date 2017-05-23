@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 
 
 @Injectable()
-export class VideoService extends BaseModalService{
+export class VideoService extends BaseModalService {
 
     constructor(private wdapi: wdApi) {
         super();

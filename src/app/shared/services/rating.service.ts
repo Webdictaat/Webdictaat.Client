@@ -9,42 +9,14 @@ import { Rating, Rate } from '../models/rating';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
+import { BaseModalService } from "../core/basemodal.service";
 
 
 @Injectable()
-export class RatingService {
+export class RatingService extends BaseModalService {
 
-    constructor(private wdapi: wdApi) { }
-
-    public isModalVisible: boolean = false;
-    private subject: Subject<boolean> = new Subject<boolean>();
-
-    public getIsModalVisible(): Observable<boolean> {
-        return this.subject.asObservable();
-    }
-
-    private resolveAddRating;
-    private resolveCancel;
-
-    public ShowModal(): Promise<Rating> {
-        this.isModalVisible = true;
-        this.subject.next(this.isModalVisible);
-        return new Promise<Rating>((resolve, reject) => {
-            this.resolveAddRating = resolve;
-            this.resolveCancel = reject;
-        });
-    }
-
-    public CancelModal(): void {
-        this.resolveCancel();
-        this.isModalVisible = false;
-        this.subject.next(this.isModalVisible);
-    }
-
-    public CompleteModal(rating: Rating) {
-        this.resolveAddRating(rating);
-        this.isModalVisible = false;
-        this.subject.next(this.isModalVisible);
+    constructor(private wdapi: wdApi) { 
+        super();
     }
 
     public addRating(dictaatName: String, rating: Rating): Promise<Rating> {

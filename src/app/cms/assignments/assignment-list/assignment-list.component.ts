@@ -27,7 +27,9 @@ export class AssignmentListComponent implements OnInit {
   }
 
   public addAssignment(){
-      this.assignmentService.ShowModal().then((assignment) => {
+      var params = [];
+      params['dictaatName'] = this.dictaatService.CurrentDictaat.value.name;
+      this.assignmentService.ShowModal(params).then((assignment) => {
           this.assignments.push(assignment);
       });
   }

@@ -1,8 +1,8 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, Input } from '@angular/core';
 import { ToolParams } from '../../models/tool-params';
 import { RatingService } from '../../services/rating.service';
 
-var $ : any;
+
 
 @Component({
     selector: "wd-rating-tool",
@@ -11,6 +11,9 @@ var $ : any;
     </div>`
 })
 export class RatingToolComponent {
+
+    @Input()
+    public dictaatName: string;
 
     private template: String = "<wd-rating>";
 
@@ -35,7 +38,9 @@ export class RatingToolComponent {
     public onDrop(ui): Promise<boolean> {
 
         return new Promise((resolve, reject) => {
-            this.ratingService.ShowModal()
+            var params = [];
+            params['dictaatName'] = this.dictaatName;
+            this.ratingService.ShowModal(params)
                 .then((rating) => {
                     var element = "<wd-rating class='wd-component wd-game-component' [rid]='" + rating.id + "' />";
                     ui.item.replaceWith(element);

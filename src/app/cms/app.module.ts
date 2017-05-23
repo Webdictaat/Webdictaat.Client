@@ -11,7 +11,6 @@ import { GameElementsModule } from '../shared/game-elements/game-elements.module
 import { DragulaModule , DragulaService } from 'ng2-dragula/ng2-dragula';
 import { QuizModule } from "../shared/quiz/quiz.module";
 import { DictaatModule } from "./dictaat/dictaat.module";
-import { ImagesModule } from "../shared/images/images.module";
 
 
 //components
@@ -45,9 +44,10 @@ import { AddAssignmentComponent } from './assignments/add-assignment/add-assignm
 //modals and their dependencies
 import { AddQuizComponent } from "./quiz/add-quiz/add-quiz.component";
 import { AddPageComponent } from "./pages/add-page.component";
-import { AddVideoComponent } from "../shared/videos/add-video.component";
-import { AddRatingComponent } from "../shared/rating/add-rating.component";
 import { SpinnerComponent } from "../shared/spinner/spinner.component";
+import { ImagesModule } from "./images/images.module";
+import { AddVideoComponent } from "./videos/add-video.component";
+import { AddRatingComponent } from "./rating/add-rating/add-rating.component";
 
 @NgModule({
     imports: [

@@ -8,25 +8,42 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 
+class ModalEvent{
+    params: any;
+    isVisible: boolean;
+}
+
+class ShowModalEvent extends ModalEvent{
+    constructor(params){
+        super();
+        this.params = params;
+        this.isVisible = true;
+       
+    }
+}
+
+class CancelModalEvent extends ModalEvent{
+    constructor(){
+        super();
+        this.params = null;
+        this.isVisible = false;
+    }
+}
+
 
 @Injectable()
 export class BaseModalService {
 
-    public isModalVisible: boolean = false;
-    private subject: Subject<boolean> = new Subject<boolean>();
-
+    public modalEvent: Subject<ModalEvent> = new Subject<ModalEvent>();
+ 
     protected resolveComplete;
     protected resolveCancel;
 
     public constructor(){}
 
-    public getIsModalVisible(): Observable<boolean> {
-        return this.subject.asObservable();
-    }
 
-    public ShowModal(): Promise<any> {
-        this.isModalVisible = true;
-        this.subject.next(this.isModalVisible);
+    public ShowModal(params: any[]): Promise<any> {
+        this.modalEvent.next(new ShowModalEvent(params));
         return new Promise<any>((resolve, reject) => {
             this.resolveComplete = resolve;
             this.resolveCancel = reject;
@@ -35,14 +52,12 @@ export class BaseModalService {
 
     public CancelModal(): void {
         this.resolveCancel();
-        this.isModalVisible = false;
-        this.subject.next(this.isModalVisible);
+        this.modalEvent.next(new CancelModalEvent());
     }
 
     public CompleteModal(objectToResolve: any) {
         this.resolveComplete(objectToResolve);
-        this.isModalVisible = false;
-        this.subject.next(this.isModalVisible);
+        this.modalEvent.next(new CancelModalEvent())
     }
 
 }
@@ -50,13 +65,15 @@ export class BaseModalService {
 export class BaseModalComponent {
 
     public isModalVisible;
+    public params: string[];
     private baseService: BaseModalService;
 
     ///call this method to initialize base component
     protected wdOnInit(service: BaseModalService, zone: NgZone): void {
         this.baseService = service;
-        service.getIsModalVisible().subscribe((isModalVisible: boolean) => {      
-            this.isModalVisible = isModalVisible;
+        service.modalEvent.subscribe((modalEvent: ModalEvent) => { 
+            this.isModalVisible = modalEvent.isVisible;
+            this.params = modalEvent.params;
             zone.run(() => {});
         });
     }

@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { Headers, Http, Response, RequestOptions } from '@angular/http';
 //Nodig om een object om te toveren in een promise.
-import 'rxjs/Rx';
+import 'rxjs/rx';
 
 
 @Injectable()
