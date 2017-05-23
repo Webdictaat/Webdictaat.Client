@@ -33,9 +33,9 @@ export class AddQuizComponent implements OnInit {
     //event
     public ngOnInit(): void {
 
-
         this.dictaatService.CurrentDictaat.subscribe((dictaat) => {
             if(dictaat){
+               
                 this.dictaatName = dictaat.name;
             }
         })

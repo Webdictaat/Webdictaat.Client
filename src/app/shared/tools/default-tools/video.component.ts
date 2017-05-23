@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageService } from '../../services/images.service';
 import { VideoService } from "../../services/video.service";
-var $ : any;
+
 
 @Component({
     selector: "wd-video-tool",

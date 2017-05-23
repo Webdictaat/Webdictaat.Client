@@ -2,7 +2,7 @@
 import { ToolParams } from '../../models/tool-params';
 import { RatingService } from '../../services/rating.service';
 
-var $ : any;
+
 
 @Component({
     selector: "wd-rating-tool",

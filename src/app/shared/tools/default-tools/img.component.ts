@@ -1,6 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { ImageService } from '../../services/images.service';
-var $ : any;
 
 @Component({
     selector: "wd-img-tool",

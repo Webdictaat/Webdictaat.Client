@@ -2,7 +2,6 @@
 import { DialogService } from '../services/dialog.service';
 import { ToolParams } from '../models/tool-params';
 
-declare var $ : any;
 declare var CKEDITOR : any;
 
 @Component({
