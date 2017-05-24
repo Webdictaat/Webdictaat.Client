@@ -206,6 +206,9 @@ body {
     float:right;
 }
 
+.table>tbody>tr>td{
+    border:0px;
+}
 .action{
     text-align: center;
     display:inline-block;

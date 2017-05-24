@@ -48,6 +48,7 @@ import { SpinnerComponent } from "../shared/spinner/spinner.component";
 import { ImagesModule } from "./images/images.module";
 import { AddVideoComponent } from "./videos/add-video.component";
 import { AddRatingComponent } from "./rating/add-rating/add-rating.component";
+import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 
 @NgModule({
     imports: [
@@ -58,7 +59,7 @@ import { AddRatingComponent } from "./rating/add-rating/add-rating.component";
         
          AddRatingComponent, AddVideoComponent, AddQuizComponent, EditQuizComponent,
         DemoComponent, DialogComponent, AvatarComponent, ProfileComponent, 
-        AppComponent, QuizListComponent, AssignmentListComponent, AddAssignmentComponent
+        AppComponent, QuizListComponent, AssignmentListComponent, AddAssignmentComponent, EditAssignmentComponent
     ],
     providers: [
         DialogService, QuizService, ImageService, AchievementService, AccountService, wdApi,
