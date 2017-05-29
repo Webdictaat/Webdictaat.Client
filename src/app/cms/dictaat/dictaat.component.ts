@@ -18,7 +18,7 @@ export class DictaatComponent implements OnInit {
 
     constructor(
         private dictaatService: DictaatService,
-        private route: ActivatedRoute, 
+        protected route: ActivatedRoute, 
         private Router: Router) { }
 
 

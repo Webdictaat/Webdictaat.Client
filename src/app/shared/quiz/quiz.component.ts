@@ -3,16 +3,19 @@ import { Quiz, Answer, Question } from "./quiz";
 import { ActivatedRoute, Params } from "@angular/router";
 import { AccountService } from "../services/account.service";
 import { QuizService } from "../services/quiz.service";
+import { Loader } from "../core/loading.base";
+
 
 @Component({
   selector: 'wd-quiz',
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.css']
 })
-export class QuizComponent implements OnInit {
+export class QuizComponent extends Loader implements OnInit {
 
   @Input()
   public qid : number;
+
   public quiz : Quiz; 
   public dictaatName: string;
   public isAuth: boolean;
@@ -24,7 +27,10 @@ export class QuizComponent implements OnInit {
     private accountService: AccountService,
     private quizService: QuizService,
     private route: ActivatedRoute
-  ) { }
+  ) { 
+    super(true);
+
+  }
 
   ngOnInit() {
 
@@ -38,13 +44,20 @@ export class QuizComponent implements OnInit {
 
     this.route.params.forEach((params: Params) => {
         this.dictaatName = params['dictaatName'];
-        this.quizService.getQuiz(this.dictaatName, this.qid)
+        this.load()
+          .quizService.getQuiz(this.dictaatName, this.qid)
           .then((q: Quiz) => { 
              this.quiz = q;
              if(this.quiz.myAttempts){
                 this.quiz.myAttempts.length == 0 ? this.quiz.status = "idle" : this.quiz.status = "finished";
+             }           
+             else{
+               this.quiz.status = 'idle';
              }
-             
+             this.ready(); 
+          })
+          .catch((error) => {
+            this.ready();;
           });
 
     });

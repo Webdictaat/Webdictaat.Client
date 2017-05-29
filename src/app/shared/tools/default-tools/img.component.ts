@@ -1,6 +1,5 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, Input } from '@angular/core';
 import { ImageService } from '../../services/images.service';
-var $ : any;
 
 @Component({
     selector: "wd-img-tool",
@@ -9,6 +8,9 @@ var $ : any;
     </div>`
 })
 export class ImgComponent implements OnInit  {
+
+    @Input()
+    public dictaatName: string;
 
     constructor(private imageServie: ImageService) { }
 
@@ -31,7 +33,9 @@ export class ImgComponent implements OnInit  {
     //returns a promise with a boolean, to recompile or not
     public onDrop(ui): Promise<boolean> {
         return new Promise((resolve, reject) => {
-            this.imageServie.ShowModal()
+            var params = [];
+            params['dictaatName'] = this.dictaatName;
+            this.imageServie.ShowModal(params)
                 .then((result) => {
                     var newItem = $("<div class='wd-component image-local'><img src='http://webdictaat.aii.avans.nl//dictaten//"+ result.dictaatName+"//images//" + result.imageLocation + "'/></div>");
                     ui.item.replaceWith(newItem);

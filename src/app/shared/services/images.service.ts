@@ -17,7 +17,6 @@ export class ImageService extends BaseModalService{
     }
 
     public addImages(dictaatName: string, image: File): Promise<any> {
-
         let url: string = "/dictaten/" + dictaatName + '/upload';
         return this.wdapi.postFile(url, image);
     }

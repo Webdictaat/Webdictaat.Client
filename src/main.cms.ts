@@ -11,4 +11,7 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(CMSModule);
+$( document ).ready(function() {
+   platformBrowserDynamic().bootstrapModule(CMSModule);
+});
+
