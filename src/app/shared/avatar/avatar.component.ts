@@ -5,6 +5,8 @@ import { AccountService } from '../services/account.service';
 import { User } from '../models/user';
 
 import { ActivatedRoute, Params } from '@angular/router';
+import { DictaatService } from "../services/dictaat.service";
+import { ConfigService } from "../services/config.service";
 
 
 @Component({
@@ -25,14 +27,17 @@ export class AvatarComponent implements OnInit {
 
     public user: User;
    
-    constructor(private accountService: AccountService) { }
+    constructor(
+        private accountService: AccountService, 
+        private dictaatService: DictaatService,
+        private configService: ConfigService) { 
+            
+        }
 
     public ngOnInit(): void {
-
-        this.accountService.getUser()
-            .subscribe(user => {
-                this.user = user as User
-            });
+        this.accountService.getUser().subscribe(user => {
+            this.user = user as User;
+        });
     }
 
     public Login(): void {

@@ -11,13 +11,12 @@ import { Params, ActivatedRoute, Router } from "@angular/router";
 import { DictaatSummary } from "../models/dictaat-summary";
 import { Subject } from "rxjs/Subject";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { User } from "../models/user";
 
 
 @Injectable()
 export class DictaatService {
 
-
-    private _currentDictaat: Dictaat;
     public CurrentDictaat = new BehaviorSubject<Dictaat>(null);
 
     constructor(
@@ -47,6 +46,14 @@ export class DictaatService {
             .toPromise()
             .then(response =>
                 response.json() as DictaatSummary[]
+            );
+    }
+
+    public join(dictaatName: string){
+        return this.wdapi.post('/dictaten/' + dictaatName + '/participants', {})
+            .toPromise()
+            .then(response =>
+                response.json() as boolean
             );
     }
 

@@ -189,6 +189,7 @@ module.exports = {
       new CopyWebpackPlugin([
             //files easy for testing
             { from: './src\\app\\client\\nav-menu.json', to: ''},
+            { from: './src\\app\\client\\dictaat.config.json', to: ''},
             { from: './src\\app\\client\\pages', to: 'pages'},
             
             // copy css

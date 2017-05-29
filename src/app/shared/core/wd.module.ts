@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 
 //shared services
 import { wdApi } from './wd.service'; // the core service
+import { ConfigService } from "../services/config.service"; //the service for config variables
 import { DialogService } from '../services/dialog.service';
 import { RatingService } from '../services/rating.service';
 import { ImageService } from '../services/images.service';
@@ -19,13 +20,14 @@ import { DictaatService } from "../services/dictaat.service";
 import { SpinnerComponent } from "../spinner/spinner.component";
 
 
+
 /**
  * This mdule contains all the shared services, and components that are reusable across the application
  */
 @NgModule({
     providers: [
-        DialogService, QuizService, ImageService, AchievementService, AccountService, wdApi,
-        RatingService, DirtyGuard, VideoService, NavMenuService, AssignmentService
+        DialogService, QuizService, ImageService, AchievementService, AccountService, wdApi, ConfigService,
+        RatingService, DirtyGuard, VideoService, NavMenuService, AssignmentService, DictaatService
     ],
     declarations: [SpinnerComponent],
     exports: [SpinnerComponent]
