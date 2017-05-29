@@ -1,0 +1,13 @@
+<div class="assignment" *ngIf="assignment" [ngClass]="'level-' + assignment.level">
+  <h1>{{assignment.title}}</h1>
+  <p>
+    {{assignment.description}}
+  </p>
+  <div class="points">
+    <span>{{assignment.points}}</span>
+  </div>
+</div>
+
+<div class="assignment" *ngIf="!assignment" >
+  <wd-spinner></wd-spinner>
+</div>

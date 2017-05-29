@@ -29,6 +29,18 @@ export class AssignmentService extends BaseModalService{
             
     }
 
+    public getAssignmentDetails(dictaatName: String, assignmentId: number): Promise<Assignment> {
+       
+        let url: string = "/dictaten/" + dictaatName + '/assignment/' + assignmentId;
+
+        return this.wdapi.get(url)
+            .toPromise()
+            .then(response => {
+                return response.json() as Assignment
+            })
+            
+    }
+
     public addAssignment(dictaatName, assignment: Assignment): Promise<Assignment> {
         let url: string = "/dictaten/" + dictaatName + '/assignment';
         return this.wdapi.post(url, assignment)

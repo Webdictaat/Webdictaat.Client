@@ -20,7 +20,6 @@
     flex:4;
 }
 
-
 .wd-component > .image-local, .wd-component > iframe{
     width:100%;
 }
@@ -101,6 +100,13 @@ hr{
     max-width: 100%;
 }
 
+.panel {
+    padding-bottom:1px;
+}
+
+.panel .wd-editable{
+    margin:10px;
+}
 
 @media (max-width:767px) {
 

@@ -12,6 +12,7 @@ import { DictaatSummary } from "../models/dictaat-summary";
 import { Subject } from "rxjs/Subject";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { User } from "../models/user";
+import { ConfigService } from "./config.service";
 
 
 @Injectable()
@@ -22,15 +23,18 @@ export class DictaatService {
     constructor(
         private wdapi: wdApi, 
         private route: ActivatedRoute, 
-        private router: Router) {}
+        private router: Router,
+        private config: ConfigService) {}
 
     public getDictaat(dictaatName: String): Promise<Dictaat> {
         return this.wdapi.get("/dictaten/" + dictaatName)
             .map(response => new Dictaat(response.json()))
             .toPromise()
             .then(dictaat => {
-                this.CurrentDictaat.next(dictaat);
-                return dictaat;
+                if(dictaat){
+                    this.CurrentDictaat.next(dictaat);  
+                    return dictaat;
+                }               
             })
     }
 

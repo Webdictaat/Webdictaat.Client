@@ -12,12 +12,14 @@ import { QuizModule } from "./quiz/quiz.module";
 import { LeaderboardModule } from "./leaderboard/leaderboard.module";
 import { WdModule } from "../core/wd.module";
 import { LeaderboardComponent } from "./leaderboard/leaderboard.component";
+import { QuizComponent } from "./quiz/quiz.component";
+import { AssignmentComponent } from './assignment/assignment.component';
 
 
 @NgModule({
     imports: [BrowserModule, FormsModule, QuizModule, WdModule, LeaderboardModule],
-    declarations: [RatingComponent, AchievementsComponent],
-    exports: [RatingComponent, AchievementsComponent, LeaderboardComponent]
+    declarations: [RatingComponent, AchievementsComponent, AssignmentComponent],
+    exports: [RatingComponent, AchievementsComponent, LeaderboardComponent, QuizComponent, AssignmentComponent]
 })
 export class GameElementsModule {                                                                                                                                                                                                                        
 

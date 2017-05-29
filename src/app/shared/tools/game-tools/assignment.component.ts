@@ -1,24 +1,24 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
 import { ToolParams } from '../../models/tool-params';
-import { Quiz, Question } from "../../models/quiz";
-import { QuizService } from "../../services/quiz.service";
+import { AssignmentService } from "../../services/assignment.service";
+import { Assignment } from "../../models/assignment";
 
 
 
 @Component({
-    selector: "wd-quiz-tool",
-    template: `<div id='wd-quiz-tool' class='wd-component'>
-        <i class="fa fa-question-circle-o" aria-hidden="true"></i> Quiz
+    selector: "wd-assignment-tool",
+    template: `<div id='wd-assignment-tool' class='wd-component'>
+      <i class="fa fa-flag" aria-hidden="true"></i> Assignment
     </div>`
 })
-export class QuizToolComponent {
+export class AssignmentToolComponent {
 
     @Input()
     public dictaatName: string;
 
     private template: String = "<wd-quiz>";
 
-    constructor(private quizService: QuizService) { }
+    constructor(private assignmentService: AssignmentService) { }
 
     /**
      * Omslachtige maar nodige manier om terug in de Angular2 context te komen.
@@ -26,7 +26,7 @@ export class QuizToolComponent {
      */
     public ngOnInit(): void {
         var component = this;
-        $('#wd-quiz-tool').draggable({
+        $('#wd-assignment-tool').draggable({
             helper: "clone",
             connectToSortable: ".wd-container",
             start: function (e, ui) {
@@ -41,9 +41,9 @@ export class QuizToolComponent {
         return new Promise((resolve, reject) => {
             var params = [];
             params['dictaatName'] = this.dictaatName;
-            this.quizService.ShowModal(params)
-                .then((quiz: Quiz) => {                  
-                    ui.item.replaceWith("<wd-quiz class='wd-component wd-game-component' [qid]='" + quiz.id + "' />");
+            this.assignmentService.ShowModal(params)
+                .then((assignment: Assignment) => {                  
+                    ui.item.replaceWith("<wd-assignment class='wd-component wd-game-component' [aid]='" + assignment.id + "' />");
                     resolve(true);
                 })
                 .catch(() => {

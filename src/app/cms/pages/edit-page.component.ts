@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, Params , NavigationStart} from '@angular/router
 import { PagesService } from './pages.service';
 import { HtmlComponent } from "../../shared/tools/html.component";
 import { Page } from "../../shared/models/page";
+import { ConfigService } from "../../shared/services/config.service";
 
 
 @Component({
@@ -28,7 +29,8 @@ export class EditPageComponent   { //implements DirtyComp
     constructor(
         private route: ActivatedRoute,
         private pagesService: PagesService,
-        private router: Router
+        private router: Router,
+        private config: ConfigService,
     ) {}
 
     public ngOnInit(): void {
@@ -36,6 +38,7 @@ export class EditPageComponent   { //implements DirtyComp
         this.route.params.subscribe((params: Params) => {
             this.pageName = params['pageName'];
             this.dictaatName = params['dictaatName'];
+            this.config.SetLocalConfig({ name: this.dictaatName });
             this.pagesService.getPage(this.dictaatName, this.pageName)
                 .then(page => { 
                     this.page = page; 

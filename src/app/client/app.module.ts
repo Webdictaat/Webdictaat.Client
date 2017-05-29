@@ -15,12 +15,11 @@ import { AvatarComponent }  from '../shared/avatar/avatar.component';
 import { DatabModule } from "../extern/databases/datab.module";
 import { WdModule } from "../shared/core/wd.module";
 import { GameElementsModule } from "../shared/game-elements/game-elements.module";
-import { JoinDialogComponent } from './dialogs/join-dialog/join-dialog.component';
 
 
 @NgModule({
     imports: [BrowserModule, WdModule, HttpModule, routing, DatabModule, GameElementsModule],
-    declarations: [HtmlOutlet, AppComponent, PageComponent, NavMenuComponent, AvatarComponent, JoinDialogComponent],
+    declarations: [HtmlOutlet, AppComponent, PageComponent, NavMenuComponent, AvatarComponent],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }
     ],

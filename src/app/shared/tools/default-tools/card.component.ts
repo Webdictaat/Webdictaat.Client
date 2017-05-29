@@ -25,7 +25,7 @@ export class CardComponent {
     public onDrop(ui): Promise<boolean> {
 
         return new Promise((resolve, reject) => {
-            var newItem = $("<div class='wd-component well wd-container'></div>");
+            var newItem = $("<div class='wd-component panel wd-container'></div>");
             ui.item.replaceWith(newItem);
             ui.item = newItem;
             resolve(false);
