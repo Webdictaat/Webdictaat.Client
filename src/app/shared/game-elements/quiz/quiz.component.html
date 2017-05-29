@@ -2,9 +2,8 @@
 
 <div class="bs-callout bs-callout-default quiz body" [ngClass]="quiz?.status">
 
-  <p *ngIf="isLoading">
-    <wd-spinner></wd-spinner>
-  </p>
+
+  <wd-spinner *ngIf="isLoading"></wd-spinner>
 
   <div *ngIf="quiz">
 

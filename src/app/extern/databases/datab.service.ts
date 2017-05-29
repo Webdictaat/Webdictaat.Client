@@ -3,7 +3,7 @@ import { Headers, Http, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import { wdApi } from "../../shared/core/wdapi.service";
+import { wdApi } from "../../shared/core/wd.service";
 import { Assignment } from "../../shared/models/assignment";
 
 export class DbAssignment extends Assignment {

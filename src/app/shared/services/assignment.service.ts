@@ -3,7 +3,7 @@ import { Headers, Http, Response } from '@angular/http';
 //Nodig om een object om te toveren in een promise.
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-import { wdApi } from '../core/wdapi.service';
+import { wdApi } from '../core/wd.service';
 import { BaseModalService } from '../core/basemodal.service';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';

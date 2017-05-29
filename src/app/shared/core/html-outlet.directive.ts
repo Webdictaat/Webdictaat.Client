@@ -11,22 +11,20 @@ import {
     ModuleWithComponentFactories,
     ComponentRef,
     ReflectiveInjector,
-    NgZone
+    NgZone,
+    CUSTOM_ELEMENTS_SCHEMA
 } from '@angular/core';
 
+
+//angular modules
 import { BrowserModule } from '@angular/platform-browser';
-
-
 import { RouterModule }  from '@angular/router';
 import { CommonModule } from '@angular/common';
+
+//my modules
 import { GameElementsModule } from '../game-elements/game-elements.module';
-
-
-import { RatingService } from '../services/rating.service';
-import { DatabModule } from "../../extern/databases/datab.module";
-import { QuizModule } from "../quiz/quiz.module";
-import { QuizService } from "../services/quiz.service";
-import { SpinnerComponent } from "../spinner/spinner.component";
+import { DatabModule } from "../../extern/databases/datab.module"; //voor bart zijn datab project
+import { WdModule } from "./wd.module";
 
 export function createComponentFactory(compiler: Compiler, metadata: Component): Promise<ComponentFactory<any>> {
     const cmpClass = class DynamicComponent { };
@@ -34,10 +32,9 @@ export function createComponentFactory(compiler: Compiler, metadata: Component):
 
     @NgModule({
         imports: [
-            BrowserModule, CommonModule, RouterModule, GameElementsModule, DatabModule,
-            QuizModule
+            BrowserModule, CommonModule, RouterModule, WdModule, GameElementsModule, DatabModule
         ],
-        providers: [QuizService, RatingService],
+        //schemas: [CUSTOM_ELEMENTS_SCHEMA ],
         declarations: [decoratedCmp]
     })
     class DynamicHtmlModule { }

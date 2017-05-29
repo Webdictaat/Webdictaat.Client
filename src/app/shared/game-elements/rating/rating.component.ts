@@ -1,8 +1,8 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { RatingService } from '../services/rating.service';
-import { AccountService } from '../services/account.service';
-import { Rating, Rate } from '../models/rating';
+import { RatingService } from '../../services/rating.service';
+import { AccountService } from '../../services/account.service';
+import { Rating, Rate } from '../../models/rating';
 
 @Component({
     selector: "wd-rating",

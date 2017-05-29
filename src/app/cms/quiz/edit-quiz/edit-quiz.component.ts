@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { Quiz, QuizSummary, Question, Answer } from "../../../shared/quiz/quiz";
+import { Quiz, QuizSummary, Question, Answer } from "../../../shared/models/quiz";
 import { QuizService } from "../../../shared/services/quiz.service";
 import { DictaatService } from "../../../shared/services/dictaat.service";
 

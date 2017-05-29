@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 //Nodig om een object om te toveren in een promise.
 
 import { Dictaat } from '../models/dictaat';
-import { wdApi } from '../core/wdapi.service';
+import { wdApi } from '../core/wd.service';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';

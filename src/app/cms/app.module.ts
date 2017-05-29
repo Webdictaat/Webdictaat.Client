@@ -4,12 +4,16 @@ import { HttpModule }    from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
+
+//routing
+import { routing } from './app.routing';
+
+
 //modules
 import { PagesModule } from "./pages/pages.module";
 import { ToolsModule } from '../shared/tools/tools.module';
 import { GameElementsModule } from '../shared/game-elements/game-elements.module';
 import { DragulaModule , DragulaService } from 'ng2-dragula/ng2-dragula';
-import { QuizModule } from "../shared/quiz/quiz.module";
 import { DictaatModule } from "./dictaat/dictaat.module";
 
 
@@ -18,27 +22,10 @@ import { AvatarComponent }  from '../shared/avatar/avatar.component';
 import { ProfileComponent }  from '../shared/profile/profile.component';
 import { DemoComponent } from '../shared/demo/demo.component';
 import { AppComponent } from "./app.component";
-
-//services
-import { routing } from './app.routing';
-import { DialogService } from '../shared/services/dialog.service';
-import { RatingService } from '../shared/services/rating.service';
-import { ImageService } from '../shared/services/images.service';
-import { AccountService } from '../shared/services/account.service';
-import { wdApi } from '../shared/core/wdapi.service';
-import { DirtyGuard } from "../shared/core/security/dirty.guard";
-import { VideoService } from "../shared/services/video.service";
-import { NavMenuService } from "../shared/nav-menu/nav-menu.service";
-import { AchievementService } from "../shared/services/achievement.service";
-import { QuizService } from "../shared/services/quiz.service";
-
 import { QuizListComponent } from './quiz/quiz-list/quiz-list.component';
 import { EditQuizComponent } from './quiz/edit-quiz/edit-quiz.component';
-
-import { DictaatService } from "../shared/services/dictaat.service";
 import { DialogComponent } from "../shared/dialog/dialog.component";
 import { AssignmentListComponent } from './assignments/assignment-list/assignment-list.component';
-import { AssignmentService } from "../shared/services/assignment.service";
 import { AddAssignmentComponent } from './assignments/add-assignment/add-assignment.component';
 
 //modals and their dependencies
@@ -49,21 +36,20 @@ import { ImagesModule } from "./images/images.module";
 import { AddVideoComponent } from "./videos/add-video.component";
 import { AddRatingComponent } from "./rating/add-rating/add-rating.component";
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
+import { MarkAssignmentComponent } from './assignments/mark-assignment/mark-assignment.component';
+import { WdModule } from "../shared/core/wd.module";
 
 @NgModule({
     imports: [
-        ToolsModule, GameElementsModule, DragulaModule, QuizModule, ImagesModule,
+        ToolsModule, WdModule, GameElementsModule, DragulaModule, ImagesModule,
         BrowserModule, HttpModule, routing, PagesModule, FormsModule, DictaatModule
     ],
-    declarations: [
-        
-         AddRatingComponent, AddVideoComponent, AddQuizComponent, EditQuizComponent,
+    declarations: [       
+        AddRatingComponent, AddVideoComponent, AddQuizComponent, EditQuizComponent,
         DemoComponent, DialogComponent, AvatarComponent, ProfileComponent, 
-        AppComponent, QuizListComponent, AssignmentListComponent, AddAssignmentComponent, EditAssignmentComponent
+        AppComponent, QuizListComponent, AssignmentListComponent, AddAssignmentComponent, EditAssignmentComponent, MarkAssignmentComponent
     ],
     providers: [
-        DialogService, QuizService, ImageService, AchievementService, AccountService, wdApi,
-        RatingService, DirtyGuard, VideoService, NavMenuService, AssignmentService,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
     ],
     bootstrap: [
