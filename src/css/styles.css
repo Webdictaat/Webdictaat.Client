@@ -111,11 +111,6 @@ hr{
     margin:10px;
 }
 
-wd-nav-menu{
-    overflow-y: scroll;
-    display: block;
-    max-height: 100%;
-}
 
 @media (max-width:767px) {
 

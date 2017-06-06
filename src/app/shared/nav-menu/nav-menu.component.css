@@ -56,14 +56,14 @@ a.active{
     transform: rotate(180deg);
 }
 
-.nav.root{
-    margin-bottom:50px;
-}
 
 
 @media (max-width:767px) {
 
   .nav.root{
+    padding-bottom:50px;
+    max-height: 100%;
+    overflow-y: scroll;
       box-shadow: none;
   }
 
