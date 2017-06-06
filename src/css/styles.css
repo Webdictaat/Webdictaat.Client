@@ -28,6 +28,9 @@
     width:auto;
 }
 
+.content{
+    margin-top:50px;
+}
 
 
 .table-hover tr{
@@ -108,10 +111,16 @@ hr{
     margin:10px;
 }
 
+wd-nav-menu{
+    overflow-y: scroll;
+    display: block;
+    max-height: 100%;
+}
+
 @media (max-width:767px) {
 
   .side-nav{
      transform: translate(0, 0);
+     
   }
-
 }

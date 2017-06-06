@@ -55,3 +55,16 @@ a.active{
 .dropdown-toggle.rotate .caret{
     transform: rotate(180deg);
 }
+
+.nav.root{
+    margin-bottom:50px;
+}
+
+
+@media (max-width:767px) {
+
+  .nav.root{
+      box-shadow: none;
+  }
+
+}
