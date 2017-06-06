@@ -1,5 +1,6 @@
 ﻿import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule }    from '@angular/http';
 import { LocationStrategy, HashLocationStrategy} from '@angular/common';
 
@@ -15,11 +16,12 @@ import { AvatarComponent }  from '../shared/avatar/avatar.component';
 import { DatabModule } from "../extern/databases/datab.module";
 import { WdModule } from "../shared/core/wd.module";
 import { GameElementsModule } from "../shared/game-elements/game-elements.module";
+import { MessageComponent } from './message/message.component';
 
 
 @NgModule({
-    imports: [BrowserModule, WdModule, HttpModule, routing, DatabModule, GameElementsModule],
-    declarations: [HtmlOutlet, AppComponent, PageComponent, NavMenuComponent, AvatarComponent],
+    imports: [BrowserModule, BrowserAnimationsModule, WdModule, HttpModule, routing, DatabModule, GameElementsModule],
+    declarations: [HtmlOutlet, AppComponent, PageComponent, NavMenuComponent, AvatarComponent, MessageComponent],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }
     ],
