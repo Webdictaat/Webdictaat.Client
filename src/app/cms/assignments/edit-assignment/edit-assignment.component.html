@@ -1,0 +1,23 @@
+<div class="form-group">
+    <label for="assignment.title">Enter title of the assignment</label>
+    <input type="text" class="form-control" required name="assignment.title" id="assignment.title"
+            [(ngModel)]="assignment.title">
+</div>
+
+<div class="form-group">
+    <label for="assignment.title">Enter a short description of the assignment</label>
+    <input type="text" class="form-control" required name="assignment.description" id="assignment.description"
+            [(ngModel)]="assignment.description">
+</div>
+
+<div class="form-group">
+    <label for="assignment.title">Enter the ammount of avans points rewarded</label>
+    <input type="number" class="form-control" required name="assignment.points" id="assignment.points"
+            [(ngModel)]="assignment.points">
+</div>
+
+<div class="form-group">
+    <label for="assignment.title">A tag to sort the assignments (example 1.1, 1.2 etc)</label>
+    <input type="text" class="form-control" name="assignment.metadata" id="assignment.metadata"
+            [(ngModel)]="assignment.metadata">
+</div>

@@ -1,5 +1,6 @@
 ﻿import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule }    from '@angular/http';
 import { LocationStrategy, HashLocationStrategy} from '@angular/common';
 
@@ -11,23 +12,18 @@ import { HtmlOutlet } from '../shared/core/html-outlet.directive';
 import { NavMenuComponent } from '../shared/nav-menu/nav-menu.component';
 import { AvatarComponent }  from '../shared/avatar/avatar.component';
 
-//services
-import { AchievementService } from '../shared/services/achievement.service';
-import { AccountService } from '../shared/services/account.service';
-import { RatingService } from '../shared/services/rating.service';
-import { wdApi } from '../shared/core/wdapi.service';
-import { QuizService } from "../shared/services/quiz.service";
-
 //modules
 import { DatabModule } from "../extern/databases/datab.module";
-import { QuizModule } from "../shared/quiz/quiz.module";
+import { WdModule } from "../shared/core/wd.module";
+import { GameElementsModule } from "../shared/game-elements/game-elements.module";
+import { MessageComponent } from './message/message.component';
 
 
 @NgModule({
-    imports: [BrowserModule, HttpModule, routing, DatabModule, QuizModule],
-    declarations: [HtmlOutlet, AppComponent, PageComponent, NavMenuComponent, AvatarComponent],
-    providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },
-        QuizService, AccountService, RatingService, wdApi, AchievementService
+    imports: [BrowserModule, BrowserAnimationsModule, WdModule, HttpModule, routing, DatabModule, GameElementsModule],
+    declarations: [HtmlOutlet, AppComponent, PageComponent, NavMenuComponent, AvatarComponent, MessageComponent],
+    providers: [
+        { provide: LocationStrategy, useClass: HashLocationStrategy }
     ],
     bootstrap: [AppComponent]
 })

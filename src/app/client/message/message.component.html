@@ -1,0 +1,15 @@
+<div class="message-container" [hidden]="hide" [@enterAnimation]>
+  <div class="panel">
+    <div class="panel-body">
+        <h1>Welcome!</h1>
+        <p>Do you want to contest with other participants and get the most comple experience? Login and join the course!</p>
+        <button *ngIf="user | async" class="btn btn-md btn-raised btn-primary" (click)="join()">Join</button>
+        <button *ngIf="!(user | async)" class="btn btn-md btn-raised btn-primary" (click)="login()">Login</button>
+    </div>
+    <div class="panel-side">
+      <img src="http://webdictaat.aii.avans.nl/cms/img/wd-logo.png">
+      <p *ngIf="participantCount > 0">Join <b>{{participantCount}}</b> others in this course!</p>
+      <p *ngIf="participantCount == 0">Be the first to join this course!</p>
+    </div>
+  </div>
+</div>

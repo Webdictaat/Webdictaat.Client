@@ -18,15 +18,16 @@ import { TrashComponent } from './default-tools/trash.component';
 import { ImgComponent } from './default-tools/img.component';
 import { VideoComponent } from "./default-tools/video.component";
 import { QuizToolComponent } from "./game-tools/quiz.component";
+import { AssignmentToolComponent } from "./game-tools/assignment.component";
 
 @NgModule({
     imports: [BrowserModule, FormsModule],
     declarations: [
         HtmlOutlet, ColumnComponent, TextComponent, HeaderComponent, HtmlComponent, CardComponent, VideoComponent,
-        QuizToolComponent, TrashComponent, ImgComponent, RatingToolComponent
+        QuizToolComponent, TrashComponent, ImgComponent, RatingToolComponent, AssignmentToolComponent
     ],
     exports: [ColumnComponent, TextComponent, HeaderComponent, HtmlComponent, CardComponent, VideoComponent,
-        QuizToolComponent, HtmlOutlet, TrashComponent, ImgComponent, RatingToolComponent
+        QuizToolComponent, HtmlOutlet, TrashComponent, ImgComponent, RatingToolComponent, AssignmentToolComponent
     ]
 })
 export class ToolsModule {

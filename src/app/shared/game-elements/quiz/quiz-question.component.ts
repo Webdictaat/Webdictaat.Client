@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Question, Answer } from "./quiz";
+import { Question, Answer } from "../../models/quiz";
 
 @Component({
   selector: 'wd-quiz-question',

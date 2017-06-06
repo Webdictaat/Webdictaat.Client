@@ -1,5 +1,10 @@
 .nav{
     background-color:white;
+    
+}
+
+.nav.root{
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .dropdown-menu, .dropdown-menu li{
@@ -19,8 +24,47 @@ a.active{
       border-left: 5px solid #00AEED;
 }
 
+
+.nav.sub {
+    max-height: 0; 
+    overflow: hidden;
+}
+
+.nav.sub a{
+    
+    font-size:90%;
+    color:black;
+    text-decoration: underline;
+}
+
+.nav.sub.open {
+    transition: max-height 0.5s;
+    max-height: 1000px;
+}
+
 .dropdown-toggle{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
+}
+
+.dropdown-toggle .caret{
+    transition: transform 0.5s;
+}
+.dropdown-toggle.rotate .caret{
+    transform: rotate(180deg);
+}
+
+
+
+@media (max-width:767px) {
+
+  .nav.root{
+    padding-bottom:50px;
+    max-height: 100%;
+    overflow-y: scroll;
+      box-shadow: none;
+  }
+
 }

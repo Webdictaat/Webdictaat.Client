@@ -1,4 +1,4 @@
-<div class="navbar navbar-default">
+<div class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" (click)="showSidebar = !showSidebar">
@@ -21,15 +21,17 @@
   </nav>
 </div>
 
-
 <div class="content">
-  <div class="left-menu">
+  <div class="left-menu side-menu">
     <wd-nav-menu ></wd-nav-menu>
   </div>
   <div class="flex-1">
     <div class="main-content">
+      <wd-message></wd-message>
       <router-outlet></router-outlet>
     </div>
+  </div>
+  <div class="right-menu side-menu">
   </div>
 </div>
 

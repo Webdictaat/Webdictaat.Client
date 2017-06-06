@@ -1,9 +1,9 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
 import { ToolParams } from '../../models/tool-params';
-import { Quiz, Question } from "../../quiz/quiz";
+import { Quiz, Question } from "../../models/quiz";
 import { QuizService } from "../../services/quiz.service";
 
-
+var $: any;
 
 @Component({
     selector: "wd-quiz-tool",

@@ -1,0 +1,24 @@
+<div class="leaderboard">
+  <div *ngIf="!leaderboard">
+    <wd-spinner></wd-spinner> 
+  </div>
+
+  <div *ngIf="leaderboard">
+    <table class="table">
+      <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Points</th>
+      </tr>
+      <tr *ngFor="let item of leaderboard.ranks">
+        <td>#{{item.rank}}</td>
+        <td>{{item.name}}</td>
+        <td class="points">{{item.points}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div *ngIf="leaderboard.me">
+      It's me mario!
+  </div>
+</div>

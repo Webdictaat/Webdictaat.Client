@@ -1,4 +1,4 @@
-<ul class="nav" *ngIf="MenuItems">
+<ul class="nav root" *ngIf="MenuItems">
 
     <li *ngFor="let item of MenuItems">
 
@@ -8,12 +8,12 @@
         </a>
 
         <!-- sub menu -->
-        <a  (click)="item.show = !item.show" class="dropdown-toggle" [ngClass]="{'dropup': item.show}" *ngIf="!item.Url">
+        <a  (click)="toggle(item)" [ngClass]="{'rotate': item == selected}" class="dropdown-toggle" *ngIf="!item.Url">
             <span>{{item.Name}}</span>
             <span class="caret"></span>
         </a>
 
-        <ol class="nav sub" *ngIf="item.show" (click)="!item.Url">
+        <ol class="nav sub" [ngClass]="{'open': item == selected}">
             <li *ngFor="let subItem of item.MenuItems">
                 <!-- menu item -->
                 <a routerLink="{{subItem.Url}}" routerLinkActive="active">
