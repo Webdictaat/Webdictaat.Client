@@ -22,14 +22,17 @@ export class AppComponent implements OnInit{
      ngOnInit(): void {
         this.configService.GetLocalConfig();
         this.configService.Config.subscribe((config) => {
-            if(config){
-                this.dictaatService.join(config.name)
-                .then((success) => {
-                    
-                })
-            }
-        })
+            if(!config) return;
 
+            this.dictaatService.getDictaatSession(config.name).subscribe((session) => {
+                if(session.containsMe){
+                    alert("yay you are in");
+                }
+                else{
+                    alert('sad panda :(');
+                }
+            });
+        })
     }
 
 

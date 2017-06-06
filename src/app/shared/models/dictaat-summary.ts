@@ -7,3 +7,8 @@ export class DictaatSummary {
     contributers: User[];
     canEdit: boolean;
 }
+
+export class DictaatSession{
+    containsMe: boolean;
+    participantIds: number[]
+}
