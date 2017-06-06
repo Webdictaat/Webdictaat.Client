@@ -1,6 +1,8 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
 import { ImageService } from '../../services/images.service';
 
+var $: any;
+
 @Component({
     selector: "wd-img-tool",
     template: `<div id='wd-img-tool' class='wd-component' >

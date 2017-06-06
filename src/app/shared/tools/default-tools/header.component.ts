@@ -1,5 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 
+var $: any;
+
 @Component({
     selector: "wd-header",
     template: "<div  id='wd-header-tool' class='wd-component'>Header</div>"
