@@ -1,5 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
-var $ : any;
+
+var $: any;
 
 @Component({
     selector: "wd-text",

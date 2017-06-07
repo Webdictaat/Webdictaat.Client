@@ -1,16 +1,15 @@
 
 
-<div class="bs-callout bs-callout-default quiz" [ngClass]="quiz?.status">
+<div class="bs-callout bs-callout-default quiz body" [ngClass]="quiz?.status">
 
-  <p *ngIf="isLoading">
-    <wd-spinner></wd-spinner>
-  </p>
+
+  <wd-spinner *ngIf="isLoading"></wd-spinner>
 
   <div *ngIf="quiz">
 
-    <div class="header">
+    <div class="header" *ngIf="quiz.status == 'idle'">
       
-      <h1>{{quiz.title}}</h1>
+      <h2>Quiz - {{quiz.title}} <span>({{quiz.questions.length}} questions)</span></h2>
 
       <p>{{quiz.description}}</p>
       
@@ -18,16 +17,16 @@
       <button *ngIf="!isAuth" (click)="login()" class='btn btn-info btn-raised'>Login to start Quiz</button>
     </div>
 
-    <div class="body">
+    <div *ngIf="quiz.status == 'started'">
       <ul class="question-progress">
         <li *ngFor="let q of quiz.questions; let i = index">
-          <button class="btn btn-raised btn-xs" [ngClass]="{'btn-success' :  q.selectedAnswer, 'btn-info': q == quiz.questions[questionIndex] }" (click)="selectQuestion(i)">
+          <button class="btn btn-raised btn-xs" [ngClass]="{'btn-info' :  q.selectedAnswer || q == quiz.questions[questionIndex] }" (click)="selectQuestion(i)">
             {{i + 1}}
           </button>
         </li>
         <li>
-          <button class="btn btn-raised btn-primary btn-xs" [disabled]="!canSubmit()" (click)="submit()" >
-            Submit
+          <button class="btn btn-raised btn-success btn-xs" [disabled]="!canSubmit()" (click)="questionIndex = quiz.questions.length" >
+            Done
           </button>
         </li>
       </ul>
@@ -39,7 +38,10 @@
       </div>
       <div *ngIf="questionIndex == quiz.questions.length">
         <p>All questions answered</p>
-        <p>You can now submit the quiz</p>
+        <p>You can now    
+          <button class="btn btn-raised btn-primary btn-sm" [disabled]="!canSubmit()" (click)="submit()" >
+            Submit
+          </button> the quiz</p>
         <button class="btn btn-info btn-xs" (click)="review()">Review answers</button>
       </div>
 
@@ -51,7 +53,8 @@
     </div>
 
     <div *ngIf="quiz.status == 'finished'">
-      <p>You've scored {{quiz.myAttempts[0].correctAnswers}} out of a {{quiz.questions.length}}!</p>
+      <h2>Quiz - {{quiz.title}} <span>({{quiz.questions.length}} questions)</span></h2>
+      <p class="score">You've scored <b>{{quiz.myAttempts[0].correctAnswers}}</b> out of a <b>{{quiz.questions.length}}</b>!</p>
       <button (click)="retakeQuiz()" class="btn btn-info btn-sm btn-raised">Retake quiz</button>
     </div>
   </div>

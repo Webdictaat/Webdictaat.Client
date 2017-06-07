@@ -1,8 +1,15 @@
-.left-menu{
+.side-menu{
     width:250px;
     padding:10px;
-    left:0px;
     position: fixed;
+}
+
+.left-menu{
+    left:0px;
+}
+
+.right-menu{
+    right:0px;
 }
 
 /** Sidebar **/
@@ -43,6 +50,10 @@
   text-indent: 20px;
 }
 
+.main-content{
+    max-width:900px;
+}
+
 /** bigger than 767, so left side menu should be visible **/
 @media (min-width:767px) {
     .main-content{
@@ -52,8 +63,7 @@
 
 /** Smaller than 767, so left side menu should be in hamburger menu **/
 @media (max-width:767px) {
-    .left-menu{
+    .side-menu{
         display: none;
     }
 }
-

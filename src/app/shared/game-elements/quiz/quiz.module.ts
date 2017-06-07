@@ -4,13 +4,12 @@ import { HttpModule }    from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { QuizComponent } from "./quiz.component";
 import { QuizQuestionComponent } from "./quiz-question.component";
-import { QuizService } from "../services/quiz.service";
-import { SpinnerComponent } from "../spinner/spinner.component";
+import { WdModule } from "../../core/wd.module";
 
 @NgModule({
-    providers: [QuizService],
-    imports: [BrowserModule, HttpModule, FormsModule],
-    declarations: [QuizComponent, SpinnerComponent, QuizQuestionComponent],
+    providers: [],
+    imports: [BrowserModule, HttpModule, WdModule, FormsModule],
+    declarations: [QuizComponent,QuizQuestionComponent],
     exports: [QuizComponent]
 })
 export class QuizModule {}

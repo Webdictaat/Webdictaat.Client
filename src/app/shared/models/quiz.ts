@@ -11,10 +11,12 @@ export class Quiz{
             this.description = json.description;
             this.status = json.status;
             this.id = json.id;
+            this.myAttempts = json.myAttempts ? json.myAttempts : [];
         }
         else{
             //start with 1 question
             this.questions.push(new Question());
+
         }
        
     }

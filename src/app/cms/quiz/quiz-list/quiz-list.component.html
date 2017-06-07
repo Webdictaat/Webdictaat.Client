@@ -3,7 +3,7 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Add Quiz </h4>
+                <h4 class="modal-title">Edit Quiz </h4>
                 <div class="close-modal-button" (click)="cancelEdit()">
                     <span  class="glyphicon glyphicon-remove"></span>
                 </div>
@@ -25,15 +25,15 @@
   
     
     <div class="text-center">
-        <button class="btn btn-xs btn-success" (click)="addAssignment()">
+        <button class="btn btn-xs btn-success" (click)="addQuiz()">
             <span class="glyphicon glyphicon-plus"></span>&nbsp;Create a new Quiz
         </button>
     </div>
 
-  <table class="table table-hover">
+  <table class="table table-striped">
     <tr *ngFor="let quiz of quizes">
       <td>
-        <b>{{quiz.title}}</b>
+        {{quiz.title}}
       </td>
       <td>
         {{quiz.questionCount}} questions

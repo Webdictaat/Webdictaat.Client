@@ -13,6 +13,7 @@ import { NavMenuItem } from '../models/nav-menu';
 export class NavMenuComponent implements OnInit {
 
     private page;
+    private selected: NavMenuItem;
 
     @Input()
     public MenuItems: NavMenuItem[];
@@ -21,6 +22,15 @@ export class NavMenuComponent implements OnInit {
         private route: ActivatedRoute,
         private navMenuService: NavMenuService
     ) { }
+
+    public toggle(item: NavMenuItem){
+        if(this.selected == item){
+            this.selected = null;
+        }
+        else{
+            this.selected = item;
+        }
+    }
 
     public ngOnInit(): void {
         if(!this.MenuItems) {

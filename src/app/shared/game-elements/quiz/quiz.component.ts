@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Quiz, Answer, Question } from "./quiz";
+import { Quiz, Answer, Question } from "../../models/quiz";
 import { ActivatedRoute, Params } from "@angular/router";
-import { AccountService } from "../services/account.service";
-import { QuizService } from "../services/quiz.service";
-import { Loader } from "../core/loading.base";
+import { AccountService } from "../../services/account.service";
+import { QuizService } from "../../services/quiz.service";
+
 
 
 @Component({
@@ -11,11 +11,12 @@ import { Loader } from "../core/loading.base";
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.css']
 })
-export class QuizComponent extends Loader implements OnInit {
+export class QuizComponent implements OnInit {
 
   @Input()
   public qid : number;
 
+  public isLoading: boolean;
   public quiz : Quiz; 
   public dictaatName: string;
   public isAuth: boolean;
@@ -27,10 +28,8 @@ export class QuizComponent extends Loader implements OnInit {
     private accountService: AccountService,
     private quizService: QuizService,
     private route: ActivatedRoute
-  ) { 
-    super(true);
+  ) {}
 
-  }
 
   ngOnInit() {
 
@@ -44,8 +43,8 @@ export class QuizComponent extends Loader implements OnInit {
 
     this.route.params.forEach((params: Params) => {
         this.dictaatName = params['dictaatName'];
-        this.load()
-          .quizService.getQuiz(this.dictaatName, this.qid)
+        this.isLoading = true;
+        this.quizService.getQuiz(this.dictaatName, this.qid)
           .then((q: Quiz) => { 
              this.quiz = q;
              if(this.quiz.myAttempts){
@@ -54,10 +53,10 @@ export class QuizComponent extends Loader implements OnInit {
              else{
                this.quiz.status = 'idle';
              }
-             this.ready(); 
+             this.isLoading = false;
           })
           .catch((error) => {
-            this.ready();;
+            this.isLoading = false;
           });
 
     });

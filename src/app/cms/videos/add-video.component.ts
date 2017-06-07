@@ -1,19 +1,18 @@
 import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { DictaatService } from '../services/dictaat.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { VideoService } from "../services/video.service";
+import { BaseModalComponent } from "../../shared/core/basemodal.service";
+import { VideoService } from "../../shared/services/video.service";
+
 
 @Component({
     selector: "wd-add-video",
     templateUrl: "./add-video.component.html",
 })
-export class AddVideoComponent implements OnInit {
+export class AddVideoComponent extends BaseModalComponent implements OnInit{
     
     public videoTag: string;
 
-    public isModalVisible: boolean;
-  
     @Output()
     public videoAdded = new EventEmitter();
 
@@ -22,28 +21,18 @@ export class AddVideoComponent implements OnInit {
         private route: ActivatedRoute,
         private changeDetector: ChangeDetectorRef,
         private  zone: NgZone
-    ) {}
+    ) {
+        super();
+    }
 
-    //event
-    public ngOnInit(): void {
-
-        this.videoService.getIsModalVisible().subscribe((isModalVisible: boolean) => {
-            
-            this.isModalVisible = isModalVisible;
-            if (isModalVisible) {
-                this.videoTag = "";
-            }
-
-            this.zone.run(() => {});
-          
-        });
+    ngOnInit(): void {
+        this.wdOnInit(this.videoService, this.zone);
     }
 
     public Add(): void {
         this.videoService.CompleteModal(this.videoTag); 
     }
 
-    
     public Cancel(): void {
         this.videoService.CancelModal();
     }

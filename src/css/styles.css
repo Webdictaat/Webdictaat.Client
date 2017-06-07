@@ -20,7 +20,6 @@
     flex:4;
 }
 
-
 .wd-component > .image-local, .wd-component > iframe{
     width:100%;
 }
@@ -29,10 +28,13 @@
     width:auto;
 }
 
+.content{
+    margin-top:60px;
+}
 
 
 .table-hover tr{
-    cursor:pointer;
+    
 }
 
 .table td .btn{
@@ -101,11 +103,19 @@ hr{
     max-width: 100%;
 }
 
+.panel {
+    padding-bottom:1px;
+}
+
+.panel .wd-editable{
+    margin:10px;
+}
+
 
 @media (max-width:767px) {
 
   .side-nav{
      transform: translate(0, 0);
+     
   }
-
 }

@@ -8,7 +8,7 @@ import { NavMenuItem } from '../models/nav-menu';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import { wdApi } from "../core/wdapi.service";
+import { wdApi } from "../core/wd.service";
 
 @Injectable()
 export class NavMenuService {

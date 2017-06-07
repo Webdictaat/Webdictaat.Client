@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from "../../../shared/services/quiz.service";
 import { DictaatService } from "../../../shared/services/dictaat.service";
-import { QuizSummary, Quiz } from "../../../shared/quiz/quiz";
+import { Quiz, QuizSummary, Question, Answer } from "../../../shared/models/quiz";
 
 @Component({
   selector: 'wd-quiz-list',
@@ -41,6 +41,14 @@ export class QuizListComponent implements OnInit {
       })
   }
 
+  public addQuiz(){
+    var params = [];
+    params['dictaatName'] = this.dictaatName;
+    this.quizService.ShowModal(params)
+      .then((quiz) => {
+        this.quizes.push(quiz);
+      })
+  }
   
   public enableEdit(quiz: Quiz): void{
     this.quizService.getQuiz(quiz.dictaat, quiz.id)

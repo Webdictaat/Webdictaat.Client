@@ -2,15 +2,11 @@
 import { DialogService } from '../services/dialog.service';
 import { ToolParams } from '../models/tool-params';
 
-declare var $ : any;
 declare var CKEDITOR : any;
 
 @Component({
     selector: "wd-html",
     template: `
-  
-      
-
         <!-- most bootstrap elements only work when inside a container!! -->
         <div id='page'>
             <html-outlet  [html]="innerHTML" (afterCompile)="afterCompile()"></html-outlet>
