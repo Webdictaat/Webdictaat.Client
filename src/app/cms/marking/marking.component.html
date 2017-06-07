@@ -1,0 +1,25 @@
+
+<div class="panel panel-default sidebar">
+
+<table *ngIf="markings">
+  <thead>
+    <tr>
+      <td>#</td>
+      <td *ngFor="let assignment of markings.assignments">
+        {{assignment.metadata}}
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of markings.participants">
+      <td>
+        {{user.userName}}
+      </td>
+      <td  *ngFor="let assignment of markings.assignments">
+        <wd-marker [uid]="user.id" [aid]="assignment.id" [submission]="assignment.submissions[user.id]"></wd-marker>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</div>

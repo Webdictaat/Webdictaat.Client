@@ -38,6 +38,9 @@ import { AddRatingComponent } from "./rating/add-rating/add-rating.component";
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { MarkAssignmentComponent } from './assignments/mark-assignment/mark-assignment.component';
 import { WdModule } from "../shared/core/wd.module";
+import { DictaatSettingsComponent } from "./dictaat/settings-dictaat.component";
+import { MarkingComponent } from './marking/marking.component';
+import { MarkerComponent } from "./marking/marker.componet";
 
 @NgModule({
     imports: [
@@ -45,8 +48,8 @@ import { WdModule } from "../shared/core/wd.module";
         BrowserModule, HttpModule, routing, PagesModule, FormsModule, DictaatModule
     ],
     declarations: [       
-        AddRatingComponent, AddVideoComponent, AddQuizComponent, EditQuizComponent,
-        DemoComponent, DialogComponent, AvatarComponent, ProfileComponent, 
+        AddRatingComponent, AddVideoComponent, AddQuizComponent, EditQuizComponent, DictaatSettingsComponent,
+        DemoComponent, DialogComponent, AvatarComponent, ProfileComponent, MarkingComponent, MarkerComponent,
         AppComponent, QuizListComponent, AssignmentListComponent, AddAssignmentComponent, EditAssignmentComponent, MarkAssignmentComponent
     ],
     providers: [

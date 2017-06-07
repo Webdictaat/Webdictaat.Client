@@ -9,6 +9,8 @@ import { QuizListComponent } from "./quiz/quiz-list/quiz-list.component";
 import { PagesComponent } from "./pages/pages.component";
 import { EditPageComponent } from "./pages/edit-page.component";
 import { AssignmentListComponent } from "./assignments/assignment-list/assignment-list.component";
+import { DictaatSettingsComponent } from "./dictaat/settings-dictaat.component";
+import { MarkingComponent } from "./marking/marking.component";
 
 const appRoutes: Routes = [
     { 
@@ -27,7 +29,10 @@ const appRoutes: Routes = [
             { path: '', redirectTo: 'pages', pathMatch: 'full' },
             { path: 'quizes', component: QuizListComponent  },
             { path: 'pages', component: PagesComponent  },
-            { path: 'assignments', component: AssignmentListComponent  }
+            { path: 'assignments', component: AssignmentListComponent  },
+            { path: 'settings', component: DictaatSettingsComponent  },
+            { path: 'marking', component: MarkingComponent  }
+
         ]
     },
     {
