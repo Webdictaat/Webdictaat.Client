@@ -2,18 +2,18 @@
 import { Headers, Http } from '@angular/http';
 //Nodig om een object om te toveren in een promise.
 
-import { Dictaat } from '../models/dictaat';
+import { Dictaat, DictaatSession, DictaatMarkings } from '../models/dictaat';
 import { wdApi } from '../core/wd.service';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { Params, ActivatedRoute, Router } from "@angular/router";
-import { DictaatSummary, DictaatSession, DictaatMarkings } from "../models/dictaat-summary";
 import { Subject } from "rxjs/Subject";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { User } from "../models/user";
 import { ConfigService } from "./config.service";
 import { Observable } from "rxjs/rx";
+import { DictaatSummary } from "../models/dictaat-summary";
 
 
 @Injectable()
