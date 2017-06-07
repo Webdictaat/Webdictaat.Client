@@ -15,3 +15,14 @@ export class Dictaat {
         this.menuItems = json.menuItems;
     }
 }
+
+
+export class DictaatSession{
+    containsMe: boolean;
+    participantIds: number[]
+}
+
+export class DictaatMarkings{
+    participants: any[]
+    assignments: any[]
+}

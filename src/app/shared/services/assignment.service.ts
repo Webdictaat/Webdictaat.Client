@@ -67,4 +67,26 @@ export class AssignmentService extends BaseModalService{
                 return response.json() as Assignment
             })
     }
+
+    public submit(assignmentId, userId){
+        var url = "/dictaten/test/assignment/" + assignmentId + "/submissions";
+
+        return this.wdapi.post(url, { userId: userId })
+            .map(response => response.json())
+            .toPromise()
+            .then(response => {
+                console.log(response);
+            })
+    }
+
+    public unsubmit(assignmentId, userId){
+        var url = "/dictaten/test/assignment/" + assignmentId + "/submissions/" + userId;
+
+        return this.wdapi.delete(url)
+            .map(response => response.json())
+            .toPromise()
+            .then(response => {
+                console.log(response);
+            })
+    }
 }

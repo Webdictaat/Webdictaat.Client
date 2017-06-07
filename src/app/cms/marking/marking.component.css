@@ -1,0 +1,8 @@
+table {
+    text-align: center;
+
+}
+
+table tr td:first-child{
+    padding: 5px;
+}
