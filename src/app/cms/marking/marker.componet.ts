@@ -6,7 +6,7 @@ import { AssignmentService } from "../../shared/services/assignment.service";
 @Component({
   selector: 'wd-marker',
   template: `
-    <div class="toggler" (click)="toggle()" [ngClass]="{'toggle': submission}">
+    <div class="toggler" (click)="toggle()" [ngClass]="{'toggle': isSubmitted}">
 
     </div>
   `,
@@ -37,15 +37,15 @@ export class MarkerComponent {
     public aid: number;
 
     @Input() 
-    public submission: any;
+    public isSubmitted: any;
 
     public toggle(): void{
-        if(!this.submission){
-            this.submission = {};
+        if(!this.isSubmitted){
+            this.isSubmitted = true
             this.assignmentService.submit(this.aid, this.uid);
         }
         else{
-            this.submission = null;
+            this.isSubmitted = false;
             this.assignmentService.unsubmit(this.aid, this.uid);
         }
         

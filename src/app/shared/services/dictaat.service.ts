@@ -78,8 +78,8 @@ export class DictaatService {
     public getMarkings(name: string): Promise<DictaatMarkings>{
         return this.wdapi.get('/dictaten/' + name +  '/markings')
             .toPromise()
-            .then(response =>
-                response.json() as DictaatMarkings
-            );
+            .then(response => {
+                return new DictaatMarkings(response.json());
+            });
     }
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Leaderboard } from "./leaderboard.service";
+import { Leaderboard, LeaderboardService } from "./leaderboard.service";
+import { DictaatService } from "../../services/dictaat.service";
+import { AccountService } from "../../services/account.service";
+import { ConfigService } from "../../services/config.service";
 
 
 
@@ -10,18 +13,19 @@ import { Leaderboard } from "./leaderboard.service";
 })
 export class LeaderboardComponent implements OnInit {
 
-  public leaderboard: Leaderboard;
+  public participants: any[];
 
-  constructor() { }
+  constructor(private leaderboardService: LeaderboardService, private accountService: AccountService, private configService: ConfigService) { }
 
   ngOnInit() {
-    this.leaderboard = new Leaderboard();
-    this.leaderboard.ranks = [
-      {rank: 1, name: "Stijn Smulders", points: 1337},
-      {rank: 2, name: "Paul Wagener", points: 900},
-      {rank: 3, name: "Stefan van Dockum", points: 344},
-      {rank: 4, name: "Martijn Schuurmans", points: 100}
-    ]
+    this.configService.Config.subscribe((config) => {
+        if(config){
+          this.leaderboardService.getParticipants(config.name)
+            .then((participants) => {
+                 this.participants = participants;
+            })
+        }
+    })
   }
 
 
