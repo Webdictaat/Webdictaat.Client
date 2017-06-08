@@ -22,18 +22,21 @@
 }
 
 .achievement {
-    height: 75px;
-    width: 75px;
+    height: 200px;
+    width: 150px;
     margin: 5px;
-    overflow: visible;
+    border-radius: 5px;
+    overflow: hidden;
     float: left;
-    border: solid 1px;
+    text-align: center;
+    box-shadow: 5px 5px 5px #888888;
+    background-color: #dedece;
+    opacity: 0.5;
 }
 
 .achievementimage {
-    height: 75px;
-    width: 75px;
-    opacity: 0.5;
+    height: 150px;
+    width: 150px;
 }
 
 .completed {
