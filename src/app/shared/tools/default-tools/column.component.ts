@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 
 
-var $: any;
+declare var $: any;
 
 @Component({
     selector: "wd-column",
