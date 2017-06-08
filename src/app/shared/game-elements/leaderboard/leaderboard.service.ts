@@ -24,7 +24,9 @@ export class LeaderboardService{
 
     }
 
-    public getLeaderboard(dictaatName: string){
-
+    public getParticipants(dictaatName: string){
+         return this.wdapi.get('/dictaten/' + dictaatName + '/participants')
+            .toPromise()
+            .then(response => response.json() );
     }
 }
