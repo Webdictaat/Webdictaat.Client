@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { Achievement} from "../models/achievement";
 import { AchievementGroup } from "../models/achievementgroup";
 import {ACHIEVEMENTS} from "../models/mock-achievements";
+import { wdApi } from "../core/wd.service";
 
-import { wdApi } from '../core/wdapi.service';
+
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 
