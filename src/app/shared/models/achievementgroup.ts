@@ -4,5 +4,5 @@ export class AchievementGroup {
     id: number;
     name: string;
     order: number;
-    Achievements: Achievement[];
+    achievements: Achievement[];
 }

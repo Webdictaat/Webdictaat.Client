@@ -20,27 +20,26 @@ export class AchievementsComponent implements OnInit {
 
 
     public ngOnInit() {
+        this.achievementgroups = [];
         this.getAchievements();
     }
 
     getAchievements(): void {
-        this.achievementService.getAchievements().then((achievements) => {
+        this.achievementService.getDictaatAchievements("meep").then((achievements) => {
             this.achievementgroups = achievements;
         });
     }
 
     public getAllAchievements() {
-        var Achievemements = [];
-
+        var Achievements = [];
         for(let group of this.achievementgroups)
         {
-            for(let achiev of group.Achievements)
+            for(let achiev of group.achievements)
             {
-                Achievemements.push(achiev);
+                Achievements.push(achiev);
             }
         }
-
-        return Achievemements;
+        return Achievements;
     }
 
     achievementinfo(achiev) {
