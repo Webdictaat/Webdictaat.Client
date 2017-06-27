@@ -86,6 +86,7 @@ export class HtmlComponent implements OnInit {
 
         this.enableEditor(this.pageElement);
         this.enableContainers(this.pageElement);
+        this.enableJumbotrons(this.pageElement);
         this.enableDragging(this.pageElement);
 
         this.zone.run(() => { }); //Get back into angular running context
@@ -150,6 +151,29 @@ export class HtmlComponent implements OnInit {
                 CKEDITOR.inline(editableElement)
             });
 
+    }
+
+    private enableJumbotrons(element): void{
+        element.find('.wd-jumbotron').sortable({
+            accept: '#wd-img-tool',
+            placeholder: 'jumbotron-replace',
+            forcePlaceholderSize: true,
+            hoverClass: 'jumbotron-replace',
+            tolerance: 'pointer',
+            forceHelperSize: true,
+            beforeStop: function(event, ui){
+                var target =  ui.item.data("component");
+                var jumbotron = $(this);
+
+                if (!target)
+                    return; //If no target was added, return
+
+                target.onDrop(ui).then((needsRecompile) => {
+                    jumbotron.css('background-image', 'url(' + ui.item.data('src') + ')');
+                    ui.item.remove();
+                });
+            }
+        })
     }
 
     private enableContainers(element): void {

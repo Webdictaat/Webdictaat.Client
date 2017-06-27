@@ -113,7 +113,7 @@ hr{
     margin:10px;
 }
 
-.normal-content{
+.wd-content{
     max-width:900px;
 }
 
@@ -123,10 +123,16 @@ hr{
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
+
+.ui-sortable-placeholder {
+    border: 1px solid rgb(12,194,170);
+    visibility:visible !important;
+}
+
 /** bigger than 767, so left side menu should be visible **/
 @media (min-width:767px) {
     
-    .normal-content{
+    .wd-content{
         margin-left:30%;
     }
 }
@@ -134,7 +140,7 @@ hr{
 /** bigger than 1200, so left side menu should be max 400px wide**/
 @media (min-width:1200px) {
 
-     .normal-content{
+     .wd-content{
         margin-left:400px;
     }
 }

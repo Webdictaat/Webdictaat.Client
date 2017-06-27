@@ -52,14 +52,14 @@
   text-indent: 20px;
 }
 
-.normal-content{
-    max-width:900px;
+.wd-content{
+    /*max-width:900px;*/
 }
 
 /** bigger than 767, so left side menu should be visible **/
 @media (min-width:767px) {
     
-    .normal-content{
+    .wd-content{
         margin-left:30%;
     }
 }
@@ -71,7 +71,7 @@
         width:400px;
     }
 
-     .normal-content{
+     .wd-content{
         margin-left:400px;
     }
 }

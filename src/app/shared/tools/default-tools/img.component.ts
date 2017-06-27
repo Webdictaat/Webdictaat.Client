@@ -14,6 +14,9 @@ export class ImgComponent implements OnInit  {
     @Input()
     public dictaatName: string;
 
+    //private server = "http://localhost:65418/";
+    private server = "http://webdictaat.aii.avans.nl/";
+
     constructor(private imageServie: ImageService) { }
 
     /**
@@ -25,7 +28,7 @@ export class ImgComponent implements OnInit  {
 
         $('#wd-img-tool').draggable({
             helper: "clone",
-            connectToSortable: ".wd-container",
+            connectToSortable: ".wd-container, .wd-jumbotron",
             start: function (e, ui) {
                 ui.helper.data("component", component);
             }
@@ -39,9 +42,11 @@ export class ImgComponent implements OnInit  {
             params['dictaatName'] = this.dictaatName;
             this.imageServie.ShowModal(params)
                 .then((result) => {
-                    var newItem = $("<div class='wd-component image-local'><img src='http://webdictaat.aii.avans.nl//dictaten//"+ result.dictaatName+"//images//" + result.imageLocation + "'/></div>");
+                    var src = this.server + "dictaten//"+ result.dictaatName+"//images//" + result.imageLocation ;
+                    var newItem = $("<div class='wd-component image-local'><img src='" + src + "'/></div>");
                     ui.item.replaceWith(newItem);
                     ui.item = newItem;
+                    ui.item.data('src', src);
                     resolve(false);
                 })
                 .catch(() => {
