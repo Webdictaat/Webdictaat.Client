@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "webpack-dev-server --config webpack.cms.config.js",
+    "start":  "concurrently \"npm run start:client\" \"npm run start:cms\"", 
+    "start:cms": "webpack-dev-server --config webpack.cms.config.js --port 8080 ",
     "start:client": "webpack-dev-server --config webpack.client.config.js --port 8081 ",
     "build": "concurrently \"npm run build:client\" \"npm run build:cms\"",
     "build:client": "webpack --config webpack.client.config.js -p",
