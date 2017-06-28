@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Achievement} from "../models/achievement";
 import { AchievementGroup } from "../models/achievementgroup";
-import {ACHIEVEMENTS} from "../models/mock-achievements";
+import { UserAchievement } from "../models/userachievement";
 import { wdApi } from "../core/wd.service";
 
 
@@ -22,12 +22,12 @@ export class AchievementService {
             })
     }
 
-    public getAchievement(dictaatName: string, id: number): Promise<Achievement> {
-        let url: string = "/dictaten/" + dictaatName + "/Achievement/" + id;
+    public getUserAchievements(dictaatName: string, userid: string): Promise<UserAchievement[]> {
+        let url: string = "/dictaten/" + dictaatName + "/Achievement/" + userid;
         return this.wdapi.get(url)
             .toPromise()
-            .then(response =>
-                response.json() as Achievement
-            );
+            .then(response => {
+                return response.json() as UserAchievement[]
+            })
     }
 }

@@ -6,7 +6,7 @@ import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
         <div>
             <p>meep</p>
             <table>
-                <div *ngFor='let col of Cols'>
+                <div>
                     
                 </div>
             </table>
@@ -15,8 +15,8 @@ import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 })
 
 export class GridMatrixComponent {
-    @Input() Rows: Array;
-    @Input() Cols: Array;
+    //@Input() Rows: Array;
+    //@Input() Cols: Array;
     @Output() Action: EventEmitter<string>;
 
     public constructor() {

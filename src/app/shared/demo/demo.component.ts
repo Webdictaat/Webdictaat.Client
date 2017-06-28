@@ -5,8 +5,8 @@
     template: `
     <div class="container-fluid">
         <h2>Demo project </h2>
-        <!--<wd-achievements></wd-achievements> -->
-        <grid-matrix [Rows]="rows" [cols]="Cols"></grid-matrix>
+        <wd-achievements></wd-achievements>
+        <!--<grid-matrix [Rows]="rows" [cols]="Cols"></grid-matrix>-->
     </div>
 `,
 })
