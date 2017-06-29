@@ -25,6 +25,7 @@ export class AchievementsComponent implements OnInit {
     public ngOnInit() {
         this.achievementgroups = [];
         this.achievements = [];
+        this.userAchievements = [];
         this.getAchievements();
     }
 
