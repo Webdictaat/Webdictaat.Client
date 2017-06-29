@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Achievement} from "../models/achievement";
 import { AchievementGroup } from "../models/achievementgroup";
 import { UserAchievement } from "../models/userachievement";
 import { wdApi } from "../core/wd.service";

@@ -5,12 +5,10 @@
     template: `
     <div class="container-fluid">
         <h2>Demo project </h2>
-        <wd-achievements></wd-achievements>
-        <!--<grid-matrix [Rows]="rows" [cols]="Cols"></grid-matrix>-->
+        <!--<wd-achievements></wd-achievements>-->
+        <wd-achievement-marking></wd-achievement-marking>
     </div>
 `,
 })
 export class DemoComponent {
-    public rows = ["meep", "moop"];
-    public cols = ["achiev1", "achiev2", "achiev3"];
 }

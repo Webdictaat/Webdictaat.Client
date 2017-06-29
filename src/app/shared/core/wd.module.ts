@@ -18,8 +18,6 @@ import { DictaatService } from "../services/dictaat.service";
 
 //shared components
 import { SpinnerComponent } from "../spinner/spinner.component";
-import {GridMatrixComponent} from "../tools/grid-matrix.component";
-
 
 
 /**
@@ -30,8 +28,8 @@ import {GridMatrixComponent} from "../tools/grid-matrix.component";
         DialogService, QuizService, ImageService, AchievementService, AccountService, wdApi, ConfigService,
         RatingService, DirtyGuard, VideoService, NavMenuService, AssignmentService, DictaatService
     ],
-    declarations: [SpinnerComponent, GridMatrixComponent],
-    exports: [SpinnerComponent, GridMatrixComponent]
+    declarations: [SpinnerComponent],
+    exports: [SpinnerComponent]
 })
 export class WdModule {}
  
