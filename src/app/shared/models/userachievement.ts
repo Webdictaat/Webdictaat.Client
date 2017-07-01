@@ -2,8 +2,8 @@ import { Achievement } from "./achievement"
 
 export class UserAchievement {
     achievement: Achievement;
-    achievementid: number;
+    achievementId: number;
     user: object;
-    userid: number;
+    userId: number;
     
 }

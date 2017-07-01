@@ -16,7 +16,6 @@ export class AchievementMarkingComponent implements OnInit {
     private achievements: Achievement[];
     private userAchievements: UserAchievement[];
     private users: Array<string>;
-    grid: boolean = true;
 
     constructor(
         private achievementService: AchievementService){ }
@@ -34,12 +33,13 @@ export class AchievementMarkingComponent implements OnInit {
         this.achievementService.getDictaatAchievements("meep").then((achievements) => {
             this.achievementgroups = achievements;
             this.getAllAchievements();
-            this.checkCompleted();
+
+            this.achievementService.getUserAchievements("meep", "mich").then((userachievements) => {
+                this.userAchievements = userachievements;
+            });
         });
 
-        this.achievementService.getUserAchievements("meep", "mich").then((userachievements) => {
-            this.userAchievements = userachievements;
-        });
+
     }
 
     public getAllAchievements() {
@@ -52,19 +52,17 @@ export class AchievementMarkingComponent implements OnInit {
         }
     }
 
-    private checkCompleted() {
-        for(let userachiev of this.userAchievements)
+    public checkCompleted(userid, achievid)
+    {
+        for(let achiev of this.userAchievements)
         {
-            for(let achiev of this.achievements)
+            if(achiev.userId == userid && achiev.achievementId == achievid)
             {
-                if(userachiev.achievement.id == achiev.id)
-                {
-                    achiev.completed = true;
-                    break;
-                }
+                console.log("true");
+                return true;
             }
         }
+
+        return false;
     }
-
-
 }

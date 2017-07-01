@@ -29,4 +29,24 @@ export class AchievementService {
                 return response.json() as UserAchievement[]
             })
     }
+
+    public AddUserAchievement(dictaatName: string, achievid : number, userid: string)
+    {
+        let url: string = "/dictaten/" + dictaatName + "/Achievement/" + achievid + "/user/" + userid;
+        return this.wdapi.post(url, { userId: userid})
+            .toPromise()
+            .then(response => {
+                console.log(response);
+            })
+    }
+
+    public DeleteUserAchievement(dictaatName: string, achievid : number, userid: string)
+    {
+        let url: string = "/dictaten/" + dictaatName + "/Achievement/" + achievid + "/user/" + userid;
+        return this.wdapi.delete(url)
+            .toPromise()
+            .then(response => {
+                console.log(response);
+            })
+    }
 }

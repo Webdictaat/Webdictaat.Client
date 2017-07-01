@@ -5,7 +5,11 @@
         <tr>
             <td>#</td>
             <td *ngFor="let achievement of achievements">
-                {{ achievement.name}}
+                <div class="achievement">
+                    <img class="achievementimage" [src]="'/images/achievements/' + achievement.image + '.jpg'"/>
+                    {{ achievement.name}}
+                </div>
+
             </td>
         </tr>
         </thead>
@@ -15,8 +19,9 @@
                 {{ user }}
             </td>
             <td *ngFor="let achievement of achievements">
-                <p> X </p>
+                <wd-achievementmarker [uid]="user" [aid]="achievement.id" [isSubmitted]="checkCompleted(user, achievement.id)"></wd-achievementmarker>
             </td>
+
         </tr>
         </tbody>
     </table>
