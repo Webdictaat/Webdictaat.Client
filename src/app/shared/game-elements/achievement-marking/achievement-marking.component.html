@@ -3,11 +3,11 @@
     <table>
         <thead>
         <tr>
-            <td>#</td>
+            <td></td>
             <td *ngFor="let achievement of achievements">
                 <div class="achievement">
                     <img class="achievementimage" [src]="'/images/achievements/' + achievement.image + '.jpg'"/>
-                    {{ achievement.name}}
+                    <b>{{ achievement.name}}</b>
                 </div>
 
             </td>

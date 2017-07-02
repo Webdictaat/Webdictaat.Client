@@ -25,7 +25,7 @@ export class AchievementMarkingComponent implements OnInit {
         this.achievementgroups = [];
         this.achievements = [];
         this.userAchievements = [];
-        this.users = ["mich", "jaap", "hans"];
+        this.users = ["mich", "jaap jansen hendriks van ottoloo" , "hans"];
         this.getAchievements();
     }
 
@@ -58,7 +58,6 @@ export class AchievementMarkingComponent implements OnInit {
         {
             if(achiev.userId == userid && achiev.achievementId == achievid)
             {
-                console.log("true");
                 return true;
             }
         }
