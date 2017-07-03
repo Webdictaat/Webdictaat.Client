@@ -6,8 +6,6 @@ import { FormsModule } from '@angular/forms';
 //components
 import { RatingComponent } from './rating/rating.component';
 import { AchievementsComponent } from './achievements.component';
-import { AchievementMarkingComponent } from "./achievement-marking/achievement-marking.component";
-import { AchievementMarkerComponent } from "./achievement-marking/achievement-marker.component";
 
 //modules
 import { QuizModule } from "./quiz/quiz.module";
@@ -20,8 +18,8 @@ import { AssignmentComponent } from './assignment/assignment.component';
 
 @NgModule({
     imports: [BrowserModule, FormsModule, QuizModule, WdModule, LeaderboardModule],
-    declarations: [RatingComponent, AchievementsComponent, AchievementMarkingComponent, AchievementMarkerComponent, AssignmentComponent],
-    exports: [RatingComponent, AchievementsComponent, AchievementMarkingComponent, AchievementMarkerComponent, LeaderboardComponent, QuizComponent, AssignmentComponent]
+    declarations: [RatingComponent, AchievementsComponent, AssignmentComponent],
+    exports: [RatingComponent, AchievementsComponent, LeaderboardComponent, QuizComponent, AssignmentComponent]
 })
 export class GameElementsModule {                                                                                                                                                                                                                        
 

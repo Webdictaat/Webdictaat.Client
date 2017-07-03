@@ -27,6 +27,8 @@ import { EditQuizComponent } from './quiz/edit-quiz/edit-quiz.component';
 import { DialogComponent } from "../shared/dialog/dialog.component";
 import { AssignmentListComponent } from './assignments/assignment-list/assignment-list.component';
 import { AddAssignmentComponent } from './assignments/add-assignment/add-assignment.component';
+import {AchievementMarkerComponent} from "./achievement-marking/achievement-marker.component";
+import {AchievementMarkingComponent} from "./achievement-marking/achievement-marking.component";
 
 //modals and their dependencies
 import { AddQuizComponent } from "./quiz/add-quiz/add-quiz.component";
@@ -49,7 +51,7 @@ import { MarkerComponent } from "./marking/marker.componet";
     ],
     declarations: [       
         AddRatingComponent, AddVideoComponent, AddQuizComponent, EditQuizComponent, DictaatSettingsComponent,
-        DemoComponent, DialogComponent, AvatarComponent, ProfileComponent, MarkingComponent, MarkerComponent,
+        DemoComponent, DialogComponent, AvatarComponent, ProfileComponent, MarkingComponent, MarkerComponent, AchievementMarkingComponent, AchievementMarkerComponent,
         AppComponent, QuizListComponent, AssignmentListComponent, AddAssignmentComponent, EditAssignmentComponent, MarkAssignmentComponent
     ],
     providers: [
