@@ -4,9 +4,9 @@
     selector: "wd-demo",
     template: `
     <div class="container-fluid">
-        <h2>Demo project </h2>
-        <!--<wd-achievements></wd-achievements>-->
+        <h2>Demo project </h2>   
         <wd-achievement-marking></wd-achievement-marking>
+        <wd-achievements></wd-achievements>
     </div>
 `,
 })
