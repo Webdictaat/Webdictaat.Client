@@ -8,7 +8,7 @@ export class Assignment{
     public submissions : any[];
     public mySubmission : any;
     public submissionCount : number;
-
+    public level: number;
     
     constructor(json = null){
         if(json){
@@ -17,6 +17,11 @@ export class Assignment{
             this.description = json.description;
             this.points = json.points;
             this.metadata = json.metadata;
+            this.mySubmission = json.MySubmission;
+            this.level = json.level;
+        }
+        else{
+            this.level = 1;
         }
     }
 

@@ -1,8 +1,7 @@
 .assignment{
     padding:15px;
-    background-color:#00AEED;
-    color:white;
     position: relative;
+    background-color: white;
 }
 
 .assignment h1{
@@ -20,28 +19,37 @@
 }
 
 .assignment.level-Gold{
-     background-color:#C6002A;
+    border-bottom:2px solid #FFD700;
+}
+
+.assignment.level-Gold .points{
+     background-color:#FFD700;
 }
 
 .assignment.level-Bronze{
-    background-color:#FFB901;
+    border-bottom:2px solid #cd7F32;
 }
 
+.assignment.level-Bronze .points{
+    background-color:#cd7F32;
+}
 
 .assignment.level-Silver{
-    background-color:#C6002A;
+    border-bottom:2px solid #C0C0C0;
+}
+
+.assignment.level-Silver .points{
+    background-color:#C0C0C0;
 }
 
 
 .points span{
-    color: black;
+    color: white;
     font-weight: bold;
     display: block;
     width: 100%;
     text-align: center;
     line-height: 50px;
-    font-size: 12px; 
-    font-size: 1vw;
-
+    font-size: 16px; 
 }
 
