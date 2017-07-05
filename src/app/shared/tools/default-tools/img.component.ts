@@ -43,7 +43,7 @@ export class ImgComponent implements OnInit  {
             this.imageServie.ShowModal(params)
                 .then((result) => {
                     var src = this.server + "dictaten//"+ result.dictaatName+"//images//" + result.imageLocation ;
-                    var newItem = $("<div class='wd-component image-local'><img src='" + src + "'/></div>");
+                    var newItem = $("<div class='wd-component'><div class='wd-editable'><img src='" + src + "'/></div></div>");
                     ui.item.replaceWith(newItem);
                     ui.item = newItem;
                     ui.item.data('src', src);
