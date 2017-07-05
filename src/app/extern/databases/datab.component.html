@@ -1,23 +1,46 @@
 
-<div class="well bs-callout bs-callout-primary" [ngClass]="{ 'bs-callout-success': assignment && assignment.mySubmission}" >
-
-
-    <div *ngIf="!assignment">
-        Loading assignment...
-    </div>
-
-    <div class="datab" *ngIf="assignment">
-        <h1>{{assignment.title}} </h1>
-        <p>{{assignment.description}}</p>
-        <textarea [(ngModel)]="submission.query" [disabled]="assignment.mySubmission"></textarea>
-        <div *ngIf="!assignment.external">
-            <button (click)="submit()">Submit</button>
-        </div>
-        <p *ngIf="assignment.mySubmission">
-            You completed this assignment on {{assignment.mySubmission.timestamp | date:'shortTime'}} 
-            and recieved {{assignment.mySubmission.pointsRecieved}} points
+<div class="panel">
+    <div class="assignment" *ngIf="assignment" [ngClass]="'level-' + assignment.level">
+        <h1>{{assignment.title}}</h1>
+        <p>
+            {{assignment.description}}
         </p>
-  
+        <div class="points tooltip-container" >
+            <span *ngIf="!assignment.mySubmission">{{assignment.points}}</span>
+            <span *ngIf="assignment.mySubmission" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        </div>
+        </div>
+
+        <div class="assignment" *ngIf="!assignment" >
+        <wd-spinner></wd-spinner>
     </div>
 
+    <div class="datab" *ngIf="submission">
+        <div>
+            <textarea [(ngModel)]="submission.query" [disabled]="submission.assignmentToken" ></textarea>
+            <div  *ngIf="!submission.assignmentToken">
+                <button class="btn btn-default btn-raised" (click)="submit()">Submit</button>
+            </div>  
+        </div>
+        <div *ngIf="submission.assignmentToken">
+            <p>
+                You completed this assignment on {{submission.timestamp | date:'shortTime'}}
+            </p>
+        </div>
+        <div *ngIf="submission.statusId == 3" >
+            <div class="alert alert-dismissible alert-danger" *ngIf="submission.message" >
+                <button type="button" class="close" (click)="submission.message = null">×</button>
+                <strong>Oh snap!</strong> <p>{{submission.message}}. </p>
+                <p>Change a few things up and try submitting again.</p>
+                
+            </div>
+        </div>
+        <div class="loader" *ngIf="submission.statusId == 0">
+            <wd-spinner class="spinner"></wd-spinner>
+        </div>
+    </div>
+     
+     <div class="datab" *ngIf="!submission">
+        Loading submission
+     </div>
 </div>

@@ -62,6 +62,10 @@
     .wd-content{
         margin-left:30%;
     }
+
+    .side-nav-wrapper{
+        display: none;
+    }
 }
 
 /** bigger than 1200, so left side menu should be max 400px wide**/
