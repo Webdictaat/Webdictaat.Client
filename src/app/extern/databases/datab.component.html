@@ -1,11 +1,11 @@
 
 <div class="panel">
     <div class="assignment" *ngIf="assignment" [ngClass]="'level-' + assignment.level">
-        <h1>{{assignment.title}}</h1>
+        <div class="title">{{assignment.title}}</div>
         <p>
             {{assignment.description}}
         </p>
-        <div class="points tooltip-container" >
+        <div class="points tooltip-container" [ngClass]="{'complete': submission.statusId == 1}">
             <span *ngIf="!assignment.mySubmission">{{assignment.points}}</span>
             <span *ngIf="assignment.mySubmission" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
         </div>
@@ -22,10 +22,12 @@
                 <button class="btn btn-default btn-raised" (click)="submit()">Submit</button>
             </div>  
         </div>
-        <div *ngIf="submission.assignmentToken">
-            <p>
-                You completed this assignment on {{submission.timestamp | date:'shortTime'}}
-            </p>
+        <div *ngIf="submission.statusId == 1">
+            <div class="alert alert-dismissible alert-success" *ngIf="!submission.hide">
+                <button type="button" class="close" (click)="submission.hide = true">×</button>
+                <strong>Well done!</strong> 
+                <p>You completed this assignment on {{submission.timestamp | date:'shortDate'}}</p>
+            </div>
         </div>
         <div *ngIf="submission.statusId == 3" >
             <div class="alert alert-dismissible alert-danger" *ngIf="submission.message" >

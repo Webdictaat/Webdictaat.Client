@@ -3,8 +3,8 @@ textarea{
     width:100%;
 }
 
-h1{
-    margin-top:0px;
+.title{
+    font-weight: bold;
 }
 
 .datab{
@@ -49,6 +49,7 @@ h1{
     z-index: 101;
 }
 
+
 .assignment.level-Gold{
     border-bottom:2px solid #FFD700;
 }
@@ -72,6 +73,11 @@ h1{
 .assignment.level-Silver .points{
     background-color:#C0C0C0;
 }
+
+.assignment .points.complete {
+    background-color: #5cb85c !important;
+}
+
 
 
 .points span{
