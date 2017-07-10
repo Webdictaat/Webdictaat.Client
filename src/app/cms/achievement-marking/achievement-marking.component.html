@@ -1,0 +1,29 @@
+<div class="panel panel-default sidebar">
+
+    <table>
+        <thead>
+        <tr>
+            <td></td>
+            <td *ngFor="let achievement of achievements">
+                <div class="achievement">
+                    <img class="achievementimage" [src]="'/images/achievements/' + achievement.image + '.jpg'"/>
+                    <b>{{ achievement.name}}</b>
+                </div>
+
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users">
+            <td>
+                {{ user }}
+            </td>
+            <td *ngFor="let achievement of achievements">
+                <wd-achievementmarker [uid]="user" [aid]="achievement.id" [isSubmitted]="checkCompleted(user, achievement.id)"></wd-achievementmarker>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>

@@ -20,7 +20,6 @@ import { DictaatService } from "../services/dictaat.service";
 import { SpinnerComponent } from "../spinner/spinner.component";
 
 
-
 /**
  * This mdule contains all the shared services, and components that are reusable across the application
  */
