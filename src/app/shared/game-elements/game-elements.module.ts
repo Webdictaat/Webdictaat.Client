@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 //components
 import { RatingComponent } from './rating/rating.component';
-import { AchievementsComponent } from './achievements.component';
+import { AchievementsComponent } from './achievements/achievements.component';
 
 //modules
 import { QuizModule } from "./quiz/quiz.module";
