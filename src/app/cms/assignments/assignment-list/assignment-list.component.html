@@ -33,6 +33,9 @@
   <table class="table table-striped" *ngIf="assignments.length != 0">
     <tr *ngFor="let assignment of assignments; let i=index">
       <td>
+        <span>{{assignment.id}}</span>
+      </td>
+      <td>
         {{assignment.title}}
       </td>
       <td>

@@ -1,33 +1,42 @@
-﻿<!-- First we rendere all the possible modals-->
+﻿  <ul class="breadcrumb" style="margin-bottom: 5px;">
+        <li><a href="#">Webdictaat</a></li>
+        <li><a href="#/dictaten/{{dictaatName}}">{{dictaatName}}</a></li>
+        <li class="active">{{pageName}}</li>
+        </ul>
+
+
+<!-- First we rendere all the possible modals-->
 <div *ngIf="page">
-    <div class="panel panel-default fixed tools text-center">
-        <div class="panel-body bordered">
-            <h3 class="title">
-                {{pageName}}<span *ngIf="isDirty">*</span>            
-            </h3>
-            <a href="http://webdictaat.aii.avans.nl/dictaten/{{dictaatName}}/#/{{pageName}}" target="_blank">
-                <i class="fa fa-eye" aria-hidden="true"></i>
-                Preview
-            </a> 
-            <!--<button class="btn-link" (click)="showModal = true">
-                <i class="fa fa-cog" aria-hidden="true"></i>
-                Settings
-            </button>-->
+    <div class="left-menu text-center">
+        <div class="side-menu tools">   
+            <div class="panel-body bordered">
+
+                <h3 class="title">
+                    {{pageName}}<span *ngIf="isDirty">*</span>            
+                </h3>
+                <a href="http://webdictaat.aii.avans.nl/dictaten/{{dictaatName}}/#/{{pageName}}" target="_blank">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                    Preview
+                </a> 
+                <!--<button class="btn-link" (click)="showModal = true">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    Settings
+                </button>-->
+            </div>
+            <table class="table table-hover elements text-center">
+                <tr><td> <wd-text></wd-text> </td></tr>
+                <tr><td> <wd-card></wd-card> </td></tr>
+                <tr><td> <wd-column></wd-column> </td></tr>  
+                <tr><td> <wd-quiz-tool [dictaatName]="dictaatName"></wd-quiz-tool> </td></tr>
+                <tr><td> <wd-rating-tool [dictaatName]="dictaatName"></wd-rating-tool> </td></tr>
+                <tr><td> <wd-assignment-tool [dictaatName]="dictaatName"></wd-assignment-tool> </td></tr>
+                <tr><td> <wd-img-tool [dictaatName]="dictaatName"></wd-img-tool> </td></tr>
+                <tr><td> <wd-video-tool ></wd-video-tool> </td></tr>
+            </table>
+
+            <wd-trash></wd-trash>
+
         </div>
-
-
-         <table class="table table-hover elements text-center">
-            <tr><td> <wd-text></wd-text> </td></tr>
-            <tr><td> <wd-card></wd-card> </td></tr>
-            <tr><td> <wd-column></wd-column> </td></tr>  
-            <tr><td> <wd-quiz-tool [dictaatName]="dictaatName"></wd-quiz-tool> </td></tr>
-            <tr><td> <wd-rating-tool [dictaatName]="dictaatName"></wd-rating-tool> </td></tr>
-            <tr><td> <wd-assignment-tool [dictaatName]="dictaatName"></wd-assignment-tool> </td></tr>
-            <tr><td> <wd-img-tool [dictaatName]="dictaatName"></wd-img-tool> </td></tr>
-            <tr><td> <wd-video-tool ></wd-video-tool> </td></tr>
-        </table>
-
-        <wd-trash></wd-trash>
 
         <button class="btn btn-lg btn-success btn-raised" (click)='savePage()' [disabled]="!isDirty">
             <span class="glyphicon glyphicon-floppy-disk pull-left"></span>&nbsp;Save page
@@ -36,13 +45,10 @@
     </div>
     <div class="page-content">
         
-        <ul class="breadcrumb" style="margin-bottom: 5px;">
-        <li><a href="#">Webdictaat</a></li>
-        <li><a href="#/dictaten/{{dictaatName}}">{{dictaatName}}</a></li>
-        <li class="active">{{pageName}}</li>
-        </ul>
+      
         <wd-html [innerHTML]="page.source" (pageEdited)="updateSource($event)" ></wd-html>
     </div>
+
 </div>
 
 
