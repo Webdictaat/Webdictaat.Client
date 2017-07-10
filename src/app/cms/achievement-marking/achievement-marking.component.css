@@ -1,0 +1,22 @@
+table {
+    text-align: center;
+
+}
+
+table tr td:first-child{
+    padding: 5px;
+}
+
+.achievement {
+    width: 50px;
+    margin: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+    float: left;
+    text-align: center;
+}
+
+.achievementimage {
+    height: 50px;
+    width: 50px;
+}
