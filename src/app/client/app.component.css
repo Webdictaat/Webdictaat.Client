@@ -1,7 +1,9 @@
 .side-menu{
-    width:250px;
+    width:30%;
     padding:10px;
     position: fixed;
+    z-index: 101;
+    margin-top:80px;
 }
 
 .left-menu{
@@ -50,14 +52,31 @@
   text-indent: 20px;
 }
 
-.main-content{
-    max-width:900px;
+.wd-content{
+    /*max-width:900px;*/
 }
 
 /** bigger than 767, so left side menu should be visible **/
 @media (min-width:767px) {
-    .main-content{
-        margin-left:250px;
+    
+    .wd-content{
+        margin-left:30%;
+    }
+
+    .side-nav-wrapper{
+        display: none;
+    }
+}
+
+/** bigger than 1200, so left side menu should be max 400px wide**/
+@media (min-width:1200px) {
+
+    .side-menu{
+        width:400px;
+    }
+
+     .wd-content{
+        margin-left:400px;
     }
 }
 

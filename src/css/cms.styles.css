@@ -114,6 +114,16 @@ img.wd-logo{
     border:1px dashed black;
 }
 
+
+.jumbotron-replace{
+    background-color: black;
+    opacity: 0.1;
+    display:block;
+    width:100%;
+    min-height: 300px;
+    z-index: 99;
+}
+
 .ui-state-hover .wd-component{
     border:1px dashed #ccc;
 }

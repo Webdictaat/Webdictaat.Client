@@ -3,8 +3,9 @@
   <p>
     {{assignment.description}}
   </p>
-  <div class="points">
-    <span>{{assignment.points}}</span>
+  <div class="points tooltip-container" >
+    <span *ngIf="!assignment.mySubmission">{{assignment.points}}</span>
+    <span *ngIf="assignment.mySubmission" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
   </div>
 </div>
 
