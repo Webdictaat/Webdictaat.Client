@@ -43,11 +43,12 @@ import { WdModule } from "../shared/core/wd.module";
 import { DictaatSettingsComponent } from "./dictaat/settings-dictaat.component";
 import { MarkingComponent } from './marking/marking.component';
 import { MarkerComponent } from "./marking/marker.componet";
+import { DatabModule } from "../extern/databases/datab.module";
 
 @NgModule({
     imports: [
         ToolsModule, WdModule, GameElementsModule, DragulaModule, ImagesModule,
-        BrowserModule, HttpModule, routing, PagesModule, FormsModule, DictaatModule
+        BrowserModule, HttpModule, routing, PagesModule, FormsModule, DictaatModule, DatabModule
     ],
     declarations: [       
         AddRatingComponent, AddVideoComponent, AddQuizComponent, EditQuizComponent, DictaatSettingsComponent,
