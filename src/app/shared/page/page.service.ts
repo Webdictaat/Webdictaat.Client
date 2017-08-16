@@ -15,7 +15,7 @@ export class PageService {
     constructor(private http: Http) { }
 
     public getPage(pageName: String) {
-        return this.http.get('pages/' + pageName + '.html', { withCredentials: true })
+        return this.http.get('pages/' + pageName + '.html?v=' + new Date().getTime() , { withCredentials: true })
             .toPromise()
             .then(response => response.text()    
             ).catch(this.handleError);

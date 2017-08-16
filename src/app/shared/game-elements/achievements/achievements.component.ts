@@ -18,6 +18,8 @@ export class AchievementsComponent implements OnInit {
     private achievements: Achievement[];
     grid: boolean = true;
 
+    
+
     constructor(
         private achievementService: AchievementService, private configService: ConfigService){ }
 
@@ -26,7 +28,7 @@ export class AchievementsComponent implements OnInit {
         this.configService.Config.subscribe((config) => {
             if(config){
                 this.achievementService.getDictaatAchievements(config.name).then((achievements) => {
-                    this.achievementgroups = achievements;
+                    this.achievementgroups = achievements ? achievements : [];
                     this.getAllAchievements();
                 });
             }

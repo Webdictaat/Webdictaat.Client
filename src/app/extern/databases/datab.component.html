@@ -5,7 +5,7 @@
         <p>
             {{assignment.description}}
         </p>
-        <div class="points tooltip-container" [ngClass]="{'complete': submission.statusId == 1}">
+        <div class="points tooltip-container" [ngClass]="{'complete': assignment.mySubmission }">
             <span *ngIf="!assignment.mySubmission">{{assignment.points}}</span>
             <span *ngIf="assignment.mySubmission" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
         </div>
