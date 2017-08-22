@@ -12,7 +12,8 @@ import {
     ComponentRef,
     ReflectiveInjector,
     NgZone,
-    CUSTOM_ELEMENTS_SCHEMA
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
 } from '@angular/core';
 
 
@@ -34,7 +35,7 @@ export function createComponentFactory(compiler: Compiler, metadata: Component):
         imports: [
             BrowserModule, CommonModule, RouterModule, WdModule, GameElementsModule, DatabModule
         ],
-        //schemas: [CUSTOM_ELEMENTS_SCHEMA ],
+        schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
         declarations: [decoratedCmp]
     })
     class DynamicHtmlModule { }
