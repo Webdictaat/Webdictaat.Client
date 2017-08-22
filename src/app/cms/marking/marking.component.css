@@ -6,3 +6,8 @@ table {
 table tr td:first-child{
     padding: 5px;
 }
+table{
+    overflow-x: scroll;
+    max-width: 100%;
+    display:block;
+}

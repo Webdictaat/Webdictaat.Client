@@ -19,6 +19,7 @@ export class MarkingComponent implements OnInit {
       this.dictaatService.CurrentDictaat
       .subscribe((dictaat) => {
           if(!dictaat) return;
+          this.dictaat = dictaat;
           this.dictaatService.getMarkings(dictaat.name)
             .then((markings) => {
                 this.markings = markings; 

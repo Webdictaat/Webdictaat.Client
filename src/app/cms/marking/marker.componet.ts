@@ -31,6 +31,9 @@ export class MarkerComponent {
     }
 
     @Input()
+    public dictaatName: string; 
+
+    @Input()
     public uid: string;
 
     @Input() 
@@ -42,11 +45,11 @@ export class MarkerComponent {
     public toggle(): void{
         if(!this.isSubmitted){
             this.isSubmitted = true
-            this.assignmentService.submit(this.aid, this.uid);
+            this.assignmentService.submit(this.dictaatName, this.aid, this.uid);
         }
         else{
             this.isSubmitted = false;
-            this.assignmentService.unsubmit(this.aid, this.uid);
+            this.assignmentService.unsubmit(this.dictaatName, this.aid, this.uid);
         }
         
     }

@@ -16,7 +16,7 @@
         {{user.userName}}
       </td>
       <td  *ngFor="let assignment of markings.assignments">
-        <wd-marker [uid]="user.id" [aid]="assignment.id" [isSubmitted]="assignment.isSubmittedBy(user.id)"></wd-marker>
+        <wd-marker [dictaatName]="dictaat.name" [uid]="user.id" [aid]="assignment.id" [isSubmitted]="assignment.isSubmittedBy(user.id)"></wd-marker>
       </td>
     </tr>
   </tbody>

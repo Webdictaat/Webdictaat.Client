@@ -68,8 +68,8 @@ export class AssignmentService extends BaseModalService{
             })
     }
 
-    public submit(assignmentId, userId){
-        var url = "/dictaten/test/assignment/" + assignmentId + "/submissions";
+    public submit(dictaatName, assignmentId, userId){
+        var url = "/dictaten/"+dictaatName+"/assignment/" + assignmentId + "/submissions";
 
         return this.wdapi.post(url, { userId: userId })
             .map(response => response.json())
@@ -86,8 +86,8 @@ export class AssignmentService extends BaseModalService{
             .toPromise();
     }
 
-    public unsubmit(assignmentId, userId){
-        var url = "/dictaten/test/assignment/" + assignmentId + "/submissions/" + userId;
+    public unsubmit(dictaatName, assignmentId, userId){
+        var url = "/dictaten/"+dictaatName+"/assignment/" + assignmentId + "/submissions/" + userId;
 
         return this.wdapi.delete(url)
             .map(response => response.json())
