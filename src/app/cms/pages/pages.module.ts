@@ -11,9 +11,10 @@ import { DragulaModule , DragulaService } from 'ng2-dragula/ng2-dragula';
 import { EditPageComponent } from "./edit-page.component";
 import { ToolsModule } from "../../shared/tools/tools.module";
 import { HtmlComponent } from "../../shared/tools/html.component";
+import { CodemirrorModule } from 'ng2-codemirror';
 
 @NgModule({
-    imports: [BrowserModule, HttpModule, FormsModule, DragulaModule, ToolsModule],
+    imports: [BrowserModule, HttpModule, FormsModule, DragulaModule, ToolsModule, CodemirrorModule],
     declarations: [
         PagesComponent, EditPageComponent, AddPageComponent
     ],

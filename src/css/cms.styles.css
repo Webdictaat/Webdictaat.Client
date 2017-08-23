@@ -238,3 +238,8 @@ body {
 .action.edit:hover{  
     background-color: #f0ad4e; color: white;
 }
+
+
+.CodeMirror{
+    height: 100%;
+}

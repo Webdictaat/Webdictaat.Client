@@ -45,9 +45,11 @@ import { MarkingComponent } from './marking/marking.component';
 import { MarkerComponent } from "./marking/marker.componet";
 import { DatabModule } from "../extern/databases/datab.module";
 
+
+
 @NgModule({
     imports: [
-        ToolsModule, WdModule, GameElementsModule, DragulaModule, ImagesModule,
+        ToolsModule, WdModule, GameElementsModule, DragulaModule, ImagesModule, 
         BrowserModule, HttpModule, routing, PagesModule, FormsModule, DictaatModule, DatabModule
     ],
     declarations: [       

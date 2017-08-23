@@ -201,6 +201,7 @@ module.exports = {
             { from: './src\\css\\custom-bootstrap.min.css', to: 'css' },
             { from: 'node_modules\\bootstrap-material-design\\dist\\css\\ripples.min.css', to: 'css' },
             { from: 'node_modules\\dragula\\dist\\dragula.min.css', to: 'css' },
+            { from: 'node_modules\\codemirror\\lib\\codemirror.css', to: 'css' },
 
             // copy js
             { from: 'node_modules\\dragula\\dist\\dragula.min.js', to: 'js' },
@@ -209,7 +210,6 @@ module.exports = {
             { from: 'node_modules\\core-js\\client\\shim.min.js', to: 'js' },   //copy shims
             { from: 'libs\\ckeditor_4.6.2_d2ec7cce935f\\ckeditor', to: 'js' }, //copy intire directory
           
-
             // from img
              { from: './src\\img', to: 'img' },
             

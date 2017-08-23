@@ -22,9 +22,17 @@ export class EditPageComponent   { //implements DirtyComp
     public page: Page;
     public originalSource: string;
 
+    public raw: boolean;
+
     public pageName: string;
     public dictaatName: string;
     public timer: any;
+
+    //codemirror
+    public codeconfig : any = { 
+        lineNumbers: true
+    };
+    
 
     constructor(
         private route: ActivatedRoute,
@@ -50,24 +58,33 @@ export class EditPageComponent   { //implements DirtyComp
     }
 
     public checkForDirt = function(){
-        if(this.htmlComponent){
-             var decompiled = this.htmlComponent.decompileHtml();
-             this.isDirty = this.page.source != decompiled;
+        if(this.raw){
+            this.isDirty = this.page.source != this.originalSource;
         }
         else{
-            this.isDirty = false;
+            if(this.htmlComponent){
+                var decompiled = this.htmlComponent.decompileHtml();
+                this.isDirty = this.page.source != decompiled;
+            }
+            else{
+                this.isDirty = false;
+            }
         }
         setTimeout(() => this.checkForDirt(), 1000);
     }
 
     public savePage(): void {
 
-        //retrieve the decompiled html from ...
-        this.page.source = this.htmlComponent.decompileHtml();
+        if(!this.raw){
+            //retrieve the decompiled html from ...
+            this.page.source = this.htmlComponent.decompileHtml();
+        }
+       
 
         this.pagesService.editPage(this.dictaatName, this.page)
             .then((page) => {
-                  alert('Page saved');
+                this.originalSource = this.page.source;
+                alert('Page saved');
              }, (error) => alert("Something broke :( i am sorry!"));
     }
   
