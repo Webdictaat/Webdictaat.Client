@@ -80,8 +80,8 @@ export class AssignmentService extends BaseModalService{
     }
 
     //with token
-    public submitWithToken(assignmentId, token) : Promise<Assignment>{
-        return this.wdapi.post("/dictaten/test/assignment/" + assignmentId + "/submissions", { token: token })
+    public submitWithToken(dictaatName, assignmentId, token) : Promise<Assignment>{
+        return this.wdapi.post("/dictaten/"+dictaatName+"/assignment/" + assignmentId + "/submissions", { token: token })
             .map((response) =>response.json() as Assignment )
             .toPromise();
     }

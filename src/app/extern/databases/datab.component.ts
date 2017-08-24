@@ -5,6 +5,7 @@ import { AccountService } from "../../shared/services/account.service";
 import { User } from "../../shared/models/user";
 import { AssignmentService } from "../../shared/services/assignment.service";
 import { Assignment } from "../../shared/models/assignment";
+import { ConfigService } from "../../shared/services/config.service";
 
 @Component({
     selector: "wd-datab",
@@ -12,40 +13,56 @@ import { Assignment } from "../../shared/models/assignment";
     templateUrl: './datab.component.html' 
 })
 export class DatabComponent implements OnInit {
-    
-
-    assignment: Assignment;
 
     @Input()
     public waid: number;
 
     @Input()
     public daid: number;
-    public submission: DbSubmission;
+
+    //webdictaat
+    public assignment: Assignment;
     private user: User;
+    private dictaatName: string;
+
+    //databaas
+    public expectedOutput: string;
+    public submission: DbSubmission;
+    
     public query: string;
 
-    constructor(private databService: DatabService, private accountService: AccountService, private assignmentService:  AssignmentService){   }
+    constructor(private databService: DatabService, 
+        private accountService: AccountService, 
+        private assignmentService:  AssignmentService,
+        private configService: ConfigService){   }
 
     ngOnInit(): void {
+        this.configService.Config.subscribe((config) => {   
+            this.dictaatName = config.name;
+            this.accountService.User.subscribe((user) => {
+                this.assignmentService.getAssignmentDetails(this.dictaatName, this.waid).then(assignment => { 
+                    this.assignment = assignment;
+                    if(user){
+                        this.user = user;
+                        this.getAssignment();
+                        this.getSubmission();
+                    }
+                });
 
-        
-        this.accountService.User.subscribe((user) => {
-            this.assignmentService.getAssignmentDetails("null", this.waid).then(assignment => { 
-                this.assignment = assignment;
+                
+            })
+        });
+    }
 
-                if(user){
-                    this.user = user;
-                    this.getSubmission();
-                }
-            });
-
-            
-        })
+    private getAssignment(): void {
+        this.databService.getAssignment(this.assignment.externalId)
+            .then((response: any) => {  
+                this.expectedOutput = response.expectedOutput;
+            });  
     }
 
     private getSubmission(){
-        this.databService.getSubmissions(this.daid, this.user.email)
+        this.databService.getSubmissions(this.assignment.externalId, this.user.email)
             .then((submission: DbSubmission) => {  
                 if(submission){
                     this.submission = submission;
@@ -60,7 +77,7 @@ export class DatabComponent implements OnInit {
 
     private checkIfComplete(){
         if(this.submission.assignmentToken && !this.assignment.mySubmission){
-            this.assignmentService.submitWithToken(this.waid, this.submission.assignmentToken)
+            this.assignmentService.submitWithToken(this.dictaatName, this.waid, this.submission.assignmentToken)
                 .then((assignment) => {
                     this.assignment = assignment 
                 });
@@ -69,7 +86,7 @@ export class DatabComponent implements OnInit {
 
     public submit(){   
         this.submission.message = null;
-        this.databService.sendSubmission(this.waid, this.daid, this.submission)
+        this.databService.sendSubmission(this.waid, this.assignment.externalId, this.submission)
             .then((submission)=> {
                 this.submission = submission;
                 //start polling for 10s
@@ -81,7 +98,7 @@ export class DatabComponent implements OnInit {
     private pollticker = 0;
 
     private poll(){
-        this.databService.getSubmissions(this.daid, this.user.email).then((submission) => {
+        this.databService.getSubmissions(this.assignment.externalId, this.user.email).then((submission) => {
             this.submission = submission;
             if(this.submission.statusId != 0){           
                 this.checkIfComplete();

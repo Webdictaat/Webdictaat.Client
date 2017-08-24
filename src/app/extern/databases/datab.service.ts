@@ -17,7 +17,7 @@ export class DbSubmission{
     public originalAssignmentId: number;
     public assignmentToken: string;
     public message: string;
-}
+}   
 
 
 @Injectable()
@@ -28,6 +28,12 @@ export class DatabService {
 
     constructor(private http: Http, private wdApi: wdApi) {
        
+    }
+
+    public getAssignment(daid): Promise<any>{
+        return this.http.get(this.root + "/assignments/" + daid)
+            .map((response) => response.json())
+            .toPromise();
     }
 
     public getSubmissions(daid, userId) : Promise<DbSubmission>

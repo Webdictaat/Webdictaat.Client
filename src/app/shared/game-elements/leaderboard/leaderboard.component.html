@@ -10,7 +10,7 @@
         <th>Name</th>
         <th>Points</th>
       </tr>
-      <tr *ngFor="let item of leaderboard;let i = index" [ngClass]="{ 'me' : item.userName == (user | async).email }">
+      <tr *ngFor="let item of leaderboard;let i = index" [ngClass]="{ 'me' : user && item.userName == (user | async)?.email }">
         <td>#{{i + 1}}</td>
         <td>{{item.userName}}</td>
         <td class="points">{{item.points}}</td>     

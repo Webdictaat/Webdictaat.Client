@@ -9,6 +9,7 @@ export class Assignment{
     public mySubmission : any;
     public submissionCount : number;
     public level: number;
+    public externalId: string;
     
     constructor(json = null){
         if(json){
