@@ -56,7 +56,6 @@
 
     <div class="page-content" *ngIf="!raw">
         <wd-html [innerHTML]="page.source" (pageEdited)="updateSource($event)" ></wd-html>    
-        {{page.source}}
     </div>
     <div class="page-content-raw wd-content"  *ngIf="raw">
         <codemirror [(ngModel)]="page.source"  [config]="codeconfig"></codemirror>
