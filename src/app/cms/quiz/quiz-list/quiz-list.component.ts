@@ -35,7 +35,7 @@ export class QuizListComponent implements OnInit {
   }
 
   public Update(quiz: Quiz): void{
-      this.quizService.update(quiz.dictaat, quiz)
+      this.quizService.update(this.dictaatName, quiz)
       .then((quiz) => {
         this.selectedQuiz = null;
       })

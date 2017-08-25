@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitte
 import { Quiz, QuizSummary, Question, Answer } from "../../../shared/models/quiz";
 import { QuizService } from "../../../shared/services/quiz.service";
 import { DictaatService } from "../../../shared/services/dictaat.service";
+import { ConfigService } from "../../../shared/services/config.service";
 
 
 @Component({
@@ -10,7 +11,8 @@ import { DictaatService } from "../../../shared/services/dictaat.service";
   styleUrls: ['./edit-quiz.component.css']
 })
 export class EditQuizComponent implements OnChanges {
-  
+    
+
 
   @Input()
   public quiz: Quiz;
@@ -21,8 +23,11 @@ export class EditQuizComponent implements OnChanges {
   public selectedQuestion: Question;
   public selectedIndex: number;
   public newAnswerText: string;
+  public dictaatName: string;
+  
 
   constructor(
+    private configService: ConfigService,
     private dictaatService: DictaatService,
     private quizService: QuizService) { }
 
@@ -31,6 +36,7 @@ export class EditQuizComponent implements OnChanges {
           this.selectedIndex = 0;
           this.selectedQuestion = this.quiz.questions[0];           
       }
+      this.dictaatService.CurrentDictaat.subscribe((dictaat)=> { if(dictaat) { this.dictaatName = dictaat.name } });       
     }
 
     SelectQuestion(i): void{
@@ -43,13 +49,13 @@ export class EditQuizComponent implements OnChanges {
     }
 
     SaveQuestion(): void{
-        this.quizService.updateQuestion(this.dictaatService.CurrentDictaat.value.name, this.quiz.id,this.selectedQuestion);
+        this.quizService.updateQuestion(this.dictaatName, this.quiz.id,this.selectedQuestion);
     }
 
     DeleteQuestion(): void{
         var toDelete = this.quiz.questions[this.selectedIndex];
         this.quiz.questions.splice(this.selectedIndex, 1);
-        this.quizService.removeQuestion(this.dictaatService.CurrentDictaat.value.name, this.quiz.id, toDelete);
+        this.quizService.removeQuestion(this.dictaatName, this.quiz.id, toDelete);
     }
     
     AddAnswer(): void {

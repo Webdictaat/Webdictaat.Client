@@ -5,6 +5,7 @@ import { Quiz, QuizSummary, Question, Answer } from "../../../shared/models/quiz
 import { QuizService } from "../../../shared/services/quiz.service";
 import { DictaatService } from "../../../shared/services/dictaat.service";
 import { BaseModalService, BaseModalComponent } from "../../../shared/core/basemodal.service";
+import { ConfigService } from "../../../shared/services/config.service";
 
 
 @Component({
@@ -13,15 +14,18 @@ import { BaseModalService, BaseModalComponent } from "../../../shared/core/basem
     templateUrl: "./add-quiz.component.html",
 })
 export class AddQuizComponent extends  BaseModalComponent implements OnInit {
-       
+   
+
     public quiz: Quiz;
     public selectedQuestion : Question;
     public selectedIndex: number;
     public newAnswerText: string; 
+    private  dictaatName: string;
 
     constructor(
         private quizService: QuizService,
-        private  zone: NgZone
+        private  zone: NgZone,
+        private dictaatService: DictaatService,        
     ) {
         super();
     }
@@ -30,7 +34,8 @@ export class AddQuizComponent extends  BaseModalComponent implements OnInit {
     public ngOnInit(): void {
         this.resetQuiz();
         this.wdOnInit(this.quizService, this.zone);
-    }
+        this.dictaatService.CurrentDictaat.subscribe((dictaat)=> { if(dictaat) { this.dictaatName = dictaat.name } });       
+    }        
 
     private resetQuiz(){
         this.quiz = new Quiz();  
@@ -39,7 +44,7 @@ export class AddQuizComponent extends  BaseModalComponent implements OnInit {
     }
 
     public Add(): void {
-        this.quizService.addQuiz(this.params['dictaatName'], this.quiz)
+        this.quizService.addQuiz(this.dictaatName, this.quiz)
             .then((quiz: Quiz) => {
                 this.quizService.CompleteModal(quiz);
             });
