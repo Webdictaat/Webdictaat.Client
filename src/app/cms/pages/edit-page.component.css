@@ -18,3 +18,13 @@ a.selected{
     background-color: white;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
+
+.breadcrumb{
+    border-radius: 0px;
+    position: fixed;
+    width: 100%;
+}
+
+.breadcrumb-placeholder{
+    padding-top:30px;
+}

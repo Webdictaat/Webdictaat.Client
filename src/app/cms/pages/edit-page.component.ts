@@ -77,13 +77,17 @@ export class EditPageComponent   { //implements DirtyComp
 
         if(!this.raw){
             //retrieve the decompiled html from ...
-            this.page.source = this.htmlComponent.decompileHtml();
+            var source = this.htmlComponent.decompileHtml();
+            source = source.replace('{', '&#123;');
+            source = source.replace('}', '&#125;');
+            this.page.source = source;
         }
        
 
         this.pagesService.editPage(this.dictaatName, this.page)
             .then((page) => {
                 this.originalSource = this.page.source;
+                this.page = page;
                 alert('Page saved');
              }, (error) => alert("Something broke :( i am sorry!"));
     }
