@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { PageService } from './page.service';
 
+var PR: any;
+
 @Component({
     selector: "wd-page",
     template: `
@@ -24,9 +26,18 @@ export class PageComponent implements OnInit {
         this.route.params.forEach((params: Params) => {
             let name = params['pageName'];
             this.pageService.getPage(name)
-                .then(page => 
-                    this.page = page);
+                .then(page => {
+                    this.page = page;
+                    this.enableExternalLibraries();
+                });
         });
+    }
+
+    private enableExternalLibraries(): void{
+        if(PR){
+            PR.prettyPrint();
+        }
+        
     }
 }
 

@@ -132,6 +132,10 @@ hr{
     visibility:visible !important;
 }
 
+.linenums li {
+    list-style-type: decimal;
+}
+
 /** bigger than 767, so left side menu should be visible **/
 @media (min-width:767px) {
     
