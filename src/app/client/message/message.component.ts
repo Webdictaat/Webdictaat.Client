@@ -30,6 +30,9 @@ export class MessageComponent implements OnInit {
   public hide:boolean = true;
   public participantCount :number;
   public user: Subject<User>;
+  public group: string;
+
+  public alphabet: string[] = 'ABCEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
   constructor(private dictaatService: DictaatService, private accountService: AccountService, private configService: ConfigService) { }
 
@@ -50,7 +53,7 @@ export class MessageComponent implements OnInit {
   }
 
   public join(){
-    this.dictaatService.join(this.dictaatName).then((didJoin) => {
+    this.dictaatService.join(this.dictaatName, this.group).then((didJoin) => {
       this.hide = true;
     });
   }

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule }    from '@angular/http';
 import { LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 //components
 import { AppComponent } from './app.component';
@@ -20,7 +21,7 @@ import { MessageComponent } from './message/message.component';
 
 
 @NgModule({
-    imports: [BrowserModule, BrowserAnimationsModule, WdModule, HttpModule, routing, DatabModule, GameElementsModule],
+    imports: [BrowserModule, FormsModule, BrowserAnimationsModule, WdModule, HttpModule, routing, DatabModule, GameElementsModule],
     declarations: [HtmlOutlet, AppComponent, PageComponent, NavMenuComponent, AvatarComponent, MessageComponent],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }

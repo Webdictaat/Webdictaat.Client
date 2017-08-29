@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { PageService } from './page.service';
 
-var PR: any;
+declare var PR:any;
 
 @Component({
     selector: "wd-page",

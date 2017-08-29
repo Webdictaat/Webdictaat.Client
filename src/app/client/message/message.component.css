@@ -34,6 +34,27 @@
     text-align: center;
 }
 
+.tiny-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tiny-form label{
+    padding:3px;
+}
+
+.alphabet{
+    background-color: #00AEED;
+    color:white;
+    display:inline-block;
+    text-align: center;
+    width: auto;
+    padding: 2px 20px;
+    margin-bottom: 0px;
+    
+}
+
 .panel-side img{
     position: absolute;
     width:70px;

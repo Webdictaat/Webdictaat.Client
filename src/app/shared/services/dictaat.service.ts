@@ -59,8 +59,8 @@ export class DictaatService {
             .map(response => response.json());
     }
 
-    public join(dictaatName: string){
-        return this.wdapi.post('/dictaten/' + dictaatName + '/participants', {})
+    public join(dictaatName: string, group: string){
+        return this.wdapi.post('/dictaten/' + dictaatName + '/participants/' + group, {})
             .toPromise()
             .then(response =>
                 response.json() as boolean

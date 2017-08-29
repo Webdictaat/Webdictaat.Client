@@ -11,3 +11,19 @@ table{
     max-width: 100%;
     display:block;
 }
+
+.searchbar {
+    display: flex;
+    align-items: center;
+    margin-bottom:5px;
+    max-width:300px;
+}
+
+.searchbar input{
+    margin-left: 5px;
+    margin-bottom: 0px;
+}
+.searchbar span{
+   margin:5px;
+   color:darkgray;
+}

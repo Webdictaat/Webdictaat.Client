@@ -45,15 +45,13 @@ import { MarkingComponent } from './marking/marking.component';
 import { MarkerComponent } from "./marking/marker.componet";
 import { DatabModule } from "../extern/databases/datab.module";
 
-
-
 @NgModule({
     imports: [
         ToolsModule, WdModule, GameElementsModule, DragulaModule, ImagesModule, 
         BrowserModule, HttpModule, routing, PagesModule, FormsModule, DictaatModule, DatabModule
     ],
     declarations: [       
-        AddRatingComponent, AddVideoComponent, AddQuizComponent, EditQuizComponent, DictaatSettingsComponent,
+        AddRatingComponent, AddVideoComponent, AddQuizComponent, EditQuizComponent, DictaatSettingsComponent, 
         DemoComponent, DialogComponent, AvatarComponent, ProfileComponent, MarkingComponent, MarkerComponent, AchievementMarkingComponent, AchievementMarkerComponent,
         AppComponent, QuizListComponent, AssignmentListComponent, AddAssignmentComponent, EditAssignmentComponent, MarkAssignmentComponent
     ],

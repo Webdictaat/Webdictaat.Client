@@ -10,6 +10,8 @@ import { DictaatService } from "../../shared/services/dictaat.service";
 export class MarkingComponent implements OnInit {
 
   public markings : DictaatMarkings;
+  public filterArg: any = {
+  }
 
   private dictaat: Dictaat;
 
