@@ -26,17 +26,16 @@
             <textarea [(ngModel)]="submission.query" [disabled]="submission.assignmentToken" ></textarea>
             <div  *ngIf="!submission.assignmentToken">
                 <button class="btn btn-default btn-raised" (click)="submit()">Submit</button>
-              
             </div> 
         </div>
-        <div *ngIf="submission.statusId == 1">
+        <div *ngIf="submission.statusId == 1"> <!-- correct query -->
             <div class="alert alert-dismissible alert-success" *ngIf="!submission.hide">
                 <button type="button" class="close" (click)="submission.hide = true">×</button>
                 <strong>Well done!</strong> 
                 <p>You completed this assignment on {{submission.timestamp | date:'shortDate'}}</p>
             </div>
         </div>
-        <div *ngIf="submission.statusId == 3" >
+        <div *ngIf="submission.statusId >= 2 " > <!-- Wrong query-->
             <div class="alert alert-dismissible alert-danger" *ngIf="submission.message" >
                 <button type="button" class="close" (click)="submission.message = null">×</button>
                 <strong>Oh snap!</strong> <p>{{submission.message}}. </p>
