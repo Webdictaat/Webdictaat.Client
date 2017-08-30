@@ -7,16 +7,18 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class WdFilterPipe implements PipeTransform {
 
   transform(items: any[], filter: any): any {
-    if (!items || !filter) {
+    if (!items || !filter || !filter.value || !filter.property) {
         return items;
     }
 
-    console.log(filter);
-   
-    if(filter.group){
-        // filter items array, items which match and return true will be kept, false will be filtered out
-      items =  items.filter(item => item.group.toUpperCase() == filter.group.toUpperCase());
-    }
+
+    // filter items array, items which match and return true will be kept, false will be filtered out
+    items =  items.filter(item => {
+      if(item[filter.property]){
+        return item[filter.property].toUpperCase().indexOf(filter.value.toUpperCase()) !== -1;
+      }
+    });
+  
     return items;
 
 }

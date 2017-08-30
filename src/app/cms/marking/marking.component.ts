@@ -11,7 +11,12 @@ export class MarkingComponent implements OnInit {
 
   public markings : DictaatMarkings;
   public filterArg: any = {
+    property: 'email'
   }
+  public filterArgb: any = {
+    property: 'metadata'
+  }
+
 
   private dictaat: Dictaat;
 

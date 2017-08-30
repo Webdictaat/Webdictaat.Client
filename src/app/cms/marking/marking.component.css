@@ -27,3 +27,14 @@ table{
    margin:5px;
    color:darkgray;
 }
+
+.searchbar select{
+    width:auto;
+    margin-bottom:0px;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

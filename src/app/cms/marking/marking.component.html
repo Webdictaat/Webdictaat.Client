@@ -1,10 +1,25 @@
 
-
+<div class="header">
   <div class="form-group panel panel-default searchbar">
         <span class="glyphicon glyphicon-search"></span>
-        <input type="text" class="form-control"  [(ngModel)]="filterArg.group">
+        <input type="text" class="form-control"  [(ngModel)]="filterArg.value">
+        <select [(ngModel)]="filterArg.property" class="form-control">
+            <option value="email">Email</option>
+            <option value="group">Group</option>
+        </select>
       <!-- <p class="help-block"></p> -->
     </div>
+
+    <div class="form-group panel panel-default searchbar">
+        <span class="glyphicon glyphicon-search"></span>
+        <input type="text" class="form-control"  [(ngModel)]="filterArgb.value">
+        <select [(ngModel)]="filterArgb.property" class="form-control">
+            <option value="metadata">Metadata</option>
+            <option value="title">Title</option>
+        </select>
+      <!-- <p class="help-block"></p> -->
+    </div>
+</div>
 
 <div class="panel panel-default sidebar">
 
@@ -13,7 +28,7 @@
       <tr>
         <td>#</td>
         <td>Group</td>
-        <td *ngFor="let assignment of markings.assignments">
+        <td *ngFor="let assignment of markings.assignments | wdfilter:filterArgb">
           {{assignment.metadata}}
         </td>
       </tr>
@@ -24,7 +39,7 @@
           {{user.userName}}
         </td>
         <td>{{user.group}}</td>
-        <td  *ngFor="let assignment of markings.assignments">
+        <td  *ngFor="let assignment of markings.assignments | wdfilter:filterArgb">
           <wd-marker [dictaatName]="dictaat.name" [uid]="user.id" [aid]="assignment.id" [isSubmitted]="assignment.isSubmittedBy(user.id)"></wd-marker>
         </td>
       </tr>
