@@ -32,7 +32,7 @@ export class MessageComponent implements OnInit {
   public user: Subject<User>;
   public group: string;
 
-  public alphabet: string[] = 'ABCEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  public alphabet: string[] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
   constructor(private dictaatService: DictaatService, private accountService: AccountService, private configService: ConfigService) { }
 
