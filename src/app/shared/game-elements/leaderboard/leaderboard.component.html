@@ -4,23 +4,51 @@
   </div>
 
   <div *ngIf="participants">
-    <table class="table">
-      <tr>
-        <th>Rank</th>
-        <th>Name</th>
-        <th>Points</th>
-      </tr>
-      <tr *ngFor="let item of leaderboard;let i = index" [ngClass]="{ 'me' : user && item.userName == (user | async)?.email }">
-        <td>#{{i + 1}}</td>
-        <td>{{item.userName}}</td>
-        <td class="points">{{item.points}}</td>     
-      </tr>
-    </table>
-  </div>
-  <div class="text-center">
-    <button *ngIf="leaderboard == top5" class="btn btn-xs btn-info" (click)="leaderboard = participants">show all</button>
-    <button *ngIf="leaderboard == participants" class="btn btn-xs btn-info" (click)="leaderboard = top5">show less</button>
-  </div>
-  
 
+    <!-- <div class="text-center">
+        <button *ngIf="state == 0" class="btn btn-xs btn-info" (click)="state = 1">
+            show individual leaderboard
+        </button>
+        <button *ngIf="state == 1" class="btn btn-xs btn-info" (click)="state = 0">
+            show group leaderboard
+        </button>
+    </div> -->
+
+    <div *ngIf="state == 0">
+      <table class="table">
+        <tr>
+          <th>Rank</th>
+          <th>Group</th>
+          <th></th>
+          <th>Points</th>
+        </tr>
+        <tr *ngFor="let item of leaderboard | wdGroupBy: 'group'; let i = index; ">
+          <td>#{{i + 1}}</td>
+          <td>{{item.key}}</td>
+          <td class="points">{{item.value.length}} members</td>     
+          <td>{{item.value | wdtotalpoints }} points</td>
+        </tr>
+      </table>
+    </div>
+
+    <div *ngIf="state == 1">
+      <table class="table">
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Points</th>
+        </tr>
+        <tr *ngFor="let item of leaderboard;let i = index" [ngClass]="{ 'me' : user && item.userName == (user | async)?.email }">
+          <td>#{{i + 1}}</td>
+          <td>{{item.userName}}</td>
+          <td class="points">{{item.points}}</td>     
+        </tr>
+      </table>
+      <div class="text-center">
+        <button *ngIf="leaderboard == top5" class="btn btn-xs btn-info" (click)="leaderboard = participants">show all</button>
+        <button *ngIf="leaderboard == participants" class="btn btn-xs btn-info" (click)="leaderboard = top5">show less</button>
+      </div>
+    </div>
 </div>
+</div>
+

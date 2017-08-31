@@ -32,9 +32,13 @@ export class MessageComponent implements OnInit {
   public user: Subject<User>;
   public group: string;
 
-  public alphabet: string[] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  public alphabet: string[] ;
 
-  constructor(private dictaatService: DictaatService, private accountService: AccountService, private configService: ConfigService) { }
+  constructor(private dictaatService: DictaatService, private accountService: AccountService, private configService: ConfigService) { 
+      this.alphabet = ["vt-A", "vt-B", "vt-C", "vt-D", "vt-E", "vt-F", "vt-G"]
+      this.alphabet =  this.alphabet.concat('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''));
+  
+  }
 
   ngOnInit() {
        this.user = this.accountService.User;

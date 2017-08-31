@@ -7,11 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { LeaderboardService } from "./leaderboard.service";
 import { LeaderboardComponent } from "./leaderboard.component";
 import { WdModule } from "../../core/wd.module";
+import { TotalPointsPipe } from "./totalpoints.pipe";
 
 @NgModule({
     providers: [LeaderboardService],
     imports: [BrowserModule, WdModule, HttpModule, FormsModule],
-    declarations: [LeaderboardComponent],
+    declarations: [LeaderboardComponent, TotalPointsPipe],
     exports: [LeaderboardComponent]
 })
 export class LeaderboardModule {}

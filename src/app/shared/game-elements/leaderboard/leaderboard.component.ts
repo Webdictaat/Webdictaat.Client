@@ -5,6 +5,8 @@ import { AccountService } from "../../services/account.service";
 import { ConfigService } from "../../services/config.service";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { User } from "../../models/user";
+import { GroupByPipe } from "../../core/group-by.pipe";
+import { ArraySortPipe } from "../../core/order-by.pipe";
 
 
 
@@ -20,8 +22,13 @@ export class LeaderboardComponent implements OnInit {
   public participants: any[];
   public leaderboard: any[];
   public top5: any[];
+  public state: number = 1;
+  public groups: any[];
 
-  constructor(private leaderboardService: LeaderboardService, private accountService: AccountService, private configService: ConfigService) { }
+  constructor(
+    private leaderboardService: LeaderboardService, 
+    private accountService: AccountService, 
+    private configService: ConfigService){}
 
   ngOnInit() {
     this.user = this.accountService.User;
@@ -33,6 +40,8 @@ export class LeaderboardComponent implements OnInit {
                  this.participants = participants;
                  this.top5 = participants.slice(0, 5);
                  this.leaderboard = this.top5;
+                //  this.groups = this.groupByPipe.transform(this.participants, 'group');
+                //  this.groups = this.arraySortPipe.transform(arraySortPipe, )
             })
         }
     })

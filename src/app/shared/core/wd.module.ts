@@ -19,6 +19,8 @@ import { DictaatService } from "../services/dictaat.service";
 //shared components
 import { SpinnerComponent } from "../spinner/spinner.component";
 import { WdFilterPipe } from './wdfilter.pipe';
+import { GroupByPipe } from './group-by.pipe';
+import { ArraySortPipe } from "./order-by.pipe";
 
 
 /**
@@ -29,8 +31,8 @@ import { WdFilterPipe } from './wdfilter.pipe';
         DialogService, QuizService, ImageService, AchievementService, AccountService, wdApi, ConfigService,
         RatingService, DirtyGuard, VideoService, NavMenuService, AssignmentService, DictaatService
     ],
-    declarations: [SpinnerComponent, WdFilterPipe],
-    exports: [SpinnerComponent, WdFilterPipe]
+    declarations: [SpinnerComponent, WdFilterPipe, GroupByPipe, ArraySortPipe],
+    exports: [SpinnerComponent, WdFilterPipe, GroupByPipe, ArraySortPipe]
 })
 export class WdModule {}
  
