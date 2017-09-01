@@ -51,6 +51,7 @@ export class QuizService extends BaseModalService{
             })
             .catch(() => {
                 this.resolveCancel(); //hier nog niet bij mee
+                return null as Quiz;
             });
     }
 

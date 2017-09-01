@@ -36,12 +36,18 @@
             </div>
         </div>
         <div *ngIf="submission.statusId >= 2 " > <!-- Wrong query-->
-            <div class="alert alert-dismissible alert-danger" *ngIf="submission.message" >
+            <div class="alert alert-dismissible alert-warning" *ngIf="submission.message" >
                 <button type="button" class="close" (click)="submission.message = null">×</button>
                 <strong>Oh snap!</strong> <p>{{submission.message}}. </p>
                 <p>Change a few things up and try submitting again.</p>
                 
             </div>
+        </div>
+        <div class="alert alert-dismissible alert-danger" *ngIf="err" >
+            <button type="button" class="close" (click)="err = null">×</button>
+            <strong>Oh noes! :(</strong> <p>{{err}}. </p>
+            <p>Please wait a few minutes before submitting again. Our poor servers need some time to recover.</p>
+            
         </div>
         <div class="loader" *ngIf="submission.statusId == 0">
             <wd-spinner class="spinner"></wd-spinner>

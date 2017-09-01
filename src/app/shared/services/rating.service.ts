@@ -30,7 +30,8 @@ export class RatingService extends BaseModalService {
             })
             .catch(() => {
                 this.resolveCancel(); //hier nog niet bij mee
-                return this.handleError;
+                this.handleError;
+                return null as Rating;
             });
     }
 
@@ -44,7 +45,9 @@ export class RatingService extends BaseModalService {
                 return response.json() as Rating
             })
             .catch(() => {
-                return this.handleError;
+                this.resolveCancel(); //hier nog niet bij mee
+                this.handleError;
+                return null as Rating;
             });
     }
 
