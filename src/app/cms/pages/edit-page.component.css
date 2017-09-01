@@ -2,10 +2,6 @@
     min-height: 100vh;
 }
 
-.page-content{
-    margin-left:400px;
-}
-
 a.selected{
     color: #00AEED;
 }
