@@ -31,17 +31,15 @@ export class MessageComponent implements OnInit {
   public participantCount :number;
   public user: Subject<User>;
   public group: string;
+  public alphabet: string[] ;
 
-  public alphabet: string[] = [];
-
-  constructor(private dictaatService: DictaatService, private accountService: AccountService, private configService: ConfigService) { }
+  constructor(private dictaatService: DictaatService, private accountService: AccountService, private configService: ConfigService) { 
+      this.alphabet = ["vt-A", "vt-B", "vt-C", "vt-D", "vt-E", "vt-F", "vt-G"]
+      this.alphabet =  this.alphabet.concat('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''));
+  }
 
   ngOnInit() {
        this.user = this.accountService.User;
-
-       this.alphabet = ["vt-A", "vt-B", "vt-C", "vt-D", "vt-E", "vt-F", "vt-G", "vt-H", "vt-I", "vt-J", "vt-K"];
-       this.alphabet = this.alphabet.concat(('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')));
-       
        this.configService.GetLocalConfig();
         this.configService.Config.subscribe((config) => {
             if(!config) return;

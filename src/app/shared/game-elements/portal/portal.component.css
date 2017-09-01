@@ -1,0 +1,16 @@
+.portal{
+    min-height:100px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0px;
+}
+
+.portal .element{
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    background-color:white;
+    width:250px; height:150px;
+}
+
+.portal .spinner{
+    position: absolute;
+}
