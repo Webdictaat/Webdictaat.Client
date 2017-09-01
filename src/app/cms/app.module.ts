@@ -6,7 +6,7 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 
 //routing
-import { routing } from './app.routing';
+import { routing, CanDeactivateEditPage } from './app.routing';
 
 
 //modules
@@ -56,6 +56,7 @@ import { DatabModule } from "../extern/databases/datab.module";
         AppComponent, QuizListComponent, AssignmentListComponent, AddAssignmentComponent, EditAssignmentComponent, MarkAssignmentComponent
     ],
     providers: [
+        CanDeactivateEditPage,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
     ],
     bootstrap: [

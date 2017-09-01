@@ -3,6 +3,7 @@ import { ToolParams } from '../../models/tool-params';
 import { AssignmentService } from "../../services/assignment.service";
 import { Assignment } from "../../models/assignment";
 
+declare var $ : any;
 
 
 @Component({

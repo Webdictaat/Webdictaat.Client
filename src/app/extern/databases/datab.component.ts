@@ -30,6 +30,7 @@ export class DatabComponent implements OnInit {
     public submission: DbSubmission;
     
     public query: string;
+    public err: string;
 
     constructor(private databService: DatabService, 
         private accountService: AccountService, 
@@ -72,7 +73,7 @@ export class DatabComponent implements OnInit {
                     this.submission = new DbSubmission();
                     this.submission.email = this.user.email;
                 }
-            });  
+            });
     }
 
     private checkIfComplete(){
@@ -85,6 +86,7 @@ export class DatabComponent implements OnInit {
     }
 
     public submit(){   
+        this.err = null; //reset err;
         this.submission.message = null;
         this.databService.sendSubmission(this.waid, this.assignment.externalId, this.submission)
             .then((submission)=> {
@@ -92,7 +94,9 @@ export class DatabComponent implements OnInit {
                 //start polling for 10s
                 this.pollticker = 0;
                 this.poll();
-            })
+            }).catch(err => {
+                this.err = "We cannot submit your query right now.";
+            });  
     }
 
     private pollticker = 0;
