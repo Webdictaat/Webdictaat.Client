@@ -88,7 +88,6 @@ export class EditPageComponent   { //implements DirtyComp
             .then((page) => {
                 this.originalSource = this.page.source;
                 this.page = page;
-                alert('Page saved');
              }, (error) => alert("Something broke :( i am sorry!"));
     }
   

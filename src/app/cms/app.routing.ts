@@ -1,5 +1,5 @@
-﻿import { ModuleWithProviders }  from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+﻿import { ModuleWithProviders, Injectable } from '@angular/core';
+import { Routes, RouterModule, CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { ProfileComponent } from '../shared/profile/profile.component';
 import { DemoComponent } from '../shared/demo/demo.component';
 import { DirtyGuard } from "../shared/core/security/dirty.guard";
@@ -11,6 +11,14 @@ import { EditPageComponent } from "./pages/edit-page.component";
 import { AssignmentListComponent } from "./assignments/assignment-list/assignment-list.component";
 import { DictaatSettingsComponent } from "./dictaat/settings-dictaat.component";
 import { MarkingComponent } from "./marking/marking.component";
+import { Observable } from "rxjs/Observable";
+
+@Injectable()
+export class CanDeactivateEditPage implements CanDeactivate<EditPageComponent> {
+    canDeactivate(component: EditPageComponent, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot, nextState?: RouterStateSnapshot): boolean{
+        return confirm("Are you sure you want to leave this page? Don't forget to save before leaving!");
+    }
+}
 
 const appRoutes: Routes = [
     { 
@@ -37,7 +45,8 @@ const appRoutes: Routes = [
     },
     {
         path: 'dictaten/:dictaatName/pages/:pageName',
-        component: EditPageComponent
+        component: EditPageComponent,
+        canDeactivate: [CanDeactivateEditPage]
     },
     {
         path: 'profile',
