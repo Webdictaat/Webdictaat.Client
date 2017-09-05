@@ -58,7 +58,10 @@ export class DatabComponent implements OnInit {
     private getAssignment(): void {
         this.databService.getAssignment(this.assignment.externalId)
             .then((response: any) => {  
-                this.expectedOutput = response.expectedOutput;
+                if(response){   
+                    this.expectedOutput = response.expectedOutput;
+                }
+               
             });  
     }
 
@@ -104,7 +107,7 @@ export class DatabComponent implements OnInit {
     private poll(){
         this.databService.getSubmissions(this.assignment.externalId, this.user.email).then((submission) => {
             this.submission = submission;
-            if(this.submission.statusId != 0){           
+            if(this.submission && this.submission.statusId != 0){           
                 this.checkIfComplete();
             }
             else if(this.pollticker != 5){
