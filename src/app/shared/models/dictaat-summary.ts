@@ -4,6 +4,7 @@ export class DictaatSummary {
     name: String;
     lastChange: Date;
     owner: User;
-    contributers: User[];
+    contributers: String[]; //list of emails
     canEdit: boolean;
+    isEnabled: boolean; 
 }

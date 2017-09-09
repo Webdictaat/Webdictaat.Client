@@ -6,13 +6,35 @@
     position: relative;
 }
 
+.dictaat{
+    overflow: hidden;
+}
+
 .panel:hover .hover-actions{
-    display: block;
+    transform: translateX(-50px);
 }
 
 .hover-actions{
     position: absolute;
     top:0px;
-    right:5px;
-    display: none;
+    right:-55px;
+    display: block;
+    transition: all 0.2s ease-out;
+}
+
+.icon{
+    position: relative;
+    right:10px;
+}
+
+
+.preview{
+    position: absolute;
+    transform: rotate(30deg);
+    bottom:10px;
+    left: -30px;
+    background-color: #00AEED;
+    color:white;
+    padding:3px 50px;
+    border:1px dashed white;
 }

@@ -21,8 +21,9 @@
     </div>
 </div>
 
-<div class="panel panel-default sidebar">
+<wd-spinner *ngIf="!markings"></wd-spinner>
 
+<div class="panel panel-default sidebar">
   <table *ngIf="markings">
     <thead>
       <tr>

@@ -58,11 +58,15 @@ span.title{ margin-left:10px;  }
 .action.delete:hover{   
     background-color:#d9534f; color: white;
 }
-
 .action.edit {
      color: #f0ad4e; 
 }
-
 .action.edit:hover{  
     background-color: #f0ad4e; color: white;
+}
+.action.enable{
+    color: #00AEED;
+}
+.action.enable:hover{  
+    background-color: #00AEED; color: white;
 }

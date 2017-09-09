@@ -43,11 +43,13 @@ export class DictatenComponent implements OnInit {
         this.accountService.update();
 
         this.dictatenService.getDictaten()
-            .then(dictaten => this.dictaten = dictaten);
+            .then(dictaten => { 
+                this.setDictaten(dictaten);
+            });
     }
 
     public setDictaten(dictaten: DictaatSummary[]): void {
-        this.dictaten = dictaten;
+        this.dictaten = dictaten.filter(d => d.canEdit  || d.isEnabled);
     }
 
     public gotoDetail(dictaat: DictaatSummary): void {

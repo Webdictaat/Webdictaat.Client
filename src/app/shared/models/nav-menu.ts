@@ -1,4 +1,5 @@
-﻿
+﻿    
+
 export class NavMenuItem {
     public name: string;
     public url: string;
@@ -6,6 +7,7 @@ export class NavMenuItem {
     public isDeleted: boolean;
     public isOpen: boolean;
     public isEdit: boolean;
+    public isEnabled: boolean;
 
     constructor(data: any = null){
         if(data){

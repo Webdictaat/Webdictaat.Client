@@ -27,8 +27,9 @@ export class DictaatComponent implements OnInit {
         this.route.params.forEach((params: Params) => {
             let name = params['dictaatName'];
             this.dictaatService.getDictaat(name)
-                .then(dictaat => {
-                    this.dictaat = dictaat
+                .then(dictaat => this.dictaat = dictaat )
+                .catch(e => {
+                    this.Router.navigateByUrl('/');  
                 });
         });
     }

@@ -2,7 +2,8 @@
   {
     "Name": "Home",
     "Url": "home",
-    "MenuItems": []
+    "MenuItems": [],
+    "IsEnabled": true
   },
   {
     "Name": "Dropdown one",
@@ -11,17 +12,26 @@
       {
         "Name": "Item One",
         "Url": "one",
-        "MenuItems": []
+        "MenuItems": [],
+        "IsEnabled": true
       },
       {
         "Name": "Item Two",
         "Url": "two",
-        "MenuItems": []
+        "MenuItems": [],
+        "IsEnabled": true
       },
       {
         "Name": "Item Three",
         "Url": "three",
-        "MenuItems": []
+        "MenuItems": [],
+        "IsEnabled": true
+      },
+      {
+        "Name": "Last item, should be invisible",
+        "Url": "three",
+        "MenuItems": [],
+        "IsEnabled": false
       }
     ]
   },
@@ -32,17 +42,20 @@
       {
         "Name": "Item One",
         "Url": "one",
-        "MenuItems": []
+        "MenuItems": [],
+        "IsEnabled": true
       },
       {
         "Name": "Item Two",
         "Url": "two",
-        "MenuItems": []
+        "MenuItems": [],
+        "IsEnabled": true
       },
       {
         "Name": "Item Three",
         "Url": "three",
-        "MenuItems": []
+        "MenuItems": [],
+        "IsEnabled": true
       }
     ]
   }

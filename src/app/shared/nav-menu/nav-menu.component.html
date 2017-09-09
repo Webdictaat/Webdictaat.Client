@@ -3,7 +3,7 @@
     <li *ngFor="let item of MenuItems">
 
         <!-- menu item -->
-        <a routerLink="{{item.Url}}" routerLinkActive="active" *ngIf="item.Url">
+        <a routerLink="{{item.Url}}" routerLinkActive="active" *ngIf="item.Url && item.IsEnabled">
             {{item.Name}}
         </a>
 
@@ -16,7 +16,7 @@
         <ol class="nav sub" [ngClass]="{'open': item == selected}">
             <li *ngFor="let subItem of item.MenuItems">
                 <!-- menu item -->
-                <a routerLink="{{subItem.Url}}" routerLinkActive="active">
+                <a routerLink="{{subItem.Url}}" *ngIf="subItem.IsEnabled" routerLinkActive="active">
                     {{subItem.Name}}
                 </a>
             </li>

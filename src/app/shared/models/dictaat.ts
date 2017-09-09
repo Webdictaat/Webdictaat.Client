@@ -7,6 +7,7 @@ export class Dictaat {
     lastChange: Date;
     pages: PageSummary[];
     menuItems: NavMenuItem[];
+    canContribute: boolean;
 
     constructor(json = null){
         this.name = json.name;

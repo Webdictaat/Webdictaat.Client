@@ -25,7 +25,7 @@ export class NavMenuService {
             return Promise.resolve(this.menuItems);
         }
         else{
-            return this.http.get('nav-menu.json')
+            return this.http.get('nav-menu.json?v=' + new Date().getTime())
                 .toPromise()
                 .then((response) => 
                     this.menuItems = response.json() as NavMenuItem[]
@@ -35,6 +35,7 @@ export class NavMenuService {
 
     public updateNavMenu(dictaatName: string, menuItems: NavMenuItem[]){
         var resource = "/dictaten/" + dictaatName + "/menu";
+        debugger;
         return this.api.put(resource, menuItems)
             .toPromise()
             .then((response) => response.json() as NavMenuItem[])

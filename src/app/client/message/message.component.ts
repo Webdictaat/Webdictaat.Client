@@ -34,7 +34,7 @@ export class MessageComponent implements OnInit {
   public alphabet: string[] ;
 
   constructor(private dictaatService: DictaatService, private accountService: AccountService, private configService: ConfigService) { 
-      this.alphabet = ["vt-A", "vt-B", "vt-C", "vt-D", "vt-E", "vt-F", "vt-G"]
+      this.alphabet = ["vt-A", "vt-B", "vt-C", "vt-D", "vt-E", "vt-F", "vt-G", "vt-H", "vt-I"]
       this.alphabet =  this.alphabet.concat('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''));
   }
 

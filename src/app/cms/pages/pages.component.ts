@@ -48,6 +48,12 @@ export class PagesComponent{
 
     }
 
+    public toggleEnabled(item: NavMenuItem){
+        item.isEnabled = !item.isEnabled;
+        debugger;
+        this.navMenuService.updateNavMenu(this.dictaat.name, this.dictaat.menuItems);
+    }
+
 
     public getDragOptions(){
         return {
