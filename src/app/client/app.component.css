@@ -21,7 +21,7 @@
   position: fixed;
   top:0px;
   margin-top:50px;
-  right:-250px;
+  left:100%;
   transition: all 0.4s ease 0s;
   height: 100%;
   max-width:200%;
@@ -31,7 +31,7 @@
 .side-nav{
   position: absolute;
   width:250px;
-  right:0px;
+  left:0px;
   background-color:white;
   transition: all 0.4s ease 0s;
    height: 100%;
