@@ -72,7 +72,7 @@ a.active{
   .nav.root{
     padding-bottom:50px;
     max-height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
       box-shadow: none;
   }
 

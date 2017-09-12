@@ -65,10 +65,23 @@
     border-radius: 50%;
 }
 
-/** bigger than 1200, so left side menu should be max 400px wide**/
-@media (min-width:1200px) {
-
-    .side-menu{
-        width:400px;
+/** Smaller than 767, so left side menu should be in hamburger menu **/
+@media (max-width:767px) {
+    .panel-side{
+        display: none;
     }
+
+    
+    .panel-body{
+        padding-right:15px;
+    }
+
+    .panel{
+        border-bottom:4px solid #C6002A;
+    }
+
+    .tiny-form{
+        flex-direction: column;
+    }
+    
 }
