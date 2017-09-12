@@ -35,7 +35,6 @@ export class NavMenuService {
 
     public updateNavMenu(dictaatName: string, menuItems: NavMenuItem[]){
         var resource = "/dictaten/" + dictaatName + "/menu";
-        debugger;
         return this.api.put(resource, menuItems)
             .toPromise()
             .then((response) => response.json() as NavMenuItem[])
