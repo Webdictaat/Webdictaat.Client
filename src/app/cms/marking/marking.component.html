@@ -1,18 +1,18 @@
 
 <div class="header">
   <div class="form-group panel panel-default searchbar">
-        <span class="glyphicon glyphicon-search"></span>
-        <input type="text" class="form-control"  [(ngModel)]="filterArg.value">
-        <select [(ngModel)]="filterArg.property" class="form-control">
-            <option value="email">Email</option>
+        <select [(ngModel)]="participantFilter.property" class="form-control" >
             <option value="group">Group</option>
+            <option value="email">Email</option>
         </select>
+        <input type="text" class="form-control"  [(ngModel)]="participantFilter.value" placeholder="a, b">
+        <button (click)="filter()" class="btn btn-sm btn-raised "><span class="glyphicon glyphicon-search"></span></button>
       <!-- <p class="help-block"></p> -->
     </div>
 
     <div class="form-group panel panel-default searchbar">
         <span class="glyphicon glyphicon-search"></span>
-        <input type="text" class="form-control"  [(ngModel)]="filterArgb.value">
+        <input type="text" class="form-control"  [(ngModel)]="filterArgb.value" placeholder="1.2.3">
         <select [(ngModel)]="filterArgb.property" class="form-control">
             <option value="metadata">Metadata</option>
             <option value="title">Title</option>
@@ -23,28 +23,36 @@
 
 <wd-spinner *ngIf="!markings"></wd-spinner>
 
-<div class="panel panel-default sidebar">
-  <table *ngIf="markings">
+<div class="panel panel-default sidebar animated fadeIn" *ngIf="markings">
+  <table >
     <thead>
       <tr>
         <td>#</td>
         <td>Group</td>
-        <td *ngFor="let assignment of markings.assignments | wdfilter:filterArgb">
+        <td *ngFor="let assignment of markings.assignments | wdfilter:filterArgb; ">
           {{assignment.metadata}}
         </td>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of markings.participants | wdfilter:filterArg">
-        <td>
-          {{user.userName}}
-        </td>
-        <td>{{user.group}}</td>
-        <td  *ngFor="let assignment of markings.assignments | wdfilter:filterArgb">
-          <wd-marker [dictaatName]="dictaat.name" [uid]="user.id" [aid]="assignment.id" [isSubmitted]="assignment.isSubmittedBy(user.id)"></wd-marker>
-        </td>
+      <tr *ngFor="let user of f_participants; let i=index">
+        <ng-template [ngIf]="i<limit">
+          <td>
+            {{user.userName}}
+          </td>
+          <td>{{user.group}}</td>
+          <td  *ngFor="let assignment of markings.assignments | wdfilter:filterArgb">
+            <wd-marker [dictaatName]="dictaat.name" [uid]="user.id" [aid]="assignment.id" [isSubmitted]="assignment.isSubmittedBy(user.id)"></wd-marker>
+          </td>
+        </ng-template>
       </tr>
     </tbody>
   </table>
+
+  <div class="text-center" *ngIf="limit < f_participants.length">
+      <p class="disclaimer"><em>*Only showing {{limit}} participants of {{f_participants.length}} </em></p>
+      <button (click)="limit = f_participants.length" class="btn btn-xs btn-info">show all</button> - 
+      <button (click)="limit = limit + 10" class="btn btn-xs btn-info">show 10 more</button>
+    </div>
 
 </div>

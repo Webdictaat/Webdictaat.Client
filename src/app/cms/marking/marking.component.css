@@ -14,9 +14,13 @@ table{
 
 .searchbar {
     display: flex;
-    align-items: center;
-    margin-bottom:5px;
+    align-items: stretch;
+    margin-bottom:10px;
     max-width:300px;
+}
+
+.searchbar button{
+    margin:0px;
 }
 
 .searchbar input{
@@ -37,4 +41,9 @@ table{
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.disclaimer{
+    color:gray;
+    margin:3px;
 }
