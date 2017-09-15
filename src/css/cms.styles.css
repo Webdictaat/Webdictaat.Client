@@ -1,5 +1,34 @@
 /** Sortable and draggable handle **/
 
+.loadingscreen{
+    height: 100vh;
+}
+
+.loadingscreen .header{
+    background-color: white;
+    min-height: 220px;
+    position: relative;
+}
+
+.loadingscreen .header nav{
+    background-color: #C6002A;
+    min-height: 50px;
+}
+
+.loader{
+    position: absolute;
+    bottom:-50px; left:50%;
+    margin-left: -50px;
+    height: 100px;
+    -webkit-animation:spin 1s linear alternate-reverse infinite ;
+    -moz-animation:spin 1s linear alternate-reverse infinite;
+    animation:spin 1s ease-in-out alternate-reverse infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(720deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(720deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(720deg); transform:rotate(720deg); } }
+
 *:hover > .handle{
     display: flex;
 }
@@ -135,6 +164,7 @@ img.wd-logo{
 
 body { 
     padding-bottom: 70px;
+    overflow-y: scroll;
 }
 
 .modal{

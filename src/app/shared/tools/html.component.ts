@@ -6,6 +6,7 @@ declare var CKEDITOR : any;
 
 @Component({
     selector: "wd-html",
+    styleUrls: ['html.component.css'],
     template: `
         <!-- most bootstrap elements only work when inside a container!! -->
         <div id='page'>
@@ -64,7 +65,7 @@ export class HtmlComponent implements OnInit {
 
                 //enable 
                 this.enableEditor(ui.item);
-                this.enableContainers(ui.item);
+                this.enableContainers(this.pageElement);
                 this.enableDragging(ui.item);
 
                 //Omdat het soms even duurt voordat een component kan renderen, moeten we hier even op wachten.
@@ -178,12 +179,11 @@ export class HtmlComponent implements OnInit {
 
     private enableContainers(element): void {
 
-        element.find('.wd-container').addBack('.wd-container').sortable({
+        element.find('.wd-container').sortable({
             handle: ".handle",
             connectWith: '.wd-container, #wd-trash',
-            revert: 100,
+            revert : 300,
             cursor: "move",
-            cancel: this.editableElements,
             hoverClass: "ui-state-hover",
             beforeStop: this.onDrop,
             placeholder: "highlight",
