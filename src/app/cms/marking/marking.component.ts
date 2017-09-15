@@ -68,7 +68,8 @@ export class MarkingComponent implements OnInit {
   }
 
   private storeFilter(): void{
-     localStorage[this.dictaat.name + ".participantFilter"] = this.participantFilter.value;
+     var value = this.participantFilter.value ? this.participantFilter.value : "";
+     localStorage[this.dictaat.name + ".participantFilter"] = value;
   }
 
   private retrieveFilter(): void{
