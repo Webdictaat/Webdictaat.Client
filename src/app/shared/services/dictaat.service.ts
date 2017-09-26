@@ -59,12 +59,24 @@ export class DictaatService {
             .map(response => response.json());
     }
 
+    public getDictaatContributers(dictaatName: String): Promise<User[]> {
+        return this.wdapi.get("/dictaten/" + dictaatName + '/contributers')
+            .map(response => response.json())
+            .toPromise();
+    }
+
     public join(dictaatName: string, group: string){
         return this.wdapi.post('/dictaten/' + dictaatName + '/participants/' + group, {})
             .toPromise()
             .then(response =>
                 response.json() as boolean
             );
+    }
+
+    public addContributer(dictaatName: string, email: string) : Promise<User[]> {
+        return this.wdapi.post('/dictaten/' + dictaatName + '/contributers/', {'email': email})
+            .map(response => response.json() as User[])
+            .toPromise();
     }
 
     public getDictaten(): Promise<DictaatSummary[]> {

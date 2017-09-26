@@ -16,8 +16,7 @@ import { ArraySortPipe } from "../../core/order-by.pipe";
   styleUrls: ['./leaderboard.component.css']
 })
 export class LeaderboardComponent implements OnInit {
-  maxpoints: any;
-
+  
   user: BehaviorSubject<User>;
   public participants: any[];
   public leaderboard: any[];
@@ -36,22 +35,17 @@ export class LeaderboardComponent implements OnInit {
         if(config){
           this.leaderboardService.getParticipants(config.name)
             .then((participants) => {
-                 this.maxpoints = participants[0].points;
                  this.participants = participants;
                  this.top5 = participants.slice(0, 5);
                  this.leaderboard = this.top5;
-                //  this.groups = this.groupByPipe.transform(this.participants, 'group');
-                //  this.groups = this.arraySortPipe.transform(arraySortPipe, )
+            })
+
+          this.leaderboardService.getGroups(config.name)
+            .then((groups) => {
+                 this.groups = groups;
             })
         }
     })
   }
-
-  public calculateWidth(points){
-    return points / this.maxpoints * 100;
-  }
-
-
-
 
 }

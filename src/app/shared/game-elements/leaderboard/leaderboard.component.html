@@ -5,28 +5,28 @@
 
   <div *ngIf="participants">
 
-    <!-- <div class="text-center">
+    <div class="text-center">
         <button *ngIf="state == 0" class="btn btn-xs btn-info" (click)="state = 1">
             show individual leaderboard
         </button>
         <button *ngIf="state == 1" class="btn btn-xs btn-info" (click)="state = 0">
             show group leaderboard
         </button>
-    </div> -->
+    </div>
 
     <div *ngIf="state == 0">
       <table class="table">
         <tr>
           <th>Rank</th>
           <th>Group</th>
-          <th></th>
+          <th>Size</th>
           <th>Points</th>
         </tr>
-        <tr *ngFor="let item of leaderboard | wdGroupBy: 'group'; let i = index; ">
+        <tr *ngFor="let item of groups;let i = index" >
           <td>#{{i + 1}}</td>
-          <td>{{item.key}}</td>
-          <td class="points">{{item.value.length}} members</td>     
-          <td>{{item.value | wdtotalpoints }} points</td>
+          <td>{{item.groupName}}</td>
+          <td class="points">{{item.members.length}} members</td>     
+          <td>{{item.totalPoints}} points</td>
         </tr>
       </table>
     </div>
@@ -36,11 +36,13 @@
         <tr>
           <th>Rank</th>
           <th>Name</th>
+          <th>Group</th>
           <th>Points</th>
         </tr>
-        <tr *ngFor="let item of leaderboard;let i = index" [ngClass]="{ 'me' : user && item.userName == (user | async)?.email }">
+        <tr *ngFor="let item of leaderboard;let i = index" [ngClass]="{ 'me' : user && item.email == (user | async)?.email }">
           <td>#{{i + 1}}</td>
-          <td>{{item.userName}}</td>
+          <td>{{item.name ? item.name : item.email}}</td> 
+          <td>{{item.group}}</td>
           <td class="points">{{item.points}}</td>     
         </tr>
       </table>

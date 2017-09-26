@@ -1,4 +1,27 @@
-<div >
+<div>
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title ">Contributers</h3>
+            <div class="btn-group">
+                <button class="btn btn-xs btn-success btn-raised" (click)="showModal = true">
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp;Add a contributers
+                </button>
+            </div>
+        </div>
+        <div class="panel-body">
+
+            <wd-spinner *ngIf="!(contributers)"></wd-spinner>
+            <ul class="contributers">
+                <li *ngFor="let u of contributers">
+                    {{u.name}} ({{u.email}}) 
+                    <span *ngIf="u.email == dictaat.owner.email">
+                        <i>owner</i>
+                    </span>
+                </li>
+            </ul>    
+        </div>  
+    </div>
+
     <div class="panel panel-danger" >
         <div class="panel-heading">
             <h3 class="panel-title">Danger zone</h3>
@@ -12,4 +35,30 @@
                 <wd-remove-dictaat [dictaat]="dictaat"></wd-remove-dictaat>
             </div>
     </div>
+</div>
+
+<div class="modal animated fadeIn" *ngIf="showModal" >
+    <div class="modal-dialog text-left animated fadeInDown" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                <h4 class="modal-title">Add contributers</h4>
+                <div class="close-modal-button" (click)="showModal = false">
+                    <span  class="glyphicon glyphicon-remove"></span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="email" id="contributerEmail" placeholder="Email of the user"
+                    [(ngModel)]="contributerEmail" required>
+                </div>
+                <div *ngIf="errMsg" class="animated fadeIn error">
+                    <p class="bg-danger">{{errMsg}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary pull-left" (click)="showModal = false">Cancel</button>
+                    <button type="button" class="btn btn-success pull-right" (click)="addContributers(contributerEmail)">Add</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </div>

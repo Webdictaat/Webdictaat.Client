@@ -6,7 +6,7 @@ import { wdApi } from "../../core/wd.service";
 export class Leaderboard{
 
     public ranks: Rank[]
-    
+
 }
 
 export class Rank {
@@ -29,4 +29,10 @@ export class LeaderboardService{
             .toPromise()
             .then(response => response.json() );
     }
+
+    public getGroups(dictaatName: string){
+        return this.wdapi.get('/dictaten/' + dictaatName + '/groups')
+           .toPromise()
+           .then(response => response.json() );
+   }
 }

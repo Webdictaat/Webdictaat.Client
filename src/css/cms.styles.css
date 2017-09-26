@@ -15,7 +15,7 @@
     min-height: 50px;
 }
 
-.loader{
+.apploader{
     position: absolute;
     bottom:-50px; left:50%;
     margin-left: -50px;
@@ -271,4 +271,13 @@ body {
 
 .CodeMirror{
     height: 100%;
+}
+
+.panel-heading{
+    display: flex;
+    justify-content: space-between;
+}
+
+.panel-heading .btn-group{
+    margin:0px;
 }

@@ -8,12 +8,14 @@ export class Dictaat {
     pages: PageSummary[];
     menuItems: NavMenuItem[];
     canContribute: boolean;
+    owner: any;
 
     constructor(json = null){
         this.name = json.name;
-        this.location = json.locatoin;
+        this.location = json.location;
         this.pages = json.pages;
         this.menuItems = json.menuItems;
+        this.owner = json.owner;
     }
 }
 

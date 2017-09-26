@@ -14,7 +14,7 @@ import { ConfigService } from "../services/config.service";
     styles: [`div{ float:right;}`],
     template: `
         <div *ngIf="user">
-            <p class="navbar-text">Signed in as {{user.email}}</p>
+            <p class="navbar-text">Signed in as {{user.name}}</p>
             <button class="btn btn-default navbar-btn" (click)="Logout()">Logout</button>
         </div>
         <div *ngIf="!user">
