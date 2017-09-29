@@ -1,4 +1,4 @@
-<div *ngIf="!portal" class="spinner">
+<div *ngIf="!portal  && user" class="spinner">
     <wd-spinner></wd-spinner> 
   </div>
 
@@ -14,12 +14,15 @@
     <div class="gap"></div>
     <div class="element">
         <span class="glyphicons glyphicons-family"></span>
-        <p>
+        <p *ngIf="portal.completedAssignments > 0">
             You are
             <span class="focus" *ngIf="portal.comparedToAverage > 0">{{portal.comparedToAverage}}% better</span>
             <span class="focus" *ngIf="portal.comparedToAverage < 0">{{portal.comparedToAverage * -1}}% behind</span> 
             compared to other participants
         </p>   
+        <p *ngIf="portal.completedAssignments === 0">
+            Go make <span class="focus">you're first</span> assignment!
+        </p>
     </div>
       
 </div>

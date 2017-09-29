@@ -21,7 +21,7 @@ export class PortalComponent implements OnInit {
     private configService: ConfigService){}
 
     private config;
-    private user;
+    public user;
 
     ngOnInit() {
       this.accountService.User.subscribe(user => { this.user = user; this.retrieveParticipant(); });
@@ -29,7 +29,7 @@ export class PortalComponent implements OnInit {
     }
 
     public retrieveParticipant(): any{
-        if(this.config && this.user){
+        if(this.config && this.user && !this.portal){
             this.participantService.getParticipant(this.config.name, this.user.email)
             .then((participant) => {
                 this.portal = participant;
