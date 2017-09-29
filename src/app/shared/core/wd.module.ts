@@ -15,6 +15,8 @@ import { AchievementService } from "../services/achievement.service";
 import { QuizService } from "../services/quiz.service";
 import { AssignmentService } from "../services/assignment.service";
 import { DictaatService } from "../services/dictaat.service";
+import { ParticipantService } from "../services/participantService";
+
 
 //shared components
 import { SpinnerComponent } from "../spinner/spinner.component";
@@ -29,7 +31,7 @@ import { ArraySortPipe } from "./order-by.pipe";
 @NgModule({
     providers: [
         DialogService, QuizService, ImageService, AchievementService, AccountService, wdApi, ConfigService,
-        RatingService, DirtyGuard, VideoService, NavMenuService, AssignmentService, DictaatService
+        RatingService, DirtyGuard, VideoService, NavMenuService, AssignmentService, DictaatService, ParticipantService
     ],
     declarations: [SpinnerComponent, WdFilterPipe, GroupByPipe, ArraySortPipe],
     exports: [SpinnerComponent, WdFilterPipe, GroupByPipe, ArraySortPipe]

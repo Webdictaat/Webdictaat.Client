@@ -1,22 +1,26 @@
-<div class="portal">
-  
-    <div *ngIf="!portal" class="spinner">
-      <wd-spinner></wd-spinner> 
-    </div>
-  
-   
-    <div class="assignments element">
-        <span _ngcontent-c6="" aria-hidden="true" class="glyphicons glyphicons-list-alt"></span>
+<div *ngIf="!portal" class="spinner">
+    <wd-spinner></wd-spinner> 
+  </div>
 
-        <span>You completed 5/12 assignments</span>
+<div class="portal" *ngIf="portal">
+  
+    <div class="element">
+        <p>You completed <span class="focus">{{portal.completedAssignments}} out of {{portal.assignmentIds.length}}</span> assignments for this course</p>
     </div>
-    <div class="progress element">
-        <span class="glyphicons glyphicons-stats"></span>
-        You complted 12% of this course
+    <div class="gap"></div>
+    <div class="element">
+        <p>You recieved<span class="focus">{{portal.recievedPoints}} points </span>in this course</p>
     </div>
-    <div class="comparison element">
+    <div class="gap"></div>
+    <div class="element">
         <span class="glyphicons glyphicons-family"></span>
-        <span>You are doing 12% better than average</span>   
+        <p>
+            You are
+            <span class="focus" *ngIf="portal.comparedToAverage > 0">{{portal.comparedToAverage}}% better</span>
+            <span class="focus" *ngIf="portal.comparedToAverage < 0">{{portal.comparedToAverage * -1}}% behind</span> 
+            compared to other participants
+        </p>   
     </div>
       
 </div>
+

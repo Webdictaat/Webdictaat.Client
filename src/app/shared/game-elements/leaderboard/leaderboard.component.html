@@ -20,13 +20,15 @@
           <th>Rank</th>
           <th>Group</th>
           <th>Size</th>
-          <th>Points</th>
+          <th class="points">Average</th>
+          <th class="points">Total</th>
         </tr>
         <tr *ngFor="let item of groups;let i = index" >
           <td>#{{i + 1}}</td>
           <td>{{item.groupName}}</td>
-          <td class="points">{{item.members.length}} members</td>     
-          <td>{{item.totalPoints}} points</td>
+          <td >{{item.members.length}} <span class="resp">members</span></td>     
+          <td class="points">{{item.points}} <span class="resp">points</span></td>
+          <td class="points">{{item.totalPoints}} <span class="resp">points</span></td>
         </tr>
       </table>
     </div>
@@ -37,13 +39,13 @@
           <th>Rank</th>
           <th>Name</th>
           <th>Group</th>
-          <th>Points</th>
+          <th class="points">Points</th>
         </tr>
         <tr *ngFor="let item of leaderboard;let i = index" [ngClass]="{ 'me' : user && item.email == (user | async)?.email }">
           <td>#{{i + 1}}</td>
           <td>{{item.name ? item.name : item.email}}</td> 
           <td>{{item.group}}</td>
-          <td class="points">{{item.points}}</td>     
+          <td class="points">{{item.points}} <span class="resp">points</span></td>     
         </tr>
       </table>
       <div class="text-center">
