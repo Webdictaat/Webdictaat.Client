@@ -16,8 +16,8 @@
         <span class="glyphicons glyphicons-family"></span>
         <p *ngIf="portal.completedAssignments > 0">
             You are
-            <span class="focus" *ngIf="portal.comparedToAverage > 0">{{portal.comparedToAverage}}% better</span>
-            <span class="focus" *ngIf="portal.comparedToAverage < 0">{{portal.comparedToAverage * -1}}% behind</span> 
+            <span class="focus" *ngIf="portal.comparedToAverage > 0">{{portal.comparedToAverage |  number : '1.2-2'}}% better</span>
+            <span class="focus" *ngIf="portal.comparedToAverage < 0">{{(portal.comparedToAverage * -1) |  number : '1.2-2'}}% behind</span> 
             compared to other participants
         </p>   
         <p *ngIf="portal.completedAssignments === 0">
