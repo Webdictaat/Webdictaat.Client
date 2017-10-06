@@ -5,8 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "concurrently \"npm run client\" \"npm run cms\"",
-    "cms": "webpack-dev-server --config webpack.cms.config.js --port 8080 ",
-    "client": "webpack-dev-server --config webpack.client.config.js --port 8081 ",
+    "cms": "webpack-dev-server --config webpack.cms.config.js --port 8082 ",
+    "client": "webpack-dev-server --config webpack.client.config.js --port 8083 ",
     "build": "concurrently \"npm run build:client\" \"npm run build:cms\"",
     "build:client": "webpack --config webpack.client.config.js -p",
     "build:cms": "webpack --config webpack.cms.config.js -p",
@@ -49,6 +49,7 @@
     "@types/jquery": "^2.0.40",
     "@types/node": "~6.0.60",
     "autoprefixer": "^6.5.3",
+    "bootstrap-material-design": "^0.5.10",
     "codelyzer": "~2.0.0",
     "concurrently": "^3.4.0",
     "copy-webpack-plugin": "^4.0.1",

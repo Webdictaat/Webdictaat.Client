@@ -2,8 +2,9 @@
     width:30%;
     padding:10px;
     position: fixed;
-    z-index: 101;
-    max-height: 70vh;
+    z-index: 1031;
+    top:0px;
+    max-height: 90vh;
     margin-top: 10vh;
     overflow-y: auto;
 }

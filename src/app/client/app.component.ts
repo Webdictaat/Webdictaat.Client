@@ -14,7 +14,9 @@ export class AppComponent implements OnInit{
 
     public showSidebar: boolean = false;
 
-    constructor(private router: Router) {
+    constructor(
+        private router: Router,
+        private configService: ConfigService) {
         //hide sidebar when navigating
         router.events.subscribe((event) => {
             this.showSidebar = false;
@@ -24,6 +26,7 @@ export class AppComponent implements OnInit{
             }
         
         });
+        configService.Config.subscribe(c => this.Title = c ? c.name : null);
     }
 
 

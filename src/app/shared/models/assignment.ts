@@ -10,6 +10,7 @@ export class Assignment{
     public submissionCount : number;
     public level: number;
     public externalId: string;
+    public state: number;
     
     constructor(json = null){
         if(json){
@@ -18,8 +19,17 @@ export class Assignment{
             this.description = json.description;
             this.points = json.points;
             this.metadata = json.metadata;
-            this.mySubmission = json.MySubmission;
+            this.mySubmission = json.mySubmission;
             this.level = json.level;
+            this.externalId = json.externalId;
+            this.submissions = json.submission;
+
+            if(json.mySubmission){
+                this.state = json.mySubmission.accepted ? 2 : 1;
+            }
+            else{
+                this.state = 0;
+            }
         }
         else{
             this.level = 1;

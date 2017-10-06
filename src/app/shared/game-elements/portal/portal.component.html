@@ -5,7 +5,9 @@
 <div class="portal" *ngIf="portal">
   
     <div class="element">
-        <p>You completed <span class="focus">{{portal.completedAssignments}} out of {{portal.assignmentIds.length}}</span> assignments for this course</p>
+        <p>You completed <span class="focus">{{portal.completedAssignments}} out of {{portal.assignmentIds.length}}</span> 
+            assignments for this course.
+        </p>
     </div>
     <div class="gap"></div>
     <div class="element">
@@ -21,7 +23,7 @@
             compared to other participants
         </p>   
         <p *ngIf="portal.completedAssignments === 0">
-            Go make <span class="focus">you're first</span> assignment!
+            Go make <span class="focus">your first</span> assignment!
         </p>
     </div>
       

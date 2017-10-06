@@ -8,30 +8,48 @@
     margin-top:5px;
 }
 
-.points{
-    width:50px; height:50px;
-    background-color: white;
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-    border-radius: 50%;
+.tooltip-container{ 
     position: absolute;
     bottom: -26px;
     right: 16px;
     z-index: 101;
+    display: flex;
 }
+
+.tooltip-item .glyphicon {
+    font-size: 1.4em;
+}
+
+.tooltip-container .tooltip-item{
+    display: block;
+    background-color: #eee;
+    width:50px; height:50px;
+    box-shadow: 0 3px 1px -2px rgba(48, 21, 21, 0.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    border-radius: 50%;
+    margin:2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-weight: bold;
+}
+
 
 .assignment.level-Gold{
     border-bottom:2px solid #FFD700;
 }
 
 .assignment.level-Gold .points{
-     background-color:#FFD700;
+    color: white;
+    background-color:#FFD700;
 }
 
 .assignment.level-Bronze{
     border-bottom:2px solid #cd7F32;
 }
 
-.assignment.level-Bronze .points{
+.assignment.level-Bronze .points,{
+    color: white;
     background-color:#cd7F32;
 }
 
@@ -40,17 +58,41 @@
 }
 
 .assignment.level-Silver .points{
+    color: white;
     background-color:#C0C0C0;
 }
 
-
-.points span{
-    color: white;
-    font-weight: bold;
-    display: block;
-    width: 100%;
-    text-align: center;
-    line-height: 50px;
-    font-size: 16px; 
+.tooltip-container .none{
+    color:black;
+    font-size: 1em;
+    background-color:#eee;
+    cursor: pointer;
 }
 
+.tooltip-container  .submitted{
+    color: #00AEED;
+    font-size: 1.2em;
+}
+
+.tooltip-container  .accepted{
+    background-color:#5cb85c;
+    color: white;
+}
+
+.tooltip-item:hover .tooltip{
+    display: block;
+}
+
+.tooltip-item .tooltip{
+    background-color:#2e2e2e;
+    width: 300%;
+    position: absolute;
+    border-radius: 4px;
+    text-align: center;
+    padding: 3px;
+    top:100%;
+    left:-100%;
+    margin-top:5px;
+    display: none;
+    color: #00AEED;
+}

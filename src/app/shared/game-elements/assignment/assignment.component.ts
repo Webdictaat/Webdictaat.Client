@@ -5,6 +5,8 @@ import { DictaatService } from "../../services/dictaat.service";
 import { ActivatedRoute } from "@angular/router/router";
 import { ConfigService } from "../../services/config.service";
 import { EventEmitter } from "events";
+import { AccountService } from '../../services/account.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'wd-assignment',
@@ -12,7 +14,9 @@ import { EventEmitter } from "events";
   styleUrls: ['./assignment.component.css']
 })
 export class AssignmentComponent implements OnInit {
-  
+  dictaatName: any;
+
+  private user: User;
   public assignment: Assignment;
 
   @Input()
@@ -20,16 +24,28 @@ export class AssignmentComponent implements OnInit {
 
 
   constructor(
+    private accountService: AccountService, 
     private dictaatService: DictaatService,
     private assignmentService: AssignmentService,
-    private config: ConfigService ) { }
+    private configService: ConfigService ) { }
 
   ngOnInit() {
-    this.config.Config.subscribe((config) => {
-      if(config)
+    this.configService.Config.subscribe((config) => {
+      this.dictaatName = config ? config.name : null;
+
+      if(this.dictaatName)
           this.assignmentService.getAssignmentDetails(config.name, this.aid).then(ad => {
-            this.assignment = ad
+            this.assignment = ad;
           });
     });
+
+    this.accountService.getUser().subscribe(user => this.user = user);
+  }
+
+  public submit() : any {
+    this.assignment.state = 1;
+    this.assignmentService.submit(this.dictaatName, this.aid, this.user.id)
+      .then(s => this.assignment.mySubmission = s)
+      .catch(s => this.assignment.state = 0);
   }
 }

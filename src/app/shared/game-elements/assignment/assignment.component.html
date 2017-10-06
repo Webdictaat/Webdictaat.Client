@@ -1,11 +1,28 @@
-<div class="assignment" *ngIf="assignment" [ngClass]="'level-' + assignment.level">
+<div class="assignment" *ngIf="assignment" [ngClass]="'level-' + assignment.level" >
   <h1>{{assignment.title}}</h1>
   <p>
     {{assignment.description}}
   </p>
-  <div class="points tooltip-container" >
-    <span *ngIf="!assignment.mySubmission">{{assignment.points}}</span>
-    <span *ngIf="assignment.mySubmission" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+  <div class="tooltip-container">
+
+
+    <span class="tooltip-item none" *ngIf="assignment.state == 0" (click)="submit()">
+        <span class="glyphicon glyphicon-share-alt"  aria-hidden="true"></span>
+        <span class="tooltip">Mark this assignment as complete. You will recieve points when a teacher accepts this submission</span>
+     </span>
+     <span class="tooltip-item submitted" *ngIf="assignment.state == 1">
+        <span class="glyphicon glyphicon-hourglass"  aria-hidden="true"></span>
+        <span class="tooltip">This assignment is marked as complete. You will recieve points when a teacher accepts this submission</span>
+     </span>
+    <span class="tooltip-item accepted" *ngIf="assignment.state == 2">
+       <span class="glyphicon glyphicon-ok"  aria-hidden="true"></span>
+       <span class="tooltip">yay! This assignment was completed on {{assignment.mySubmission.timestamp}}</span>       
+    </span>
+
+    <span class="tooltip-item points">
+      <span>{{assignment.points}}</span>
+    </span>
+
   </div>
 </div>
 

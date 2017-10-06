@@ -42,7 +42,7 @@
           </td>
           <td>{{user.group}}</td>
           <td  *ngFor="let assignment of markings.assignments | wdfilter:filterArgb">
-            <wd-marker [dictaatName]="dictaat.name" [uid]="user.id" [aid]="assignment.id" [isSubmitted]="assignment.isSubmittedBy(user.id)"></wd-marker>
+            <wd-marker [dictaatName]="dictaat.name" [uid]="user.id" [aid]="assignment.id" [submission]="assignment.getSubmission(user.id)"></wd-marker>
           </td>
         </ng-template>
       </tr>

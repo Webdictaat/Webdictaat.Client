@@ -6,7 +6,7 @@ import { AssignmentService } from "../../shared/services/assignment.service";
 @Component({
   selector: 'wd-marker',
   template: `
-    <div class="toggler" (click)="toggle()" [ngClass]="{'toggle': isSubmitted}">
+    <div class="toggler" (click)="toggle()" [ngClass]="'state-'+state">
 
     </div>
   `,
@@ -18,17 +18,16 @@ import { AssignmentService } from "../../shared/services/assignment.service";
         height:30px;
         cursor:pointer;
     }
-
-    .toggle { background-color:  #43a047}
+    
+    .state-1 { background-color:  #f0ad4e}
+    .state-2 { background-color:  #43a047}
   `]
 })
 export class MarkerComponent {
     
     constructor(private assignmentService: AssignmentService){}
 
-    ngOnChanges(): void {
-
-    }
+  
 
     @Input()
     public dictaatName: string; 
@@ -40,18 +39,32 @@ export class MarkerComponent {
     public aid: number;
 
     @Input() 
-    public isSubmitted: any;
+    public submission: any;
+
+    public state : number;
+
+    ngOnChanges(): void {
+        this.setState();
+    }
+
+    private setState(){
+        if(!this.submission)
+            return this.state = 0;
+
+        this.state = this.submission.accepted ? 2 : 1;
+    }
+
+    private nextState(){
+
+    }
 
     public toggle(): void{
-        if(!this.isSubmitted){
-            this.isSubmitted = true
-            this.assignmentService.submit(this.dictaatName, this.aid, this.uid);
+        switch(this.state){
+            case 0:   this.assignmentService.submit(this.dictaatName, this.aid, this.uid); this.state = 2; break;
+            case 1:   this.assignmentService.submit(this.dictaatName, this.aid, this.uid); this.state = 2; break;
+            case 2:   this.assignmentService.unsubmit(this.dictaatName, this.aid, this.uid); this.state = 0; break;
+            default: this.state = 0; break;
         }
-        else{
-            this.isSubmitted = false;
-            this.assignmentService.unsubmit(this.dictaatName, this.aid, this.uid);
-        }
-        
     }
 
 }

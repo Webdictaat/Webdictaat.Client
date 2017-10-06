@@ -29,20 +29,20 @@ export class DictaatMarkingsAssignment{
 
       id: number;
       title: string;
-      submittedBy: string[];
+      submissions: any[];
       metadata: string;
 
       constructor(json = null){
         if(json){
             this.id = json.id;
             this.title = json.title;
-            this.submittedBy = json.submittedBy;
+            this.submissions = json.submissions;
             this.metadata = json.metadata;
         }
       }
 
-      public isSubmittedBy(userId: string){
-        return this.submittedBy.indexOf(userId) != -1;
+      public getSubmission(userId: string): any{
+        return this.submissions.find(s => s.userId == userId);
       }
 }
 
