@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { PageService } from './page.service';
 
-declare var PR:any;
+declare var window:any;
 
 @Component({
     selector: "wd-page",
     template: `
     <div *ngIf="page">
-        <html-outlet [html]="page"></html-outlet>
+        <html-outlet [html]="page" (afterCompile)="enableExternalLibraries()"></html-outlet>
     </div>
 `,
     providers: [PageService]
@@ -28,16 +28,14 @@ export class PageComponent implements OnInit {
             this.pageService.getPage(name)
                 .then(page => {
                     this.page = page;
-                    this.enableExternalLibraries();
                 });
         });
     }
 
-    private enableExternalLibraries(): void{
-        if(PR){
-            PR.prettyPrint();
+    public enableExternalLibraries(): void{
+        if(window.Prism){
+           window.Prism.highlightAll();
         }
-        
     }
 }
 

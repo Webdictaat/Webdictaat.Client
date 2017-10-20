@@ -111,7 +111,6 @@ export class DatabComponent implements OnInit {
                 this.checkIfComplete();
             }
             else if(this.pollticker != 5){
-                console.log('checkiing for update' + this.pollticker);
                 //try agian in 2s
                 setTimeout(() => {
                     this.pollticker++;

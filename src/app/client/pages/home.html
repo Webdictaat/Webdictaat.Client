@@ -1,90 +1,19 @@
-<div class="wd-jumbotron" style="background-image: url(&quot;http://webdictaat.aii.avans.nl/images//shared//default-banner.jpg&quot;);background-size: cover;background-position: center center;">
-</div>
-
-
 <div class="wd-content">
-	<div class="wd-container">
+    <div class="wd-container">
 
-			<wd-assignment [aid]="1" class="wd-component"></wd-assignment>
+        <div class="wd-component">
+<pre class="line-numbers">
+    <code class="language-csharp">
+        public Boolean DeleteSubmission(string dictaatName, int assignmentId, string userId)<br>
+        &#123;
+            if (!AuthorizeResrouce(dictaatName))
+            return false;
 
-		
-		<div class="wd-component">
-			<wd-portal></wd-portal>
-		</div>
+            return _assignmentRepo.UndoCompleteAssignment(assignmentId, userId);
+        &#125;              
+    </code>
+</pre>
+        </div>
 
-		<div class="wd-component">
-			<wd-blanks></wd-blanks>
-		</div> 
-
-		<div class="wd-component">
-			  <wd-leaderboard></wd-leaderboard>
-		</div> 
-
-		<h2>Dit is mijn pagina</h2>
-
-
-		<div class="wd-component">
-			<div class="wd-editable cke_editable cke_editable_inline cke_contents_ltr cke_show_borders" role="textbox" spellcheck="false"
-			 style="position: relative;" tabindex="0">
-			 </div>
-		</div>
-
-	
-
-		<wd-datab [waid]="1" class="wd-component"></wd-datab>
-
-		<div class="wd-component">
-			<div class="wd-editable cke_editable cke_editable_inline cke_contents_ltr cke_show_borders" role="textbox" spellcheck="false"
-			 style="position: relative;" tabindex="0">
-				<h1>Home</h1>
-				<p>Every file starts with a lorum cookie ipsum just for you!</p>
-				<p>Brownie donut fruitcake cake pastry jelly-o pastry cupcake lollipop. Liquorice sugar plum chocolate bar bear claw sugar
-					plum fruitcake croissant cupcake. Marshmallow marshmallow chocolate bar jelly beans sweet. Icing chocolate cake cheesecake
-					tootsie roll sweet roll cheesecake. Halvah chocolate marzipan gummi bears donut. Pastry danish biscuit fruitcake liquorice
-					candy tiramisu cookie pie. Chupa chups cake bear claw liquorice. Toffee chocolate cake danish bonbon chocolate bar pie
-					pastry jelly tart. Pie dessert gummies danish powder tart donut. Chupa chups icing jujubes tootsie roll. Wafer cupcake
-					pastry cheesecake brownie. Marzipan muffin cheesecake gummi bears bear claw muffin liquorice pudding jelly-o.</p>
-			</div>
-
-			<div class="wd-component" style="position: relative; left: 0px; top: 0px;">
-				<div class="wd-editable cke_editable cke_editable_inline cke_contents_ltr cke_show_borders cke_focus" role="textbox" spellcheck="false"
-				 style="position: relative;" tabindex="0">
-					<p>Every file starts with a lorum cookie ipsum just for you!</p>
-					<p>Brownie donut fruitcake cake pastry jelly-o pastry cupcake lollipop. Liquorice sugar plum chocolate bar bear claw sugar
-						plum fruitcake croissant cupcake. Marshmallow marshmallow chocolate bar jelly beans sweet. Icing chocolate cake cheesecake
-						tootsie roll sweet roll cheesecake. Halvah chocolate marzipan gummi bears donut. Pastry danish biscuit fruitcake liquorice
-						candy tiramisu cookie pie. Chupa chups cake bear claw liquorice. Toffee chocolate cake danish bonbon chocolate bar
-						pie pastry jelly tart. Pie dessert gummies danish powder tart donut. Chupa chups icing jujubes tootsie roll. Wafer
-						cupcake pastry cheesecake brownie. Marzipan muffin cheesecake gummi bears bear claw muffin liquorice pudding jelly-o.</p>
-					<p>Every file starts with a lorum cookie ipsum just for you!</p>
-					<p>Brownie donut fruitcake cake pastry jelly-o pastry cupcake lollipop. Liquorice sugar plum chocolate bar bear claw sugar
-						plum fruitcake croissant cupcake. Marshmallow marshmallow chocolate bar jelly beans sweet. Icing chocolate cake cheesecake
-						tootsie roll sweet roll cheesecake. Halvah chocolate marzipan gummi bears donut. Pastry danish biscuit fruitcake liquorice
-						candy tiramisu cookie pie. Chupa chups cake bear claw liquorice. Toffee chocolate cake danish bonbon chocolate bar
-						pie pastry jelly tart. Pie dessert gummies danish powder tart donut. Chupa chups icing jujubes tootsie roll. Wafer
-						cupcake pastry cheesecake brownie. Marzipan muffin cheesecake gummi bears bear claw muffin liquorice pudding jelly-o.</p>
-					<p>Every file starts with a lorum cookie ipsum just for you!</p>
-					<p>Brownie donut fruitcake cake pastry jelly-o pastry cupcake lollipop. Liquorice sugar plum chocolate bar bear claw sugar
-						plum fruitcake croissant cupcake. Marshmallow marshmallow chocolate bar jelly beans sweet. Icing chocolate cake cheesecake
-						tootsie roll sweet roll cheesecake. Halvah chocolate marzipan gummi bears donut. Pastry danish biscuit fruitcake liquorice
-						candy tiramisu cookie pie. Chupa chups cake bear claw liquorice. Toffee chocolate cake danish bonbon chocolate bar
-						pie pastry jelly tart. Pie dessert gummies danish powder tart donut. Chupa chups icing jujubes tootsie roll. Wafer
-						cupcake pastry cheesecake brownie. Marzipan muffin cheesecake gummi bears bear claw muffin liquorice pudding jelly-o.</p>
-					<p>Every file starts with a lorum cookie ipsum just for you!</p>
-					<p>Brownie donut fruitcake cake pastry jelly-o pastry cupcake lollipop. Liquorice sugar plum chocolate bar bear claw sugar
-						plum fruitcake croissant cupcake. Marshmallow marshmallow chocolate bar jelly beans sweet. Icing chocolate cake cheesecake
-						tootsie roll sweet roll cheesecake. Halvah chocolate marzipan gummi bears donut. Pastry danish biscuit fruitcake liquorice
-						candy tiramisu cookie pie. Chupa chups cake bear claw liquorice. Toffee chocolate cake danish bonbon chocolate bar
-						pie pastry jelly tart. Pie dessert gummies danish powder tart donut. Chupa chups icing jujubes tootsie roll. Wafer
-						cupcake pastry cheesecake brownie. Marzipan muffin cheesecake gummi bears bear claw muffin liquorice pudding jelly-o.</p>
-					<p>Every file starts with a lorum cookie ipsum just for you!</p>
-					<p>Brownie donut fruitcake cake pastry jelly-o pastry cupcake lollipop. Liquorice sugar plum chocolate bar bear claw sugar
-						plum fruitcake croissant cupcake. Marshmallow marshmallow chocolate bar jelly beans sweet. Icing chocolate cake cheesecake
-						tootsie roll sweet roll cheesecake. Halvah chocolate marzipan gummi bears donut. Pastry danish biscuit fruitcake liquorice
-						candy tiramisu cookie pie. Chupa chups cake bear claw liquorice. Toffee chocolate cake danish bonbon chocolate bar
-						pie pastry jelly tart. Pie dessert gummies danish powder tart donut. Chupa chups icing jujubes tootsie roll. Wafer
-						cupcake pastry cheesecake brownie. Marzipan muffin cheesecake gummi bears bear claw muffin liquorice pudding jelly-o.</p>
-				</div>
-			</div>
-		</div>
-	</div>
+    </div>
+</div>

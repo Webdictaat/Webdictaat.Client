@@ -1,24 +1,22 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
-import { ToolParams } from '../../models/tool-params';
-import { Quiz, Question } from "../../models/quiz";
-import { QuizService } from "../../services/quiz.service";
+import { RatingService } from '../../../shared/services/rating.service';
 
-declare var $: any;
+declare var $ : any;
 
 @Component({
-    selector: "wd-quiz-tool",
-    template: `<div id='wd-quiz-tool' class='wd-component'>
-        <i class="fa fa-question-circle-o" aria-hidden="true"></i> Quiz
+    selector: "wd-rating-tool",
+    template: `<div id='wd-rating-tool' class='wd-component'>
+        <i class="fa fa-smile-o" aria-hidden="true"></i> Rating
     </div>`
 })
-export class QuizToolComponent {
+export class RatingToolComponent {
 
     @Input()
     public dictaatName: string;
 
-    private template: String = "<wd-quiz>";
+    private template: String = "<wd-rating>";
 
-    constructor(private quizService: QuizService) { }
+    constructor(private ratingService: RatingService) { }
 
     /**
      * Omslachtige maar nodige manier om terug in de Angular2 context te komen.
@@ -26,7 +24,7 @@ export class QuizToolComponent {
      */
     public ngOnInit(): void {
         var component = this;
-        $('#wd-quiz-tool').draggable({
+        $('#wd-rating-tool').draggable({
             helper: "clone",
             connectToSortable: ".wd-container",
             start: function (e, ui) {
@@ -41,16 +39,18 @@ export class QuizToolComponent {
         return new Promise((resolve, reject) => {
             var params = [];
             params['dictaatName'] = this.dictaatName;
-            this.quizService.ShowModal(params)
-                .then((quiz: Quiz) => {                  
-                    ui.item.replaceWith("<wd-quiz class='wd-component wd-game-component' [qid]='" + quiz.id + "' />");
+            this.ratingService.ShowModal(params)
+                .then((rating) => {
+                    var element = "<wd-rating class='wd-component wd-game-component' [rid]='" + rating.id + "' />";
+                    ui.item.replaceWith(element);
                     resolve(true);
+
                 })
                 .catch(() => {
                     ui.item.remove();
                 });
         });
-       
+
     }
 }
 

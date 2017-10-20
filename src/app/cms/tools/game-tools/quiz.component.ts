@@ -1,23 +1,23 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
-import { ToolParams } from '../../models/tool-params';
-import { RatingService } from '../../services/rating.service';
+import { QuizService } from '../../../shared/services/quiz.service';
+import { Quiz } from '../../../shared/models/quiz';
 
-declare var $ : any;
+declare var $: any;
 
 @Component({
-    selector: "wd-rating-tool",
-    template: `<div id='wd-rating-tool' class='wd-component'>
-        <i class="fa fa-smile-o" aria-hidden="true"></i> Rating
+    selector: "wd-quiz-tool",
+    template: `<div id='wd-quiz-tool' class='wd-component'>
+        <i class="fa fa-question-circle-o" aria-hidden="true"></i> Quiz
     </div>`
 })
-export class RatingToolComponent {
+export class QuizToolComponent {
 
     @Input()
     public dictaatName: string;
 
-    private template: String = "<wd-rating>";
+    private template: String = "<wd-quiz>";
 
-    constructor(private ratingService: RatingService) { }
+    constructor(private quizService: QuizService) { }
 
     /**
      * Omslachtige maar nodige manier om terug in de Angular2 context te komen.
@@ -25,7 +25,7 @@ export class RatingToolComponent {
      */
     public ngOnInit(): void {
         var component = this;
-        $('#wd-rating-tool').draggable({
+        $('#wd-quiz-tool').draggable({
             helper: "clone",
             connectToSortable: ".wd-container",
             start: function (e, ui) {
@@ -40,18 +40,16 @@ export class RatingToolComponent {
         return new Promise((resolve, reject) => {
             var params = [];
             params['dictaatName'] = this.dictaatName;
-            this.ratingService.ShowModal(params)
-                .then((rating) => {
-                    var element = "<wd-rating class='wd-component wd-game-component' [rid]='" + rating.id + "' />";
-                    ui.item.replaceWith(element);
+            this.quizService.ShowModal(params)
+                .then((quiz: Quiz) => {                  
+                    ui.item.replaceWith("<wd-quiz class='wd-component wd-game-component' [qid]='" + quiz.id + "' />");
                     resolve(true);
-
                 })
                 .catch(() => {
                     ui.item.remove();
                 });
         });
-
+       
     }
 }
 

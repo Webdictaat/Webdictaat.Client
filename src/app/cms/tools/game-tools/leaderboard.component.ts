@@ -1,10 +1,6 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
-import { ToolParams } from '../../models/tool-params';
-import { AssignmentService } from "../../services/assignment.service";
-import { Assignment } from "../../models/assignment";
 
 declare var $ : any;
-
 
 @Component({
     selector: "wd-leaderboard-tool",

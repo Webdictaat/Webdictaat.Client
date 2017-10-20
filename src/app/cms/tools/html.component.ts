@@ -1,8 +1,7 @@
 ﻿import { Component, Input, Output, OnInit, EventEmitter, ChangeDetectorRef, NgZone } from '@angular/core';
-import { DialogService } from '../services/dialog.service';
-import { ToolParams } from '../models/tool-params';
-
-declare var CKEDITOR : any;
+import { DialogService } from '../../shared/services/dialog.service';
+declare var CKEDITOR: any;
+declare var window:any;
 
 @Component({
     selector: "wd-html",
@@ -151,7 +150,6 @@ export class HtmlComponent implements OnInit {
             .each((k, editableElement) => {
                 CKEDITOR.inline(editableElement)
             });
-
     }
 
     private enableJumbotrons(element): void{

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, Params , NavigationStart} from '@angular/router';
 import { PagesService } from './pages.service';
-import { HtmlComponent } from "../../shared/tools/html.component";
+import { HtmlComponent } from "../tools/html.component";
 import { Page } from "../../shared/models/page";
 import { ConfigService } from "../../shared/services/config.service";
 
@@ -30,7 +30,9 @@ export class EditPageComponent   { //implements DirtyComp
 
     //codemirror
     public codeconfig : any = { 
-        lineNumbers: true
+        lineNumbers: true,
+        mode: "HTML",
+        
     };
     
 

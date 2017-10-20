@@ -11,7 +11,6 @@ import { routing, CanDeactivateEditPage } from './app.routing';
 
 //modules
 import { PagesModule } from "./pages/pages.module";
-import { ToolsModule } from '../shared/tools/tools.module';
 import { GameElementsModule } from '../shared/game-elements/game-elements.module';
 import { DragulaModule , DragulaService } from 'ng2-dragula/ng2-dragula';
 import { DictaatModule } from "./dictaat/dictaat.module";
@@ -47,7 +46,7 @@ import { DatabModule } from "../extern/databases/datab.module";
 
 @NgModule({
     imports: [
-        ToolsModule, WdModule, GameElementsModule, DragulaModule, ImagesModule, 
+        WdModule, GameElementsModule, DragulaModule, ImagesModule, 
         BrowserModule, HttpModule, routing, PagesModule, FormsModule, DictaatModule, DatabModule
     ],
     declarations: [       

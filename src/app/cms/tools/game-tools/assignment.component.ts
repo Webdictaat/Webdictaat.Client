@@ -1,7 +1,6 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
-import { ToolParams } from '../../models/tool-params';
-import { AssignmentService } from "../../services/assignment.service";
-import { Assignment } from "../../models/assignment";
+import { AssignmentService } from '../../../shared/services/assignment.service';
+import { Assignment } from '../../../shared/models/assignment';
 
 declare var $ : any;
 

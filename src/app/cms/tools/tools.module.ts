@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 //custom modules
-import { HtmlOutlet } from '../core/html-outlet.directive';
-
+import { HtmlOutlet } from '../../shared/core/html-outlet.directive';
 
 //components
 import { HtmlComponent } from './html.component';
@@ -20,14 +19,17 @@ import { VideoComponent } from "./default-tools/video.component";
 import { QuizToolComponent } from "./game-tools/quiz.component";
 import { AssignmentToolComponent } from "./game-tools/assignment.component";
 import { LeaderboardToolComponent } from "./game-tools/leaderboard.component";
+import { SnippetComponent } from './default-tools/snippet.component';
 
 @NgModule({
     imports: [BrowserModule, FormsModule],
     declarations: [
+        SnippetComponent,
         HtmlOutlet, ColumnComponent, TextComponent, HeaderComponent, HtmlComponent, CardComponent, VideoComponent,
         QuizToolComponent, TrashComponent, ImgComponent, RatingToolComponent, AssignmentToolComponent, LeaderboardToolComponent
     ],
     exports: [ColumnComponent, TextComponent, HeaderComponent, HtmlComponent, CardComponent, VideoComponent,
+        SnippetComponent,
         QuizToolComponent, HtmlOutlet, TrashComponent, ImgComponent, RatingToolComponent, AssignmentToolComponent, LeaderboardToolComponent
     ]
 })

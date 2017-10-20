@@ -9,8 +9,7 @@ import { AddPageComponent } from './add-page.component';
 import { PagesService } from "./pages.service";
 import { DragulaModule , DragulaService } from 'ng2-dragula/ng2-dragula';
 import { EditPageComponent } from "./edit-page.component";
-import { ToolsModule } from "../../shared/tools/tools.module";
-import { HtmlComponent } from "../../shared/tools/html.component";
+import { ToolsModule } from "../tools/tools.module";
 import { CodemirrorModule } from 'ng2-codemirror';
 
 @NgModule({

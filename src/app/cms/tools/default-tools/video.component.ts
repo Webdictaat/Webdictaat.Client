@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ImageService } from '../../services/images.service';
-import { VideoService } from "../../services/video.service";
+import { VideoService } from '../../../shared/services/video.service';
 
 declare var $: any;
 
