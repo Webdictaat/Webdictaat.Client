@@ -1,0 +1,14 @@
+<h4>{{question.text}}</h4>
+
+<div *ngFor='let answer of question.answers'>
+    <button class="btn btn-raised btn-default answer" 
+            [disabled]=""
+            (click)="selectAnswer(answer)"  
+            [ngClass]="{'btn-info' : isSelected(answer), 'checking': isChecking}">
+            {{answer.text}}
+    </button>
+    <label *ngIf="isChecking">
+        <span *ngIf="answer.isCorrect" class="badge success">Correct</span>
+        <span *ngIf="!answer.isCorrect" class="badge danger">Incorrect</span>
+    </label>
+</div>

@@ -1,8 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Quiz, Answer, Question } from "../../models/quiz";
 import { ActivatedRoute, Params } from "@angular/router";
 import { AccountService } from "../../services/account.service";
 import { QuizService } from "../../services/quiz.service";
+import { ConfigService } from '../../services/config.service';
+import { Quiz } from '../../models/quiz/quiz';
+import { Question } from '../../models/quiz/question';
+import { Answer } from '../../models/quiz/answer';
 
 
 
@@ -20,16 +23,15 @@ export class QuizComponent implements OnInit {
   public quiz : Quiz; 
   public dictaatName: string;
   public isAuth: boolean;
-  public questionIndex : number;
   public correctAnswers: number;
   public givenAnswers : number[];
 
   constructor(
+    private configService: ConfigService,
     private accountService: AccountService,
     private quizService: QuizService,
     private route: ActivatedRoute
   ) {}
-
 
   ngOnInit() {
 
@@ -38,68 +40,91 @@ export class QuizComponent implements OnInit {
           this.isAuth = user != null
       });
 
-    //Krijg initiele waarde van observable niet :(
-    this.accountService.update();
+    this.configService.DictaatName.subscribe((name) => {
+          this.dictaatName = name;
+          this.isLoading = true;
 
-    this.route.params.forEach((params: Params) => {
-        this.dictaatName = params['dictaatName'];
-        this.isLoading = true;
-        this.quizService.getQuiz(this.dictaatName, this.qid)
-          .then((q: Quiz) => { 
-             this.quiz = q;
-             if(this.quiz.myAttempts){
-                this.quiz.myAttempts.length == 0 ? this.quiz.status = "idle" : this.quiz.status = "finished";
-             }           
-             else{
-               this.quiz.status = 'idle';
-             }
-             this.isLoading = false;
-          })
-          .catch((error) => {
-            this.isLoading = false;
-          });
+          this.quiz = new Quiz();
+          this.quiz.title = 'Demo Quiz';
+          this.quiz.description = 'Een quiz als demo!';
+          
+          //mc
+          var mc = new Question();
+          mc.type = 'mc';
+          mc.text = "Welke letter komt het eerst?";
+          mc.answers.push(new Answer({ id: 0, text: "A", isCorrect: true}));
+          mc.answers.push(new Answer({ id: 1, text: "B"}));
+          mc.answers.push(new Answer({ id: 2, text: "C"}));
+          mc.explanation = 'Omat het alfabet zo werkt';
+          mc.isCorrect = true;
+          this.quiz.questions.push(mc);
+
+          //blanks
+          var blanks = new Question();
+          blanks.type = 'blanks';
+          blanks.text = "de [[kat]] krabt de [[krullen]] van de [[trap]]";
+          blanks.explanation = 'Het alfabet begint met ABCDEFG';
+          blanks.answers.push(new Answer({ id: 1, text: "Hond"}));
+          blanks.answers.push(new Answer({ id: 2, text: "Treden"}));
+          blanks.isCorrect = false;
+          this.quiz.questions.push(blanks);
+
+          //group
+          var group = new Question();
+          group.type = 'group';
+          group.text = "Selecteer alle levende dingen";
+          group.explanation = 'Een virus leeft niet';
+          group.answers.push(new Answer({ id: 1, text: "Hond", isCorrect: true}));
+          group.answers.push(new Answer({ id: 2, text: "Kat", isCorrect: true}));
+          group.answers.push(new Answer({ id: 2, text: "Steen"}));
+          group.answers.push(new Answer({ id: 2, text: "Boom", isCorrect: true}));
+          group.answers.push(new Answer({ id: 2, text: "Cel"}));
+          group.answers.push(new Answer({ id: 2, text: "Virus"}));
+          group.isCorrect = true;
+          group.answers.push(new Answer({ id: 2, text: "AI", isCorrect: true}));
+          this.quiz.questions.push(group);
+
+          this.isLoading = false;
+          this.quiz.status = 'finished';
+
+          //this.quiz.start();
+
+          // this.quizService.getQuiz(this.dictaatName, this.qid)
+          // .then((q: Quiz) => { 
+          //    this.quiz = q;
+          //    this.isLoading = false;
+          // })
+          // .catch((error) => {
+          //   this.isLoading = false;
+          // });
 
     });
   }
 
-  public start() {
-      this.questionIndex = 0;
-      this.quiz.status = "started";
-      this.correctAnswers = 0;
-      this.givenAnswers = [];
-      this.quiz.questions.forEach(q => q.selectedAnswer = null);
+  public CorrectAnswerCount(){
+    var counter = 0;
+    this.quiz.questions.forEach(q => q.isCorrect ? counter++ : '');
+    return counter;
   }
 
-  public next(answer: Answer){
-    this.givenAnswers.push(answer.id);
-    this.questionIndex++
+  public start() {  
+      this.quiz.start();
   }
 
-  public previous(){
-    this.questionIndex--;
-  }
-
-  public selectQuestion(index){
-    this.questionIndex = index;
-  }
-
-  public review(){
-    this.questionIndex = 0;
-  }
-
-  public canSubmit(){
-    var result = true;
-    this.quiz.questions.forEach((q) => { if(!q.selectedAnswer) { result = false } });
-    return result;
+  public continue(){
+    this.quiz.nextQuestion();
+    if(this.quiz.status == 'finished'){
+      //this.submit();
+    }
   }
 
   public submit(){
-    this.quiz.status = 'pending';
+    this.isLoading = true;
     this.quizService.submitAnswers(this.dictaatName ,this.quiz.id, this.givenAnswers)
       .then((attempt) => {
           this.quiz.myAttempts.unshift(attempt);
-          this.quiz.status = 'finished';
-      });
+          this.isLoading = false;
+      }); 
   }
 
 

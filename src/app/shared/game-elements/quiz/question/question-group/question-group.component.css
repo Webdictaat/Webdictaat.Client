@@ -1,0 +1,19 @@
+.badge{
+    border-radius: 3px;
+    margin-left:3px;
+}
+
+.badge.danger{
+    background-color:#F44336;
+}
+
+.badge.success{
+    background-color: #66BB6A
+    ;
+}
+
+button.checking{
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+

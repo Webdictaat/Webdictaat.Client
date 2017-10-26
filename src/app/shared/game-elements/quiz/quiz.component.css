@@ -17,15 +17,22 @@ h1 span{
 }
 
 .quiz{
-    overflow: hidden;
-    display: flex;
-    
+    background-color:white;
 }
 
-.quiz .header{
-    padding:10px;
+.quiz .idle{
+    padding:20px;
 }
 
+.quiz .finished{
+    padding:20px;
+}
+
+.header{
+    padding: 20px;
+    margin:10px 0px;
+    border-bottom: 1px solid #ddd;
+}
 
 .score{
     margin:5px;
@@ -45,8 +52,36 @@ h1 span{
     border-left-color: #00AEED;
 }
 
+.started .footer{
+    height: 100px;
+    width :100%;
+    background-color:#eee;
+}
 
-.body{
-    padding:20px;
+/** progress bar **/
+.progress{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top:20px;
+    overflow: visible;
+}
+
+.progress .point{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border:2px solid #c8c8c8;
     background-color:white;
 }
+
+.progress .point.correct{
+    background-color: #66BB6A;
+}
+
+.progress .point.wrong{
+    background-color: #F44336;
+}
+
+
+

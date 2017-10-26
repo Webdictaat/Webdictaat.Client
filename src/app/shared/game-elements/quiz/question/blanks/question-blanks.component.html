@@ -1,0 +1,22 @@
+<h4 class="text" *ngIf="textParts">
+  <span *ngFor="let part of textParts">
+    <span *ngIf="part.type == 'text'">
+      {{part.text}}
+    </span>
+    <span *ngIf="part.type == 'blank'">
+      <span *ngIf="part.value">
+          <button class="btn btn-raised btn-sm btn-default answer" (click)="remove(part)">
+              {{part.value.text}}
+          </button>
+      </span>
+      <span *ngIf="!part.value">...</span>
+    </span>
+  </span>
+
+</h4>
+
+<h3>Options</h3>
+<button class="btn btn-raised btn-default answer"  *ngFor='let answer of answers'
+        (click)="select(answer)">
+    {{answer.text}}
+</button>

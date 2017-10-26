@@ -1,0 +1,62 @@
+<div *ngIf="question" >
+
+
+    <!-- content -->
+    <div [ngSwitch]="question.type" class="body">
+        <wd-question-mc *ngSwitchCase="'mc'" [question]="question" [isChecking]="isChecking"></wd-question-mc>
+        <wd-question-blanks *ngSwitchCase="'blanks'" [question]="question" [isChecking]="isChecking"></wd-question-blanks>
+        <wd-question-group *ngSwitchCase="'group'" [question]="question" [isChecking]="isChecking"></wd-question-group>
+    </div>
+
+    <!-- <div *ngFor='let answer of question.answers'>
+        <button class="btn btn-raised btn-default answer" 
+                [disabled]="question.state == 'check'"
+                (click)="selectAnswer(answer)"  
+                [ngClass]="{'btn-info' :  question.selectedAnswer == answer}">
+            {{answer.text}}
+        </button>
+        <label *ngIf="question.state == 'check' && question.selectedAnswer == answer">
+            <span *ngIf="answer.isCorrect" class="alert alert-success">Correct :)</span>
+            <span *ngIf="!answer.isCorrect" class="alert alert-danger">Wrong :(</span>
+
+        </label>
+    </div> -->
+
+    <!-- Controls -->
+    <div class="footer"  >
+
+        <div class='state-icon' >
+            <div class="state-icon-slider" [ngClass]="state">
+                <span class="glyphicon correct glyphicon-ok" aria-hidden="true"></span> 
+                <span class="icon">?</span>
+                <span class="glyphicon wrong glyphicon-remove" aria-hidden="true"></span> 
+            </div>
+        </div>
+
+        <div class="explanation" [hidden]="!isChecking">
+            <h2 [ngClass]="state">{{state}}.</h2>
+            <p><b>explanation:</b> {{question.explanation}}</p>
+        </div>
+
+        <div class="actions">
+
+            <button 
+                class="btn btn-raised btn-default next" 
+                *ngIf="!isChecking" 
+                [disabled]="question.selectedAnswers.length == 0" 
+                (click)="check()" >
+                Check
+            </button>
+            
+            <button 
+                class="btn btn-raised btn-default next" 
+                *ngIf="isChecking"
+                (click)="continue()" >
+                Continue
+            </button>
+        </div>
+       
+        
+    </div>
+
+</div>

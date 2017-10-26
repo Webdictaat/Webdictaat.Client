@@ -1,0 +1,88 @@
+.footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color:#ddd;
+    width: 100%;
+    padding:20px;
+    transition: all 0.5s;
+}
+
+.body{
+    padding: 20px;
+}
+
+.state-icon{
+    border-radius: 50%;
+    font-size: 120%;
+    height: 100%;
+    width: 50px;
+    background-color:#eee;
+    color:#999; 
+    position: relative;
+    overflow: hidden;
+}
+
+.state-icon-slider{
+    box-sizing: border-box;
+    width:300%;
+    display: flex;
+    transform: translateX(-50px);
+    -webkit-transition: transform 0.5s ease-in;
+    -moz-transition: transform 0.5s ease-in;
+    transition: transform 0.5s ease-in;
+}
+
+.state-icon-slider.wrong{
+    transform: translateX(-100px)
+}
+
+.state-icon-slider.correct{
+    transform: translateX(0px)
+}
+
+.state-icon-slider span{
+    line-height: 50px;
+    width: 50px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+}
+
+
+.state-icon-slider span.wrong{
+    background-color: #F44336;    
+    color:white;
+}
+
+.state-icon-slider span.correct{
+    background-color: #66BB6A;
+    color:white;
+}
+
+.explanation{
+    text-align: center;
+}
+
+.explanation h2{
+    margin:0px;
+}
+
+.explanation h2.wrong{
+    color: #B71C1C;
+}
+
+.explanation h2.correct{
+    color:#1B5E20
+    
+}
+
+@media (max-width:767px) {
+    .footer .explanation{
+        flex: 1 0 100%;
+        order: 1;
+        min-height: 50px;
+        margin-bottom: 5px;
+    }
+}

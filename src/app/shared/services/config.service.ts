@@ -12,6 +12,7 @@ export class DictaatConfig{
 export class ConfigService {
 
     public Config : BehaviorSubject<DictaatConfig> = new BehaviorSubject<DictaatConfig>(null);
+    public DictaatName : BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
     constructor(private http: Http){    
       
@@ -22,6 +23,7 @@ export class ConfigService {
         .toPromise()
         .then((response) => {
             this.Config.next(response.json() as DictaatConfig);
+            this.DictaatName.next(this.Config.value.name);
         });
     }
 

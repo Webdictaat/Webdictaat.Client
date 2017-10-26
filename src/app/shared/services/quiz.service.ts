@@ -7,7 +7,9 @@ import { wdApi } from '../core/wd.service';
 import { BaseModalService } from '../core/basemodal.service';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import { Quiz, Attempt, Question, QuizSummary } from "../models/quiz";
+import { Quiz, QuizSummary } from "../models/quiz/quiz";
+import { Question } from '../models/quiz/question';
+import { Attempt } from '../models/quiz/attempt';
 
 
 @Injectable()
