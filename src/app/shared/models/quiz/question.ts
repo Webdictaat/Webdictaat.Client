@@ -1,5 +1,9 @@
 import { Answer } from "./answer";  
 
+export class TextPart{
+    public text: string;
+    public type: string;
+}
 
 export class Question{
     

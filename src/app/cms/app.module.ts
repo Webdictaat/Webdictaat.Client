@@ -30,6 +30,8 @@ import {AchievementMarkerComponent} from "./achievement-marking/achievement-mark
 import {AchievementMarkingComponent} from "./achievement-marking/achievement-marking.component";
 
 //modals and their dependencies
+
+
 import { AddQuizComponent } from "./quiz/add-quiz/add-quiz.component";
 import { AddPageComponent } from "./pages/add-page.component";
 import { SpinnerComponent } from "../shared/spinner/spinner.component";
@@ -43,6 +45,7 @@ import { DictaatSettingsComponent } from "./dictaat/settings-dictaat.component";
 import { MarkingComponent } from './marking/marking.component';
 import { MarkerComponent } from "./marking/marker.componet";
 import { DatabModule } from "../extern/databases/datab.module";
+import { AnswermanagerComponent } from './quiz/add-quiz/answermanager/answermanager.component';
 
 @NgModule({
     imports: [
@@ -50,9 +53,10 @@ import { DatabModule } from "../extern/databases/datab.module";
         BrowserModule, HttpModule, routing, PagesModule, FormsModule, DictaatModule, DatabModule
     ],
     declarations: [       
-        AddRatingComponent, AddVideoComponent, AddQuizComponent, EditQuizComponent, DictaatSettingsComponent, 
-        DemoComponent, DialogComponent, AvatarComponent, ProfileComponent, MarkingComponent, MarkerComponent, AchievementMarkingComponent, AchievementMarkerComponent,
-        AppComponent, QuizListComponent, AssignmentListComponent, AddAssignmentComponent, EditAssignmentComponent, MarkAssignmentComponent
+        AddRatingComponent, AddVideoComponent, AddQuizComponent, EditQuizComponent, DictaatSettingsComponent,
+        DemoComponent, DialogComponent, AvatarComponent, ProfileComponent, MarkingComponent, MarkerComponent, 
+        AchievementMarkingComponent, AchievementMarkerComponent, AppComponent, QuizListComponent, AssignmentListComponent, 
+        AddAssignmentComponent, EditAssignmentComponent, MarkAssignmentComponent, AnswermanagerComponent
     ],
     providers: [
         CanDeactivateEditPage,

@@ -13,7 +13,7 @@ export class QuestionGroupComponent extends QuestionBase implements OnInit {
   }
 
   public toggleAnswer(answer: Answer){
-    if(!this.isChecking){
+    if(!this.checker.isChecking){
 
       if(this.isSelected(answer)){
           //remove answer

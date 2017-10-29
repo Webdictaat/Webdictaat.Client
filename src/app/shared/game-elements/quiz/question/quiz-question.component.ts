@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Question } from '../../../models/quiz/question';
 import { Answer } from '../../../models/quiz/answer';
+import { Checker } from './question.base';
 
 
 @Component({
@@ -16,22 +17,22 @@ export class QuestionComponent implements OnInit {
   @Output()
   public onAnswer = new EventEmitter();
 
-  public isChecking : boolean = false;
+  public checker : Checker;
   public state :string = 'idle';
 
   constructor() { }
 
   ngOnInit() {  
-
+      this.checker = new Checker();
   }
 
   public check(){
-    this.isChecking = true;
+    this.checker.isChecking = true;
     this.state = this.question.isCorrect ? 'correct' : 'wrong';
   }
 
   public continue(){
-    this.isChecking = false;
+    this.checker.reset();
     this.state = 'idle';
     this.onAnswer.emit();
   }

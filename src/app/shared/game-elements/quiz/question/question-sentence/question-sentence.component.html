@@ -1,0 +1,16 @@
+<h3>Form a sentence with the following words:</h3>
+
+<div class="words">
+    <button class="btn btn-raised btn-default answer"  *ngFor='let part of Sentence'
+    (click)="select(part)">
+    {{part.text}}
+    </button>    
+</div>
+
+<h3>Choose from the following words</h3>
+<div class="words">
+    <button class="btn btn-raised btn-default answer"  *ngFor='let part of Options'
+        (click)="select(part)">
+    {{part.text}}
+    </button>
+</div>

@@ -56,7 +56,6 @@ export class QuizComponent implements OnInit {
           mc.answers.push(new Answer({ id: 1, text: "B"}));
           mc.answers.push(new Answer({ id: 2, text: "C"}));
           mc.explanation = 'Omat het alfabet zo werkt';
-          mc.isCorrect = true;
           this.quiz.questions.push(mc);
 
           //blanks
@@ -66,7 +65,6 @@ export class QuizComponent implements OnInit {
           blanks.explanation = 'Het alfabet begint met ABCDEFG';
           blanks.answers.push(new Answer({ id: 1, text: "Hond"}));
           blanks.answers.push(new Answer({ id: 2, text: "Treden"}));
-          blanks.isCorrect = false;
           this.quiz.questions.push(blanks);
 
           //group
@@ -80,14 +78,20 @@ export class QuizComponent implements OnInit {
           group.answers.push(new Answer({ id: 2, text: "Boom", isCorrect: true}));
           group.answers.push(new Answer({ id: 2, text: "Cel"}));
           group.answers.push(new Answer({ id: 2, text: "Virus"}));
-          group.isCorrect = true;
           group.answers.push(new Answer({ id: 2, text: "AI", isCorrect: true}));
           this.quiz.questions.push(group);
 
-          this.isLoading = false;
-          this.quiz.status = 'finished';
+          //group
+          var sentence = new Question();
+          sentence.type = 'sentence';
+          sentence.text = "[[De kat]] [[krabt]] [[de krullen]] [[van]] [[de trap]]";
+          sentence.explanation = 'Een virus leeft niet';
+          this.quiz.questions.push(sentence);
 
-          //this.quiz.start();
+          this.isLoading = false;
+          //this.quiz.status = 'finished';
+
+          this.quiz.start();
 
           // this.quizService.getQuiz(this.dictaatName, this.qid)
           // .then((q: Quiz) => { 

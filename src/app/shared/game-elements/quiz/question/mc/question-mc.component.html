@@ -4,10 +4,10 @@
     <button class="btn btn-raised btn-default answer" 
             [disabled]=""
             (click)="selectAnswer(answer)"  
-            [ngClass]="{'btn-info' : isSelected(answer), 'checking': isChecking}">
+            [ngClass]="{'btn-info' : isSelected(answer), 'checking': checker.isChecking}">
             {{answer.text}}
     </button>
-    <label *ngIf="isChecking">
+    <label *ngIf="checker.isChecking">
         <span *ngIf="answer.isCorrect" class="badge success">Correct</span>
         <span *ngIf="!answer.isCorrect" class="badge danger">Incorrect</span>
     </label>

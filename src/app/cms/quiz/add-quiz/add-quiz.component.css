@@ -1,11 +1,12 @@
-.question-progress{
+.questions{
     list-style-type: none;
     padding:0px;
 }
 
-.question-progress li{
-    display: inline-block;
+.questions li{
+    border:1px solid darkgray;
 }
+
 
 fieldset{
     padding:10px;

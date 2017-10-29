@@ -3,6 +3,6 @@
 <button class="btn btn-raised btn-default answer" *ngFor='let answer of question.answers'
         [disabled]=""
         (click)="toggleAnswer(answer)"  
-        [ngClass]="{'btn-info' : isSelected(answer), 'checking': isChecking}">
+        [ngClass]="{'btn-info' : isSelected(answer), 'checking': checker.isChecking}">
         {{answer.text}}
 </button>

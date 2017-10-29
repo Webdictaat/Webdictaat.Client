@@ -18,7 +18,7 @@ export class QuestionMcComponent extends QuestionBase implements OnInit {
   }
 
   public selectAnswer(answer: Answer){
-    if(!this.isChecking){
+    if(!this.checker.isChecking){
       this.question.selectedAnswers = [];
       this.question.selectedAnswers.push(answer);
       this.checkIfCorrect();

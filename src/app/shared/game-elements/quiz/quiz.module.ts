@@ -8,14 +8,14 @@ import { QuestionComponent } from './question/quiz-question.component';
 import { QuestionMcComponent } from './question/mc/question-mc.component';
 import { QuestionBlanksComponent } from './question/blanks/question-blanks.component';
 import { CommonModule } from '@angular/common';
-import { GroupComponent } from './question/group/group.component';
 import { QuestionGroupComponent } from './question/question-group/question-group.component';
+import { QuestionSentenceComponent } from './question/question-sentence/question-sentence.component';
 
 
 @NgModule({
     providers: [],
     imports: [BrowserModule, HttpModule, WdModule, FormsModule, CommonModule],
-    declarations: [QuizComponent, QuestionComponent, QuestionMcComponent, QuestionBlanksComponent, GroupComponent, QuestionGroupComponent],
+    declarations: [QuizComponent, QuestionComponent, QuestionMcComponent, QuestionBlanksComponent, QuestionGroupComponent, QuestionSentenceComponent],
     exports: [QuizComponent, QuestionComponent, QuestionMcComponent, QuestionBlanksComponent]
 })
 export class QuizModule {}

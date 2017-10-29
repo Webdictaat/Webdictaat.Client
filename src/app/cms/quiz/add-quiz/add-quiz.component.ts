@@ -1,11 +1,13 @@
 ﻿import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Quiz, QuizSummary, Question, Answer } from "../../../shared/models/quiz";
 import { QuizService } from "../../../shared/services/quiz.service";
 import { DictaatService } from "../../../shared/services/dictaat.service";
 import { BaseModalService, BaseModalComponent } from "../../../shared/core/basemodal.service";
 import { ConfigService } from "../../../shared/services/config.service";
+import { Quiz } from '../../../shared/models/quiz/quiz';
+import { Question } from '../../../shared/models/quiz/question';
+import { Answer } from '../../../shared/models/quiz/answer';
 
 
 @Component({

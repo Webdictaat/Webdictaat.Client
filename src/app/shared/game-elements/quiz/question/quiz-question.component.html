@@ -3,9 +3,11 @@
 
     <!-- content -->
     <div [ngSwitch]="question.type" class="body">
-        <wd-question-mc *ngSwitchCase="'mc'" [question]="question" [isChecking]="isChecking"></wd-question-mc>
-        <wd-question-blanks *ngSwitchCase="'blanks'" [question]="question" [isChecking]="isChecking"></wd-question-blanks>
-        <wd-question-group *ngSwitchCase="'group'" [question]="question" [isChecking]="isChecking"></wd-question-group>
+        <wd-question-mc *ngSwitchCase="'mc'" [question]="question" [checker]="checker"></wd-question-mc>
+        <wd-question-blanks *ngSwitchCase="'blanks'" [question]="question" [checker]="checker"></wd-question-blanks>
+        <wd-question-group *ngSwitchCase="'group'" [question]="question" [checker]="checker"></wd-question-group>
+        <wd-question-sentence *ngSwitchCase="'sentence'" [question]="question" [checker]="checker"></wd-question-sentence>
+        
     </div>
 
     <!-- <div *ngFor='let answer of question.answers'>
@@ -33,7 +35,7 @@
             </div>
         </div>
 
-        <div class="explanation" [hidden]="!isChecking">
+        <div class="explanation" [hidden]="!checker.isChecking">
             <h2 [ngClass]="state">{{state}}.</h2>
             <p><b>explanation:</b> {{question.explanation}}</p>
         </div>
@@ -42,15 +44,15 @@
 
             <button 
                 class="btn btn-raised btn-default next" 
-                *ngIf="!isChecking" 
-                [disabled]="question.selectedAnswers.length == 0" 
+                *ngIf="!checker.isChecking" 
+                [disabled]="checker.canCheck" 
                 (click)="check()" >
                 Check
             </button>
             
             <button 
                 class="btn btn-raised btn-default next" 
-                *ngIf="isChecking"
+                *ngIf="checker.isChecking"
                 (click)="continue()" >
                 Continue
             </button>
