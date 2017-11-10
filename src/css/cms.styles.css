@@ -281,3 +281,25 @@ body {
 .panel-heading .btn-group{
     margin:0px;
 }
+
+/** Validation **/
+.validation{
+    color:#a94442;
+}
+
+.ng-valid[required], .ng-valid.required  {
+border-left: 2px solid #42A948; /* green */
+}
+  
+.ng-invalid:not(form)  {
+border-left: 2px solid #a94442; /* red */
+}
+
+
+/** Forms **/
+input{
+    border:1px solid darkgray;
+    padding:5px;
+    display: block;
+    width:100%;
+}

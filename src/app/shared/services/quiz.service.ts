@@ -78,11 +78,11 @@ export class QuizService extends BaseModalService{
             
     }
 
-    public submitAnswers(dictaatName: string, quizId: number, givenAnswers: number[]) : Promise<Attempt> {
+    public submitAnswers(dictaatName: string, quizId: number, givenAnswers: any[]) : Promise<Quiz> {
          let url: string = "/dictaten/" + dictaatName + '/quiz/' + quizId + '/attempts';
-         return this.wdapi.post(url, { GivenAnswers: givenAnswers })
+         return this.wdapi.post(url,  givenAnswers )
             .toPromise()
-            .then(response => response.json() as Attempt)
+            .then(response => new Quiz(response.json()))
     }
 
     public removeQuestion(dictaatName: string, quizId: number, question: Question){

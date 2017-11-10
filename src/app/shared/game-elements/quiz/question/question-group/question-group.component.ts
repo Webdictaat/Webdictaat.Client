@@ -9,7 +9,10 @@ import { Answer } from '../../../../models/quiz/answer';
 })
 export class QuestionGroupComponent extends QuestionBase implements OnInit {
 
+  public selectedAnswers: Answer[];
+
   ngOnInit() {
+    this.selectedAnswers = [];
   }
 
   public toggleAnswer(answer: Answer){
@@ -17,32 +20,32 @@ export class QuestionGroupComponent extends QuestionBase implements OnInit {
 
       if(this.isSelected(answer)){
           //remove answer
-          this.question.selectedAnswers.splice(this.question.selectedAnswers.indexOf(answer), 1);
+          this.selectedAnswers.splice(this.selectedAnswers.indexOf(answer), 1);
       }
       else{
          //add answer
-          this.question.selectedAnswers.push(answer);
+          this.selectedAnswers.push(answer);
       }
       this.checkIfCorrect();
     }
   }
 
   public isSelected(answer: Answer){
-    return this.question.selectedAnswers.indexOf(answer) != -1;
+    return this.selectedAnswers.indexOf(answer) != -1;
   } 
 
   public checkIfCorrect(){
     var isCorrect = true;
 
     //check if all correct answers are selected
-    this.question.answers.forEach((answer) => {
+    this.question.body.answers.forEach((answer) => {
       if(answer.isCorrect && !this.isSelected(answer)){
         isCorrect = false;
       }  
     });
 
     //check if all selected answers are correct
-    this.question.selectedAnswers.forEach((answer) => {
+    this.selectedAnswers.forEach((answer) => {
       if(!answer.isCorrect){
         isCorrect = false;
       }  

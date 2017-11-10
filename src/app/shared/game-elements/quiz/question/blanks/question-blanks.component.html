@@ -1,4 +1,4 @@
-<h4 class="text" *ngIf="textParts">
+<h4 class="word-container" *ngIf="textParts">
   <span *ngFor="let part of textParts">
     <span *ngIf="part.type == 'text'">
       {{part.text}}
@@ -16,7 +16,7 @@
 </h4>
 
 <h3>Options</h3>
-<button class="btn btn-raised btn-default answer"  *ngFor='let answer of answers'
-        (click)="select(answer)">
-    {{answer.text}}
+<button class="btn btn-raised btn-default answer"  *ngFor='let part of options'
+        (click)="select(part)">
+    {{part.text}}
 </button>

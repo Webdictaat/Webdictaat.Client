@@ -1,19 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Answer } from '../../../../models/quiz/answer';
 import { Question } from '../../../../models/quiz/question';
-import { QuestionBase } from '../question.base';
+import { QuestionBase, TextPart } from '../question.base';
 
-class TextPart{
 
-  text: string;
-  type: string;
-  value: Answer;
-
-  constructor(text, type){
-    this.text = text;
-    this.type = type;
-  }
-}
 
 @Component({
   selector: 'wd-question-blanks',
@@ -23,49 +13,50 @@ class TextPart{
 export class QuestionBlanksComponent extends QuestionBase implements OnInit {
 
   public textParts : TextPart[] = [];
-  public answers: Answer[] = [];
-  public msg: string = 'kip';
+  public options: TextPart[] = [];
+
 
   ngOnInit() {
-    this.answers = this.question.answers;
-    var epicregex = /(\[\[.*?\]\])/g;
-    this.question.text.split(epicregex).forEach((text, i) => {     
-        var t = 'text';
-        if(text.match(epicregex)){
-          t = 'blank'
-          var text = text.slice(2, text.length -2);
-          this.answers.push(new Answer({id: 0, text:text}));
-        }
+    this.textParts = this.getParts(this.question.body.sentence);
 
-        this.textParts.push(new TextPart(text, t));          
+    this.textParts.forEach(tp => {
+        if(tp.type === 'blank'){
+          this.options.push(tp);
+        }
     })
+
+    this.question.body.answers.forEach(a => {
+      this.options.push(new TextPart(a.text));
+    })
+
+    this.shuffle(this.options);
   }
 
   public remove(part: TextPart){
+    if(!this.checker.isChecking){
       var answer = part.value;
-      this.answers.push(answer);
-      this.question.selectedAnswers.splice(this.question.selectedAnswers.indexOf(answer), 1)
+      this.options.push(answer);
       part.value = null;
+    }
   }
 
-  public select(answer: Answer){
+  public select(selectedPart: TextPart){
     
     //place on next possible 
     this.textParts.some((part, i) => {
       if(part.type == 'blank' && !part.value){  
-        part.value = answer;
-        this.question.selectedAnswers.push(part.value);
-        this.question.answers.splice(this.question.answers.indexOf(answer), 1);
-        this.checkIfComplete();
+        part.value = selectedPart;
+        this.options.splice(this.options.indexOf(selectedPart), 1);
+        this.checkIfCorrect();
         return true;
       }
     })
   }
 
-  public checkIfComplete(){
+  public checkIfCorrect(){
     var isCorrect = true;
     this.textParts.forEach((part) => {
-      if(part.type == 'blank' && (!part.value || part.value.text != part.text)){
+      if(part.type == 'blank' && (!part.value || (part.value.text != part.text))){
         isCorrect = false;
       }
     });

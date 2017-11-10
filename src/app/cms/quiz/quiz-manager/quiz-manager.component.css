@@ -1,0 +1,75 @@
+
+header{
+    padding:24px;
+    padding-bottom: 0px;
+}
+
+.form-group{
+    margin:0px;
+}
+
+.input-button{
+    display:flex;
+}
+
+.add{
+    position: relative;
+    left:4px;
+}
+
+section{
+    border-bottom: 1px solid #eee;
+    padding:24px;
+}
+
+
+
+/** progress bar **/
+.progress{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top:20px;
+    overflow: visible;
+    max-width: 100%;
+    min-width: 100px;
+}
+
+.progress .point{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border:2px solid #c8c8c8;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70%;
+    background-color:white;
+    border-color: #d9534f;
+}
+
+.progress .point.add{
+    font-size: 100%;
+    font-weight: bold;
+}
+
+.progress .point.correct{
+    border-color: #66BB6A;
+}
+
+.progress .point.selected{
+    border-color: #00AEED;
+}
+
+.levels{
+    display: flex;
+}
+
+.levels button{
+    flex:1;
+    margin:4px;
+}
+
+
+

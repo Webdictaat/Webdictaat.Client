@@ -1,0 +1,14 @@
+<ul class="answers" *ngIf="answers && answers.length > 0">
+    <li *ngFor="let a of answers">
+        <div class="answer" [ngClass]="{ 'correct': a.isCorrect}">
+            <div (click)="a.isCorrect = !a.isCorrect" class="slide slide-wrong" *ngIf="canBeCorrect">
+                <div class="slider"></div>
+            </div>
+            <input type="text" [(ngModel)]="a.text" />
+            <div (click)="a.isCorrect = !a.isCorrect" class="slide slide-correct" *ngIf="canBeCorrect">
+                <div class="slider"></div>
+            </div>
+            <button class="btn btn-flat btn-xs btn-danger" (click)="RemoveAnswer(a)">remove</button>
+        </div>
+    </li>
+</ul>

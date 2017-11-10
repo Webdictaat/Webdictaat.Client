@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { Quiz, QuizSummary, Question, Answer } from "../../../shared/models/quiz";
 import { QuizService } from "../../../shared/services/quiz.service";
 import { DictaatService } from "../../../shared/services/dictaat.service";
 import { ConfigService } from "../../../shared/services/config.service";
+import { Quiz } from '../../../shared/models/quiz/quiz';
+import { Question } from '../../../shared/models/quiz/question';
 
 
 @Component({
@@ -22,7 +23,6 @@ export class EditQuizComponent implements OnChanges {
 
   public selectedQuestion: Question;
   public selectedIndex: number;
-  public newAnswerText: string;
   public dictaatName: string;
   
 
@@ -58,9 +58,4 @@ export class EditQuizComponent implements OnChanges {
         this.quizService.removeQuestion(this.dictaatName, this.quiz.id, toDelete);
     }
     
-    AddAnswer(): void {
-        this.selectedQuestion.answers.push(new Answer({ text: this.newAnswerText}));
-        this.newAnswerText = null;
-    };
-
 }

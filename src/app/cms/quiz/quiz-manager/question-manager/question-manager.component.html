@@ -1,0 +1,82 @@
+<div class="question" *ngIf="question">
+
+    <div class="tiny-form">
+        <input type="text" id="text" placeholder="What is the question?" required [(ngModel)]="question.text" name="text" #text="ngModel">
+        <select [(ngModel)]="question.type" class="custom-select">
+            <option [selected]="question.type == 'mc'" value="mc">Multiple choice</option>
+            <option [selected]="question.type == 'groupmc'" value="group">Group items</option>
+            <option [selected]="question.type == 'sentence'" value="sentence">Form a Sentence</option>
+            <option [selected]="question.type == 'blanks'" value="blanks">Fill in the blanks</option>
+
+        </select>
+    </div>
+
+    <div [hidden]="text.valid || text.pristine" class="validation">
+        The question is required
+    </div>
+
+    <div class="body">
+        <div [ngSwitch]="question.type">
+
+
+            <!-- Multiple choice -->
+            <div *ngSwitchCase="'mc'">
+
+                <wd-answer-manager [answers]="question.body.answers" [canBeCorrect]="true"></wd-answer-manager>
+
+                <button class="btn btn-raised btn-success btn-xs" (click)="AddAnswer()">
+                    <span class="glyphicon glyphicon-plus"></span> Add choice
+                </button>
+
+            </div>
+            <!-- Group -->
+            <div *ngSwitchCase="'group'">
+
+                <wd-answer-manager [answers]="question.body.answers" [canBeCorrect]="true"></wd-answer-manager>
+
+                <button class="btn btn-raised btn-success btn-xs" (click)="AddAnswer()">
+                    <span class="glyphicon glyphicon-plus"></span> Add item
+                </button>
+
+            </div>
+            <!-- Blanks -->
+            <div *ngSwitchCase="'blanks'">
+
+                <input type="text" id="sentence" placeholder="Enter a [[sentence]] to complete" [(ngModel)]="question.body.sentence" name="sentence"
+                    #sentence="ngModel">
+
+                <wd-answer-manager [answers]="question.body.answers" [canBeCorrect]="false"></wd-answer-manager>
+
+                <button class="btn btn-raised btn-success btn-xs" (click)="AddAnswer()">
+                    <span class="glyphicon glyphicon-plus"></span> Add alternative
+                </button>
+
+            </div>
+            <!-- Sentence -->
+            <div *ngSwitchCase="'sentence'">
+
+                <input type="text" id="sentence" placeholder="[[The]] [[sentence]] [[to form]]" [(ngModel)]="question.body.sentence" name="sentence"
+                    #sentence="ngModel">
+
+                <wd-answer-manager [answers]="question.body.answers" [canBeCorrect]="false"></wd-answer-manager>
+
+                <button class="btn btn-raised btn-success btn-xs" (click)="AddAnswer()">
+                    <span class="glyphicon glyphicon-plus"></span> Add alternative
+                </button>
+
+
+            </div>
+            <p *ngSwitchDefault>
+                Select a question type
+            </p>
+
+
+        </div>
+    </div>
+
+    <footer>
+        <input type="text" id="explanation" placeholder="Why is the answer correct or wrong?" [(ngModel)]="question.explanation"
+            name="explanation" #text="ngModel">
+    </footer>
+
+</div>

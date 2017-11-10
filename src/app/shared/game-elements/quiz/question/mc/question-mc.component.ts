@@ -10,24 +10,25 @@ import { QuestionBase } from '../question.base';
 })
 export class QuestionMcComponent extends QuestionBase implements OnInit {
 
+  public answer : Answer;
+
   ngOnInit() {
   }
 
   public isSelected(answer: Answer){
-    return this.question.selectedAnswers.indexOf(answer) != -1;
+    return answer == this.answer;
   }
 
   public selectAnswer(answer: Answer){
     if(!this.checker.isChecking){
-      this.question.selectedAnswers = [];
-      this.question.selectedAnswers.push(answer);
+      this.answer = answer;
       this.checkIfCorrect();
     }
   }
 
   public checkIfCorrect(){
       //only need to check first question.
-      this.question.isCorrect = this.question.selectedAnswers[0].isCorrect;
+      this.question.isCorrect = this.answer.isCorrect;
   }
 
 

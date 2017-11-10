@@ -1,8 +1,10 @@
-.text{
-    min-height: 50px;
-}
 
 .btn-sm{
     margin-left:3px;
     margin-right:3px;
+}
+
+.word-container{
+    min-height: 60px;
+    line-height: 60px;
 }

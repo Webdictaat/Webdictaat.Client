@@ -28,10 +28,39 @@ h1 span{
     padding:20px;
 }
 
-.header{
+
+header{
     padding: 20px;
     margin:10px 0px;
     border-bottom: 1px solid #ddd;
+    position: relative;
+}
+
+header .tooltip-container{ 
+    position: absolute;
+    bottom: -26px;
+    right: 16px;
+    z-index: 101;
+    display: flex;
+}
+
+header .tooltip-item{
+    display: block;
+    background-color: #eee;
+    width:50px; height:50px;
+    box-shadow: 0 3px 1px -2px rgba(48, 21, 21, 0.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    border-radius: 50%;
+    margin:2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-weight: bold;
+}
+
+.quiz.complete .points {
+    color: white;
+    background-color: #66BB6A;
 }
 
 .score{
@@ -42,15 +71,11 @@ h1 span{
     padding:0px;
 }
 
-.bs-callout.idle{
-    border-left-color: #C6002A;
+.bs-callout.complete{
+    border-left-color: #66BB6A;
 }
-.bs-callout.finished{
-    border-left-color: green;
-}
-.bs-callout.started{
-    border-left-color: #00AEED;
-}
+
+
 
 .started .footer{
     height: 100px;

@@ -41,44 +41,17 @@ export class AddQuizComponent extends  BaseModalComponent implements OnInit {
 
     private resetQuiz(){
         this.quiz = new Quiz();  
-        this.selectedIndex = 0;
-        this.selectedQuestion = this.quiz.questions[0];
+        this.quiz.questions.push(new Question());
     }
 
     public Add(): void {
+        this.quiz.questions = [];
         this.quizService.addQuiz(this.dictaatName, this.quiz)
             .then((quiz: Quiz) => {
                 this.quizService.CompleteModal(quiz);
             });
     }
 
-    DeleteQuestion(): void{
-        var toDelete = this.quiz.questions[this.selectedIndex];
-        this.quiz.questions.splice(this.selectedIndex, 1);
-        this.selectedIndex--;
-        if(this.selectedIndex > 0){
-            this.selectedQuestion = this.quiz.questions[this.selectedIndex];
-        }
-        else{
-            this.selectedQuestion = null;
-        }
-    }
-
-    SelectQuestion(i): void{
-        this.selectedIndex = i;
-        this.selectedQuestion = this.quiz.questions[i];
-    }
-
-    AddQuestion(): void{
-        this.quiz.questions.push(new Question());
-        this.selectedIndex = this.quiz.questions.length - 1;
-        this.selectedQuestion = this.quiz.questions[this.selectedIndex];
-    }
-    
-    AddAnswer(): void {
-        this.selectedQuestion.answers.push(new Answer({ text: this.newAnswerText}));
-        this.newAnswerText = null;
-    };
 
     public Cancel(): void {
         this.resetQuiz();

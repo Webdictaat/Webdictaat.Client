@@ -1,4 +1,4 @@
-import { Question, TextPart } from "../../../models/quiz/question";
+import { Question } from "../../../models/quiz/question";
 import { Input } from "@angular/core";  
 
 export class Checker
@@ -12,6 +12,18 @@ export class Checker
   }
 
 }
+
+export class TextPart{
+    
+      text: string;
+      type: string;
+      value: any;
+    
+      constructor(text = null, type = null){
+        this.text = text;
+        this.type = type;
+      }
+    }
 
 
 export class QuestionBase {

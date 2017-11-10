@@ -1,0 +1,42 @@
+.question{
+    border:1px solid darkgray;
+    border-radius: 4px;
+}
+
+.question .text{
+    font-size:120%;
+    color: #555;
+    padding-left:3px;
+}
+
+.question .body{
+    padding:12px;
+    border-bottom:1px solid darkgray;
+    border-top:1px solid darkgray;
+}
+
+
+.tiny-form{
+    display: flex;
+    align-items: stretch;
+    padding:4px;
+}
+
+footer{
+    padding: 4px;
+}
+
+.tiny-form button{
+    border: 0px;
+    border-left:1px solid darkgray;
+}
+
+.tiny-form label{
+    padding:3px;
+}
+
+
+.tiny-form > input{
+    flex:1;
+    border-right: 0px;
+}

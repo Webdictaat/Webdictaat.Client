@@ -4,9 +4,11 @@ export class Answer{
     public isCorrect: boolean;
 
     constructor(json = null){
-        this.id = json.id;
-        this.text = json.text;
-        this.isCorrect = json.isCorrect;
+        if(json){
+            this.id = json.id;
+            this.text = json.text;
+            this.isCorrect = json.isCorrect;
+        }
     }
 
 

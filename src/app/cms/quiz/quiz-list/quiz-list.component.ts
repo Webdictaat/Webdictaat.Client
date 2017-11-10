@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from "../../../shared/services/quiz.service";
 import { DictaatService } from "../../../shared/services/dictaat.service";
-import { Quiz, QuizSummary, Question, Answer } from "../../../shared/models/quiz";
+import { QuizSummary, Quiz } from '../../../shared/models/quiz/quiz';
 
 @Component({
   selector: 'wd-quiz-list',

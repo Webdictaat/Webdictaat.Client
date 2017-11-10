@@ -1,0 +1,93 @@
+<div *ngIf="quiz">
+
+  <form>
+
+    <section>
+
+      <div class="form-group">
+        <label for="name">Title</label>
+        <input type="text" id="name" required [(ngModel)]="quiz.assignment.title" name="name" #name="ngModel">
+        <div [hidden]="name.valid || name.pristine" class="validation">
+          Title of the quiz is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="quiz.assignment.description">Description</label>
+        <input type="text" id="description" name="description" [(ngModel)]="quiz.assignment.description" required #description="ngModel">
+        <div [hidden]="description.valid || description.pristine" class="validation">
+          Description of the quiz is required
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="form-group col-md-6">
+          <label for="quiz.assignment.points">Points</label>
+          <input type="text" id="points" name="points" [(ngModel)]="quiz.assignment.points" required #points="ngModel">
+          <div [hidden]="points.valid || points.pristine" class="validation">
+            Points of the quiz is required
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="quiz.assignment.points">Meta tag</label>
+          <input type="text" id="metadata" placeholder="For example: 1.1 or 3.1.6" name="metadata" [(ngModel)]="quiz.assignment.metadata"
+            #metadata="ngModel">
+        </div>
+
+      </div>
+
+      <!-- <div class="form-group">
+        <label>The level of the quiz</label>
+        <div class="levels">
+          <button class="btn btn-raised btn-default btn-xs" (click)="quiz.assignment.level = 'Bronze'" [ngClass]="{'btn-info' : quiz.assignment.level == 'Bronze' }">
+                  Bronze<div class="ripple-container"></div>
+              </button>
+          <button class="btn btn-raised btn-default btn-xs" (click)="quiz.assignment.level = 'Silver'" [ngClass]="{'btn-info' : quiz.assignment.level == 'Silver' }">
+                  Silver<div class="ripple-container"></div>
+              </button>
+          <button class="btn btn-raised btn-default btn-xs" (click)="quiz.assignment.level = 'Gold'" [ngClass]="{'btn-info' : quiz.assignment.level == 'Gold' }">
+                  Gold<div class="ripple-container"></div>
+              </button>
+        </div>
+      </div> -->
+
+
+    </section>
+    <!-- end quiz -->
+
+  </form>
+
+  <!-- Start questions -->
+  <section>
+
+    <div class="progress line" [ngStyle]="{'width': quiz.questions.length * 50 + 'px'}">
+      <div class="point" *ngFor="let q of quiz.questions; let i = index" [ngClass]="{ 'correct': isValid(q), 'selected': q == selected}"
+        (click)="selected = q">
+        {{i + 1}}
+      </div>
+      <button class="btn btn-raised btn-success btn-xs add" (click)="AddQuestion()">
+          <span class="glyphicon glyphicon-plus"></span>
+      </button>
+    </div>
+
+    <div class="body" *ngIf="selected">
+      <wd-question-manager [question]="selected"></wd-question-manager>
+      <button class="btn btn-raised btn-danger btn-xs add" (click)="RemoveQuestion(selected)">
+          <span class="glyphicon glyphicon-trash"></span>&nbsp;Remove this question
+      </button>
+    </div>
+
+    <div class="body" *ngIf="!selected">
+      Create (or select) a question!
+      <button class="btn btn-raised btn-success btn-xs add" (click)="AddQuestion()">
+        <span class="glyphicon glyphicon-plus"></span>&nbsp;Create a question
+    </button>
+    </div>
+
+  </section>
+
+
+
+</div>

@@ -1,6 +1,4 @@
-<h4>{{question.text}}</h4>
-
-<button class="btn btn-raised btn-default answer" *ngFor='let answer of question.answers'
+<button class="btn btn-raised btn-default answer" *ngFor='let answer of question.body.answers'
         [disabled]=""
         (click)="toggleAnswer(answer)"  
         [ngClass]="{'btn-info' : isSelected(answer), 'checking': checker.isChecking}">

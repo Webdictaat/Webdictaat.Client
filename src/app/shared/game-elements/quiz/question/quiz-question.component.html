@@ -1,28 +1,17 @@
 <div *ngIf="question" >
 
+    <div class="body">
+        <h4>{{question.text}}</h4>
 
-    <!-- content -->
-    <div [ngSwitch]="question.type" class="body">
-        <wd-question-mc *ngSwitchCase="'mc'" [question]="question" [checker]="checker"></wd-question-mc>
-        <wd-question-blanks *ngSwitchCase="'blanks'" [question]="question" [checker]="checker"></wd-question-blanks>
-        <wd-question-group *ngSwitchCase="'group'" [question]="question" [checker]="checker"></wd-question-group>
-        <wd-question-sentence *ngSwitchCase="'sentence'" [question]="question" [checker]="checker"></wd-question-sentence>
-        
+        <!-- content -->
+        <div [ngSwitch]="question.type">
+            <wd-question-mc *ngSwitchCase="'mc'" [question]="question" [checker]="checker"></wd-question-mc>
+            <wd-question-blanks *ngSwitchCase="'blanks'" [question]="question" [checker]="checker"></wd-question-blanks>
+            <wd-question-group *ngSwitchCase="'group'" [question]="question" [checker]="checker"></wd-question-group>
+            <wd-question-sentence *ngSwitchCase="'sentence'" [question]="question" [checker]="checker"></wd-question-sentence>
+            
+        </div>
     </div>
-
-    <!-- <div *ngFor='let answer of question.answers'>
-        <button class="btn btn-raised btn-default answer" 
-                [disabled]="question.state == 'check'"
-                (click)="selectAnswer(answer)"  
-                [ngClass]="{'btn-info' :  question.selectedAnswer == answer}">
-            {{answer.text}}
-        </button>
-        <label *ngIf="question.state == 'check' && question.selectedAnswer == answer">
-            <span *ngIf="answer.isCorrect" class="alert alert-success">Correct :)</span>
-            <span *ngIf="!answer.isCorrect" class="alert alert-danger">Wrong :(</span>
-
-        </label>
-    </div> -->
 
     <!-- Controls -->
     <div class="footer"  >

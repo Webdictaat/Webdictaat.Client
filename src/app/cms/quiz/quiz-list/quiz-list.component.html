@@ -5,48 +5,75 @@
             <div class="modal-header">
                 <h4 class="modal-title">Edit Quiz </h4>
                 <div class="close-modal-button" (click)="cancelEdit()">
-                    <span  class="glyphicon glyphicon-remove"></span>
+                    <span class="glyphicon glyphicon-remove"></span>
                 </div>
             </div>
             <div class="modal-body">
                 <wd-edit-quiz [quiz]="selectedQuiz"></wd-edit-quiz>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" (click)="Update(selectedQuiz)" [disabled]="!selectedQuiz.title || !selectedQuiz.description">Save</button>
+                <button class="btn btn-success" (click)="Update(selectedQuiz)" [disabled]="!selectedQuiz.isValid()">Save</button>
                 <button class="btn btn-default" (click)="cancelEdit()">Cancel</button>
             </div>
         </div>
     </div>
 </div>
 
+<div class="alert alert-success" role="alert">
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="alert-heading">Upgrades!</h4>
+            <p>The Quiz component has reciveved an upgrade with new challenging question types. You can still use your <b>multiple choice</b>                
+                questions and next to that you can now use <b>group</b>,
+                <b>fill in the blanks</b> and <b>form a sentence</b> formats!
+            </p>   
+
+            <b>Special syntax</b>
+            <p>There is a special syntax you can use with double brackets to indicate that that [[word]] of [[multiple words]] are one part of a sentence.
+            You can also add additional words to make the question harder to answer. </p>
+
+            <b>Outdated</b>
+            <p>Some quizes are now marked <span class="label label-warning" >Outdated</span> to indicate that they are still in the old format.</p>
+        </div>
+        <div class="col-md-6">
+            <img src="img/instruction_blanks.gif" />
+        </div>
+    </div>
+
+</div>
+
 
 <div *ngIf="quizes" class="panel panel-default sidebar">
 
-  
-    
+
+
     <div class="text-center">
         <button class="btn btn-xs btn-success" (click)="addQuiz()">
             <span class="glyphicon glyphicon-plus"></span>&nbsp;Create a new Quiz
         </button>
     </div>
 
-  <table class="table table-striped">
-    <tr *ngFor="let quiz of quizes">
-      <td>
-        {{quiz.title}}
-      </td>
-      <td>
-        {{quiz.questionCount}} questions
-      </td>
-      <td>
-        Completed by {{quiz.completedByCount}} students
-      </td>
-      <td class="actions">
-          <div class="action edit" (click)="enableEdit(quiz)">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-          </div>
-      </td>
-    </tr>
-  </table>
+    <table class="table table-striped">
+        <tr *ngFor="let quiz of quizes">
+            <td>
+                {{quiz.title}}
+            </td>
+            <td>
+                {{quiz.questionCount}} questions
+            </td>
+            <td>
+                Completed by {{quiz.completedByCount}} students
+            </td>
+            <td>
+                <span class="label label-warning" *ngIf="quiz.isOutdated">Outdated</span>
+            </td>
+            <td class="actions">
+                <div class="action edit" (click)="enableEdit(quiz)">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </div>
+            </td>
+        </tr>
+    </table>
 
 </div>

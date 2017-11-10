@@ -63,6 +63,8 @@
 
 .explanation{
     text-align: center;
+    flex: 1;
+    margin: 0px 15px;
 }
 
 .explanation h2{

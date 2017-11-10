@@ -1,22 +1,4 @@
-.questions{
-    list-style-type: none;
-    padding:0px;
+.modal-content .modal-body{
+    padding: 0px;
 }
 
-.questions li{
-    border:1px solid darkgray;
-}
-
-
-fieldset{
-    padding:10px;
-    border:1px solid darkgray;
-}
-
-.form-group{
-    margin:0px;
-}
-
-.input-button{
-    display:flex;
-}

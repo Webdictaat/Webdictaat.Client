@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QuestionBase } from '../question.base';
-import { TextPart } from '../../../../models/quiz/question';
+import { QuestionBase, TextPart } from '../question.base';
 
 @Component({
   selector: 'wd-question-sentence',
@@ -14,8 +13,10 @@ export class QuestionSentenceComponent extends QuestionBase implements OnInit {
   private _original: TextPart[]; //The original sentence seperated in parts
 
   ngOnInit() {
-    this._original = this.getParts(this.question.text);
-    this.Options = this.shuffle(this.getParts(this.question.text));
+    this._original = this.getParts(this.question.body.sentence);
+    this.Options = this.shuffle(this.getParts(this.question.body.sentence));
+    this.question.body.answers.forEach(a => this.Options.push(new TextPart(a.text)));
+    this.shuffle(this.Options);
     this.Sentence = [];
   }
 

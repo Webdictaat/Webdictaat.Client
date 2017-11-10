@@ -1,0 +1,70 @@
+
+.answers{
+    list-style-type: none;
+    padding:4px;
+}
+
+
+/** correct incorrerct sides **/
+.answer{
+    display:flex;
+    margin-bottom:5px;
+}
+
+.answer input{
+    padding: 3px;
+    flex:1;
+}
+
+.answer button{
+    margin: 0px;
+}
+
+.answer.correct .slider{
+    transform: translate(100%);
+}
+
+.slide{
+    border:1px solid darkgray;
+    width:15px;
+    overflow: hidden;
+    cursor: pointer;
+    background-color:#eee;
+}
+
+.slider{
+    
+    transition: 0.3s ease-in-out;
+}
+
+.slide .slider{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide.slide-correct{
+    border-radius: 0px 3px 3px 0px;
+    border-left: 0px;
+    
+}
+
+.slide.slide-correct .slider{
+    background-color:#66BB6A;
+    position: relative;
+    right: 100%;
+}
+
+
+.slide.slide-wrong{
+    border-right: 0px;
+    border-radius: 3px 0px 0px 3px;
+}
+
+.slide.slide-wrong .slider{
+    background-color:#d9534f;
+}
+
+ul{
+    margin:0px;
+}

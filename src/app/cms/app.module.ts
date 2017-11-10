@@ -45,7 +45,9 @@ import { DictaatSettingsComponent } from "./dictaat/settings-dictaat.component";
 import { MarkingComponent } from './marking/marking.component';
 import { MarkerComponent } from "./marking/marker.componet";
 import { DatabModule } from "../extern/databases/datab.module";
-import { AnswermanagerComponent } from './quiz/add-quiz/answermanager/answermanager.component';
+import { QuizManagerComponent } from './quiz/quiz-manager/quiz-manager.component';
+import { QuestionManagerComponent } from './quiz/quiz-manager/question-manager/question-manager.component';
+import { AnswerManagerComponent } from './quiz/quiz-manager/answer-manager/answer-manager.component';
 
 @NgModule({
     imports: [
@@ -56,7 +58,7 @@ import { AnswermanagerComponent } from './quiz/add-quiz/answermanager/answermana
         AddRatingComponent, AddVideoComponent, AddQuizComponent, EditQuizComponent, DictaatSettingsComponent,
         DemoComponent, DialogComponent, AvatarComponent, ProfileComponent, MarkingComponent, MarkerComponent, 
         AchievementMarkingComponent, AchievementMarkerComponent, AppComponent, QuizListComponent, AssignmentListComponent, 
-        AddAssignmentComponent, EditAssignmentComponent, MarkAssignmentComponent, AnswermanagerComponent
+        AddAssignmentComponent, EditAssignmentComponent, MarkAssignmentComponent,  QuizManagerComponent, QuestionManagerComponent, AnswerManagerComponent
     ],
     providers: [
         CanDeactivateEditPage,

@@ -1,21 +1,25 @@
-<div class="bs-callout bs-callout-default quiz">
+<div class="bs-callout bs-callout-default quiz" [ngClass]="{'complete': quiz ? quiz.isComplete : false}">
 
   <wd-spinner *ngIf="isLoading"></wd-spinner>
 
   <div *ngIf="quiz">
 
-    <div class="header">
-      <h2>Quiz - {{quiz.title}} 
-        <span *ngIf="quiz.status != 'started'">({{quiz.questions.length}} questions)</span>
-        <span *ngIf="quiz.status == 'started'">({{quiz.currentIndex + 1}} questions)</span>
+    <header>
+      <h2>Quiz - {{quiz.assignment.title}}
+        <span>({{quiz.questions.length}} questions)</span>
       </h2>
-    </div>
+      <div class="tooltip-container">
+        <span class="tooltip-item points">
+              <span>{{quiz.assignment.points}}</span>
+        </span>
+      </div>
+    </header>
 
     <div class="body">
 
       <!-- IDLE -->
       <div *ngIf="quiz.status == 'idle'" class='idle'>
-        <p>{{quiz.description}}</p>
+        <p>{{quiz.assignment.description}}</p>
 
         <button *ngIf="isAuth" (click)="start()" class='btn btn-info btn-raised'>Start</button>
         <button *ngIf="!isAuth" (click)="login()" class='btn btn-info btn-raised'>Login to start Quiz</button>
@@ -28,13 +32,11 @@
       </div>
 
       <!-- FINISHED -->
-      <div *ngIf="quiz.status == 'finished'" class='finished'>
-        <p>You got {{CorrectAnswerCount()}} out of {{quiz.questions.length}}!</p>
-        <div class="progress line" [ngStyle]="{'width': quiz.questions.length * 50 + 'px'}">
-          <div class="point" 
-            *ngFor="let q of quiz.questions"
-            [ngClass]="q.isCorrect ? 'correct' : 'wrong'">
-            
+      <div *ngIf="quiz.status == 'finished' && !isLoading" class='finished'>
+        <p>You got {{quiz.lastAttempt.correctAnswers}} out of {{quiz.questions.length}}!</p>
+        <div class="progress line" [ngStyle]="{'width': quiz.lastAttempt.questionsAnswered.length * 50 + 'px'}">
+          <div class="point" *ngFor="let q of quiz.lastAttempt.questionsAnswered" [ngClass]="q.isCorrect ? 'correct' : 'wrong'">
+            {{isCorrect}}
           </div>
         </div>
         <button (click)="retakeQuiz()" class="btn btn-info btn-sm btn-raised">Retake quiz</button>
