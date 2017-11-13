@@ -45,7 +45,6 @@ export class AddQuizComponent extends  BaseModalComponent implements OnInit {
     }
 
     public Add(): void {
-        this.quiz.questions = [];
         this.quizService.addQuiz(this.dictaatName, this.quiz)
             .then((quiz: Quiz) => {
                 this.quizService.CompleteModal(quiz);

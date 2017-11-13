@@ -2,3 +2,7 @@
     padding: 0px;
 }
 
+
+.modal-footer .seperator{
+    flex:1;
+}

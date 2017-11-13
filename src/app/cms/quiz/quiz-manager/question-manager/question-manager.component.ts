@@ -12,7 +12,6 @@ export class QuestionManagerComponent implements OnInit {
   @Input()
   public question : Question;
 
-
   constructor() { }
 
   ngOnInit() {

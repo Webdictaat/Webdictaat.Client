@@ -303,3 +303,11 @@ input{
     display: block;
     width:100%;
 }
+
+.modal-footer{
+    display: flex;
+}
+
+.modal-footer .seperator{
+    flex:1;
+}

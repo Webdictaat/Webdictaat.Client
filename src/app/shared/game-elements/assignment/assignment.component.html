@@ -10,13 +10,13 @@
         <span class="glyphicon glyphicon-share-alt"  aria-hidden="true"></span>
         <span class="tooltip">Mark this assignment as complete. You will recieve points when a teacher accepts this submission</span>
      </span>
-     <span class="tooltip-item submitted" *ngIf="assignment.state == 1">
+     <span class="tooltip-item primary" *ngIf="assignment.state == 1">
         <span class="glyphicon glyphicon-hourglass"  aria-hidden="true"></span>
         <span class="tooltip">This assignment is marked as complete. You will recieve points when a teacher accepts this submission</span>
      </span>
-    <span class="tooltip-item accepted" *ngIf="assignment.state == 2">
+    <span class="tooltip-item success" *ngIf="assignment.state == 2">
        <span class="glyphicon glyphicon-ok"  aria-hidden="true"></span>
-       <span class="tooltip">yay! This assignment was completed on {{assignment.mySubmission.timestamp}}</span>       
+       <span class="tooltip">yay! This assignment was completed on {{assignment.mySubmission.timestamp | date}}</span>       
     </span>
 
     <span class="tooltip-item points">

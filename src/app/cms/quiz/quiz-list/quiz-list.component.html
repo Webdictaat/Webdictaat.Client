@@ -12,8 +12,9 @@
                 <wd-edit-quiz [quiz]="selectedQuiz"></wd-edit-quiz>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" (click)="Update(selectedQuiz)" [disabled]="!selectedQuiz.isValid()">Save</button>
                 <button class="btn btn-default" (click)="cancelEdit()">Cancel</button>
+                <div class="seperator"></div>
+                <button class="btn btn-success" (click)="Update(selectedQuiz)" [disabled]="!selectedQuiz.isValid()">Save & close</button>
             </div>
         </div>
     </div>
@@ -24,17 +25,17 @@
     <div class="row">
         <div class="col-md-6">
             <h4 class="alert-heading">Upgrades!</h4>
-            <p>The Quiz component has reciveved an upgrade with new challenging question types. You can still use your <b>multiple choice</b>                
-                questions and next to that you can now use <b>group</b>,
+            <p>The Quiz component has reciveved an upgrade with new challenging question types. You can still use your <b>multiple choice</b>                questions and next to that you can now use <b>group</b>,
                 <b>fill in the blanks</b> and <b>form a sentence</b> formats!
-            </p>   
+            </p>
 
             <b>Special syntax</b>
-            <p>There is a special syntax you can use with double brackets to indicate that that [[word]] of [[multiple words]] are one part of a sentence.
-            You can also add additional words to make the question harder to answer. </p>
+            <p>There is a special syntax you can use with double brackets to indicate that that [[word]] of [[multiple words]]
+                are one part of a sentence. You can also add additional words to make the question harder to answer. </p>
 
             <b>Outdated</b>
-            <p>Some quizes are now marked <span class="label label-warning" >Outdated</span> to indicate that they are still in the old format.</p>
+            <p>Some quizes are now marked <span class="label label-warning">Outdated</span> to indicate that they are still
+                in the old format.</p>
         </div>
         <div class="col-md-6">
             <img src="img/instruction_blanks.gif" />
@@ -57,7 +58,10 @@
     <table class="table table-striped">
         <tr *ngFor="let quiz of quizes">
             <td>
-                {{quiz.title}}
+                <span>#{{quiz.id}}</span>
+            </td>
+            <td>
+                {{quiz.assignment.title}}
             </td>
             <td>
                 {{quiz.questionCount}} questions

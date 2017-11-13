@@ -13,16 +13,17 @@ export class Question{
     public isCorrect : boolean;
 
     constructor(json = null){
+
+        this.body = {};
+
         if(json){
             this.id = json.id;
             this.text = json.text;
             this.type = json.type;
-            this.body = json.body;
+            this.body = json.body ? json.body : {};
             this.explanation = json.explanation;
         }
-        else{
-            this.body = {};
-        }
+
         this.original = JSON.stringify(this);
     }
 

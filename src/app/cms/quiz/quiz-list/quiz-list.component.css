@@ -7,3 +7,8 @@
     background-color: #dbefdc;
     border-color: #cde9ce;
 }
+
+table span{
+    color:gray;
+    font-size:90%; 
+}

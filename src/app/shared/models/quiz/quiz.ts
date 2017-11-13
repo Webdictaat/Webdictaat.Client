@@ -60,6 +60,10 @@ export class Quiz {
    
     public isValid() : boolean{
         let response : boolean = this.assignment.isValid();
+
+        if(this.questions.length == 0)
+            response = false;
+
         this.questions.forEach(question => {
             if(!question.isValid()){
                 response = false; 

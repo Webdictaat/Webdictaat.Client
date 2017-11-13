@@ -9,6 +9,10 @@
         <span>({{quiz.questions.length}} questions)</span>
       </h2>
       <div class="tooltip-container">
+        <span class="tooltip-item success" *ngIf="quiz.isComplete">
+              <span class="glyphicon glyphicon-ok"  aria-hidden="true"></span>
+        <span class="tooltip">yay! This quiz was completed on {{quiz.lastAttempt.timestamp | date}}</span>
+        </span>
         <span class="tooltip-item points">
               <span>{{quiz.assignment.points}}</span>
         </span>

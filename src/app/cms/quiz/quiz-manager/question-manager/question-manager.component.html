@@ -1,18 +1,16 @@
 <div class="question" *ngIf="question">
 
     <div class="tiny-form">
-        <input type="text" id="text" placeholder="What is the question?" required [(ngModel)]="question.text" name="text" #text="ngModel">
+        <input type="text" id="question" placeholder="What is the question?" required [(ngModel)]="question.text" name="text" #questiontext="ngModel">
         <select [(ngModel)]="question.type" class="custom-select">
             <option [selected]="question.type == 'mc'" value="mc">Multiple choice</option>
             <option [selected]="question.type == 'groupmc'" value="group">Group items</option>
             <option [selected]="question.type == 'sentence'" value="sentence">Form a Sentence</option>
             <option [selected]="question.type == 'blanks'" value="blanks">Fill in the blanks</option>
-
         </select>
     </div>
-
-    <div [hidden]="text.valid || text.pristine" class="validation">
-        The question is required
+    <div [hidden]="questiontext.valid || questiontext.pristine" class="validation padded">
+        The question text is required
     </div>
 
     <div class="body">
@@ -66,8 +64,8 @@
 
 
             </div>
-            <p *ngSwitchDefault>
-                Select a question type
+            <p *ngSwitchDefault class="validation padded">
+                Select a question type from the dropdown menu
             </p>
 
 

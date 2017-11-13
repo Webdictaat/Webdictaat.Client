@@ -25,18 +25,23 @@ export class QuizListComponent implements OnInit {
       .subscribe((dictaat) => {
           if(dictaat){
               this.dictaatName = dictaat.name;
-              this.quizService.getQuizes(this.dictaatName)
-              .then((quizes) => {
-                  this.quizes = quizes;
-              })
+              this.refresh();
           }
          
       });
   }
 
+  private refresh(){
+    this.quizService.getQuizes(this.dictaatName)
+      .then((quizes) => {
+          this.quizes = quizes;
+      })
+  }
+
   public Update(quiz: Quiz): void{
       this.quizService.update(this.dictaatName, quiz)
       .then((quiz) => {
+        this.refresh();
         this.selectedQuiz = null;
       })
   }
