@@ -2,7 +2,6 @@
 import { CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
 import { Observable } from "rxjs/Observable";
 import { Injectable } from "@angular/core";
-import { EditPageComponent } from "../../../cms/pages/edit-page.component";
 
 export interface DirtyComp{
 

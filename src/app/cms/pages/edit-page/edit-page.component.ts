@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, Params , NavigationStart} from '@angular/router';
-import { PagesService } from './pages.service';
-import { HtmlComponent } from "../tools/html.component";
-import { Page } from "../../shared/models/page";
-import { ConfigService } from "../../shared/services/config.service";
+import { PagesService } from '../pages.service';
+import { HtmlComponent } from '../../tools/html.component';
+import { Page } from '../../../shared/models/page';
+import { ConfigService } from '../../../shared/services/config.service';
 
 
 @Component({

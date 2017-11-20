@@ -6,81 +6,46 @@
     "IsEnabled": true
   },
   {
-    "Name": "Dropdown one",
+    "Name": "Opdrachten",
     "Url": null,
     "MenuItems": [
       {
-        "Name": "Item One",
-        "Url": "one",
+        "Name": "test",
+        "Url": "test",
         "MenuItems": [],
         "IsEnabled": true
       },
       {
-        "Name": "Item Two",
-        "Url": "two",
+        "Name": "week 2",
+        "Url": "week2",
         "MenuItems": [],
         "IsEnabled": true
       },
       {
-        "Name": "Item Three",
-        "Url": "three",
+        "Name": "Test",
+        "Url": "Test",
         "MenuItems": [],
         "IsEnabled": true
       },
       {
-        "Name": "Last item, should be invisible",
-        "Url": "three",
-        "MenuItems": [],
-        "IsEnabled": false
-      }
-    ]
-  },
-  {
-    "Name": "Dropdown two",
-    "Url": null,
-    "MenuItems": [
-      {
-        "Name": "Item One",
-        "Url": "one",
+        "Name": "week 3",
+        "Url": "week3",
         "MenuItems": [],
         "IsEnabled": true
       },
       {
-        "Name": "Item Two",
-        "Url": "two",
+        "Name": "test2",
+        "Url": "test2",
         "MenuItems": [],
         "IsEnabled": true
       },
       {
-        "Name": "Item Three",
-        "Url": "three",
+        "Name": "week 4",
+        "Url": "week4",
         "MenuItems": [],
         "IsEnabled": true
       }
-    ]
-  },
-  {
-    "Name": "Dropdown three",
-    "Url": null,
-    "MenuItems": [
-      {
-        "Name": "Item One",
-        "Url": "one",
-        "MenuItems": [],
-        "IsEnabled": true
-      },
-      {
-        "Name": "Item Two",
-        "Url": "two",
-        "MenuItems": [],
-        "IsEnabled": true
-      },
-      {
-        "Name": "Item Three",
-        "Url": "three",
-        "MenuItems": [],
-        "IsEnabled": true
-      }
-    ]
+    ],
+    "IsEnabled": true
   }
 ]

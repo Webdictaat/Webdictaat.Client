@@ -1,61 +1,60 @@
-﻿
-<div id="myModal" class="modal fade in" role="dialog" *ngIf="isModalVisible">
+﻿<div id="myModal" class="modal fade in" role="dialog" *ngIf="isModalVisible">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Add page </h4>
                 <div class="close-modal-button" (click)="cancel()">
-                    <span  class="glyphicon glyphicon-remove"></span>
+                    <span class="glyphicon glyphicon-remove"></span>
                 </div>
             </div>
             <div class="modal-body">
-  
+
+                <p class="text-danger" [hidden]="errors.length == 0" *ngFor="let err of errors">
+                    {{err}}
+                </p>
+
                 <div class="form-group">
-                    <label for="page.name">Enter name of the page</label>
-                    <input type="text" class="form-control" name="page.name" id="page.name"
-                           [(ngModel)]="page.name">
+                    <label for="name">Name of the page</label>
+                    <input type="text" id="name" required [(ngModel)]="page.name" name="name" #name="ngModel">
+                    <div [hidden]="name.valid || name.pristine" class="validation">
+                        Name of the page is required
+                    </div>
                 </div>
 
                 <p class="text-info" *ngIf="page.name && page.name.indexOf(' ') >= 0">
                     The <b>url</b> of the page can't contain any white spaces, and will be converted into <strong>{{trim(page.name)}}</strong>
                 </p>
 
-                <p class="text-danger" [hidden]="errors.length == 0" *ngFor="let err of errors">
-                   {{err}}
-                </p>
-
-
                 <div class="form-group">
-                    <label for="menu">Select a sub menu *optional</label>
-                    <select class="form-control" name="menu" id="menu" placeholder="Name of the page"
-                            [(ngModel)]="menuName" #name="ngModel">
+                    <label for="name">Select a sub menu *optional</label>
+                    <select class="form-control" name="menu" id="menu" placeholder="Name of the page" [(ngModel)]="menuName" #name="ngModel">
                         <option></option>
                         <option *ngFor="let menu of dictaat.menuItems" value="{{menu.name}}" [hidden]="menu.url">
                             {{menu.name}}
                         </option> 
-
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label >Select a template</label>
+                    <label>Select a template</label>
                 </div>
 
                 <div class="templates">
                     <div [ngClass]="{selected: template == 'default'}" (click)="template = 'default'">
-                        <img src="img/template_default.png"   />    
+                        <img src="img/template_default.png" />
                     </div>
                     <div [ngClass]="{selected: template == 'banner'}" (click)="template = 'banner'">
-                        <img src="img/template_banner.png"  />
+                        <img src="img/template_banner.png" />
                     </div>
                 </div>
 
-                
+
             </div>
-            <div class="modal-footer" >
-                <button class="btn btn-success"  [disabled]="!page.name || page.name.length < 3" (click)="add()">Save</button>
-                <button class="btn btn-default" (click)="cancel()">Cancel</button>
+            <div class="modal-footer">
+                <button class="btn btn-default" (click)="Cancel()">Cancel</button>
+                <div class="seperator"></div>
+                <button class="btn btn-success" [disabled]="!page.name && template" (click)="add()">Save</button>
             </div>
         </div>
     </div>

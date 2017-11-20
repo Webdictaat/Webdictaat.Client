@@ -58,16 +58,16 @@
     <table class="table table-striped">
         <tr *ngFor="let quiz of quizes">
             <td>
-                <span>#{{quiz.id}}</span>
+                <span class="grayed">#{{quiz.id}}</span>
             </td>
             <td>
                 {{quiz.assignment.title}}
             </td>
             <td>
-                {{quiz.questionCount}} questions
+                {{quiz.questions.length}} questions
             </td>
             <td>
-                Completed by {{quiz.completedByCount}} students
+                Completed by {{quiz.assignment.completedCount}} students
             </td>
             <td>
                 <span class="label label-warning" *ngIf="quiz.isOutdated">Outdated</span>

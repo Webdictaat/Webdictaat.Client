@@ -15,11 +15,7 @@ import { BehaviorSubject } from "rxjs/rx";
 @Injectable()
 export class AccountService {
 
-
-    //the user
     private user: User;
-    private subject: Subject<User> = new Subject<User>();
-
     public User: BehaviorSubject<User> = new BehaviorSubject<User>(null);
 
     constructor(private wdapi: wdApi) {
@@ -28,7 +24,6 @@ export class AccountService {
             .then(response => {
                 this.user = response.json() as User;
                 this.User.next(this.user);
-                this.subject.next(this.user);
             });
     }
 
@@ -40,13 +35,4 @@ export class AccountService {
         //redrict to home after logout
         window.location.href = this.wdapi.urlPrefix + "/account/LogOff?returnurl=" + window.location;
     }
-
-    public getUser(): Observable<User> {
-        return this.subject.asObservable();
-    }
-
-    public update(): void {
-        this.subject.next(this.user);
-    }
-
 }

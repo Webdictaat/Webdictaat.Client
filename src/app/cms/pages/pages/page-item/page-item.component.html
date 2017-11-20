@@ -1,0 +1,38 @@
+<div class="page-item">
+    <div class="body" (click)="editPage()">
+
+        <div class="handle">
+            <i class="fa fa-arrows-v" aria-hidden="true"></i>
+        </div>
+
+        <!-- ICON -->
+        <i class="fa fa-files-o" aria-hidden="true"></i>
+
+        <!-- View -->
+        <span *ngIf="!isEdit">
+            <span class="title">{{item.name}}</span>
+        <span class="url"> - {{item.url}}.html</span>
+        </span>
+
+        <!-- Edit -->
+        <span [hidden]="!isEdit">
+            <input [(ngModel)]="newTitle" #inputName>
+            <button type="button" class="btn btn-success btn-raised btn-xs" (click)="updateItem()">
+                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true" ></span>&nbsp;
+        </button>
+        </span>
+    </div>
+
+    <div class="actions">
+        <div class="action edit" (click)="toggleEdit()">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+        </div>
+        <div class="action enable" (click)="toggleEnabled()">
+            <i class="fa fa-eye" *ngIf="item.isEnabled" aria-hidden="true"></i>
+            <i class="fa fa-eye-slash" *ngIf="!item.isEnabled" aria-hidden="true"></i>
+        </div>
+        <div class="action delete" (click)="deleteItem()">
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,9 @@
-ul{ list-style-type: none; padding: 0;}
-ul ul{padding-left: 30px }
+ul{ 
+    list-style-type: none; 
+    padding: 0;
+}
+
+
 span.title{ margin-left:10px; }
 
 .sub-menu-item, .sub-menu-item  { 
@@ -69,4 +73,15 @@ span.title{ margin-left:10px;  }
 }
 .action.enable:hover{  
     background-color: #00AEED; color: white;
+}
+
+.alert.alert-success{
+    text-align: center;
+    color: #285b2a;
+    background-color: #dbefdc;
+    border-color: #cde9ce;
+}
+
+.alert.alert-success .btn{
+    border: 1px solid #285b2a;
 }

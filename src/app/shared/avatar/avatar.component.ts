@@ -35,7 +35,7 @@ export class AvatarComponent implements OnInit {
         }
 
     public ngOnInit(): void {
-        this.accountService.getUser().subscribe(user => {
+        this.accountService.User.subscribe(user => {
             this.user = user as User;
         });
     }

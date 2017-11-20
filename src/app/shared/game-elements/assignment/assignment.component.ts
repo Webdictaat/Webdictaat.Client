@@ -39,7 +39,7 @@ export class AssignmentComponent implements OnInit {
           });
     });
 
-    this.accountService.getUser().subscribe(user => this.user = user);
+    this.accountService.User.subscribe(user => this.user = user);
   }
 
   public submit() : any {

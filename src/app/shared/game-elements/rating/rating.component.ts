@@ -30,14 +30,8 @@ export class RatingComponent implements OnInit {
 
     public ngOnInit() {
 
-        this.accountService.getUser()
-            .subscribe(user => {
-                this.isAuth = user != null
-            });
-
-        //Krijg initiele waarde van observable niet :(
-        this.accountService.update();
-
+        this.accountService.User.subscribe(user => { this.isAuth = user != null; });
+        
         this.route.params.forEach((params: Params) => {
             this.dictaatName = params['dictaatName'];
             this.ratingService.getRating(this.dictaatName, this.rid)
@@ -46,8 +40,6 @@ export class RatingComponent implements OnInit {
                 })
                 .catch(reason => this.error = reason);
         });
-
-
     }
 
     public login() {

@@ -8,7 +8,7 @@
         </a>
 
         <!-- sub menu -->
-        <a  (click)="toggle(item)" [ngClass]="{'rotate': item == selected}" class="dropdown-toggle" *ngIf="!item.Url">
+        <a  (click)="toggle(item)" [ngClass]="{'rotate': item == selected}" class="dropdown-toggle" *ngIf="!item.Url && item.IsEnabled">
             <span>{{item.Name}}</span>
             <span class="caret"></span>
         </a>

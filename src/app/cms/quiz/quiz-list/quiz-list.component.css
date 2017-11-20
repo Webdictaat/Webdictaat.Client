@@ -8,7 +8,7 @@
     border-color: #cde9ce;
 }
 
-table span{
+table span.grayed{
     color:gray;
     font-size:90%; 
 }

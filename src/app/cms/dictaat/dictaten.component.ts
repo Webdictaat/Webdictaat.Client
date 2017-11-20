@@ -39,8 +39,7 @@ export class DictatenComponent implements OnInit {
             }
         });
 
-        this.accountService.getUser().subscribe(user => this.isAuth = user != null);
-        this.accountService.update();
+        this.accountService.User.subscribe(user => this.isAuth = user != null);
 
         this.dictatenService.getDictaten()
             .then(dictaten => { 

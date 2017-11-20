@@ -1,11 +1,13 @@
 ﻿import { Component, EventEmitter, Output, NgZone, Input } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { PagesService } from './pages.service';
-import { ActivatedRoute, Params } from '@angular/router';
-import { DictaatService } from "../../shared/services/dictaat.service";
-import { BaseModalComponent } from "../../shared/core/basemodal.service";
-import { Page } from "../../shared/models/page";
-import { Dictaat } from "../../shared/models/dictaat";
+import { BaseModalComponent } from '../../../shared/core/basemodal.service';
+import { Page } from '../../../shared/models/page';
+import { Dictaat } from '../../../shared/models/dictaat';
+import { PagesService } from '../pages.service';
+import { DictaatService } from '../../../shared/services/dictaat.service';
+import { ActivatedRoute } from '@angular/router';
+import { NavMenuService } from '../../../shared/nav-menu/nav-menu.service';
+import { NavMenuItem } from '../../../shared/models/nav-menu';
 
 @Component({
     selector: "wd-add-page",
@@ -28,6 +30,7 @@ export class AddPageComponent extends BaseModalComponent {
     constructor(
         private pageService: PagesService,
         private dictaatService: DictaatService,
+        private menuService: NavMenuService,
         private route: ActivatedRoute,
         private zone: NgZone
     ) { 
@@ -72,6 +75,8 @@ export class AddPageComponent extends BaseModalComponent {
             name: this.page.name, 
             url: this.trim(this.page.name)
         };
+
+        debugger;
 
         this.pageService.addPage(this.dictaat.name, page, this.menuName, this.template)
             .then(menuItems => {

@@ -35,11 +35,8 @@ export class QuizComponent implements OnInit {
 
   ngOnInit() {
 
-    this.accountService.getUser()
-      .subscribe(user => {
-          this.isAuth = user != null
-      });
-
+    this.accountService.User.subscribe(user => { this.isAuth = user != null; });
+    
     this.configService.DictaatName.subscribe((name) => {
           this.dictaatName = name;
           this.isLoading = true;

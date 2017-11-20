@@ -6,12 +6,12 @@ import { DirtyGuard } from "../shared/core/security/dirty.guard";
 import { DictaatComponent } from "./dictaat/dictaat.component";
 import { DictatenComponent } from "./dictaat/dictaten.component";
 import { QuizListComponent } from "./quiz/quiz-list/quiz-list.component";
-import { PagesComponent } from "./pages/pages.component";
-import { EditPageComponent } from "./pages/edit-page.component";
 import { AssignmentListComponent } from "./assignments/assignment-list/assignment-list.component";
 import { DictaatSettingsComponent } from "./dictaat/settings-dictaat.component";
 import { MarkingComponent } from "./marking/marking.component";
 import { Observable } from "rxjs/Observable";
+import { EditPageComponent } from './pages/edit-page/edit-page.component';
+import { PagesComponent } from './pages/pages/pages.component';
 
 @Injectable()
 export class CanDeactivateEditPage implements CanDeactivate<EditPageComponent> {

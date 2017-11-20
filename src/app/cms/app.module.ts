@@ -33,7 +33,6 @@ import {AchievementMarkingComponent} from "./achievement-marking/achievement-mar
 
 
 import { AddQuizComponent } from "./quiz/add-quiz/add-quiz.component";
-import { AddPageComponent } from "./pages/add-page.component";
 import { SpinnerComponent } from "../shared/spinner/spinner.component";
 import { ImagesModule } from "./images/images.module";
 import { AddVideoComponent } from "./videos/add-video.component";

@@ -4,18 +4,23 @@ import { HttpModule }    from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 
 //components
-import { PagesComponent } from './pages.component';
-import { AddPageComponent } from './add-page.component';
 import { PagesService } from "./pages.service";
 import { DragulaModule , DragulaService } from 'ng2-dragula/ng2-dragula';
-import { EditPageComponent } from "./edit-page.component";
 import { ToolsModule } from "../tools/tools.module";
 import { CodemirrorModule } from 'ng2-codemirror';
 
+import { routing } from "../app.routing";
+import { EditPageComponent } from './edit-page/edit-page.component';
+import { AddPageComponent } from './add-page/add-page.component';
+import { PagesComponent } from './pages/pages.component';
+import { PageItemComponent } from './pages/page-item/page-item.component';
+import { FolderItemComponent } from './pages/folder-item/folder-item.component';
+
+
 @NgModule({
-    imports: [BrowserModule, HttpModule, FormsModule, DragulaModule, ToolsModule, CodemirrorModule],
+    imports: [BrowserModule, HttpModule, FormsModule, routing, DragulaModule, ToolsModule, CodemirrorModule],
     declarations: [
-        PagesComponent, EditPageComponent, AddPageComponent
+        PagesComponent, EditPageComponent, AddPageComponent, PageItemComponent, FolderItemComponent
     ],
     exports: [PagesComponent, AddPageComponent, EditPageComponent],
     providers: [ PagesService, DragulaService]

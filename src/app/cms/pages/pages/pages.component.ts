@@ -1,11 +1,12 @@
 ﻿import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { PagesService} from './pages.service';
 import { Router } from '@angular/router';
 import { DragulaService } from "ng2-dragula";
-import { Dictaat } from "../../shared/models/dictaat";
-import { NavMenuItem } from "../../shared/models/nav-menu";
-import { NavMenuService } from "../../shared/nav-menu/nav-menu.service";
-import { DictaatService } from "../../shared/services/dictaat.service";
+import { Dictaat } from '../../../shared/models/dictaat';
+import { NavMenuItem } from '../../../shared/models/nav-menu';
+import { PagesService } from '../pages.service';
+import { NavMenuService } from '../../../shared/nav-menu/nav-menu.service';
+import { DictaatService } from '../../../shared/services/dictaat.service';
+
 
 
 
@@ -43,37 +44,19 @@ export class PagesComponent{
         });
     }
 
-    public toggleItem(item: NavMenuItem){
-        item.isOpen = !item.isOpen;
-
-    }
-
-    public toggleEnabled(item: NavMenuItem){
-        item.isEnabled = !item.isEnabled;
-        this.navMenuService.updateNavMenu(this.dictaat.name, this.dictaat.menuItems);
-    }
-
-
     public getDragOptions(){
         return {
             moves: function(el, source, handle, sibling){
-
-                while(handle && handle.localName != "li") { //keep going up until you find a match
-                    handle = handle.parentNode; //go up
+                return handle.className === 'handle' || handle.parentNode.className ==='handle';
+            },
+            accepts: function(el, target, source, sibling) {
+                if(el.children[0].children[0].className == "folder-item")
+                {
+                    return target.className != 'sub-menu';
                 }
-
-                return !handle.classList.contains('sub')
+                return true;
             }
         }
-    }
-
-    public enableEdit(item: NavMenuItem){
-       item.isEdit = !item.isEdit;
-    }
-
-    public updateMenu(item: NavMenuItem){
-        item.isEdit = false;
-        this.navMenuService.updateNavMenu(this.dictaat.name, this.dictaat.menuItems);
     }
 
     public addPage(){
@@ -90,32 +73,60 @@ export class PagesComponent{
         newItem.isEdit = true;
     }
 
-    public deleteSubmenu(menuItem: NavMenuItem){
-        this.dictaat.menuItems.forEach((mi, index, list) => {
-            if(mi.name == menuItem.name){
-                if(mi.menuItems.length > 0){
-                    alert("Cannot delete a sub menu with pages inside!");
-                }
-                else{
-                    menuItem.isDeleted = true;
-                    list.splice(index, 1);
-                    this.navMenuService.updateNavMenu(this.dictaat.name, this.dictaat.menuItems);
-                }
+
+
+    public updateMenu(item: NavMenuItem){
+        debugger;
+        //if deleted, remove from menu
+        if(item.isDeleted){
+            if(item.url)
+            {
+                ////if it's a page, delete the page first
+                this.pagesSevice.deletePage(this.dictaat.name, item.url).then((menuItems) => {
+                   
+                    this.dictaat.menuItems = menuItems;
+                });
             }
-        })
+            else{
+                //otherwise just remove it
+                this.removeItem(item, this.dictaat.menuItems); 
+                this.navMenuService.updateNavMenu(this.dictaat.name, this.dictaat.menuItems);
+            }
+        }
+        else{
+            this.navMenuService.updateNavMenu(this.dictaat.name, this.dictaat.menuItems);
+        }
     }
 
     public deletePage(page: NavMenuItem): void {
-        page.isDeleted = true;
-
         this.pagesSevice.deletePage(this.dictaat.name, page.url).then((menuItems) => {
             if(!menuItems)
               page.isDeleted = false;
         }, (error) => page.isDeleted = false)
-           
     }
 
     public editPage(page): void {
         this.router.navigateByUrl("/dictaten/" + this.dictaat.name + "/pages/" + page.url); 
+    }
+
+    /**
+     * Helper method for the 'update menu' 
+     * @param item 
+     * @param menu 
+     */
+    private removeItem(item: NavMenuItem, menu: NavMenuItem[])
+    {
+        //check if nested
+        (menu).forEach(i => {
+            if(i.menuItems.length > 0)
+                this.removeItem(item, i.menuItems);
+        });
+
+        var index = menu.indexOf(item);
+
+        //remove item! :)
+        if(index != -1){
+            this.dictaat.menuItems.splice(index, 1);
+        }
     }
 }
