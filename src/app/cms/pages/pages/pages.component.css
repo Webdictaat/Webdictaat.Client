@@ -3,6 +3,9 @@ ul{
     padding: 0;
 }
 
+li{
+    list-style-type: none;
+}
 
 span.title{ margin-left:10px; }
 
