@@ -28,8 +28,8 @@
             <i class="fa fa-pencil" aria-hidden="true"></i>
         </div>
         <div class="action enable" (click)="toggleEnabled()">
-            <i class="fa fa-eye" *ngIf="item.isEnabled" aria-hidden="true"></i>
-            <i class="fa fa-eye-slash" *ngIf="!item.isEnabled" aria-hidden="true"></i>
+            <i class="fa fa-eye" *ngIf="!item.isDisabled" aria-hidden="true"></i>
+            <i class="fa fa-eye-slash" *ngIf="item.isDisabled" aria-hidden="true"></i>
         </div>
         <div class="action delete" (click)="deleteItem()">
             <i class="fa fa-trash-o" aria-hidden="true"></i>

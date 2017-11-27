@@ -7,7 +7,7 @@ export class NavMenuItem {
     public isDeleted: boolean;
     public isOpen: boolean;
     public isEdit: boolean;
-    public isEnabled: boolean;
+    public isDisabled: boolean;
 
     constructor(data: any = null){
         if(data){

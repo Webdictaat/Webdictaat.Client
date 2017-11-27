@@ -3,49 +3,37 @@
     "Name": "Home",
     "Url": "home",
     "MenuItems": [],
-    "IsEnabled": true
+    "IsDisabled": false
+  },
+  {
+    "Name": "test",
+    "Url": "test",
+    "MenuItems": [],
+    "IsDisabled": false
   },
   {
     "Name": "Opdrachten",
     "Url": null,
     "MenuItems": [
       {
-        "Name": "test",
-        "Url": "test",
-        "MenuItems": [],
-        "IsEnabled": true
-      },
-      {
         "Name": "week 2",
         "Url": "week2",
         "MenuItems": [],
-        "IsEnabled": true
-      },
-      {
-        "Name": "Test",
-        "Url": "Test",
-        "MenuItems": [],
-        "IsEnabled": true
+        "IsDisabled": false
       },
       {
         "Name": "week 3",
         "Url": "week3",
         "MenuItems": [],
-        "IsEnabled": true
-      },
-      {
-        "Name": "test2",
-        "Url": "test2",
-        "MenuItems": [],
-        "IsEnabled": true
+        "IsDisabled": true
       },
       {
         "Name": "week 4",
         "Url": "week4",
         "MenuItems": [],
-        "IsEnabled": true
+        "IsDisabled": true
       }
     ],
-    "IsEnabled": true
+    "IsDisabled": false
   }
 ]

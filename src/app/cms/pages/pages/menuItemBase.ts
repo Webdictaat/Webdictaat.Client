@@ -26,7 +26,7 @@ export class MenuItemBase {
     }
 
     public toggleEnabled() {
-        this.item.isEnabled = !this.item.isEnabled;
+        this.item.isDisabled = !this.item.isDisabled;
         this.onUpdate.emit(this.item);
     }
 

@@ -3,12 +3,13 @@
     <li *ngFor="let item of MenuItems">
 
         <!-- menu item -->
-        <a routerLink="{{item.Url}}" routerLinkActive="active" *ngIf="item.Url && item.IsEnabled">
+        <a routerLink="{{item.Url}}" routerLinkActive="active" *ngIf="item.Url && !item.IsDisabled">
             {{item.Name}}
         </a>
 
         <!-- sub menu -->
-        <a  (click)="toggle(item)" [ngClass]="{'rotate': item == selected}" class="dropdown-toggle" *ngIf="!item.Url && item.IsEnabled">
+        <a  (click)="toggle(item)" [ngClass]="{'rotate': item == selected}" class="dropdown-toggle" 
+            *ngIf="!item.Url && !item.IsDisabled">
             <span>{{item.Name}}</span>
             <span class="caret"></span>
         </a>
@@ -16,7 +17,7 @@
         <ol class="nav sub" [ngClass]="{'open': item == selected}">
             <li *ngFor="let subItem of item.MenuItems">
                 <!-- menu item -->
-                <a routerLink="{{subItem.Url}}" *ngIf="subItem.IsEnabled" routerLinkActive="active">
+                <a routerLink="{{subItem.Url}}" *ngIf="!subItem.IsDisabled" routerLinkActive="active">
                     {{subItem.Name}}
                 </a>
             </li>

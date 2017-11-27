@@ -18,6 +18,11 @@ li{
     background-color: transparent;
 }
 
+.handle.disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
 .folder-item { 
     cursor: pointer 
 }
