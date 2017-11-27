@@ -4,6 +4,7 @@ import { PagesService } from '../pages.service';
 import { HtmlComponent } from '../../tools/html.component';
 import { Page } from '../../../shared/models/page';
 import { ConfigService } from '../../../shared/services/config.service';
+import { DictaatService } from '../../../shared/services/dictaat.service';
 
 
 @Component({
@@ -38,6 +39,7 @@ export class EditPageComponent   { //implements DirtyComp
 
     constructor(
         private route: ActivatedRoute,
+        private dictaatService: DictaatService,
         private pagesService: PagesService,
         private router: Router,
         private config: ConfigService,
@@ -48,7 +50,13 @@ export class EditPageComponent   { //implements DirtyComp
         this.route.params.subscribe((params: Params) => {
             this.pageName = params['pageName'];
             this.dictaatName = params['dictaatName'];
+
+            //Get the dictaat, to make sure it's the current one
+            this.dictaatService.getDictaat(this.dictaatName);
+
+            //I need the config so the interactive components work
             this.config.SetLocalConfig({ name: this.dictaatName });
+
             this.pagesService.getPage(this.dictaatName, this.pageName)
                 .then(page => { 
                     this.page = page; 

@@ -26,7 +26,9 @@ export class AddAssignmentComponent extends BaseModalComponent {
     public ngOnInit(): void {
         this.assignment = new  Assignment();
         super.wdOnInit(this.assignmentService, this.zone);
-        this.dictaatService.CurrentDictaat.subscribe((dictaat)=> { if(dictaat) { this.dictaatName = dictaat.name } }); 
+        this.dictaatService.CurrentDictaat.subscribe((dictaat)=> { if(dictaat) { 
+            debugger;
+            this.dictaatName = dictaat.name } }); 
     }
 
    public add(): void {

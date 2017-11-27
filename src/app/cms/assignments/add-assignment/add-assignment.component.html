@@ -1,4 +1,3 @@
-
 <div id="myModal" class="modal animated fadeIn" role="dialog" *ngIf="isModalVisible">
     <div class="modal-dialog animated fadeInDown">
         <!-- Modal content-->
@@ -6,35 +5,13 @@
             <div class="modal-header">
                 <h4 class="modal-title">Add assignment </h4>
                 <div class="close-modal-button" (click)="cancel()">
-                    <span  class="glyphicon glyphicon-remove"></span>
+                    <span class="glyphicon glyphicon-remove"></span>
                 </div>
             </div>
             <div class="modal-body">
-  
-                <div class="form-group">
-                    <label for="assignment.title">Enter title of the assignment</label>
-                    <input type="text" class="form-control" name="assignment.title" id="assignment.title"
-                           [(ngModel)]="assignment.title">
-                </div>
 
-                <div class="form-group">
-                    <label for="assignment.description">Enter a short description of the assignment</label>
-                    <input type="text" class="form-control" name="assignment.description" id="assignment.description"
-                           [(ngModel)]="assignment.description">
-                </div>
+                <wd-assignment-manager [assignment]="assignment"></wd-assignment-manager>
 
-                <div class="form-group">
-                    <label for="assignment.points">Enter the amount of avans points rewarded</label>
-                    <input type="number" class="form-control" name="assignment.points" id="assignment.points"
-                           [(ngModel)]="assignment.points">
-                </div>
-
-                <div class="form-group">
-                    <label for="assignment.metadata">A tag to sort the assignments (example 1.1, 1.2 etc)</label>
-                    <input type="text" class="form-control" name="assignment.metadata" id="assignment.metadata"
-                           [(ngModel)]="assignment.metadata">
-                </div>
-               
                 <div class="form-group">
                     <label for="assignment.title">The level of the assignment</label>
                     <div>
@@ -50,11 +27,12 @@
                     </div>
                 </div>
 
-          
+
             </div>
-            <div class="modal-footer" >
-                <button class="btn btn-success"  [disabled]="!assignment.title || !assignment.description" (click)="add()">Save</button>
-                <button class="btn btn-default" (click)="cancel()">Cancel</button>
+            <div class="modal-footer">
+                <button class="btn btn-default" (click)="Cancel()">Cancel</button>
+                <div class="seperator"></div>
+                <button class="btn btn-success" (click)="add()" [disabled]="!assignment.isValid()">Save</button>
             </div>
         </div>
     </div>
