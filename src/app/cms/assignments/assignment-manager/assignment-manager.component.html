@@ -19,7 +19,7 @@
 
     <div class="form-group col-md-6">
       <label for="assignment.points">Points</label>
-      <input type="text" id="points" name="points" [(ngModel)]="assignment.points" required #points="ngModel">
+      <input type="number" id="points" name="points" [(ngModel)]="assignment.points" required #points="ngModel">
       <div [hidden]="points.valid || points.pristine" class="validation">
         Points of the assignment is required
       </div>

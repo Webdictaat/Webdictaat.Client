@@ -37,7 +37,7 @@ export class Assignment{
     }
 
     public isValid() : boolean{
-        if(this.title && this.description && this.points)
+        if(this.title && this.description)
         {
             return true;
         }

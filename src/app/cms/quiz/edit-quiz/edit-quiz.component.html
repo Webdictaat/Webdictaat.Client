@@ -1,1 +1,8 @@
-<wd-quiz-manager [quiz]="quiz"></wd-quiz-manager>
+<wd-spinner *ngIf="!quiz"></wd-spinner>
+<wd-quiz-manager *ngIf="quiz" [quiz]="quiz"></wd-quiz-manager>
+
+<div class="modal-footer">
+    <button class="btn btn-default" (click)="Cancel()">Cancel</button>
+    <div class="seperator"></div>
+    <button class="btn btn-success" (click)="Save()" [disabled]="!quiz || !quiz.isValid()">Save</button>
+</div>

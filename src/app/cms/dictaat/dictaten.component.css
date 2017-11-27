@@ -4,6 +4,11 @@
 
 .panel{
     position: relative;
+    z-index: 1;    
+}
+
+img.wd-logo{
+    z-index: -1;
 }
 
 .dictaat{

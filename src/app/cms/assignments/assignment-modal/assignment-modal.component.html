@@ -39,7 +39,7 @@
               <legend>Or</legend>
             </fieldset>
             <button class="btn btn-primary btn-raised" (click)="modalType = 'select'">
-                  Select an excisting assignment
+                  Select an existing assignment
             </button>
           </div>
           <div class="modal-footer">
@@ -58,7 +58,7 @@
                 [ngClass]="{'selected': selected == assignment}"
                 (click)="selected = assignment">
                 <td>
-                  <span>{{assignment.id}}</span>
+                    <span class="grayed">#{{assignment.id}}</span>
                 </td>
                 <td>
                   <span>{{assignment.metadata}}</span>

@@ -247,7 +247,12 @@ body {
     max-width: 100%;
 }
 
-/** Actions **/
+/** tables and Actions **/
+
+table span.grayed{
+    color:gray;
+    font-size:90%; 
+}
 
 .table>tbody>tr>td.actions{
     padding:0px;

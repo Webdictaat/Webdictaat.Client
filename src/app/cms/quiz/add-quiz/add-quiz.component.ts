@@ -24,6 +24,9 @@ export class AddQuizComponent extends  BaseModalComponent implements OnInit {
     public newAnswerText: string; 
     private  dictaatName: string;
 
+    @Output()
+    public onFinished = new EventEmitter();
+
     constructor(
         private quizService: QuizService,
         private  zone: NgZone,
@@ -47,14 +50,14 @@ export class AddQuizComponent extends  BaseModalComponent implements OnInit {
     public Add(): void {
         this.quizService.addQuiz(this.dictaatName, this.quiz)
             .then((quiz: Quiz) => {
-                this.quizService.CompleteModal(quiz);
+                this.onFinished.emit(quiz);
             });
     }
 
 
     public Cancel(): void {
         this.resetQuiz();
-        this.quizService.CancelModal();
+        this.onFinished.emit();
     }
 }
 

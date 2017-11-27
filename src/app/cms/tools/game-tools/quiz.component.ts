@@ -40,7 +40,7 @@ export class QuizToolComponent {
         return new Promise((resolve, reject) => {
             var params = [];
             params['dictaatName'] = this.dictaatName;
-            this.quizService.ShowModal('add', params)
+            this.quizService.ShowModal('choose', params)
                 .then((quiz: Quiz) => {                  
                     ui.item.replaceWith("<wd-quiz class='wd-component wd-game-component' [qid]='" + quiz.id + "' />");
                     resolve(true);

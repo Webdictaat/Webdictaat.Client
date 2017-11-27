@@ -5,7 +5,7 @@
             <div class="modal-header">
                 <h4 class="modal-title">Edit assignment </h4>
                 <div class="close-modal-button" (click)="cancelEdit()">
-                    <span  class="glyphicon glyphicon-remove"></span>
+                    <span class="glyphicon glyphicon-remove"></span>
                 </div>
             </div>
             <div class="modal-body">
@@ -24,45 +24,44 @@
 
 <div *ngIf="assignments" class="panel panel-default sidebar">
 
-  
-  <div class="text-center">
-      <button class="btn btn-xs btn-success" (click)="addAssignment()">
+
+    <div class="text-center">
+        <button class="btn btn-xs btn-success" (click)="addAssignment()">
           <span class="glyphicon glyphicon-plus"></span>&nbsp;Create a new assignment
       </button>
-  </div>
+    </div>
 
 
-  <table class="table table-striped" *ngIf="assignments.length != 0">
-    <tr *ngFor="let assignment of assignments; let i=index">
-      <td>
-        <span>{{assignment.id}}</span>
-      </td>
-      <td>
-        <span>{{assignment.metadata}}</span>
-      </td>
-      <td>
-        {{assignment.title}}
-      </td>
-      <td>
-        {{assignment.points}} Points
-      </td>
-      <td>
-        Completed by {{assignment.submissionCount}} students
-      </td>
-      <td class="actions" >
-          <div class="action edit" (click)="editAssignment(i)">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-          </div>
-          <div class="action delete" (click)="deleteAssignment(i)">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-          </div>
-      </td>
-    </tr>
-  </table>
+    <table class="table table-striped" *ngIf="assignments.length != 0">
+        <tr *ngFor="let assignment of assignments; let i=index">
+            <td>
+                <span class="grayed">#{{assignment.id}}</span>
+            </td>
+            <td>
+                <span>{{assignment.metadata}}</span>
+            </td>
+            <td>
+                {{assignment.title}}
+            </td>
+            <td>
+                {{assignment.points}} Points
+            </td>
+            <td>
+                Completed by {{assignment.submissionCount}} students
+            </td>
+            <td class="actions">
+                <div class="action edit" (click)="editAssignment(i)">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </div>
+                <div class="action delete" (click)="deleteAssignment(i)">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </div>
+            </td>
+        </tr>
+    </table>
 
-  <div *ngIf="assignments.length == 0" class="panel-body text-center">
-    <p>This dictaat does not contain any assignment's yet</p>
-  </div>
+    <div *ngIf="assignments.length == 0" class="panel-body text-center">
+        <p>This dictaat does not contain any assignment's yet</p>
+    </div>
 
 </div>
-

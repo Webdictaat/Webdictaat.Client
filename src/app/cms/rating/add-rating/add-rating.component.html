@@ -7,22 +7,21 @@
                 <h4 class="modal-title">Add Rating</h4>
             </div>
             <div class="modal-body">
-              
+
                 <div class="form-group">
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" class="form-control" name="title" placeholder="Short title of the rating"
-                               [(ngModel)]="rating.Title" required>
+                        <input type="text" class="form-control" name="title" placeholder="Short title of the rating" [(ngModel)]="rating.Title" required>
                     </div>
                 </div>
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" (click)="Add()">Save</button>
                 <button class="btn btn-default" (click)="Cancel()">Cancel</button>
+                <div class="seperator"></div>
+                <button class="btn btn-success" (click)="Add()">Save</button>
             </div>
+
         </div>
     </div>
 </div>
-
-

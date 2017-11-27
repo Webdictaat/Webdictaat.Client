@@ -1,25 +1,8 @@
-﻿<div id="myModal" class="modal fade in" role="dialog" *ngIf="isModalVisible">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Add Quiz </h4>
-                <div class="close-modal-button" (click)="Cancel()">
-                    <span  class="glyphicon glyphicon-remove"></span>
-                </div>
-            </div>
-            <div class="modal-body">
+﻿<wd-quiz-manager [quiz]="quiz"></wd-quiz-manager>
 
-                <wd-quiz-manager [quiz]="quiz"></wd-quiz-manager>
 
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-default" (click)="Cancel()">Cancel</button>
-                <div class="seperator"></div>
-                <button class="btn btn-success" (click)="Add()" [disabled]="!quiz.isValid()">Save</button>   
-            </div>
-        </div>
-    </div>
+<div class="modal-footer">
+    <button class="btn btn-default" (click)="Cancel()">Cancel</button>
+    <div class="seperator"></div>
+    <button class="btn btn-success" (click)="Add()" [disabled]="!quiz.isValid()">Save</button>   
 </div>
-
-

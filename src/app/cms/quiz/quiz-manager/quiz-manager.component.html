@@ -74,7 +74,7 @@
 
     <div class="body" *ngIf="selected">
       <wd-question-manager [question]="selected"></wd-question-manager>
-      <button class="btn btn-raised btn-danger btn-xs add" (click)="RemoveQuestion(selected)">
+      <button class="btn btn-danger btn-xs add" (click)="RemoveQuestion(selected)">
           <span class="glyphicon glyphicon-trash"></span>&nbsp;Remove this question
       </button>
     </div>

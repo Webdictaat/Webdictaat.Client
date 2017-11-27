@@ -1,0 +1,94 @@
+<div id="myModal" class="modal animated fadeIn" role="dialog" *ngIf="isModalVisible">
+    <div class="modal-dialog animated fadeInDown">
+      <!-- Modal content-->
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <h4 class="modal-title">
+            <span [ngSwitch]="modalType">
+              <span *ngSwitchCase="'edit'">Edit quiz </span>
+            <span *ngSwitchCase="'add'">Add new quiz</span>
+            <span *ngSwitchCase="'choose'">Choose quiz</span>
+            <span *ngSwitchCase="'select'">Select quiz</span>
+            </span>
+          </h4>
+          <div class="close-modal-button" (click)="cancel()">
+            <span class="glyphicon glyphicon-remove"></span>
+          </div>
+        </div>
+  
+        <div [ngSwitch]="modalType">
+
+          <!-- Edit an excisting quiz -->
+          <div *ngSwitchCase="'edit'">
+  
+            <wd-edit-quiz [qid]="params[0].id" (onFinished)="completeModal($event)"></wd-edit-quiz>
+  
+          </div>
+
+          <!-- Add a new quiz -->
+          <div *ngSwitchCase="'add'">
+  
+            <wd-add-quiz (onFinished)="completeModal($event)"></wd-add-quiz>
+  
+          </div>
+  
+          <!-- Choose add or select -->
+          <div class="choose"  *ngSwitchCase="'choose'">
+            <div class="modal-body">
+              <button class="btn btn-primary btn-raised" (click)="modalType = 'add'">
+                  Add a new quiz
+              </button>
+              <fieldset class="breakline">
+                <legend>Or</legend>
+              </fieldset>
+              <button class="btn btn-primary btn-raised" (click)="modalType = 'select'">
+                    Select an existing quiz
+              </button>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" (click)="completeModal()">Cancel</button>
+            </div>
+          </div>
+  
+          <div class="modal-body select" *ngSwitchCase="'select'">
+  
+            <wd-spinner *ngIf="!quizes"></wd-spinner>
+  
+            <div class="select" *ngIf="quizes">
+  
+              <table class="table table-striped" *ngIf="quizes.length != 0">
+                <tr *ngFor="let quiz of quizes; let i=index" 
+                  [ngClass]="{'selected': selected == quiz}"
+                  (click)="selected = quiz">
+                  <td>
+                      <span class="grayed">#{{quiz.id}}</span>
+                  </td>
+                  <td>
+                      {{quiz.assignment.title}}
+                  </td>
+                  <td>
+                      {{quiz.questions.length}} questions
+                  </td>
+                </tr>
+              </table>
+  
+              <div *ngIf="quizes.length == 0" class="panel-body text-center">
+                <p>This dictaat does not contain any quizes yet</p>
+              </div>
+  
+              <div class="modal-footer">
+                  <button class="btn btn-default" (click)="completeModal()">Cancel</button>
+                  <div class="seperator"></div>
+                  <button class="btn btn-success" (click)="completeModal(selected)" [disabled]="!selected">
+                    Insert selected
+                  </button>
+              </div>
+  
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

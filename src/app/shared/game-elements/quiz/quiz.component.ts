@@ -40,17 +40,28 @@ export class QuizComponent implements OnInit {
     this.configService.DictaatName.subscribe((name) => {
           this.dictaatName = name;
           this.isLoading = true;
-
-          this.quizService.getQuiz(this.dictaatName, this.qid)
-          .then((q: Quiz) => { 
-             this.quiz = q;
-             this.isLoading = false;
-          })
-          .catch((error) => {
-            this.isLoading = false;
-          });
-
+          this.refreshQuiz();
     });
+  }
+
+  private refreshQuiz(){
+    this.quizService.getQuiz(this.dictaatName, this.qid)
+      .then((q: Quiz) => { 
+        this.quiz = q;
+        this.isLoading = false;
+      })
+      .catch((error) => {
+        this.isLoading = false;
+      });
+  }
+
+  public edit(){
+    var original = Object.assign({}, this.quiz); 
+    this.quizService.ShowModal('edit', [this.quiz])
+      .then((quiz) => this.refreshQuiz())
+      .catch(() => {
+        this.quiz = new Quiz(original);
+      });
   }
 
   public start() {  

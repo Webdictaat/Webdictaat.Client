@@ -47,18 +47,17 @@ export class QuizListComponent implements OnInit {
   }
 
   public addQuiz(){
-    var params = [];
-    params['dictaatName'] = this.dictaatName;
-    this.quizService.ShowModal('add',params)
+
+    this.quizService.ShowModal('add', [])
       .then((quiz) => {
         this.quizes.push(quiz);
       })
   }
   
-  public enableEdit(quiz: Quiz): void{
-    this.quizService.getQuiz(quiz.dictaat, quiz.id)
+  public editQuiz(quiz: Quiz): void{
+    this.quizService.ShowModal('edit', [quiz])
       .then((quiz) => {
-        this.selectedQuiz = quiz;
+        quiz = quiz;
       })
   }
 

@@ -1,25 +1,3 @@
-<div id="myModal" class="modal fade in" role="dialog" *ngIf="selectedQuiz">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Edit Quiz </h4>
-                <div class="close-modal-button" (click)="cancelEdit()">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </div>
-            </div>
-            <div class="modal-body">
-                <wd-edit-quiz [quiz]="selectedQuiz"></wd-edit-quiz>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-default" (click)="cancelEdit()">Cancel</button>
-                <div class="seperator"></div>
-                <button class="btn btn-success" (click)="Update(selectedQuiz)" [disabled]="!selectedQuiz.isValid()">Save & close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="alert alert-success" role="alert">
 
     <div class="row">
@@ -73,7 +51,7 @@
                 <span class="label label-warning" *ngIf="quiz.isOutdated">Outdated</span>
             </td>
             <td class="actions">
-                <div class="action edit" (click)="enableEdit(quiz)">
+                <div class="action edit" (click)="editQuiz(quiz)">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                 </div>
             </td>

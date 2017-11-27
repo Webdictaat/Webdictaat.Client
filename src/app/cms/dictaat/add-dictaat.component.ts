@@ -9,6 +9,7 @@ import { DictaatService } from "../../shared/services/dictaat.service";
 @Component({
     selector: "wd-add-dictaat",
     templateUrl: "./add-dictaat.component.html",
+    styleUrls: ['./add-dictaat.component.css'],
     host: {
         '(document:click)': 'outsideModal($event)',
     },

@@ -40,7 +40,7 @@ export class ImgComponent implements OnInit  {
         return new Promise((resolve, reject) => {
             var params = [];
             params['dictaatName'] = this.dictaatName;
-            this.imageServie.ShowModal(params)
+            this.imageServie.ShowModal('add', params)
                 .then((result) => {
                     var src = this.server + "dictaten//"+ result.dictaatName+"//images//" + result.imageLocation ;
                     var newItem = $("<div class='wd-component'><div class='wd-editable'><img src='" + src + "'/></div></div>");

@@ -9,8 +9,8 @@
 
             <div class="modal-body">
                 <div class="form-group">
-                        <label class="btn btn-primary btn-raised"  for="seletedFile">Select image</label>
-                        <input name="seletedFile" type="file" (change)="fileChange($event)" />
+                    <label class="btn btn-primary btn-raised" for="seletedFile">Select image</label>
+                    <input name="seletedFile" type="file" (change)="fileChange($event)" />
                 </div>
 
                 <p *ngIf="!selectedFile">
@@ -22,12 +22,12 @@
                 </p>
             </div>
 
-
-
             <div class="modal-footer">
-                <button class="btn btn-success" (click)="Add()">Save</button>
                 <button class="btn btn-default" (click)="Cancel()">Cancel</button>
+                <div class="seperator"></div>
+                <button class="btn btn-success" (click)="Add()">Save</button>
             </div>
+
         </div>
     </div>
 </div>

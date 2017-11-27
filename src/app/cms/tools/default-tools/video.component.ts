@@ -33,7 +33,7 @@ export class VideoComponent implements OnInit  {
     public onDrop(ui): Promise<boolean> {
         return new Promise((resolve, reject) => {
             var params = [];
-            this.videoService.ShowModal([])
+            this.videoService.ShowModal('add', [])
                 .then((videoTag) => {
                     var newItem = $("<div class='wd-component'>" + videoTag + "</div>");
                     ui.item.replaceWith(newItem);
