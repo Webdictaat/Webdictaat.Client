@@ -31,16 +31,18 @@ export class AssignmentListComponent implements OnInit {
   }
 
   public addAssignment(){
-      var params = [];
-      params['dictaatName'] = this.dictaatService.CurrentDictaat.value.name;
-      this.assignmentService.ShowModal(params).then((assignment) => {
+      this.assignmentService.ShowModal('add', []).then((assignment) => {
           this.assignments.push(assignment);
       });
   }
 
-    public enableEdit(index: number): void{
-      this.selectedIndex = index;
-      this.selectedAssignment = new Assignment(this.assignments[index]);      
+    public editAssignment(index: number): void{
+      var assignment = new Assignment(this.assignments[index]);
+      this.assignmentService.ShowModal('edit', [assignment]).then((assignment) => {
+          if(assignment){
+            this.assignments[index] = assignment;
+          }
+      });    
     }
 
     public Update(assignment: Assignment): void{

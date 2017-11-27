@@ -48,4 +48,13 @@ export class AssignmentComponent implements OnInit {
       .then(s => this.assignment.mySubmission = s)
       .catch(s => this.assignment.state = 0);
   }
+
+  public edit(){
+    var original = Object.assign({}, this.assignment); 
+    this.assignmentService.ShowModal('edit', [this.assignment])
+      .then((assignment) => this.assignment = assignment)
+      .catch(() => {
+        this.assignment = new Assignment(original);
+      });
+  }
 }

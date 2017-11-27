@@ -40,7 +40,7 @@ export class AssignmentToolComponent {
         return new Promise((resolve, reject) => {
             var params = [];
             params['dictaatName'] = this.dictaatName;
-            this.assignmentService.ShowModal(params)
+            this.assignmentService.ShowModal('choose', params)
                 .then((assignment: Assignment) => {                  
                     ui.item.replaceWith("<wd-assignment class='wd-component wd-game-component' [aid]='" + assignment.id + "' />");
                     resolve(true);

@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, EventEmitter, Output } from '@angular/core';
 import { BaseModalComponent } from "../../../shared/core/basemodal.service";
 import { AssignmentService } from "../../../shared/services/assignment.service";
 import { DictaatService } from "../../../shared/services/dictaat.service";
@@ -9,35 +9,36 @@ import { Assignment } from "../../../shared/models/assignment";
   templateUrl: './add-assignment.component.html',
   styleUrls: ['./add-assignment.component.css']
 })
-export class AddAssignmentComponent extends BaseModalComponent {
+export class AddAssignmentComponent {
 
   public assignment: Assignment;
   private dictaatName: string;
 
+  @Output()
+  public onFinished = new EventEmitter();
+
   constructor(
       private assignmentService: AssignmentService,
-      private dictaatService: DictaatService,
-      private zone: NgZone
-  ){
-    super(); 
-    
-  }
+      private dictaatService: DictaatService
+  ){}
 
     public ngOnInit(): void {
         this.assignment = new  Assignment();
-        super.wdOnInit(this.assignmentService, this.zone);
-        this.dictaatService.CurrentDictaat.subscribe((dictaat)=> { if(dictaat) { 
-            debugger;
-            this.dictaatName = dictaat.name } }); 
+        this.dictaatService.CurrentDictaat.subscribe((dictaat)=> { if(dictaat) { this.dictaatName = dictaat.name } }); 
     }
 
-   public add(): void {
+    public Cancel()
+    {
+        this.onFinished.emit();
+    }
+
+   public Add(): void {
 
         this.assignmentService.addAssignment(this.dictaatName, this.assignment)
             .then(assignment => {
-                this.assignmentService.CompleteModal(assignment);
+                this.onFinished.emit(assignment);
             }, (error) => {
-                this.assignmentService.CancelModal();
+                this.onFinished.emit();
                 alert("Something went wrong!");
             });
     }

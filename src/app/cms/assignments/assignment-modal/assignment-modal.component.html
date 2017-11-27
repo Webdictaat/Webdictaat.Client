@@ -1,0 +1,93 @@
+<div id="myModal" class="modal animated fadeIn" role="dialog" *ngIf="isModalVisible">
+  <div class="modal-dialog animated fadeInDown">
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">
+          <span [ngSwitch]="modalType">
+            <span *ngSwitchCase="'edit'">Edit assignment </span>
+          <span *ngSwitchCase="'add'">Add new assignment</span>
+          <span *ngSwitchCase="'choose'">Choose assignment</span>
+          <span *ngSwitchCase="'select'">Select assignment</span>
+          </span>
+        </h4>
+        <div class="close-modal-button" (click)="cancel()">
+          <span class="glyphicon glyphicon-remove"></span>
+        </div>
+      </div>
+
+      <div [ngSwitch]="modalType">
+        <div *ngSwitchCase="'edit'">
+
+          <wd-edit-assignment [assignment]="params[0]" (onFinished)="completeModal($event)"></wd-edit-assignment>
+
+        </div>
+        <div *ngSwitchCase="'add'">
+
+          <wd-add-assignment (onFinished)="completeModal($event)"></wd-add-assignment>
+
+        </div>
+
+        <!-- Choose add or select -->
+        <div class="choose"  *ngSwitchCase="'choose'">
+          <div class="modal-body">
+            <button class="btn btn-primary btn-raised" (click)="modalType = 'add'">
+                Add a new assignment
+            </button>
+            <fieldset class="breakline">
+              <legend>Or</legend>
+            </fieldset>
+            <button class="btn btn-primary btn-raised" (click)="modalType = 'select'">
+                  Select an excisting assignment
+            </button>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-default" (click)="completeModal()">Cancel</button>
+          </div>
+        </div>
+
+        <div class="modal-body select" *ngSwitchCase="'select'">
+
+          <wd-spinner *ngIf="!assignments"></wd-spinner>
+
+          <div class="select" *ngIf="assignments">
+
+            <table class="table table-striped" *ngIf="assignments.length != 0">
+              <tr *ngFor="let assignment of assignments; let i=index" 
+                [ngClass]="{'selected': selected == assignment}"
+                (click)="selected = assignment">
+                <td>
+                  <span>{{assignment.id}}</span>
+                </td>
+                <td>
+                  <span>{{assignment.metadata}}</span>
+                </td>
+                <td>
+                  {{assignment.title}}
+                </td>
+                <td>
+                  {{assignment.points}} Points
+                </td>
+              </tr>
+            </table>
+
+            <div *ngIf="assignments.length == 0" class="panel-body text-center">
+              <p>This dictaat does not contain any assignment's yet</p>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-default" (click)="completeModal()">Cancel</button>
+                <div class="seperator"></div>
+                <button class="btn btn-success" (click)="completeModal(selected)" [disabled]="!selected">
+                  Insert selected
+                </button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

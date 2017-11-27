@@ -9,13 +9,15 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 
 class ModalEvent{
+    modalType: string;
     params: any;
     isVisible: boolean;
 }
 
 class ShowModalEvent extends ModalEvent{
-    constructor(params){
+    constructor(modalType, params){
         super();
+        this.modalType = modalType;
         this.params = params;
         this.isVisible = true;
        
@@ -42,8 +44,8 @@ export class BaseModalService {
     public constructor(){}
 
 
-    public ShowModal(params: any[]): Promise<any> {
-        this.modalEvent.next(new ShowModalEvent(params));
+    public ShowModal(modal: string, params: any[]): Promise<any> {
+        this.modalEvent.next(new ShowModalEvent(modal, params));
         return new Promise<any>((resolve, reject) => {
             this.resolveComplete = resolve;
             this.resolveCancel = reject;
@@ -65,7 +67,8 @@ export class BaseModalService {
 export class BaseModalComponent {
 
     public isModalVisible;
-    public params: string[];
+    public modalType: string;
+    public params: any[];
     private baseService: BaseModalService;
 
     ///call this method to initialize base component
@@ -73,6 +76,7 @@ export class BaseModalComponent {
         this.baseService = service;
         service.modalEvent.subscribe((modalEvent: ModalEvent) => { 
             this.isModalVisible = modalEvent.isVisible;
+            this.modalType = modalEvent.modalType;
             this.params = modalEvent.params;
             zone.run(() => {});
         });

@@ -49,7 +49,7 @@ export class QuizListComponent implements OnInit {
   public addQuiz(){
     var params = [];
     params['dictaatName'] = this.dictaatName;
-    this.quizService.ShowModal(params)
+    this.quizService.ShowModal('add',params)
       .then((quiz) => {
         this.quizes.push(quiz);
       })

@@ -200,6 +200,14 @@ hr{
     font-size: 1.2em;
 }
 
+.tooltip-container  .tooltip-item.edit{
+    background-color: #00AEED;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+
 
 /** bigger than 767, so left side menu should be visible **/
 @media (min-width:767px) {

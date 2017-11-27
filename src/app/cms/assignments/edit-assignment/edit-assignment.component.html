@@ -1,40 +1,28 @@
-<div class="form-group">
-    <label for="assignment.title">Enter title of the assignment</label>
-    <input type="text" class="form-control" required name="assignment.title" id="assignment.title"
-            [(ngModel)]="assignment.title">
-</div>
+<div class="modal-body">
+        
+    <wd-assignment-manager [assignment]="assignment"></wd-assignment-manager>
 
-<div class="form-group">
-    <label for="assignment.title">Enter a short description of the assignment</label>
-    <input type="text" class="form-control" required name="assignment.description" id="assignment.description"
-            [(ngModel)]="assignment.description">
-</div>
-
-<div class="form-group">
-    <label for="assignment.title">Enter the amount of avans points rewarded</label>
-    <input type="number" class="form-control" required name="assignment.points" id="assignment.points"
-            [(ngModel)]="assignment.points">
-</div>
-
-<div class="form-group">
-    <label for="assignment.title">A tag to sort the assignments (example 1.1, 1.2 etc)</label>
-    <input type="text" class="form-control" name="assignment.metadata" id="assignment.metadata"
-            [(ngModel)]="assignment.metadata">
-</div>
-
-<div class="form-group">
-    <label for="assignment.title">The level of the assignment</label>
-    <div>
-        <button class="btn btn-raised btn-default" (click)="assignment.level = 'Bronze'" [ngClass]="{'btn-info' : assignment.level == 'Bronze' }">
-            Bronze<div class="ripple-container"></div>
-        </button>
-        <button class="btn btn-raised btn-default" (click)="assignment.level = 'Silver'" [ngClass]="{'btn-info' : assignment.level == 'Silver' }">
-            Silver<div class="ripple-container"></div>
-        </button>
-        <button class="btn btn-raised btn-default" (click)="assignment.level = 'Gold'" [ngClass]="{'btn-info' : assignment.level == 'Gold' }">
-            Gold<div class="ripple-container"></div>
-        </button>
+    <div class="form-group">
+        <label for="assignment.title">The level of the assignment</label>
+        <div>
+            <button class="btn btn-raised btn-default" (click)="assignment.level = 'Bronze'" [ngClass]="{'btn-info' : assignment.level == 'Bronze' }">
+                Bronze<div class="ripple-container"></div>
+            </button>
+            <button class="btn btn-raised btn-default" (click)="assignment.level = 'Silver'" [ngClass]="{'btn-info' : assignment.level == 'Silver' }">
+                Silver<div class="ripple-container"></div>
+            </button>
+            <button class="btn btn-raised btn-default" (click)="assignment.level = 'Gold'" [ngClass]="{'btn-info' : assignment.level == 'Gold' }">
+                Gold<div class="ripple-container"></div>
+            </button>
+        </div>
     </div>
+
 </div>
+<div class="modal-footer">
+    <button class="btn btn-default" (click)="Cancel()">Cancel</button>
+    <div class="seperator"></div>
+    <button class="btn btn-success" (click)="Save()" [disabled]="!assignment.isValid()">Save</button>
+</div>
+
 
 

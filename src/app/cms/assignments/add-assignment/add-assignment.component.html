@@ -1,39 +1,27 @@
-<div id="myModal" class="modal animated fadeIn" role="dialog" *ngIf="isModalVisible">
-    <div class="modal-dialog animated fadeInDown">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Add assignment </h4>
-                <div class="close-modal-button" (click)="cancel()">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </div>
-            </div>
-            <div class="modal-body">
+<div class="modal-body">
 
-                <wd-assignment-manager [assignment]="assignment"></wd-assignment-manager>
+    <wd-assignment-manager [assignment]="assignment"></wd-assignment-manager>
 
-                <div class="form-group">
-                    <label for="assignment.title">The level of the assignment</label>
-                    <div>
-                        <button class="btn btn-raised btn-default" (click)="assignment.level = 'Bronze'" [ngClass]="{'btn-info' : assignment.level == 'Bronze' }">
+
+    <div class="form-group">
+        <label for="assignment.title">The level of the assignment</label>
+        <div>
+            <button class="btn btn-raised btn-default" (click)="assignment.level = 'Bronze'" [ngClass]="{'btn-info' : assignment.level == 'Bronze' }">
                             Bronze<div class="ripple-container"></div>
                         </button>
-                        <button class="btn btn-raised btn-default" (click)="assignment.level = 'Silver'" [ngClass]="{'btn-info' : assignment.level == 'Silver' }">
+            <button class="btn btn-raised btn-default" (click)="assignment.level = 'Silver'" [ngClass]="{'btn-info' : assignment.level == 'Silver' }">
                             Silver<div class="ripple-container"></div>
                         </button>
-                        <button class="btn btn-raised btn-default" (click)="assignment.level = 'Gold'" [ngClass]="{'btn-info' : assignment.level == 'Gold' }">
+            <button class="btn btn-raised btn-default" (click)="assignment.level = 'Gold'" [ngClass]="{'btn-info' : assignment.level == 'Gold' }">
                             Gold<div class="ripple-container"></div>
                         </button>
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-default" (click)="Cancel()">Cancel</button>
-                <div class="seperator"></div>
-                <button class="btn btn-success" (click)="add()" [disabled]="!assignment.isValid()">Save</button>
-            </div>
         </div>
     </div>
+
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" (click)="Cancel()">Cancel</button>
+    <div class="seperator"></div>
+    <button class="btn btn-success" (click)="Add()" [disabled]="!assignment.isValid()">Save</button>
 </div>

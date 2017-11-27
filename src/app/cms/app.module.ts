@@ -48,6 +48,7 @@ import { QuizManagerComponent } from './quiz/quiz-manager/quiz-manager.component
 import { QuestionManagerComponent } from './quiz/quiz-manager/question-manager/question-manager.component';
 import { AnswerManagerComponent } from './quiz/quiz-manager/answer-manager/answer-manager.component';
 import { AssignmentManagerComponent } from './assignments/assignment-manager/assignment-manager.component';
+import { AssignmentModalComponent } from './assignments/assignment-modal/assignment-modal.component';
 
 @NgModule({
     imports: [
@@ -58,7 +59,7 @@ import { AssignmentManagerComponent } from './assignments/assignment-manager/ass
         AddRatingComponent, AddVideoComponent, AddQuizComponent, EditQuizComponent, DictaatSettingsComponent,
         DemoComponent, DialogComponent, AvatarComponent, ProfileComponent, MarkingComponent, MarkerComponent, 
         AchievementMarkingComponent, AchievementMarkerComponent, AppComponent, QuizListComponent, AssignmentListComponent, 
-        AddAssignmentComponent, EditAssignmentComponent, MarkAssignmentComponent,  QuizManagerComponent, QuestionManagerComponent, AnswerManagerComponent, AssignmentManagerComponent
+        AddAssignmentComponent, EditAssignmentComponent, MarkAssignmentComponent,  QuizManagerComponent, QuestionManagerComponent, AnswerManagerComponent, AssignmentManagerComponent, AssignmentModalComponent
     ],
     providers: [
         CanDeactivateEditPage,

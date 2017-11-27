@@ -1,0 +1,13 @@
+.choose{
+    text-align: center;
+    padding: 10px;
+}
+
+tr{
+    cursor: pointer;
+}
+
+tr.selected{
+    background-color: #00AEED !important;
+    color:white;
+}

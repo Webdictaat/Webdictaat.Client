@@ -140,7 +140,11 @@ export class HtmlComponent implements OnInit {
         //remove and add handles
         element.find('.handle').remove();
         element.find('.wd-component').addBack('.wd-component')
-            .append("<div class='handle'><i class='fa fa-ellipsis-h' aria-hidden='true'></i><i class='fa fa-trash delete-this' aria-hidden='true'></i></div>");
+            .append(`
+                <div class='handle'>
+                    <i class='fa fa-ellipsis-h' aria-hidden='true'></i>
+                    <i class='fa fa-trash delete-this' aria-hidden='true'></i>
+                </div>`);
     }
 
     private enableEditor(element): void{

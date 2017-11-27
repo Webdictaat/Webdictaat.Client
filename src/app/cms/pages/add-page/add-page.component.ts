@@ -76,8 +76,6 @@ export class AddPageComponent extends BaseModalComponent {
             url: this.trim(this.page.name)
         };
 
-        debugger;
-
         this.pageService.addPage(this.dictaat.name, page, this.menuName, this.template)
             .then(menuItems => {
                 this.page = new Page();

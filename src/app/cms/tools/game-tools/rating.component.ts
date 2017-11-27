@@ -39,7 +39,7 @@ export class RatingToolComponent {
         return new Promise((resolve, reject) => {
             var params = [];
             params['dictaatName'] = this.dictaatName;
-            this.ratingService.ShowModal(params)
+            this.ratingService.ShowModal('add', params)
                 .then((rating) => {
                     var element = "<wd-rating class='wd-component wd-game-component' [rid]='" + rating.id + "' />";
                     ui.item.replaceWith(element);

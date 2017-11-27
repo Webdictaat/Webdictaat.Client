@@ -62,7 +62,7 @@ export class PagesComponent{
     public addPage(){
         var params = [];
         params['dictaatName'] = this.dictaat.name;
-        this.pagesSevice.ShowModal(params).then((menuItems) => {
+        this.pagesSevice.ShowModal('add', params).then((menuItems) => {
             this.dictaat.menuItems = menuItems;
          });
     }
@@ -76,7 +76,6 @@ export class PagesComponent{
 
 
     public updateMenu(item: NavMenuItem){
-        debugger;
         //if deleted, remove from menu
         if(item.isDeleted){
             if(item.url)
