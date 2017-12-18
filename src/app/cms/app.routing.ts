@@ -12,6 +12,7 @@ import { MarkingComponent } from "./marking/marking.component";
 import { Observable } from "rxjs/Observable";
 import { EditPageComponent } from './pages/edit-page/edit-page.component';
 import { PagesComponent } from './pages/pages/pages.component';
+import { ProcessTokenComponent } from '../shared/core/process-token.component';
 
 @Injectable()
 export class CanDeactivateEditPage implements CanDeactivate<EditPageComponent> {
@@ -21,6 +22,10 @@ export class CanDeactivateEditPage implements CanDeactivate<EditPageComponent> {
 }
 
 const appRoutes: Routes = [
+    {
+        path: 'process-token',
+        component: ProcessTokenComponent
+    },
     { 
         path: '', 
         redirectTo: '/dictaten', 

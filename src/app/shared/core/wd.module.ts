@@ -23,6 +23,7 @@ import { SpinnerComponent } from "../spinner/spinner.component";
 import { WdFilterPipe } from './wdfilter.pipe';
 import { GroupByPipe } from './group-by.pipe';
 import { ArraySortPipe } from "./order-by.pipe";
+import { ProcessTokenComponent } from "./process-token.component";
 
 
 /**
@@ -33,7 +34,7 @@ import { ArraySortPipe } from "./order-by.pipe";
         DialogService, QuizService, ImageService, AchievementService, AccountService, wdApi, ConfigService,
         RatingService, DirtyGuard, VideoService, NavMenuService, AssignmentService, DictaatService, ParticipantService
     ],
-    declarations: [SpinnerComponent, WdFilterPipe, GroupByPipe, ArraySortPipe],
+    declarations: [SpinnerComponent, WdFilterPipe, GroupByPipe, ArraySortPipe, ProcessTokenComponent],
     exports: [SpinnerComponent, WdFilterPipe, GroupByPipe, ArraySortPipe]
 })
 export class WdModule {}

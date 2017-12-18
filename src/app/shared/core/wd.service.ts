@@ -7,22 +7,45 @@ import 'rxjs/rx';
 @Injectable()
 export class wdApi {
 
-    constructor(private http: Http) { } 
-
-    //public urlPrefix = 'http://webdictaat.azurewebsites.net/api';
-    //public urlPrefix = 'http://student.aii.avans.nl/doc/ssmulder/api';
+    //fields
+    
+    private jwt : string;
     public urlPrefix = window["rootVar"] ? window["rootVar"] : 'http://localhost:65418/api';
-    //public urlPrefix = 'http://localhost:8001/api';
-    //public urlPrefix = "http://webdictaat.aii.avans.nl/api";
+
+    constructor(private http: Http) { 
+        this.jwt = localStorage.getItem('jwt');
+    } 
 
     
+    //methods
+
+    public setToken(token:string): void{
+        localStorage.setItem('jwt', token);
+        this.jwt = token;
+    }
+
+    public removeToken(): void{
+        localStorage.removeItem('jwt');
+        this.jwt = null;
+    }
+
+    createAuthorizationHeader() {
+        var headers = new Headers();
+        if(this.jwt)
+            headers.append('Authorization', 'Bearer ' + this.jwt);
+        return headers;
+      }
 
     public get(url) {
-        return this.http.get(this.urlPrefix + url, { withCredentials: true }).catch(this.handleError);
+        return this.http.get(this.urlPrefix + url, { 
+           headers: this.createAuthorizationHeader()  
+        }).catch(this.handleError);
     }
 
     public post(url, data) {
-        return this.http.post(this.urlPrefix + url, data, { withCredentials: true }).catch(this.handleError);
+        return this.http.post(this.urlPrefix + url, data, { 
+            headers: this.createAuthorizationHeader()  
+         }).catch(this.handleError);
     }
 
     public postFile(url: string, file: File) {
@@ -45,7 +68,7 @@ export class wdApi {
             };
 
             xhr.open('POST', this.urlPrefix + url, true);
-            xhr.withCredentials = true;
+            xhr.setRequestHeader('Authorization', 'Bearer ' + this.jwt)
             xhr.send(formData);
 
         });
@@ -54,11 +77,15 @@ export class wdApi {
     }
 
     public put(url, data) {
-        return this.http.put(this.urlPrefix + url, data, { withCredentials: true }).catch(this.handleError);
+        return this.http.put(this.urlPrefix + url, data, { 
+            headers: this.createAuthorizationHeader()  
+         }).catch(this.handleError);
     }
 
     public delete(url) {
-        return this.http.delete(this.urlPrefix + url, { withCredentials: true }).catch(this.handleError);
+        return this.http.delete(this.urlPrefix + url, { 
+            headers: this.createAuthorizationHeader()  
+         }).catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {

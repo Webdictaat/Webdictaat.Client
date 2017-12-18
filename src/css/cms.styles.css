@@ -94,6 +94,12 @@ fieldset.breakline legend{
     padding:10px;
 }
 
+/** tooltip  **/
+.tooltip-container  .tooltip-item.edit{
+    display: flex;
+}
+
+
 /** tools */
 
 .trashcan{
