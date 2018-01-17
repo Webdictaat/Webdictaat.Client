@@ -63,8 +63,11 @@ export class RemoveDictaatComponent {
                     this.disableSubmit = false;
                     this.errorMsg = "Something went wrong. Please contact an administrator";
                 }
-
-              
+            }).catch((err) => {
+                if(err.status == 403)
+                    this.disableSubmit = false;
+                    this.errorMsg = "Only the dictaat owner can delete this dictaat."
+                
             });
        
     }

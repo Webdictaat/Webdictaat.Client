@@ -47,10 +47,15 @@
                 </div>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="email" id="contributerEmail" placeholder="Email of the user"
-                    [(ngModel)]="contributerEmail" required>
-                </div>
+
+                    <div class="form-group">
+                            <label for="name">Email of the contributer (username@provider.something)</label>
+                            <input type="text" id="name" required [(ngModel)]="contributerEmail" name="name" #name="ngModel" required>
+                            <div [hidden]="name.valid || name.pristine" class="validation">
+                                Please insert the email of the contributer
+                            </div>
+                        </div>
+
                 <div *ngIf="errMsg" class="animated fadeIn error">
                     <p class="bg-danger">{{errMsg}}</p>
                 </div>
