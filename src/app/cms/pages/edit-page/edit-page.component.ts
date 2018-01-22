@@ -5,6 +5,7 @@ import { HtmlComponent } from '../../tools/html.component';
 import { Page } from '../../../shared/models/page';
 import { ConfigService } from '../../../shared/services/config.service';
 import { DictaatService } from '../../../shared/services/dictaat.service';
+import 'codemirror/mode/xml/xml';
 
 
 @Component({
@@ -32,7 +33,7 @@ export class EditPageComponent   { //implements DirtyComp
     //codemirror
     public codeconfig : any = { 
         lineNumbers: true,
-        mode: "HTML",
+        mode: "text/html",
         
     };
     
@@ -88,9 +89,14 @@ export class EditPageComponent   { //implements DirtyComp
         if(!this.raw){
             //retrieve the decompiled html from ...
             var source = this.htmlComponent.decompileHtml();
-            source = source.replace('{', '&#123;');
-            source = source.replace('}', '&#125;');
-            this.page.source = source;
+            
+            if(source)
+            {
+                source = source.replace('{', '&#123;');
+                source = source.replace('}', '&#125;');
+                this.page.source = source;
+            }
+         
         }
        
 

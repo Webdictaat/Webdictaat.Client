@@ -120,9 +120,13 @@ export class HtmlComponent implements OnInit {
         //Angular replaces input attributes with an ng-reflect attributes
         //to get our valid html back, we need to remove these ng-reflect attributes
         var htmlString = pageObject.html();
-        htmlString = htmlString.replace(/ng-reflect-(.+?)=/g, '[$1]=')
-
-        return htmlString;
+        
+        if(htmlString){
+            htmlString = htmlString.replace(/ng-reflect-(.+?)=/g, '[$1]=')
+            return htmlString;
+        }
+        
+        return null;
     }
 
     private recompile(): void {

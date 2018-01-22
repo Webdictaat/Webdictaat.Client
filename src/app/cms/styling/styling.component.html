@@ -1,0 +1,28 @@
+<div class="panel">
+  <div class="panel-heading">
+    <h3 class="panel-title ">Themes</h3>
+    <div class="btn-group">
+      <!-- <button class="btn btn-xs btn-success btn-raised" (click)="showModal = true">
+          <span class="glyphicon glyphicon-plus"></span>&nbsp;Add a theme
+      </button> -->
+    </div>
+  </div>
+  <div class="panel-body wd-flex">
+    Iets met styling
+  </div>
+</div>
+
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title">Custom CSS</h3>
+  </div>
+  <div class="panel-body" *ngIf="css == null">
+    <wd-spinner></wd-spinner>
+  </div>
+  <div class="panel-body" *ngIf="css != null">
+      <codemirror [(ngModel)]="css" [config]="codeconfig"></codemirror>
+      <button class="btn btn-success btn-raised" (click)='saveStyle(css)'>
+          <span class="glyphicon glyphicon-floppy-disk pull-left"></span>&nbsp;Save style
+      </button>
+  </div>
+</div>

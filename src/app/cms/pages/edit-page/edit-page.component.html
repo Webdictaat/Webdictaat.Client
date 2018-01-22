@@ -8,7 +8,16 @@
 <!-- First we rendere all the possible modals-->
 <div *ngIf="page" class="breadcrumb-placeholder">
     <div class="left-menu text-center">
-        <div class="side-menu tools">   
+
+        <div class="side-menu css" *ngIf="css">   
+            CSS
+            <button class="btn-link" (click)="css = false">
+                <i class="fa fa-times" aria-hidden="true"></i>
+                Close
+            </button>
+        </div>  
+
+        <div class="side-menu tools" *ngIf="!css">   
             <div class="panel-body bordered">
 
                 <h3 class="title">
@@ -26,11 +35,9 @@
             </div>
             <div class="panel-body bordered" *ngIf="showMore">
 
-                <label>
-                        Raw HTML
-                        <input type="checkbox" checked="" [(ngModel)]="raw">
-                </label>
-                       
+                <label class="enable">Raw HTML<input type="checkbox" checked="" [(ngModel)]="raw"></label>
+                <!-- <label class="enable">Edit CSS<input type="checkbox" checked="" [(ngModel)]="css"></label> -->
+                    
             </div>
             <table class="table table-hover elements text-center">
                 <tr><td> <wd-text></wd-text> |  <wd-card></wd-card></td></tr>
@@ -54,7 +61,7 @@
     <div class="page-content" *ngIf="!raw">
         <wd-html [innerHTML]="page.source" (pageEdited)="updateSource($event)" ></wd-html>    
     </div>
-    <div class="page-content-raw wd-content"  *ngIf="raw">
+    <div class="page-content-raw text-editor"  *ngIf="raw">
         <codemirror [(ngModel)]="page.source"  [config]="codeconfig"></codemirror>
     </div>
 

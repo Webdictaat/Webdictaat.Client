@@ -32,3 +32,18 @@ a.selected{
     padding-top:30px;
 }
 
+
+.text-editor{
+    margin-left: 400px;
+}
+
+label.enable
+{
+    display: block;
+}
+
+label.enable input{
+    display: inline-block;
+    margin-left: 10px;
+    width:20px;
+}

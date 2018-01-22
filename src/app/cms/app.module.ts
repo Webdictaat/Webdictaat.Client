@@ -33,7 +33,6 @@ import {AchievementMarkingComponent} from "./achievement-marking/achievement-mar
 
 
 import { AddQuizComponent } from "./quiz/add-quiz/add-quiz.component";
-import { SpinnerComponent } from "../shared/spinner/spinner.component";
 import { ImagesModule } from "./images/images.module";
 import { AddVideoComponent } from "./videos/add-video.component";
 import { AddRatingComponent } from "./rating/add-rating/add-rating.component";
@@ -50,20 +49,24 @@ import { AnswerManagerComponent } from './quiz/quiz-manager/answer-manager/answe
 import { AssignmentManagerComponent } from './assignments/assignment-manager/assignment-manager.component';
 import { AssignmentModalComponent } from './assignments/assignment-modal/assignment-modal.component';
 import { QuizModalComponent } from './quiz/quiz-modal/quiz-modal.component';
+import { StylingComponent } from './styling/styling.component';
+import { CodemirrorModule } from 'ng2-codemirror';
 
 @NgModule({
     imports: [
-        WdModule, GameElementsModule, DragulaModule, ImagesModule, 
+        WdModule, GameElementsModule, DragulaModule, ImagesModule,  CodemirrorModule,
         BrowserModule, HttpModule, routing, PagesModule, FormsModule, DictaatModule, DatabModule
     ],
     declarations: [       
+        StylingComponent,
         AddRatingComponent, AddVideoComponent, AddQuizComponent, EditQuizComponent, DictaatSettingsComponent,
         DemoComponent, DialogComponent, AvatarComponent, ProfileComponent, MarkingComponent, MarkerComponent, 
         AchievementMarkingComponent, AchievementMarkerComponent, AppComponent, QuizListComponent, AssignmentListComponent, 
-        AddAssignmentComponent, EditAssignmentComponent, MarkAssignmentComponent,  QuizManagerComponent, QuestionManagerComponent, AnswerManagerComponent, AssignmentManagerComponent, AssignmentModalComponent, QuizModalComponent
+        AddAssignmentComponent, EditAssignmentComponent, MarkAssignmentComponent,  QuizManagerComponent, QuestionManagerComponent, 
+        AnswerManagerComponent, AssignmentManagerComponent, AssignmentModalComponent, QuizModalComponent
     ],
     providers: [
-        CanDeactivateEditPage,
+        CanDeactivateEditPage, StylingComponent,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
     ],
     bootstrap: [

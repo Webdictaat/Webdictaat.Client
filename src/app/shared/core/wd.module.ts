@@ -24,6 +24,7 @@ import { WdFilterPipe } from './wdfilter.pipe';
 import { GroupByPipe } from './group-by.pipe';
 import { ArraySortPipe } from "./order-by.pipe";
 import { ProcessTokenComponent } from "./process-token.component";
+import { StylingService } from "../services/styling.service";
 
 
 /**
@@ -32,7 +33,8 @@ import { ProcessTokenComponent } from "./process-token.component";
 @NgModule({
     providers: [
         DialogService, QuizService, ImageService, AchievementService, AccountService, wdApi, ConfigService,
-        RatingService, DirtyGuard, VideoService, NavMenuService, AssignmentService, DictaatService, ParticipantService
+        RatingService, DirtyGuard, VideoService, NavMenuService, AssignmentService, DictaatService, ParticipantService,
+        StylingService
     ],
     declarations: [SpinnerComponent, WdFilterPipe, GroupByPipe, ArraySortPipe, ProcessTokenComponent],
     exports: [SpinnerComponent, WdFilterPipe, GroupByPipe, ArraySortPipe]

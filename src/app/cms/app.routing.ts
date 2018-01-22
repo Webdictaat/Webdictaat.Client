@@ -13,6 +13,7 @@ import { Observable } from "rxjs/Observable";
 import { EditPageComponent } from './pages/edit-page/edit-page.component';
 import { PagesComponent } from './pages/pages/pages.component';
 import { ProcessTokenComponent } from '../shared/core/process-token.component';
+import { StylingComponent } from './styling/styling.component';
 
 @Injectable()
 export class CanDeactivateEditPage implements CanDeactivate<EditPageComponent> {
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
             { path: 'pages', component: PagesComponent  },
             { path: 'assignments', component: AssignmentListComponent  },
             { path: 'settings', component: DictaatSettingsComponent  },
-            { path: 'marking', component: MarkingComponent  }
+            { path: 'marking', component: MarkingComponent  },
+            { path: 'styling', component: StylingComponent  }
 
         ]
     },
