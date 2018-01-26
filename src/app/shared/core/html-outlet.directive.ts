@@ -25,7 +25,7 @@ import { CommonModule } from '@angular/common';
 //my modules
 import { GameElementsModule } from '../game-elements/game-elements.module';
 import { DatabModule } from "../../extern/databases/datab.module"; //voor bart zijn datab project
-import { WdModule } from "./wd.module";
+import { WdSharedModule } from '../wd-shared.module';
 
 export function createComponentFactory(compiler: Compiler, metadata: Component): Promise<ComponentFactory<any>> {
     const cmpClass = class DynamicComponent { };
@@ -33,7 +33,7 @@ export function createComponentFactory(compiler: Compiler, metadata: Component):
 
     @NgModule({
         imports: [
-            BrowserModule, CommonModule, RouterModule, WdModule, GameElementsModule, DatabModule
+            BrowserModule, CommonModule, RouterModule, WdSharedModule, GameElementsModule, DatabModule
         ],
         schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
         declarations: [decoratedCmp]

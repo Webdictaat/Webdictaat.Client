@@ -30,7 +30,7 @@ import {AchievementMarkerComponent} from "./achievement-marking/achievement-mark
 import {AchievementMarkingComponent} from "./achievement-marking/achievement-marking.component";
 
 //modals and their dependencies
-
+import { WdSharedModule } from "../shared/wd-shared.module";
 
 import { AddQuizComponent } from "./quiz/add-quiz/add-quiz.component";
 import { ImagesModule } from "./images/images.module";
@@ -38,7 +38,6 @@ import { AddVideoComponent } from "./videos/add-video.component";
 import { AddRatingComponent } from "./rating/add-rating/add-rating.component";
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { MarkAssignmentComponent } from './assignments/mark-assignment/mark-assignment.component';
-import { WdModule } from "../shared/core/wd.module";
 import { DictaatSettingsComponent } from "./dictaat/settings-dictaat.component";
 import { MarkingComponent } from './marking/marking.component';
 import { MarkerComponent } from "./marking/marker.componet";
@@ -54,7 +53,7 @@ import { CodemirrorModule } from 'ng2-codemirror';
 
 @NgModule({
     imports: [
-        WdModule, GameElementsModule, DragulaModule, ImagesModule,  CodemirrorModule,
+        WdSharedModule, GameElementsModule, DragulaModule, ImagesModule,  CodemirrorModule,
         BrowserModule, HttpModule, routing, PagesModule, FormsModule, DictaatModule, DatabModule
     ],
     declarations: [       

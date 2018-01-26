@@ -1,25 +1,134 @@
 <div>
+
+
+    <h4>Groups & Participants</h4>
+
     <div class="panel">
-        <div class="panel-heading">
-            <h3 class="panel-title ">Contributers</h3>
+
+        <wd-modal 
+                [isVisible]="showGroupsModal" 
+                [config]="{title: 'Add group(s)'}" 
+                (onCancel)="showGroupsModal = false"
+                (onComplete)="addGroups(groupstring);">
+
+
+            <div class="form-group">
+                <label for="name">Enter a group, of multiple groups seperated by commas</label>
+                <input type="text" id="name" required [(ngModel)]="groupstring" name="name" #name="ngModel" required>
+                <div [hidden]="name.valid || name.pristine" class="validation">
+                    At least one group is required
+                </div>
+            </div>
+
+            <div class="alert alert-dismissible alert-danger" *ngIf="errorMsg">
+                <strong>Oh snap!</strong>
+                <p>{{errorMsg}}</p>
+            </div>
+           
+        </wd-modal>
+
+        <wd-modal *ngIf="selectedGroup"
+                [isVisible]="showDeleteGroupModal" 
+                [config]="{title: 'Remove group', savetext: 'remove this group'}" 
+                (onCancel)="showDeleteGroupModal = false"
+                (onComplete)="deleteGroup(selectedGroup, true);">
+
+
+            <p>If you delete group '{{selectedGroup.groupName}}'' the following students will become groupless:</p>
+
+            <ul *ngIf="selectedGroup.members">
+                <li *ngFor="let member of selectedGroup.members">
+                    {{member.name}}
+                </li>
+            </ul>
+        </wd-modal>
+
+
+        <div class="text-center">
+            <button class="btn btn-xs btn-success" (click)="showGroupsModal = true">
+              <span class="glyphicon glyphicon-plus"></span>&nbsp;Create group(s)
+          </button>
+        </div>
+
+        <wd-spinner *ngIf="!groups"></wd-spinner>
+
+        <div *ngIf="groups">
+
+            <div class="text-center" *ngIf="groups.length == 0">
+                <p  class="no-content-placeholder">
+                    You can make groups to make it easier to monitor progress of students you teach.
+                    Students can choose which group to join when visiting the webdicaat.
+                </p> <br>
+                <button class="btn btn-success btn-raised" (click)="showGroupsModal = true">Make your first group now!</button>
+            </div>
+  
+            <table class="table table-striped" >
+                <tr *ngFor="let g of groups">
+                    <td>
+                        Group {{g.groupName}}
+                    </td>
+                    <td>
+                        {{g.members  ? g.members.length : 'No '}} members
+                    </td>
+                    <td>
+                        {{g.totalPoints}} points
+                    </td>
+                    <td class="actions">
+                        <div class="action delete" (click)="deleteGroup(g)">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+    <h4>Contributers</h4>
+    
+    <div class="panel panel-secondary">
+        <wd-modal 
+            [isVisible]="showContributerModal" 
+            [config]="{title: 'Add a contributer'}" 
+            (onCancel)="showContributerModal = false"
+            (onComplete)="addContributers(contributerEmail)">
+            <div class="form-group">
+                <label for="name">Email of the contributer (username@provider.something)</label>
+                <input type="text" id="name" required [(ngModel)]="contributerEmail" name="name" #name="ngModel" required>
+                <div [hidden]="name.valid || name.pristine" class="validation">
+                    Please insert the email of the contributer
+                </div>
+            </div>
+            <div *ngIf="errMsg" class="animated fadeIn error">
+                <p class="bg-danger">{{errMsg}}</p>
+            </div>
+        </wd-modal>
+
+
+        <div class="text-center">
             <div class="btn-group">
-                <button class="btn btn-xs btn-success btn-raised" (click)="showModal = true">
+                <button class="btn btn-xs btn-success" (click)="showContributerModal = true">
                     <span class="glyphicon glyphicon-plus"></span>&nbsp;Add a contributers
                 </button>
             </div>
         </div>
-        <div class="panel-body">
 
-            <wd-spinner *ngIf="!(contributers)"></wd-spinner>
-            <ul class="contributers">
-                <li *ngFor="let u of contributers">
-                    {{u.name}} ({{u.email}}) 
-                    <span *ngIf="u.email == dictaat.owner.email">
-                        <i>owner</i>
-                    </span>
-                </li>
-            </ul>    
-        </div>  
+    
+        <wd-spinner *ngIf="!(contributers)"></wd-spinner>
+
+        <table class="table table-striped" *ngIf="groups">
+            <tr *ngFor="let c of contributers">
+                <td>
+                    {{c.name}}
+                </td>
+                <td>
+                    {{c.email}}
+                </td>
+                <td>
+                    {{c.email == dictaat.owner.email ? 'Owner' : 'Contributer'}}
+                </td>
+            </tr>
+        </table>
     </div>
 
     <div class="panel panel-danger" >
@@ -35,35 +144,4 @@
                 <wd-remove-dictaat [dictaat]="dictaat"></wd-remove-dictaat>
             </div>
     </div>
-</div>
-
-<div class="modal animated fadeIn" *ngIf="showModal" >
-    <div class="modal-dialog text-left animated fadeInDown" role="document">
-        <div class="modal-content">
-                <div class="modal-header">
-                <h4 class="modal-title">Add contributers</h4>
-                <div class="close-modal-button" (click)="showModal = false">
-                    <span  class="glyphicon glyphicon-remove"></span>
-                </div>
-            </div>
-            <div class="modal-body">
-
-                    <div class="form-group">
-                            <label for="name">Email of the contributer (username@provider.something)</label>
-                            <input type="text" id="name" required [(ngModel)]="contributerEmail" name="name" #name="ngModel" required>
-                            <div [hidden]="name.valid || name.pristine" class="validation">
-                                Please insert the email of the contributer
-                            </div>
-                        </div>
-
-                <div *ngIf="errMsg" class="animated fadeIn error">
-                    <p class="bg-danger">{{errMsg}}</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary pull-left" (click)="showModal = false">Cancel</button>
-                    <button type="button" class="btn btn-success pull-right" (click)="addContributers(contributerEmail)">Add</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
 </div>

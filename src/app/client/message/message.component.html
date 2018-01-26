@@ -3,14 +3,16 @@
     <div class="panel-body">
         <h1>Welcome!</h1>
         <p>Do you want to contest with other participants and get the most comple experience? Login and join the course!</p>
-        <div *ngIf="user | async" class="tiny-form" >
-            <label>Select a group:</label>
-            <select [(ngModel)]="group" class="form-control alphabet">          
-                <option *ngFor="let c of alphabet" [ngValue]="c">{{c}}</option>        
-            </select>
-            <button class="btn btn-md btn-raised btn-primary" [disabled]="!group" (click)="join()">Join</button>
-        </div>
         
+
+        <div *ngIf="user | async" class="tiny-form" >
+          <label>Select a group:</label>
+          <select [(ngModel)]="group" class="form-control alphabet">          
+              <option *ngFor="let g of groups" [ngValue]="g.groupName">{{g.groupName}}</option>        
+          </select>
+          <button class="btn btn-md btn-raised btn-primary" [disabled]="!group" (click)="join()">Join</button>
+        </div>
+
         <button *ngIf="!(user | async)" class="btn btn-md btn-raised btn-primary" (click)="login()">Login</button>
     </div>
     <div class="panel-side">

@@ -6,11 +6,11 @@ import { BrowserModule } from "@angular/platform-browser";
 import { HttpModule } from "@angular/http";
 import { FormsModule } from "@angular/forms";
 import { GameElementsModule } from "../../shared/game-elements/game-elements.module";
-import { WdModule } from "../../shared/core/wd.module";
+import { WdSharedModule } from "../../shared/wd-shared.module";
 
 @NgModule({
     imports: [
-        BrowserModule, HttpModule, FormsModule, GameElementsModule, WdModule
+        BrowserModule, HttpModule, FormsModule, GameElementsModule, WdSharedModule
     ],
     declarations: [
         DatabComponent, 

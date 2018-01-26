@@ -1,0 +1,30 @@
+<div id="myModal" class="modal animated fadeIn" role="dialog" *ngIf="isVisible">
+    <div class="modal-dialog animated fadeInDown">
+      <!-- Modal content-->
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <h4 class="modal-title">
+              {{config.title ? config.title : 'New modal' }}
+          </h4>
+          <div class="close-modal-button" (click)="cancel()">
+            <span class="glyphicon glyphicon-remove"></span>
+          </div>
+        </div>
+  
+        <div class="modal-body">
+            <ng-content></ng-content>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-default" (click)="cancel()">Cancel</button>
+            <div class="seperator"></div>
+            <button class="btn btn-success" (click)="complete()">
+              {{config.savetext ? config.savetext : 'Save'}}
+            </button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+

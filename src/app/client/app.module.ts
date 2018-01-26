@@ -14,14 +14,14 @@ import { NavMenuComponent } from '../shared/nav-menu/nav-menu.component';
 import { AvatarComponent }  from '../shared/avatar/avatar.component';
 
 //modules
+import { WdSharedModule } from "../shared/wd-shared.module";
 import { DatabModule } from "../extern/databases/datab.module";
-import { WdModule } from "../shared/core/wd.module";
 import { GameElementsModule } from "../shared/game-elements/game-elements.module";
 import { MessageComponent } from './message/message.component';
 
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, BrowserAnimationsModule, WdModule, HttpModule, routing, DatabModule, GameElementsModule],
+    imports: [BrowserModule, FormsModule, BrowserAnimationsModule, WdSharedModule, HttpModule, routing, DatabModule, GameElementsModule],
     declarations: [HtmlOutlet, AppComponent, PageComponent, NavMenuComponent, AvatarComponent, MessageComponent],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }

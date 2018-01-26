@@ -335,3 +335,16 @@ input{
 .modal-footer .seperator{
     flex:1;
 }
+
+.panel.panel-secondary > .panel-heading
+{
+    color:black;
+}
+
+.no-content-placeholder{
+    color:#2e2e2e;
+    max-width: 600px;
+    padding:10px;
+    text-align: center;
+    display: inline-block;
+}

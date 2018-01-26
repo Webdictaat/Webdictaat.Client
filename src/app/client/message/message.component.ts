@@ -32,6 +32,7 @@ export class MessageComponent implements OnInit {
   public user: Subject<User>;
   public group: string;
   public alphabet: string[] ;
+  public groups: any[];
 
   constructor(private dictaatService: DictaatService, private accountService: AccountService, private configService: ConfigService) { 
       this.alphabet = ["vt-A", "vt-B", "vt-C", "vt-D", "vt-E", "vt-F", "vt-G", "vt-H", "vt-I"]
@@ -46,17 +47,22 @@ export class MessageComponent implements OnInit {
 
             this.dictaatName = config.name;
 
+
             this.dictaatService.getDictaatSession(config.name).subscribe((session) => {
                  this.participantCount = session.participantIds.length;
-                 this.hide = session.containsMe;
+                 this.dictaatService.getGroups(this.dictaatName)
+                  .then(groups => {
+                      this.groups = groups;
+                      this.groups.push({groupName: "none"})
+                      this.hide = session.containsMe;
+                  });
             });
         })
   }
 
   public join(){
-    this.dictaatService.join(this.dictaatName, this.group).then((didJoin) => {
-      this.hide = true;
-    });
+    this.dictaatService.join(this.dictaatName, this.group)
+      .then(didJoin => this.hide = true);
   }
 
   public login(){

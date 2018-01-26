@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Leaderboard, LeaderboardService } from "./leaderboard.service";
 import { DictaatService } from "../../services/dictaat.service";
 import { AccountService } from "../../services/account.service";
 import { ConfigService } from "../../services/config.service";
@@ -25,7 +24,7 @@ export class LeaderboardComponent implements OnInit {
   public groups: any[];
 
   constructor(
-    private leaderboardService: LeaderboardService, 
+    private dictaatService: DictaatService, 
     private accountService: AccountService, 
     private configService: ConfigService){}
 
@@ -33,14 +32,14 @@ export class LeaderboardComponent implements OnInit {
     this.user = this.accountService.User;
     this.configService.Config.subscribe((config) => {
         if(config){
-          this.leaderboardService.getParticipants(config.name)
+          this.dictaatService.getParticipants(config.name)
             .then((participants) => {
                  this.participants = participants;
                  this.top5 = participants.slice(0, 5);
                  this.leaderboard = this.top5;
             })
 
-          this.leaderboardService.getGroups(config.name)
+          this.dictaatService.getGroups(config.name)
             .then((groups) => {
                  this.groups = groups;
             })

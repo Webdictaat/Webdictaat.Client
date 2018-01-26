@@ -7,6 +7,7 @@ import { Observable } from "rxjs/Observable";
 import { User } from "../../shared/models/user";
 
 @Component({
+    styleUrls: ['./settings-dictaat.component.css'],
     selector: "wd-settings-dictaat",
     templateUrl: "./settings-dictaat.component.html",
 })
@@ -15,8 +16,10 @@ export class DictaatSettingsComponent {
     public errMsg: string;
     public showModal: boolean;
     public contributers: User[];
+    public groups: any[];
 
     private dictaat: Dictaat;
+    
 
     constructor(private dictaatService: DictaatService) { }
 
@@ -27,22 +30,68 @@ export class DictaatSettingsComponent {
                 this.dictaat = dictaat;
                 this.dictaatService.getDictaatContributers(dictaat.name)
                     .then(contributers => this.contributers = contributers)
+
+                this.dictaatService.getGroups(dictaat.name)
+                    .then(groups => this.groups = groups)
             }
         });
     }
+
+    public showContributerModal: boolean;
 
     public addContributers(email: string){
         this.errMsg = null;
         this.dictaatService.addContributer(this.dictaat.name, email)
         .then(contributers => {
             this.contributers = contributers;
-            this.showModal = false;
+            this.showContributerModal = false;
         }).catch(err => {
             this.errMsg = "Could not find user with email " + email;
         })
-        
-
     }
 
+    public showGroupsModal: boolean;
+
+    public addGroups(groupstring: string) {
+        this.errMsg = null;
+        var groups = [];
+        groupstring.split(',').forEach(s => {
+            groups.push({ groupName: s.trim()});
+        });
+
+        groups.forEach(ng => {
+          this.groups.forEach(og => {
+              if(ng.groupName == og.groupName) 
+                this.errMsg = "There is already a group with name " + ng.groupName;
+          })  
+        })
+
+        if(this.errMsg) return;
+
+        this.dictaatService.addGroups(this.dictaat.name, groups)
+            .subscribe(groups => {
+                this.groups = groups
+                this.errMsg = null;
+                this.showGroupsModal = false;
+            })
+    }
+
+    public selectedGroup : any;
+    public showDeleteGroupModal : boolean;
+
+    public deleteGroup(group: any, confirmed = false)
+    {
+        if(!confirmed && group.members.length != 0)
+        {
+            this.selectedGroup = group;
+            return this.showDeleteGroupModal = true;
+        }
+        this.dictaatService.removeGroup(this.dictaat.name, group.groupName)
+            .subscribe(groups => 
+            {
+                this.groups = groups
+                this.showDeleteGroupModal = false;
+            })
+    }
 
 }

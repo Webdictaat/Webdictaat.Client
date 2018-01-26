@@ -7,7 +7,6 @@ import { AssignmentService } from "../../shared/services/assignment.service";
   selector: 'wd-marker',
   template: `
     <div class="toggler" (click)="toggle()" [ngClass]="'state-'+state">
-
     </div>
   `,
   styles: [`
@@ -20,7 +19,7 @@ import { AssignmentService } from "../../shared/services/assignment.service";
     }
     
     .state-1 { background-color:  #f0ad4e}
-    .state-2 { background-color:  #43a047}
+    .state-2 { background-color:  #43a047}   
   `]
 })
 export class MarkerComponent {

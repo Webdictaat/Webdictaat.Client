@@ -16,6 +16,7 @@ import { Observable } from "rxjs/rx";
 import { DictaatSummary } from "../models/dictaat-summary";
 
 
+
 @Injectable()
 export class DictaatService {
 
@@ -27,7 +28,7 @@ export class DictaatService {
         private router: Router,
         private config: ConfigService) {}
 
-    public getDictaat(dictaatName: String): Promise<Dictaat> {
+      public getDictaat(dictaatName: String): Promise<Dictaat> {
         return this.wdapi.get("/dictaten/" + dictaatName)
             .map(response => new Dictaat(response.json()))
             .toPromise()
@@ -94,4 +95,34 @@ export class DictaatService {
                 return new DictaatMarkings(response.json());
             });
     }
+
+  
+    public getParticipants(dictaatName: string){
+        return this.wdapi.get('/dictaten/' + dictaatName + '/participants')
+           .toPromise()
+           .then(response => response.json() );
+    }
+
+    public getGroups(dictaatName: string){
+        return this.wdapi.get('/dictaten/' + dictaatName + '/groups')
+            .toPromise()
+            .then(response => response.json() );
+    }
+
+    public addGroups(dictaatName: string, groups: group[]): Observable<group[]> {
+        return this.wdapi.post('/dictaten/' + dictaatName + '/groups', groups)
+        .map(response => response.json());
+    }
+
+    public removeGroup(dictaatName: string, groupName: string): Observable<group[]> {
+        return this.wdapi.delete('/dictaten/' + dictaatName + '/groups/' + groupName)
+        .map(response => response.json());
+    }
 }
+
+/** Interfaces */
+interface group{
+    members: any[];
+    name: string;
+    totalpoints: number;
+} 
