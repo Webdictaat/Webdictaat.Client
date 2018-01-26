@@ -82,6 +82,11 @@ export class AddPageComponent extends BaseModalComponent {
                 this.dictaat.menuItems = menuItems;
                 this.pageService.CompleteModal(menuItems);
             }, (error) => {
+                
+                if(error.status == 400)
+                    return this.errors.push("Page name not valid. The following characters are not allowed: #, &, $")
+                
+            
                 this.pageService.CancelModal();
                 alert("Something went wrong!");
             });
