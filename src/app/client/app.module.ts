@@ -18,11 +18,12 @@ import { WdSharedModule } from "../shared/wd-shared.module";
 import { DatabModule } from "../extern/databases/datab.module";
 import { GameElementsModule } from "../shared/game-elements/game-elements.module";
 import { MessageComponent } from './message/message.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
     imports: [BrowserModule, FormsModule, BrowserAnimationsModule, WdSharedModule, HttpModule, routing, DatabModule, GameElementsModule],
-    declarations: [HtmlOutlet, AppComponent, PageComponent, NavMenuComponent, AvatarComponent, MessageComponent],
+    declarations: [HtmlOutlet, AppComponent, PageComponent, NavMenuComponent, AvatarComponent, MessageComponent, ProfileComponent],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }
     ],

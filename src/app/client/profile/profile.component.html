@@ -1,0 +1,71 @@
+<div class="wd-content">
+    <div class="wd-container">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h3 class="panel-title">Profile information</h3>
+          </div>
+          <div class="panel-body">
+            <div  *ngIf="participant">
+                <div class="display-field">
+                    <label>Username</label>
+                    <span>{{participant.userName}}</span>
+                </div>
+                <div class="display-field">
+                    <label>Name</label>
+                    <span>{{participant.name}}</span>
+                </div>
+                <div class="display-field">
+                    <label>Email</label>
+                    <span>{{participant.email}}</span>
+                </div>
+                <div class="display-field">
+                    <label>Points</label>
+                    <span>{{participant.points}} avans points for this dictaat</span>
+                </div>
+            </div>
+            <wd-spinner  *ngIf="!participant"></wd-spinner>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h3 class="panel-title">Group information</h3>
+          </div>
+          <div class="panel-body">
+            <div *ngIf="participant">
+
+                <div *ngIf="participant.group">
+
+                    You are currently in group {{participant.group}}
+
+                    <div class="tiny-form" >
+                        <label>Switch to group: </label>
+                        <select [(ngModel)]="group" class="form-control wd-flex-1">          
+                            <option *ngFor="let g of groups" [ngValue]="g.groupName">{{g.groupName}}</option>        
+                        </select>
+                        <button *ngIf="!isSwitching" class="btn btn-md btn-raised btn-primary" 
+                            [disabled]="!group || group == participant.group" (click)="switchGroup(group)">Switch</button>
+                        <wd-spinner  *ngIf="isSwitching"></wd-spinner>
+                    </div>
+                </div>
+            
+                <div *ngIf="!participant.group" class="tiny-form">
+                    <label>Join a group: </label>
+                    <select [(ngModel)]="group" class="form-control wd-flex-1">          
+                        <option *ngFor="let g of groups" [ngValue]="g.groupName">{{g.groupName}}</option>        
+                    </select>
+                    <button *ngIf="!isSwitching" class="btn btn-md btn-raised btn-primary" 
+                        disabled]="!group" (click)="join(group)">Join</button>
+                    <wd-spinner  *ngIf="isSwitching"></wd-spinner>
+                    
+                </div>
+
+
+            </div>  
+            <wd-spinner  *ngIf="!participant"></wd-spinner>
+
+            </div>
+        </div>
+    </div>
+</div>

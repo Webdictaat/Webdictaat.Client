@@ -1,0 +1,33 @@
+.wd-container
+{
+    padding-top:20px;
+}
+
+span{
+    display:block;
+}
+
+
+.tiny-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tiny-form label{
+    padding:3px;
+}
+
+.display-field span{
+    display: block;
+    color:black;
+    font-size:110%;
+}
+
+.display-field label{
+    display: block;
+    margin-top:10px;
+    color: #6e6e6e;
+    font-size:80%;
+    margin-bottom:0px;
+}

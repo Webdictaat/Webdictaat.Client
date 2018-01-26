@@ -74,6 +74,11 @@ export class DictaatService {
             );
     }
 
+    public switchGroup(dictaatName: string, group: string){
+        return this.wdapi.put('/dictaten/' + dictaatName + '/groups/' + group, {})
+            .map(response => response.json() as boolean);
+    }
+
     public addContributer(dictaatName: string, email: string) : Promise<User[]> {
         return this.wdapi.post('/dictaten/' + dictaatName + '/contributers/', {'email': email})
             .map(response => response.json() as User[])

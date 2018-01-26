@@ -41,8 +41,8 @@ export class MessageComponent implements OnInit {
 
   ngOnInit() {
        this.user = this.accountService.User;
-       this.configService.GetLocalConfig();
-        this.configService.Config.subscribe((config) => {
+       
+       this.configService.Config.subscribe((config) => {
             if(!config) return;
 
             this.dictaatName = config.name;

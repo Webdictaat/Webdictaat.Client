@@ -11,21 +11,19 @@ import { ConfigService } from "../services/config.service";
 
 @Component({
     selector: "wd-avatar",
-    styles: [`div{ float:right;}`],
-    template: `
-        <div *ngIf="user">
-            <p class="navbar-text">Signed in as {{user.name}}</p>
-            <button class="btn btn-default navbar-btn" (click)="Logout()">Logout</button>
-        </div>
-        <div *ngIf="!user">
-            <button class="btn btn-default navbar-btn" (click)="Login()">Login</button>
-        </div>
-`,
+    styles: [`
+    
+        div{ float:right;}
+        a{color:white;}
+    `],
+    templateUrl: './avatar.component.html',
     providers: []
 })
 export class AvatarComponent implements OnInit {
 
     public user: User;
+
+    @Input() isRoute : boolean = false;
    
     constructor(
         private accountService: AccountService, 

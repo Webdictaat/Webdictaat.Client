@@ -29,10 +29,8 @@ export class AppComponent implements OnInit{
         configService.Config.subscribe(c => this.Title = c ? c.name : null);
     }
 
-
-
      ngOnInit(): void {
-     
+        this.configService.GetLocalConfig();
     }
 
 
