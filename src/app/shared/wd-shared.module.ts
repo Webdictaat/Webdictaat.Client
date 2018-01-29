@@ -28,6 +28,7 @@ import { ArraySortPipe } from "./core/order-by.pipe";
 import { ProcessTokenComponent } from "./core/process-token.component";
 import { StylingService } from "./services/styling.service";
 import { ModalComponentComponent } from "./modal-component/modal-component.component";
+import { GoogleAnalyticsEventsService } from "./services/google-analytics.service";
 
 
 /**
@@ -38,7 +39,7 @@ import { ModalComponentComponent } from "./modal-component/modal-component.compo
     providers: [
         DialogService, QuizService, ImageService, AchievementService, AccountService, wdApi, ConfigService,
         RatingService, DirtyGuard, VideoService, NavMenuService, AssignmentService, DictaatService, ParticipantService,
-        StylingService
+        StylingService, GoogleAnalyticsEventsService
     ],
     declarations: [SpinnerComponent, WdFilterPipe, GroupByPipe, ArraySortPipe, ProcessTokenComponent, ModalComponentComponent],
     exports: [SpinnerComponent, WdFilterPipe, GroupByPipe, ArraySortPipe, ModalComponentComponent]
