@@ -6,34 +6,9 @@
     "IsDisabled": false
   },
   {
-    "Name": "test",
-    "Url": "test",
+    "Name": "contact",
+    "Url": "contact",
     "MenuItems": [],
-    "IsDisabled": false
-  },
-  {
-    "Name": "Opdrachten",
-    "Url": null,
-    "MenuItems": [
-      {
-        "Name": "week 2",
-        "Url": "week2",
-        "MenuItems": [],
-        "IsDisabled": false
-      },
-      {
-        "Name": "week 3",
-        "Url": "week3",
-        "MenuItems": [],
-        "IsDisabled": true
-      },
-      {
-        "Name": "week 4",
-        "Url": "week4",
-        "MenuItems": [],
-        "IsDisabled": true
-      }
-    ],
     "IsDisabled": false
   }
 ]
