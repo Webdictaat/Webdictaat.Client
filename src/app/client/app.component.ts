@@ -12,7 +12,7 @@ export class AppComponent implements OnInit{
 
 
     public Title: string = "Webdictaat";
-
+    private landingPage: string;
     public showSidebar: boolean = false;
 
     constructor(
@@ -27,9 +27,11 @@ export class AppComponent implements OnInit{
                 window.scrollTo(0, 0);
                 if(this.Title != null)
                 {
-                    debugger;
                     ga.set(this.Title + '/#' + event.urlAfterRedirects)
                     ga.send();
+                }
+                else{
+                    this.landingPage = event.urlAfterRedirects;
                 }
                 
             }
@@ -39,7 +41,19 @@ export class AppComponent implements OnInit{
     }
 
      ngOnInit(): void {
-        this.configService.GetLocalConfig();
+        this.configService.GetLocalConfig().subscribe(() => {
+
+            //The first time you load a page, the config is not ready to rumble.
+            //for this reason we store the landing page in a varible, 
+            //en send the GA event after the config has been loaded.
+            if(this.landingPage)
+            {
+                this.ga.set(this.Title + '/#' + this.landingPage)
+                this.ga.send();
+                this.landingPage = null; //clear landing page value
+            }
+        });
+
     }
 
 
