@@ -28,7 +28,7 @@ export class AppComponent implements OnInit{
                 if(this.Title != null)
                 {
                     debugger;
-                    ga.set(window.location.href)
+                    ga.set(this.Title + '/#' + event.urlAfterRedirects)
                     ga.send();
                 }
                 
