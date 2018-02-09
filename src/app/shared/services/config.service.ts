@@ -21,8 +21,8 @@ export class ConfigService {
 
     public GetLocalConfig(): Observable<DictaatConfig>{
         this.http.get('dictaat.config.json')
-        .map((response) => {
-            this.Config.next(response.json() as DictaatConfig);
+        .subscribe((response) => {
+            this.Config.next(response.json() as DictaatConfig);   
             this.DictaatName.next(this.Config.value.name);
         });
 

@@ -18,42 +18,35 @@ export class AppComponent implements OnInit{
     constructor(
         private router: Router,
         private configService: ConfigService,
-        public ga: GoogleAnalyticsEventsService) {
-        //hide sidebar when navigating
-        router.events.subscribe((event) => {
-            this.showSidebar = false;
+        public ga: GoogleAnalyticsEventsService) {}
 
-            if(event instanceof NavigationEnd) {
-                window.scrollTo(0, 0);
-                if(this.Title != null)
-                {
-                    ga.set(this.Title + '/#' + event.urlAfterRedirects)
-                    ga.send();
-                }
-                else{
-                    this.landingPage = event.urlAfterRedirects;
-                }
-                
-            }
-        
-        });
-        configService.Config.subscribe(c => this.Title = c ? c.name : null);
+    private unhandledRouteEvents: string[] = [];
+
+    private sendNewRouteEvent(url)
+    {
+        this.unhandledRouteEvents.push(url);
+
+        if(this.Title)
+        {
+            this.unhandledRouteEvents.forEach((url) => {
+                this.ga.set(this.Title + '/#' + url)
+                this.ga.send();
+            })
+        }
     }
 
-     ngOnInit(): void {
-        this.configService.GetLocalConfig().subscribe(() => {
-
-            //The first time you load a page, the config is not ready to rumble.
-            //for this reason we store the landing page in a varible, 
-            //en send the GA event after the config has been loaded.
-            if(this.landingPage)
-            {
-                this.ga.set(this.Title + '/#' + this.landingPage)
-                this.ga.send();
-                this.landingPage = null; //clear landing page value
+    ngOnInit(): void {
+        this.configService.DictaatName.subscribe(dictaatName => this.Title = dictaatName);
+        this.router.events.subscribe((event) => {
+            this.showSidebar = false;
+            if(event instanceof NavigationEnd) {
+                window.scrollTo(0, 0);
+                this.sendNewRouteEvent(event.urlAfterRedirects);
             }
-        });
+        });    
 
+        //get the local config once
+        this.configService.GetLocalConfig();
     }
 
 
