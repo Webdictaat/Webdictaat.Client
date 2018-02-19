@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import { Router} from '@angular/router';
 import { BehaviorSubject } from "rxjs/rx";
+import { Observable } from 'rxjs/Observable';
 
 
 export class DictaatConfig{
@@ -18,13 +19,14 @@ export class ConfigService {
       
     }
 
-    public GetLocalConfig(): void{
+    public GetLocalConfig(): Observable<DictaatConfig>{
         this.http.get('dictaat.config.json')
-        .toPromise()
-        .then((response) => {
-            this.Config.next(response.json() as DictaatConfig);
+        .subscribe((response) => {
+            this.Config.next(response.json() as DictaatConfig);   
             this.DictaatName.next(this.Config.value.name);
         });
+
+        return this.Config;
     }
 
     public SetLocalConfig(config: DictaatConfig): void{

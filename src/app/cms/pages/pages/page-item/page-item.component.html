@@ -14,6 +14,10 @@
         <span class="url"> - {{item.url}}.html</span>
         </span>
 
+        <!-- <span class="views" *ngIf="item.pageViews">
+            {{item.pageViews.views}} views in the last 3 months 
+        </span> -->
+
         <!-- Edit -->
         <span [hidden]="!isEdit">
             <input [(ngModel)]="newTitle" #inputName>
