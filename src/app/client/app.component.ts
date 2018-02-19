@@ -3,6 +3,10 @@ import { Router, NavigationEnd } from '@angular/router';
 import { ConfigService } from "../shared/services/config.service";
 import { DictaatService } from "../shared/services/dictaat.service";
 import { GoogleAnalyticsEventsService } from '../shared/services/google-analytics.service';
+
+
+var ga: any;
+
 @Component({
     selector: "wd-client-app",
     templateUrl: "./app.component.html",
@@ -18,7 +22,8 @@ export class AppComponent implements OnInit{
     constructor(
         private router: Router,
         private configService: ConfigService,
-        public ga: GoogleAnalyticsEventsService) {}
+        public ga: GoogleAnalyticsEventsService) {
+    }
 
     private unhandledRouteEvents: string[] = [];
 
