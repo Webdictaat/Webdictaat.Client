@@ -15,12 +15,14 @@ import { Rating, Rate } from '../models/rating';
             <div class="rect4"></div>
             <div class="rect5"></div>
         </div>
+        <div class="subtitle">{{subtitle ?? 'loading content'}</div>
     
     `
 })
 export class SpinnerComponent implements OnInit {
 
-    
+    @Input()
+    public subtitle: string;
 
     constructor(
 
