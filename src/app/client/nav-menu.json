@@ -6,6 +6,29 @@
     "IsDisabled": false
   },
   {
+    "Name": "Opdrachten",
+    "MenuItems": [
+      {
+        "Name": "Opdracht 1",
+        "Url": "home",
+        "MenuItems": [],
+        "IsDisabled": false
+      },
+      {
+        "Name": "Opdracht 3",
+        "Url": "home",
+        "MenuItems": [],
+        "IsDisabled": false
+      },
+      {
+        "Name": "Opdracht 2",
+        "Url": "home",
+        "MenuItems": [],
+        "IsDisabled": false
+      }
+    ]
+  },
+  {
     "Name": "contact",
     "Url": "contact",
     "MenuItems": [],

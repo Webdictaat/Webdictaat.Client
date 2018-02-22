@@ -348,3 +348,17 @@ input{
     text-align: center;
     display: inline-block;
 }
+
+
+.wd-content{
+    margin-left:400px;
+    min-width: 400px;
+}
+
+@media (max-width:767px) {
+  
+    footer.navbar-fixed-bottom{
+      position: fixed;
+    }
+  }
+
