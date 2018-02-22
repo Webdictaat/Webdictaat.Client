@@ -40,3 +40,9 @@ footer, .padded{
     flex:1;
     border-right: 0px;
 }
+
+.body textarea{
+    width:100%;
+    resize: none;
+    text-align-last: center;
+}

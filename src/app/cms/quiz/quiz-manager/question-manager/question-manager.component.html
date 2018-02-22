@@ -1,13 +1,15 @@
 <div class="question" *ngIf="question">
 
     <div class="tiny-form">
-        <input type="text" id="question" placeholder="What is the question?" required [(ngModel)]="question.text" name="text" #questiontext="ngModel">
+       
         <select [(ngModel)]="question.type" class="custom-select">
             <option [selected]="question.type == 'mc'" value="mc">Multiple choice</option>
             <option [selected]="question.type == 'groupmc'" value="group">Group items</option>
             <option [selected]="question.type == 'sentence'" value="sentence">Form a Sentence</option>
             <option [selected]="question.type == 'blanks'" value="blanks">Fill in the blanks</option>
         </select>
+        <input type="text" id="question" placeholder="Question instructions" 
+            required [(ngModel)]="question.text" name="text" #questiontext="ngModel">
     </div>
     <div [hidden]="questiontext.valid || questiontext.pristine" class="validation padded">
         The question text is required
@@ -40,8 +42,11 @@
             <!-- Blanks -->
             <div *ngSwitchCase="'blanks'">
 
-                <input type="text" id="sentence" placeholder="Enter a [[sentence]] to complete" [(ngModel)]="question.body.sentence" name="sentence"
-                    #sentence="ngModel">
+                <textarea autosize id="sentence" *ngIf="question.body"
+                    placeholder="Enter a [[sentence]] to complete" 
+                    [(ngModel)]="question.body.sentence" 
+                    name="sentence"
+                    #sentence="ngModel">{{question.body.sentence}}</textarea>
 
                 <wd-answer-manager [answers]="question.body.answers" [canBeCorrect]="false"></wd-answer-manager>
 
@@ -53,8 +58,8 @@
             <!-- Sentence -->
             <div *ngSwitchCase="'sentence'">
 
-                <input type="text" id="sentence" placeholder="[[The]] [[sentence]] [[to form]]" [(ngModel)]="question.body.sentence" name="sentence"
-                    #sentence="ngModel">
+                <textarea type="text" id="sentence" placeholder="[[The]] [[sentence]] [[to form]]" [(ngModel)]="question.body.sentence" name="sentence"
+                    #sentence="ngModel"></textarea>
 
                 <wd-answer-manager [answers]="question.body.answers" [canBeCorrect]="false"></wd-answer-manager>
 

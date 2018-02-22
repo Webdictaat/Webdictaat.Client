@@ -50,11 +50,14 @@ import { AssignmentModalComponent } from './assignments/assignment-modal/assignm
 import { QuizModalComponent } from './quiz/quiz-modal/quiz-modal.component';
 import { StylingComponent } from './styling/styling.component';
 import { CodemirrorModule } from 'ng2-codemirror';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+
 
 @NgModule({
     imports: [
         WdSharedModule, GameElementsModule, DragulaModule, ImagesModule,  CodemirrorModule,
-        BrowserModule, HttpModule, routing, PagesModule, FormsModule, DictaatModule, DatabModule
+        BrowserModule, HttpModule, routing, PagesModule, FormsModule, DictaatModule, DatabModule,
+        TextareaAutosizeModule
     ],
     declarations: [       
         StylingComponent,

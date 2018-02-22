@@ -25,9 +25,14 @@ export class QuestionBlanksComponent extends QuestionBase implements OnInit {
         }
     })
 
-    this.question.body.answers.forEach(a => {
-      this.options.push(new TextPart(a.text));
-    })
+    if(this.question.body.answers)
+    {
+      this.question.body.answers.forEach(a => {
+        this.options.push(new TextPart(a.text));
+      })
+    }
+
+
 
     this.shuffle(this.options);
   }
