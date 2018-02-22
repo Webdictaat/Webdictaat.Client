@@ -26,7 +26,7 @@
 
         <div class="explanation" [hidden]="!checker.isChecking">
             <h2 [ngClass]="state">{{state}}.</h2>
-            <p><b>explanation:</b> {{question.explanation}}</p>
+            <p *ngIf="question.explanation" class="wrapword"><b>explanation:</b> {{question.explanation}}</p>
         </div>
 
         <div class="actions">
