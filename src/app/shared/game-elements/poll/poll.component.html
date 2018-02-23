@@ -1,0 +1,44 @@
+<div class="poll">
+
+  <div *ngIf="!poll">
+    <wd-spinner></wd-spinner> 
+  </div>
+
+  <div *ngIf="poll" class="poll-container">
+
+    <h3>{{poll.question}}</h3>
+    <!-- NOT VOTED YET -->
+    <div *ngIf="!poll.myVote">
+        <div *ngFor='let option of poll.options'>
+            <button class="btn btn-raised btn-default answer" (click)="selectedOption = option;"  
+                    [ngClass]="{'btn-info' : isSelected(option)}">
+                    {{option.text}}
+            </button>
+        </div>
+
+        <div class="actions">
+
+            <button 
+                class="btn btn-raised btn-default next" 
+                [disabled]="isSubmitting" 
+                (click)="vote()" >
+                VOTE
+            </button>
+
+        </div>
+    </div>
+
+    <!-- AFTER VOTING -->
+    <div *ngIf="poll.myVote">
+
+        <div *ngFor='let option of poll.options; let i = index;' class="option">
+            <span>{{option.text}}</span>
+            <div class="score animated zoomInLeft slideInLeft">
+              <span class="beam" [style.width.%]="option.percentage" [style.background]="getColor(i)"></span>
+              <span class="percentage">{{option.percentage}}%</span>
+            </div>
+        </div>
+
+    </div>
+  </div>
+</div>
