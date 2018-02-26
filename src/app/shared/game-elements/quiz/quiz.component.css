@@ -24,7 +24,7 @@ h1 span{
     padding:20px;
 }
 
-.quiz .finished{
+.quiz .finished, .quiz .temporary{
     padding:20px;
 }
 
@@ -54,6 +54,14 @@ header{
 .bs-callout.complete{
     border-left-color: #66BB6A;
 }
+
+
+/** Breakline **/
+fieldset.breakline{
+    margin-bottom: 0px;
+}
+
+
 
 
 .started .footer{

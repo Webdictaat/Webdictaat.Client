@@ -1,6 +1,6 @@
 <div class="bs-callout bs-callout-default quiz" [ngClass]="{'complete': quiz ? quiz.isComplete : false}">
 
-  <wd-spinner *ngIf="isLoading"></wd-spinner>
+  <wd-spinner [subtitle]="'Loading quiz'" *ngIf="isLoading"></wd-spinner>
 
   <div *ngIf="quiz">
 
@@ -42,8 +42,18 @@
         </wd-quiz-question>
       </div>
 
+      
+      <!-- TEMPORARY -->
+      <div *ngIf="quiz.status == 'temporary'" class='temporary text-center'>
+          <button *ngIf="isAuth" (click)="quiz.status = 'started'" class='btn btn-info btn-raised'>Continue where i left off</button>
+          <fieldset class="breakline">
+            <legend>Or</legend>
+          </fieldset>
+          <button *ngIf="isAuth && this.quiz" (click)="start()" class='btn btn-info'>Restart quiz</button>
+      </div>  
+
       <!-- FINISHED -->
-      <div *ngIf="quiz.status == 'finished' && !isLoading" class='finished'>
+      <div *ngIf="quiz.status == 'finished' && !isSubmitting" class='finished'>
         <p>You got {{quiz.lastAttempt.correctAnswers}} out of {{quiz.questions.length}}!</p>
         <div class="progress line" [ngStyle]="{'width': quiz.lastAttempt.questionsAnswered.length * 50 + 'px'}">
           <div class="point" *ngFor="let q of quiz.lastAttempt.questionsAnswered" [ngClass]="q.isCorrect ? 'correct' : 'wrong'">
@@ -51,6 +61,10 @@
           </div>
         </div>
         <button (click)="retakeQuiz()" class="btn btn-info btn-sm btn-raised">Retake quiz</button>
+      </div>
+      <!-- Show loader -->
+      <div *ngIf="isSubmitting"  class='finished'>
+          <wd-spinner [subtitle]="'Checking answers'" ></wd-spinner>
       </div>
 
     </div>

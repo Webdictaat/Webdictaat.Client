@@ -20,6 +20,23 @@ export class QuizService extends BaseModalService{
         super();
     }
 
+    public saveTemporary(quiz: Quiz)
+    {
+        var copy = Object.assign({}, quiz);
+        copy.status = "temporary";
+        localStorage.setItem("quiz:" + copy.id, JSON.stringify(copy));
+    }
+
+    public getTemporary(qid: number){
+        var storage = localStorage.getItem("quiz:" + qid);
+        var quiz = storage ? JSON.parse(storage) : null;
+        return quiz ? new Quiz(quiz) : null;
+    }
+
+    public deleteTemporary(qid: number){
+        localStorage.removeItem("quiz:" + qid);
+    }
+
      public getQuizes(dictaatName: String): Promise<QuizSummary[]> {
        
         let url: string = "/dictaten/" + dictaatName + '/quiz';
@@ -28,8 +45,7 @@ export class QuizService extends BaseModalService{
             .toPromise()
             .then(response => {
                 return response.json() as QuizSummary[]
-            })
-            
+            })  
     }
 
     public update(dictaatName: String, quiz: Quiz): Promise<Quiz> {

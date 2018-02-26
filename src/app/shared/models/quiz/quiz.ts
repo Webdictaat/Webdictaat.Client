@@ -28,6 +28,8 @@ export class Quiz {
             this.dictaat = json.dictaat;
             this.shuffle = json.shuffle;
             this.isComplete = json.isComplete;
+            this.currentIndex = json.currentIndex;
+            this.current = this.questions[this.currentIndex];
 
             //map assignment
             this.assignment = new Assignment(json.assignment);
@@ -39,7 +41,7 @@ export class Quiz {
 
             this.current = this.questions[this.currentIndex];
             this.myAttempts = json.myAttempts ? json.myAttempts : [];
-            
+
             if(this.myAttempts && this.myAttempts.length > 0){
                 this.status =  "finished";
                 this.lastAttempt = this.myAttempts[0]; 
@@ -47,6 +49,8 @@ export class Quiz {
              else{
                this.status = 'idle';
              }
+
+             this.status = json.status ? json.status : this.status 
         }
         
     }

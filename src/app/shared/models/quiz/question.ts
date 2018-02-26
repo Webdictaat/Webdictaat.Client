@@ -22,6 +22,7 @@ export class Question{
             this.type = json.type;
             this.body = json.body ? json.body : {};
             this.explanation = json.explanation;
+            this.isCorrect = json.isCorrect;
         }
 
         this.original = JSON.stringify(this);

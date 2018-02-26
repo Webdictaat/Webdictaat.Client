@@ -80,20 +80,6 @@ img.wd-logo{
     margin-top:-65px;
 }
 
-/** Breakline **/
-fieldset.breakline{
-    border:0px;
-    border-top: 1px solid #eee;
-    text-align: center;
-    
-}
-
-fieldset.breakline legend{
-    width: auto;
-    color:#2e2e2e;
-    padding:10px;
-}
-
 /** tooltip  **/
 .tooltip-container  .tooltip-item.edit{
     display: flex;

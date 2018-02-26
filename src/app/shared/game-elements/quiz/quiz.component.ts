@@ -19,7 +19,8 @@ export class QuizComponent implements OnInit {
   @Input()
   public qid : number;
 
-  public isLoading: boolean;
+  public isLoading: boolean; 
+  public isSubmitting: boolean;
   public quiz : Quiz; 
   public dictaatName: string;
   public isAuth: boolean;
@@ -35,16 +36,21 @@ export class QuizComponent implements OnInit {
 
   ngOnInit() {
 
+    this.quiz = this.quizService.getTemporary(this.qid);
+
     this.accountService.User.subscribe(user => { this.isAuth = user != null; });
     
     this.configService.DictaatName.subscribe((name) => {
           this.dictaatName = name;
-          this.isLoading = true;
-          this.refreshQuiz();
+          if(!this.quiz)
+          {
+              this.isLoading = true;
+              this.refreshQuiz();
+          }              
     });
   }
 
-  private refreshQuiz(){
+  public refreshQuiz(){
     this.quizService.getQuiz(this.dictaatName, this.qid)
       .then((q: Quiz) => { 
         this.quiz = q;
@@ -68,15 +74,17 @@ export class QuizComponent implements OnInit {
       this.quiz.start();
   }
 
+
   public continue(){
     this.quiz.nextQuestion();
+    this.quizService.saveTemporary(this.quiz);
     if(this.quiz.status == 'finished'){
       this.submit();
     }
   }
 
   public submit(){
-    this.isLoading = true;
+    this.isSubmitting = true;
 
     var attempt = [];
     this.quiz.questions.forEach(q =>{
@@ -89,10 +97,10 @@ export class QuizComponent implements OnInit {
     this.quizService.submitAnswers(this.dictaatName ,this.quiz.id, attempt)
       .then((quiz) => {
           this.quiz = quiz;
-          this.isLoading = false;
+          this.isSubmitting = false;
+          this.quizService.deleteTemporary(this.quiz.id);
       }); 
   }
-
 
   public retakeQuiz(){
     this.start();
