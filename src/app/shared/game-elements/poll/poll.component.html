@@ -55,7 +55,7 @@
         <div *ngIf="poll.myVote">
 
             <div *ngFor='let option of poll.options; let i = index;' class="option">
-                <span class="option-text">'{{option.text}}'</span>
+                <span class="option-text">{{option.text}}</span>
                 <div class="score animated">
                     <span class="beam" [style.width.%]="option.votesPercentage" [style.background]="getColor(i)">
                     </span>

@@ -16,6 +16,7 @@
 
 .option{
     line-height: 20px;
+    margin-top:5px;
 }
 
 .option-text{
@@ -41,13 +42,14 @@
 }
 
 .disclaimer{
-    color: #2e2e2e;
+    color: darkgray;
     font-style: italic;
 }
     
 
 .score{
     display: flex;
+    align-items: center;
 }
 
 header{
