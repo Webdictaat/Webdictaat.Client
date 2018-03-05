@@ -20,7 +20,7 @@
         </div>
     </header>
 
-    <div class="poll-container">
+    <div class="poll-container"  *ngIf="!isSubmitting">
 
         <!-- NOT VOTED YET -->
         <div *ngIf="!poll.myVote">
@@ -35,7 +35,7 @@
 
                 <button 
                     class="btn btn-raised btn-primary next" 
-                    [disabled]="isSubmitting" 
+                    [disabled]="isSubmitting || !selectedOption" 
                     (click)="vote()" >
                     VOTE
                 </button>
@@ -48,14 +48,23 @@
 
             <div *ngFor='let option of poll.options; let i = index;' class="option">
                 <span class="option-text">'{{option.text}}'</span>
-                <div class="score animated zoomInLeft slideInLeft">
-                <span class="beam" [style.width.%]="option.percentage" [style.background]="getColor(i)">
-                </span>
-                <span class="percentage">{{option.votesPercentage}}%</span>
+                <div class="score animated">
+                    <span class="beam" [style.width.%]="option.votesPercentage" [style.background]="getColor(i)">
+                    </span>
+                    <span class="percentage">{{option.votesPercentage}}%</span>
                 </div>
             </div>
 
+            <div class="disclaimer pull-right">
+                <p>*You already voted for this poll</p>
+            </div>
         </div>
+
     </div>
+
+    <div *ngIf="isSubmitting">
+        <wd-spinner [subtitle]="'Loading votes'"></wd-spinner> 
+    </div>
+        
   </div>
 </div>

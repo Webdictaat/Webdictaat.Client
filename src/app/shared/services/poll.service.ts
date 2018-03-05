@@ -22,6 +22,15 @@ export class PollService extends BaseModalService{
         super();
     }
 
+    vote(dictaatName: string, pollId: number, optionId: number): any {
+
+        let url: string = "/dictaten/" + dictaatName + '/poll/' + pollId +'/options/' + optionId + '/votes';
+
+        return this.wdapi.post(url, {})
+            .map(res => new Poll(res.json()))
+            .toPromise();
+    }
+
     public updatePoll(dictaatName: string, poll: Poll): Promise<Poll> {
         let url: string = "/dictaten/" + dictaatName + '/poll/' + poll.id;;
 
@@ -72,11 +81,8 @@ export class PollService extends BaseModalService{
         let url: string = "/dictaten/" + dictaatName + '/poll/' + pollId;
 
         return this.wdapi.get(url)
-            .toPromise()
-            .then(response => {
-                return new Poll(response.json());
-            })
-            
+            .map(res => new Poll(res.json()))
+            .toPromise();       
     }
 
 }

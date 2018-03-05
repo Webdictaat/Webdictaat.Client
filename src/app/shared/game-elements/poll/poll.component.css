@@ -4,7 +4,15 @@
     background-color:#2e2e2e;
     color:white;
     min-width: 10px;
+    transform-origin: left center;
+    -webkit-animation: bounce-scale 0.7s ease-in-out;
+
 }
+
+  @keyframes bounce-scale {
+    0%   { transform: scalex(0.01); }
+    100% { transform: scalex(1); }
+  }
 
 .option{
     line-height: 20px;
@@ -29,8 +37,12 @@
 
 .poll-container{
     overflow: hidden;
-    padding:20px;
+    margin:20px;
+}
 
+.disclaimer{
+    color: #2e2e2e;
+    font-style: italic;
 }
     
 

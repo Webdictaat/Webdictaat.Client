@@ -18,6 +18,8 @@ export class PollComponent implements OnInit {
 
   public poll : Poll;
 
+  private dictaatName: string;
+
   public getColor(index){
     if(this.poll)
     {
@@ -30,6 +32,7 @@ export class PollComponent implements OnInit {
 
   ngOnInit() {
     this.configService.DictaatName.subscribe((name) => {
+        this.dictaatName = name;
         this.pollService.getPoll(name,this.pid)
             .then(poll => this.poll = poll);
     });
@@ -41,7 +44,12 @@ export class PollComponent implements OnInit {
 
   public vote(){
     if(!this.isSubmitting){
-      this.poll.myVote = this.selectedOption;
+      this.isSubmitting = true;
+      this.pollService.vote(this.dictaatName, this.poll.id, this.selectedOption.id)
+        .then(poll => {
+            this.poll = poll;
+            this.isSubmitting = false;
+        });
     }
   }
 
