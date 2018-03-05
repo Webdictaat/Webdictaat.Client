@@ -19,7 +19,7 @@
         <div class="modal-footer">
             <button class="btn btn-default" (click)="cancel()">Cancel</button>
             <div class="seperator"></div>
-            <button class="btn btn-success" (click)="complete()">
+            <button class="btn btn-success" (click)="complete()" [disabled]="!isValid">
               {{config.savetext ? config.savetext : 'Save'}}
             </button>
         </div>

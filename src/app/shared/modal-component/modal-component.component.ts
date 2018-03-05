@@ -9,6 +9,7 @@ export class ModalComponentComponent implements OnInit {
 
   @Input()  public isVisible: boolean;
   @Input()  public config: any;
+  @Input()  public isValid: boolean = true;
 
   @Output() public onComplete = new EventEmitter();
   @Output() public onCancel = new EventEmitter();
