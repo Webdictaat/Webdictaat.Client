@@ -80,9 +80,6 @@ export class QuizService extends BaseModalService{
                 reject("Cannot load quiz without quizId");
             });
         }
-        
-        //for testing purposes
-        dictaatName =  "test";
 
         let url: string = "/dictaten/" + dictaatName + '/quiz/' + quizId;
 

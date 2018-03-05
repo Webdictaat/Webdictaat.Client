@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { PollService } from '../../services/poll.service';
+import { ConfigService } from '../../services/config.service';
+import { Poll } from '../../models/poll';
 
 @Component({
   selector: 'wd-poll',
@@ -7,19 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PollComponent implements OnInit {
 
+  @Input()
+  public pid: number;
+
   public selectedOption = null;
   public isSubmitting = false;
 
-  public poll = {
-    question: "Did you finish reading all the articles and assignmennts?",
-    options: [
-      { text: 'I finished all the articles and assignments!', percentage: 42, },
-      { text: 'I made most of my homework', percentage: 22,},
-      { text: 'I started but did not finish all the work', percentage: 27},
-      { text: 'I did not look at any of the subjects', percentage: 12}
-    ],
-    myVote: null,
-  }
+  public poll : Poll;
 
   public getColor(index){
     if(this.poll)
@@ -29,9 +26,13 @@ export class PollComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor(public pollService: PollService, private configService: ConfigService) {}
 
   ngOnInit() {
+    this.configService.DictaatName.subscribe((name) => {
+        this.pollService.getPoll(name,this.pid)
+            .then(poll => this.poll = poll);
+    });
   }
 
   public isSelected(option){
@@ -42,6 +43,15 @@ export class PollComponent implements OnInit {
     if(!this.isSubmitting){
       this.poll.myVote = this.selectedOption;
     }
+  }
+
+  public edit(){
+    var original = Object.assign({}, this.poll); 
+    this.pollService.ShowModal('edit', [this.poll])
+      .then((poll) => this.poll = poll)
+      .catch(() => {
+        this.poll = new Poll(original);
+      });
   }
 
 

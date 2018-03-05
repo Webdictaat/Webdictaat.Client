@@ -18,6 +18,7 @@ h1 span{
 
 .quiz{
     background-color:white;
+    min-height:100px;
 }
 
 .quiz .idle{

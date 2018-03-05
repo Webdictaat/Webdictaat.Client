@@ -20,16 +20,17 @@ import { QuizToolComponent } from "./game-tools/quiz.component";
 import { AssignmentToolComponent } from "./game-tools/assignment.component";
 import { LeaderboardToolComponent } from "./game-tools/leaderboard.component";
 import { SnippetComponent } from './default-tools/snippet.component';
+import { PollToolComponent } from './game-tools/poll.component';
 
 @NgModule({
     imports: [BrowserModule, FormsModule],
     declarations: [
-        SnippetComponent,
+        SnippetComponent, PollToolComponent,
         HtmlOutlet, ColumnComponent, TextComponent, HeaderComponent, HtmlComponent, CardComponent, VideoComponent,
         QuizToolComponent, TrashComponent, ImgComponent, RatingToolComponent, AssignmentToolComponent, LeaderboardToolComponent
     ],
     exports: [ColumnComponent, TextComponent, HeaderComponent, HtmlComponent, CardComponent, VideoComponent,
-        SnippetComponent,
+        SnippetComponent, PollToolComponent,
         QuizToolComponent, HtmlOutlet, TrashComponent, ImgComponent, RatingToolComponent, AssignmentToolComponent, LeaderboardToolComponent
     ]
 })

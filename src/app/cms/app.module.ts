@@ -51,6 +51,10 @@ import { QuizModalComponent } from './quiz/quiz-modal/quiz-modal.component';
 import { StylingComponent } from './styling/styling.component';
 import { CodemirrorModule } from 'ng2-codemirror';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+import { PollModalComponent } from './poll/poll-modal/poll-modal.component';
+import { AddPollComponent } from './poll/add-poll/add-poll.component';
+import { PollManagerComponent } from './poll/poll-manager/poll-manager.component';
+import { EditPollComponent } from './poll/edit-poll/edit-poll.component';
 
 
 @NgModule({
@@ -65,7 +69,7 @@ import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
         DemoComponent, DialogComponent, AvatarComponent, ProfileComponent, MarkingComponent, MarkerComponent, 
         AchievementMarkingComponent, AchievementMarkerComponent, AppComponent, QuizListComponent, AssignmentListComponent, 
         AddAssignmentComponent, EditAssignmentComponent, MarkAssignmentComponent,  QuizManagerComponent, QuestionManagerComponent, 
-        AnswerManagerComponent, AssignmentManagerComponent, AssignmentModalComponent, QuizModalComponent
+        AnswerManagerComponent, AssignmentManagerComponent, AssignmentModalComponent, QuizModalComponent, PollModalComponent, AddPollComponent, PollManagerComponent, EditPollComponent
     ],
     providers: [
         CanDeactivateEditPage, StylingComponent,

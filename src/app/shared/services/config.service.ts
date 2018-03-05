@@ -31,6 +31,7 @@ export class ConfigService {
 
     public SetLocalConfig(config: DictaatConfig): void{
          this.Config.next(config);
+         this.DictaatName.next(config.name);
     }
 
     

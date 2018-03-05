@@ -1,0 +1,100 @@
+<div id="myModal" class="modal animated fadeIn" role="dialog" *ngIf="showModal">
+    <div class="modal-dialog animated fadeInDown">
+      <!-- Modal content-->
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <h4 class="modal-title">
+            <span [ngSwitch]="modalType">
+              <span *ngSwitchCase="'edit'">Edit poll </span>
+            <span *ngSwitchCase="'add'">Add new poll</span>
+            <span *ngSwitchCase="'choose'">Choose poll</span>
+            <span *ngSwitchCase="'select'">Select poll</span>
+            </span>
+          </h4>
+          <div class="close-modal-button" (click)="cancel()">
+            <span class="glyphicon glyphicon-remove"></span>
+          </div>
+        </div>
+  
+        <div class="form-group" [ngSwitch]="modalType">
+
+          <!-- Add a new poll -->
+          <div *ngSwitchCase="'add'">
+            <wd-add-poll (onFinished)="completeModal($event)"></wd-add-poll>
+          </div>
+
+          <!-- Edit a excisting poll -->
+          <div *ngSwitchCase="'edit'">
+              <wd-edit-poll [pid]="params[0].id" (onFinished)="completeModal($event)"></wd-edit-poll>
+          </div>
+
+          <!-- Choose add or select -->
+          <div class="choose"  *ngSwitchCase="'choose'">
+              <div class="modal-body">
+                <button class="btn btn-primary btn-raised" (click)="modalType = 'add'">
+                    Add a new poll
+                </button>
+                <fieldset class="breakline">
+                  <legend>Or</legend>
+                </fieldset>
+                <button class="btn btn-primary btn-raised" (click)="modalType = 'select'">
+                      Select an existing poll
+                </button>
+              </div>
+
+              <div class="modal-footer">
+                  <button class="btn btn-default" (click)="cancel()">Cancel</button>
+                  <div class="seperator"></div>
+              </div>
+            </div>
+
+            <!-- Select a poll -->
+            <div class="select" *ngSwitchCase="'select'">
+
+                <div class="modal-body">
+          
+                  <wd-spinner *ngIf="!polls" [subtitle]="'Loading polls'"></wd-spinner>
+
+                  <div *ngIf="polls">
+
+                    <table class="table table-striped" *ngIf="polls.length != 0">
+                      <tr *ngFor="let poll of polls; let i=index" 
+                        [ngClass]="{'selected': selected == poll}"
+                        (click)="selected = poll">
+                        <td>
+                            <span class="grayed">#{{poll.id}}</span>
+                        </td>
+                        <td>
+                            {{poll.question}}
+                        </td>
+                      </tr>
+                    </table>
+                    
+
+                    <div *ngIf="polls.length == 0" class="panel-body text-center">
+                      <p>This dictaat does not contain any polls yet</p>
+                      <button class="btn btn-primary" (click)="modalType = 'add'">Add a new poll</button>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-default" (click)="completeModal()">Cancel</button>
+                    <div class="seperator"></div>
+                    <button class="btn btn-success" (click)="completeModal(selected)" [disabled]="!selected">
+                      Insert selected
+                    </button>
+                </div>
+
+           
+            </div>
+        </div>
+        <div *ngIf="errMsg" class="animated fadeIn error">
+            <p class="bg-danger">{{errMsg}}</p>
+        </div>
+      </div>
+  </div>
+</div>   

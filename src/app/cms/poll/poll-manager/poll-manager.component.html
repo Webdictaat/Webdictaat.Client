@@ -1,0 +1,11 @@
+  <!-- Multiple choice -->
+  <input type="text" id="question" placeholder="poll question" required 
+    [(ngModel)]="poll.question" 
+    name="question" 
+    #question="ngModel">
+
+    <wd-answer-manager [answers]="poll.options" [canBeCorrect]="false"></wd-answer-manager>
+
+    <button class="btn btn-success btn-xs" (click)="addOption()">
+        <span class="glyphicon glyphicon-plus"></span> Add choice
+    </button>

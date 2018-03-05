@@ -1,0 +1,13 @@
+
+<wd-spinner [subtitle]="'Loading poll'" *ngIf="!poll"></wd-spinner>
+
+<div class="modal-body" *ngIf="poll">
+    <wd-poll-manager [poll]="poll"></wd-poll-manager>
+</div>
+
+
+<div class="modal-footer">
+    <button class="btn btn-default" (click)="Cancel()">Cancel</button>
+    <div class="seperator"></div>
+    <button class="btn btn-success" (click)="Update()" [disabled]="poll && !poll.isValid()">Update</button>   
+</div>
