@@ -21,6 +21,14 @@ export class Poll{
     }
 
     public isValid(): boolean{
-        return this.question != null && this.options.length >= 2;
+        var isValid = this.question != null && this.options.length >= 2;
+
+        this.options.forEach(o => {
+            if(o.text == null )
+                isValid = false;
+        });
+
+        return isValid;
+
     }
 }

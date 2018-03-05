@@ -32,9 +32,13 @@ export class PollComponent implements OnInit {
 
   ngOnInit() {
     this.configService.DictaatName.subscribe((name) => {
-        this.dictaatName = name;
-        this.pollService.getPoll(name,this.pid)
-            .then(poll => this.poll = poll);
+        if(name)
+        {
+          this.dictaatName = name;
+          this.pollService.getPoll(name,this.pid)
+              .then(poll => this.poll = poll);
+        }
+       
     });
   }
 

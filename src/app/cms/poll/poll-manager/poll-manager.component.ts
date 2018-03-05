@@ -20,4 +20,8 @@ export class PollManagerComponent implements OnInit {
     this.poll.options.push({});
   }
 
+  public removeOption(option){
+    this.poll.options.splice(this.poll.options.indexOf(option), 1);
+  }
+
 }

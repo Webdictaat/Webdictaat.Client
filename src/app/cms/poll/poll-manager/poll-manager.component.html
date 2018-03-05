@@ -1,11 +1,25 @@
   <!-- Multiple choice -->
+
+
+
   <input type="text" id="question" placeholder="poll question" required 
     [(ngModel)]="poll.question" 
     name="question" 
     #question="ngModel">
 
-    <wd-answer-manager [answers]="poll.options" [canBeCorrect]="false"></wd-answer-manager>
+    <ul class="options" *ngIf="poll.options">
+        <li *ngFor="let o of poll.options">
+            <div class="option">
+                <input type="text" required [(ngModel)]="o.text" />
+                <button class="btn btn-flat btn-xs btn-danger" (click)="removeOption(o)">remove</button>
+            </div>
+        </li>
+    </ul>
 
+    <div [hidden]="poll.options.length >= 2" class="validation">
+        A poll requires at least 2 options
+    </div>
+        
     <button class="btn btn-success btn-xs" (click)="addOption()">
-        <span class="glyphicon glyphicon-plus"></span> Add choice
+        <span class="glyphicon glyphicon-plus"></span> Add option
     </button>
