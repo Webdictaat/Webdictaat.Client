@@ -7,6 +7,9 @@ span{
     display:block;
 }
 
+.tiny-form select{
+    margin: 0px;
+}
 
 .tiny-form{
     display: flex;
