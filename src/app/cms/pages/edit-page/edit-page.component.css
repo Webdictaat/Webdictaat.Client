@@ -10,13 +10,11 @@ a.selected{
     width:400px;
     position: fixed;
     padding:10px;
-    overflow-y:auto;
     max-height: 100hv;
 }
 
 .side-menu{
     max-height: 60vh;
-    overflow-y: auto;
     margin:20px;
     background-color: white;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
