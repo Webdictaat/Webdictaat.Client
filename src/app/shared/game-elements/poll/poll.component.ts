@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PollService } from '../../services/poll.service';
 import { ConfigService } from '../../services/config.service';
 import { Poll } from '../../models/poll';
+import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'wd-poll',
@@ -18,6 +19,8 @@ export class PollComponent implements OnInit {
 
   public poll : Poll;
 
+  public isAuth: boolean;
+
   private dictaatName: string;
 
   public getColor(index){
@@ -28,9 +31,15 @@ export class PollComponent implements OnInit {
     }
   }
 
-  constructor(public pollService: PollService, private configService: ConfigService) {}
+  constructor(public pollService: PollService, private configService: ConfigService, 
+    private accountService: AccountService
+  ) {}
 
   ngOnInit() {
+    this.accountService.User.subscribe(u => {
+        this.isAuth = u != null;
+    })
+
     this.configService.DictaatName.subscribe((name) => {
         if(name)
         {
@@ -55,6 +64,10 @@ export class PollComponent implements OnInit {
             this.isSubmitting = false;
         });
     }
+  }
+
+  public login(){
+    this.accountService.Login();
   }
 
   public edit(){

@@ -32,8 +32,16 @@
             </div>
 
             <div class="actions pull-right">
+                
+                <button 
+                    *ngIf="!isAuth"
+                    class="btn btn-raised btn-primary next" 
+                    (click)="login()" >
+                    Login to vote
+                </button>
 
                 <button 
+                    *ngIf="isAuth"
                     class="btn btn-raised btn-primary next" 
                     [disabled]="isSubmitting || !selectedOption" 
                     (click)="vote()" >
