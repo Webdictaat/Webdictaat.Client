@@ -13,6 +13,7 @@ import { ConfigService } from "../services/config.service";
     selector: "wd-avatar",
     styles: [`
     
+        .profilelink{color:white;}
         div{ float:right;}
         a{color:white;}
     `],

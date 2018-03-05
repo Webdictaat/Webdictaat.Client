@@ -50,14 +50,8 @@
                     </div>
                 </div>
             
-                <div *ngIf="!participant.group" class="tiny-form">
-                    <label>Join a group: </label>
-                    <select [(ngModel)]="group" class="form-control wd-flex-1">          
-                        <option *ngFor="let g of groups" [ngValue]="g.groupName">{{g.groupName}}</option>        
-                    </select>
-                    <button *ngIf="!isSwitching" class="btn btn-md btn-raised btn-primary" 
-                        disabled]="!group" (click)="join(group)">Join</button>
-                    <wd-spinner  *ngIf="isSwitching"></wd-spinner>
+                <div *ngIf="!participant.group">
+                    <p>You have not yet joined this dictaat!</p>
                     
                 </div>
 

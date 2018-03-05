@@ -1,6 +1,6 @@
 <div *ngIf="user">
     <p *ngIf="!isRoute" class="navbar-text">{{user.name}}</p>
-    <button  *ngIf="isRoute" class="btn btn-default navbar-btn" routerLink="/profile" >
+    <button  *ngIf="isRoute" class="btn btn-default navbar-btn profilelink" routerLink="/profile" >
         {{user.name}}
     </button>
     <button class="btn btn-default navbar-btn" (click)="Logout()">Logout</button>
