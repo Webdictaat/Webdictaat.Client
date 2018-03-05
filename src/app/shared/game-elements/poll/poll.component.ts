@@ -26,8 +26,9 @@ export class PollComponent implements OnInit {
   public getColor(index){
     if(this.poll)
     {
-      var value = 256 - (256 / this.poll.options.length + 1) * (index + 1); 
-      return "rgb(" + (value) + ", " + 22 + ", " + 22  + ")";
+      //avans red = rgb(198, 0, 42);
+      var value = (198 / this.poll.options.length + 1) * (index + 1); 
+      return "rgb(" + (value) + ",0, 42)";
     }
   }
 
