@@ -62,7 +62,7 @@ export class DictaatSettingsComponent {
         groups.forEach(ng => {
           this.groups.forEach(og => {
               if(ng.groupName == og.groupName) 
-                this.errMsg = "There is already a group with name " + ng.groupName;
+                this.errMsg = "There is already a group with name '" + ng.groupName + "'";
           })  
         })
 
