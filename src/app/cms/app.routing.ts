@@ -1,6 +1,5 @@
 ﻿import { ModuleWithProviders, Injectable } from '@angular/core';
 import { Routes, RouterModule, CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { ProfileComponent } from '../shared/profile/profile.component';
 import { DemoComponent } from '../shared/demo/demo.component';
 import { DirtyGuard } from "../shared/core/security/dirty.guard";
 import { DictaatComponent } from "./dictaat/dictaat.component";
@@ -54,10 +53,6 @@ const appRoutes: Routes = [
         path: 'dictaten/:dictaatName/pages/:pageName',
         component: EditPageComponent,
         canDeactivate: [CanDeactivateEditPage]
-    },
-    {
-        path: 'profile',
-        component: ProfileComponent
     },
     { 
         path: 'demo', 

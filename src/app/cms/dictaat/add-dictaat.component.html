@@ -20,9 +20,11 @@
 
                 <div class="form-group">
                     <label for="name">Name of the new dictaat</label>
-                    <input type="text" id="name" required [(ngModel)]="dictaatName" name="name" #name="ngModel" required>
+                    <input type="text" id="name" required [(ngModel)]="dictaatName" name="name" #name="ngModel" 
+                        maxlength="20"
+                        pattern="{{nameRegex}}" required>
                     <div [hidden]="name.valid || name.pristine" class="validation">
-                        Name of the dictaat is required
+                        Name of the dictaat is required, can only contain alphabetic character and numbers and has a max length of 20 characters.
                     </div>
                     <div [hidden]="dictaatName.indexOf(' ') == -1" class="text-info">
                         The name of the dictaat cannot contain any spaces. It will be changed into <strong>{{trim(dictaatName)}}</strong>.
@@ -32,7 +34,7 @@
                 <div class="modal-footer">
                     <button class="btn btn-default" (click)="showModal = false">Cancel</button>
                     <div class="seperator"></div>
-                    <button type="button" class="btn btn-success pull-right" (click)="add()" [disabled]="!dictaatName || dictaatName.length < 3">
+                    <button type="button" class="btn btn-success pull-right" (click)="add()" [disabled]="!name.valid">
                         Add</button>
                 </div>
             </div>

@@ -18,7 +18,6 @@ import { DictaatModule } from "./dictaat/dictaat.module";
 
 //components
 import { AvatarComponent }  from '../shared/avatar/avatar.component';
-import { ProfileComponent }  from '../shared/profile/profile.component';
 import { DemoComponent } from '../shared/demo/demo.component';
 import { AppComponent } from "./app.component";
 import { QuizListComponent } from './quiz/quiz-list/quiz-list.component';
@@ -66,7 +65,7 @@ import { EditPollComponent } from './poll/edit-poll/edit-poll.component';
     declarations: [       
         StylingComponent,
         AddRatingComponent, AddVideoComponent, AddQuizComponent, EditQuizComponent, DictaatSettingsComponent,
-        DemoComponent, DialogComponent, AvatarComponent, ProfileComponent, MarkingComponent, MarkerComponent, 
+        DemoComponent, DialogComponent, AvatarComponent, MarkingComponent, MarkerComponent, 
         AchievementMarkingComponent, AchievementMarkerComponent, AppComponent, QuizListComponent, AssignmentListComponent, 
         AddAssignmentComponent, EditAssignmentComponent, MarkAssignmentComponent,  QuizManagerComponent, QuestionManagerComponent, 
         AnswerManagerComponent, AssignmentManagerComponent, AssignmentModalComponent, QuizModalComponent, PollModalComponent, AddPollComponent, PollManagerComponent, EditPollComponent

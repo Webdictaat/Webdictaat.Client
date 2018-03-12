@@ -18,8 +18,8 @@ import { DictaatService } from "../../shared/services/dictaat.service";
 export class AddDictaatComponent {
 
     public showModal: boolean = false;
-
     public dictaatName: string = "";
+    public nameRegex = "^[A-Za-z0-9_ -]*$";
 
     @Output()
     public dictaatAdded = new EventEmitter();
@@ -38,6 +38,7 @@ export class AddDictaatComponent {
 
  
     }
+
 
     public outsideModal($event){
         //if showing, and some one clicked outside the modal container

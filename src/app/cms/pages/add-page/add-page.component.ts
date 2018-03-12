@@ -47,6 +47,10 @@ export class AddPageComponent extends BaseModalComponent {
         super.wdOnInit(this.pageService, this.zone);
     }
 
+    public cancel(){
+        this.isModalVisible = false;
+    }
+
     public add(): void {
 
         this.errors = [];
