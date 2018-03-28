@@ -19,9 +19,10 @@ export class DictaatSettingsComponent {
     public groups: any[];
 
     private dictaat: Dictaat;
-    
+    public nameRegex = "^[A-Za-z0-9_-]*$";
 
-    constructor(private dictaatService: DictaatService) { }
+    
+    constructor(private dictaatService: DictaatService, private router: Router) { }
 
     ngOnInit() {
         this.dictaatService.CurrentDictaat
@@ -92,6 +93,26 @@ export class DictaatSettingsComponent {
                 this.groups = groups
                 this.showDeleteGroupModal = false;
             })
+    }
+
+    public showCopyModal: boolean;
+    public copyingState: number = 0; //0 = idle, 1 = copying, 2 = done
+    public newName: string;
+
+    public copyDictaat(newName: string){
+        this.newName = newName;
+        this.copyingState = 1;
+        this.showCopyModal = false; 
+        this.dictaatService.copyDictaat(this.dictaat.name, newName)
+            .then(() => {
+                this.copyingState = 2;
+            });
+    }
+
+
+    public gotoDetail(dictaatName): void {
+        let link = ['/dictaten', dictaatName];
+        this.router.navigate(link);
     }
 
 }

@@ -55,6 +55,13 @@ export class DictaatService {
             );
     }
 
+    public copyDictaat(dictaatName: string, newDictaatName) : Promise<DictaatSummary[]> {
+
+        return this.wdapi.post('/dictaten/' + dictaatName + '/copies', { name: newDictaatName })
+            .map(response => response.json() as DictaatSummary[] )
+            .toPromise()
+    }
+
     public getDictaatSession(dictaatName: String): Observable<DictaatSession> {
         return this.wdapi.get("/dictaten/" + dictaatName + '/sessions/current')
             .map(response => response.json());

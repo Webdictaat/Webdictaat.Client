@@ -5,11 +5,7 @@
 
     <div class="panel">
 
-        <wd-modal 
-                [isVisible]="showGroupsModal" 
-                [config]="{title: 'Add group(s)'}" 
-                (onCancel)="showGroupsModal = false"
-                (onComplete)="addGroups(groupstring);">
+        <wd-modal [isVisible]="showGroupsModal" [config]="{title: 'Add group(s)'}" (onCancel)="showGroupsModal = false" (onComplete)="addGroups(groupstring);">
 
 
             <div class="form-group">
@@ -24,14 +20,11 @@
                 <strong>Oh snap!</strong>
                 <p>{{errMsg}}</p>
             </div>
-           
+
         </wd-modal>
 
-        <wd-modal *ngIf="selectedGroup"
-                [isVisible]="showDeleteGroupModal" 
-                [config]="{title: 'Remove group', savetext: 'remove this group'}" 
-                (onCancel)="showDeleteGroupModal = false"
-                (onComplete)="deleteGroup(selectedGroup, true);">
+        <wd-modal *ngIf="selectedGroup" [isVisible]="showDeleteGroupModal" [config]="{title: 'Remove group', savetext: 'remove this group'}"
+            (onCancel)="showDeleteGroupModal = false" (onComplete)="deleteGroup(selectedGroup, true);">
 
 
             <p>If you delete group '{{selectedGroup.groupName}}'' the following students will become groupless:</p>
@@ -47,8 +40,8 @@
 
         <div class="text-center">
             <button class="btn btn-xs btn-success" (click)="showGroupsModal = true">
-              <span class="glyphicon glyphicon-plus"></span>&nbsp;Create group(s)
-          </button>
+                <span class="glyphicon glyphicon-plus"></span>&nbsp;Create group(s)
+            </button>
         </div>
 
         <wd-spinner *ngIf="!groups"></wd-spinner>
@@ -56,20 +49,21 @@
         <div *ngIf="groups">
 
             <div class="text-center" *ngIf="groups.length == 0">
-                <p  class="no-content-placeholder">
-                    You can make groups to make it easier to monitor progress of students you teach.
-                    Students can choose which group to join when visiting the webdicaat.
-                </p> <br>
+                <p class="no-content-placeholder">
+                    You can make groups to make it easier to monitor progress of students you teach. Students can choose which group to join
+                    when visiting the webdicaat.
+                </p>
+                <br>
                 <button class="btn btn-success btn-raised" (click)="showGroupsModal = true">Make your first group now!</button>
             </div>
-  
-            <table class="table table-striped" >
+
+            <table class="table table-striped">
                 <tr *ngFor="let g of groups">
                     <td>
                         Group {{g.groupName}}
                     </td>
                     <td>
-                        {{g.members  ? g.members.length : 'No '}} members
+                        {{g.members ? g.members.length : 'No '}} members
                     </td>
                     <td>
                         {{g.totalPoints}} points
@@ -86,12 +80,9 @@
     </div>
 
     <h4>Contributers</h4>
-    
+
     <div class="panel panel-secondary">
-        <wd-modal 
-            [isVisible]="showContributerModal" 
-            [config]="{title: 'Add a contributer'}" 
-            (onCancel)="showContributerModal = false"
+        <wd-modal [isVisible]="showContributerModal" [config]="{title: 'Add a contributer'}" (onCancel)="showContributerModal = false"
             (onComplete)="addContributers(contributerEmail)">
             <div class="form-group">
                 <label for="name">Email of the contributer (username@provider.something)</label>
@@ -114,7 +105,7 @@
             </div>
         </div>
 
-    
+
         <wd-spinner *ngIf="!(contributers)"></wd-spinner>
 
         <table class="table table-striped" *ngIf="groups">
@@ -132,17 +123,83 @@
         </table>
     </div>
 
-    <div class="panel panel-danger" >
+
+    <wd-modal [isVisible]="showCopyModal" [config]="{title: 'Copy dictaat', savetext: 'Copy dictaat'}" (onCancel)="showCopyModal = false"
+        (onComplete)="copyDictaat(dictaatName);">
+
+        <p>This action
+            <strong>CANNOT</strong> be undone. This will create a copy of the
+            <strong>{{dictaat.name}}</strong> webdictaat, questions, ratings, etc..</p>
+
+
+        <p>Type the name of
+            <b>new</b> dictaat to continue:</p>
+
+        <input type="text" id="name" required [(ngModel)]="dictaatName" name="name" #name="ngModel" maxlength="20" pattern="{{nameRegex}}"
+            required>
+        <div [hidden]="name.valid || name.pristine" class="validation">
+            Name of the dictaat is required, can only contain alphabetic character and numbers and has a max length of 20 characters.
+        </div>
+
+        <div class="wd-flex-1 text-center">
+            <div class="alert alert-dismissible alert-danger" *ngIf="errorMsg">
+                <button type="button" class="close" (click)="errorMsg = null">×</button>
+                <strong>Oh snap!</strong>
+                <p>{{errorMsg}}</p>
+            </div>
+        </div>
+
+    </wd-modal>
+
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">Copy dictaat *(experimental)</h3>
+        </div>
+        <div class="panel-body wd-flex">
+            <div  class="wd-flex-2">
+                <b>Create a copy of this dictaat</b>
+                <p>A copy will be made of all the quizes, polls, pages and assignments. <b>Disclaimer:</b>
+                This is a new experimental feature. The new dictaat will require custom changes to function fully.</p>
+            </div>
+            <div class="wd-flex-1 text-center">
+              
+                <!-- idle -->
+                <button class="btn btn-raised btn-default btn-warning" 
+                    *ngIf="copyingState == 0"
+                    (click)="showCopyModal = true">
+                    Copy webdictaat
+                    <div class="ripple-container"></div>
+                </button>
+
+                <!-- copying! -->
+                <wd-spinner *ngIf="copyingState == 1" 
+                    [subtitle]="'Making a copy of this dictaat with name ' + newName">
+                </wd-spinner>
+
+                <!-- done -->
+                <div *ngIf="copyingState == 2">
+                    <b>congratulations!</b>
+                    <p>A new copy with the name <a hr (click)="gotoDetail(newName)">{{newName}}</a> has been created for you.
+                        Click <a (click)="copyingState = 0">here</a> if you want to create another copy.
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-danger">
         <div class="panel-heading">
             <h3 class="panel-title">Danger zone</h3>
         </div>
         <div class="panel-body wd-flex">
-            <div> 
+            <div class="wed-flex-2">
                 <b>Delete this dictaat</b>
                 <p>Once you delete a webdictaat, there is no going back. Please be certain.</p>
             </div>
             <div class="wd-flex-1">
                 <wd-remove-dictaat [dictaat]="dictaat"></wd-remove-dictaat>
             </div>
+        </div>
     </div>
-</div>
