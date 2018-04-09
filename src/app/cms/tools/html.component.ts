@@ -117,19 +117,28 @@ export class HtmlComponent implements OnInit {
         pageObject.find('*').removeAttr("aria-label"); 
         pageObject.find('*').removeAttr("title"); 
 
-        //Angular replaces input attributes with an ng-reflect attributes
-        //to get our valid html back, we need to remove these ng-reflect attributes
-        var htmlString = pageObject.html();
-        
+    
+        var htmlString = pageObject.html();            
         if(htmlString){
-            htmlString = htmlString.replace(/ng-reflect-(.+?)=/g, '[$1]=')
+
+            //Angular replaces input attributes with an ng-reflect attributes
+            //to get our valid html back, we need to remove these ng-reflect attributes
+            htmlString = htmlString.replace(/ng-reflect-(.+?)=/g, '[$1]=');
+
+
+            //Angular reserves some characters like { and }, they have to be escaped
+            htmlString = htmlString.replace('{', '&#123;').replace('}', '&#125;');
+
             return htmlString;
         }
+
+               
         
         return null;
     }
 
     private recompile(): void {
+        debugger;
         this.compileHtml(this.decompileHtml());
     }
 
