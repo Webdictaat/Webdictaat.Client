@@ -1,6 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule }    from '@angular/http';
+import { HttpClientModule }    from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { QuizComponent } from "./quiz.component";
 import { QuestionComponent } from './question/quiz-question.component';
@@ -14,7 +14,7 @@ import { WdSharedModule } from '../../wd-shared.module';
 
 @NgModule({
     providers: [],
-    imports: [BrowserModule, HttpModule, WdSharedModule, FormsModule, CommonModule],
+    imports: [BrowserModule, HttpClientModule, WdSharedModule, FormsModule, CommonModule],
     declarations: [QuizComponent, QuestionComponent, QuestionMcComponent, QuestionBlanksComponent, QuestionGroupComponent, QuestionSentenceComponent],
     exports: [QuizComponent, QuestionComponent, QuestionMcComponent, QuestionBlanksComponent]
 })

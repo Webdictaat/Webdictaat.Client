@@ -1,6 +1,6 @@
 ﻿import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule }    from '@angular/http';
+import { HttpClientModule }    from '@angular/common/http';
 import { FormsModule }   from '@angular/forms';
 
 //components
@@ -18,7 +18,7 @@ import { FolderItemComponent } from './pages/folder-item/folder-item.component';
 
 
 @NgModule({
-    imports: [BrowserModule, HttpModule, FormsModule, routing, DragulaModule, ToolsModule, CodemirrorModule],
+    imports: [BrowserModule, HttpClientModule, FormsModule, routing, DragulaModule, ToolsModule, CodemirrorModule],
     declarations: [
         PagesComponent, EditPageComponent, AddPageComponent, PageItemComponent, FolderItemComponent
     ],

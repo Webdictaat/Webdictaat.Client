@@ -1,7 +1,7 @@
 ﻿import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpModule }    from '@angular/http';
+import { HttpClientModule }    from '@angular/common/http';
 import { LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -22,7 +22,7 @@ import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, BrowserAnimationsModule, WdSharedModule, HttpModule, routing, DatabModule, GameElementsModule],
+    imports: [BrowserModule, FormsModule, BrowserAnimationsModule, WdSharedModule, HttpClientModule, routing, DatabModule, GameElementsModule],
     declarations: [HtmlOutlet, AppComponent, PageComponent, NavMenuComponent, AvatarComponent, MessageComponent, ProfileComponent],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }

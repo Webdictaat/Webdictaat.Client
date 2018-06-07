@@ -1,6 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule }    from '@angular/http';
+import { HttpClientModule }    from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
@@ -59,7 +59,7 @@ import { EditPollComponent } from './poll/edit-poll/edit-poll.component';
 @NgModule({
     imports: [
         WdSharedModule, GameElementsModule, DragulaModule, ImagesModule,  CodemirrorModule,
-        BrowserModule, HttpModule, routing, PagesModule, FormsModule, DictaatModule, DatabModule,
+        BrowserModule, HttpClientModule, routing, PagesModule, FormsModule, DictaatModule, DatabModule,
         TextareaAutosizeModule
     ],
     declarations: [       

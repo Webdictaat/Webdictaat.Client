@@ -9,14 +9,14 @@ import { DictaatComponent } from "./dictaat.component";
 import { routing } from "../app.routing";
 import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
-import { HttpModule } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
 import { DictaatService } from "../../shared/services/dictaat.service";
 import { WdSharedModule } from '../../shared/wd-shared.module';
 
 
 @NgModule({
     imports: [
-        BrowserModule, HttpModule, routing, FormsModule, WdSharedModule
+        BrowserModule, HttpClientModule, routing, FormsModule, WdSharedModule
     ],
     declarations: [
         RemoveDictaatComponent, AddDictaatComponent, DictatenComponent, DictaatComponent
