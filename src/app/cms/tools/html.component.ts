@@ -138,10 +138,8 @@ export class HtmlComponent implements OnInit {
     }
 
     private recompile(): void {
-        debugger;
         this.compileHtml(this.decompileHtml());
     }
-
 
     private savePage(): void {
         var html = this.decompileHtml()
