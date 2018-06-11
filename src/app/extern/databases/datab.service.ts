@@ -1,8 +1,10 @@
+
+import {map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map';
+
+
 import { wdApi } from "../../shared/core/wd.service";
 import { Assignment } from "../../shared/models/assignment";
 
@@ -31,15 +33,15 @@ export class DatabService {
     }
 
     public getAssignment(daid): Promise<any>{
-        return this.http.get(this.root + "/assignments/" + daid)
-            .map((response) => response.json())
+        return this.http.get(this.root + "/assignments/" + daid).pipe(
+            map((response) => response.json()))
             .toPromise();
     }
 
     public getSubmissions(daid, userId) : Promise<DbSubmission>
     {
-        return this.http.get(this.root + "/assignments/" + daid + "/submissions/" + userId)
-            .map((response) => response.json() as DbSubmission )
+        return this.http.get(this.root + "/assignments/" + daid + "/submissions/" + userId).pipe(
+            map((response) => response.json() as DbSubmission ))
             .toPromise();
     }
 

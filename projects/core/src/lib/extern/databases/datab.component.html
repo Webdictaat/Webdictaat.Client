@@ -1,0 +1,64 @@
+
+<div class="panel">
+    <div class="assignment" *ngIf="assignment" [ngClass]="'level-' + assignment.level">
+        <div class="title">{{assignment.title}}</div>
+        <p>
+            {{assignment.description}}
+        </p>
+        <div>
+            <button *ngIf="!show" class="btn btn-xs btn-info" (click)="show = true">show expected output</button>
+            <button *ngIf="show" class="btn btn-xs btn-info" (click)="show = false">hide expected output</button>
+            <div [innerHTML]="expectedOutput" *ngIf="show"></div>
+        </div>
+        <div class="points tooltip-container" [ngClass]="{'complete': assignment.mySubmission }">
+            <span *ngIf="!assignment.mySubmission">{{assignment.points}}</span>
+            <span *ngIf="assignment.mySubmission" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        </div>
+        </div>
+
+        <div class="assignment" *ngIf="!assignment" >
+        <wd-spinner></wd-spinner>
+    </div>
+
+    <div class="datab" *ngIf="submission">
+       
+        <div>
+            <textarea [(ngModel)]="submission.query" [disabled]="submission.assignmentToken" ></textarea>
+            <div  *ngIf="!submission.assignmentToken">
+                <button class="btn btn-default btn-raised" (click)="submit()">Submit</button>
+            </div> 
+        </div>
+        <div *ngIf="submission.statusId == 1"> <!-- correct query -->
+            <div class="alert alert-dismissible alert-success" *ngIf="!submission.hide">
+                <button type="button" class="close" (click)="submission.hide = true">×</button>
+                <strong>Well done!</strong> 
+                <p>You completed this assignment on {{submission.timestamp | date:'shortDate'}}</p>
+            </div>
+        </div>
+        <div *ngIf="submission.statusId >= 2 " > <!-- Wrong query-->
+            <div class="alert alert-dismissible alert-warning" *ngIf="submission.message" >
+                <button type="button" class="close" (click)="submission.message = null">×</button>
+                <strong>Oh snap!</strong> <p>{{submission.message}}. </p>
+                <p>Change a few things up and try submitting again.</p>
+                
+            </div>
+        </div>
+        <div class="alert alert-dismissible alert-danger" *ngIf="err" >
+            <button type="button" class="close" (click)="err = null">×</button>
+            <strong>Oh noes! :(</strong> <p>{{err}}. </p>
+            <p>Please wait a few minutes before submitting again. Our poor servers need some time to recover.</p>
+            
+        </div>
+        <div class="loader" *ngIf="submission.statusId == 0">
+            <wd-spinner class="spinner"></wd-spinner>
+        </div>
+    </div>
+     
+     <div class="datab" *ngIf="!submission && user">
+        Loading submission
+     </div>
+
+     <div class="datab text-center" *ngIf="!user">
+        Login to submit your answer!
+     </div>
+</div>

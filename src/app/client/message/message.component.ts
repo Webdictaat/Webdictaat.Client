@@ -2,7 +2,7 @@ import { Component, OnInit, transition, style, animate, trigger } from '@angular
 import { DictaatService } from "../../shared/services/dictaat.service";
 import { ConfigService } from "../../shared/services/config.service";
 import { AccountService } from "../../shared/services/account.service";
-import { Subject } from "rxjs/Subject";
+import { Subject } from "rxjs";
 import { User } from "../../shared/models/user";
 
 @Component({
