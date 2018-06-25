@@ -1,9 +1,9 @@
 ﻿import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef, ChangeDetectionStrategy, NgZone } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { ActivatedRoute, Params } from '@angular/router';
-import { BaseModalComponent } from "core/lib/core/basemodal.service";
-import { Rating } from "core/lib/models/rating";
-import { RatingService } from "core/lib/services/rating.service";
+import { BaseModalComponent } from "core";
+import { Rating } from "core";
+import { RatingService } from "core";
 
 @Component({
     selector: "wd-add-rating",

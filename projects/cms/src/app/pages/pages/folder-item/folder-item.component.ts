@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { NavMenuItem } from 'core/lib/models/nav-menu';
-import { NavMenuService } from 'core/lib/nav-menu/nav-menu.service';
+import { NavMenuItem } from 'core';
+import { NavMenuService } from 'core';
 import { MenuItemBase } from '../menuItemBase';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { Poll } from 'core/lib/models/poll';
-import { DictaatService } from 'core/lib/services/dictaat.service';
-import { PollService } from 'core/lib/services/poll.service';
+import { Poll } from 'core';
+import { DictaatService } from 'core';
+import { PollService } from 'core';
 
 @Component({
   selector: 'wd-edit-poll',

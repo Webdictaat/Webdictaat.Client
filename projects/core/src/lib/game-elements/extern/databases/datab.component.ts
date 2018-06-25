@@ -1,9 +1,9 @@
 
 import { Component, OnInit, Input } from "@angular/core";
 import { DatabService, DbAssignment, DbSubmission } from "./datab.service";
-import { Assignment } from "../../models/assignment";
-import { User } from "../../models/user";
-import { AccountService, AssignmentService, ConfigService } from "../../services";
+import { Assignment } from "../../../models";
+import { AccountService, AssignmentService, ConfigService } from "../../../services";
+
 
 @Component({
     selector: "wd-datab",
@@ -20,7 +20,7 @@ export class DatabComponent implements OnInit {
 
     //webdictaat
     public assignment: Assignment;
-    public user: User;
+    public user: any;
     public dictaatName: string;
 
     //databaas

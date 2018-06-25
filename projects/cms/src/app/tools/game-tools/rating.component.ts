@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
-import { RatingService } from 'core/lib/services/rating.service';
+import { RatingService } from 'core';
 
 declare var $ : any;
 

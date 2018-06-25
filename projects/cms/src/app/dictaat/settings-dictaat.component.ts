@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Dictaat } from 'core/lib/models/dictaat';
-import { User } from 'core/lib/models/user';
-import { DictaatService } from 'core/core';
+import { Dictaat } from 'core';
+import { User } from 'core';
+import { DictaatService } from 'core';
 
 
 @Component({

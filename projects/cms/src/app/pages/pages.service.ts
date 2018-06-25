@@ -2,11 +2,11 @@
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import { BaseModalService } from "core/lib/core/basemodal.service";
-import { wdApi } from "core/lib/core/wd.service";
-import { PageSummary } from "core/lib/models/page-summary";
-import { NavMenuItem } from "core/lib/models/nav-menu";
-import { Page } from 'core/lib/models/page';
+import { BaseModalService } from "core";
+import { wdApi } from "core";
+import { PageSummary } from "core";
+import { NavMenuItem } from "core";
+import { Page } from 'core';
 
 
 @Injectable()

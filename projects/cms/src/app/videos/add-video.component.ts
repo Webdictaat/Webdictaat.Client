@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { ActivatedRoute, Params } from '@angular/router';
-import { BaseModalComponent } from "core/lib/core/basemodal.service";
-import { VideoService} from "core/lib/services"
-
+import { BaseModalComponent, VideoService} from "core"
+ 
 
 @Component({
     selector: "wd-add-video",
@@ -26,7 +25,7 @@ export class AddVideoComponent extends BaseModalComponent implements OnInit{
     }
 
     ngOnInit(): void {
-        this.wdOnInit(this.videoService, this.zone);
+        super.wdOnInit(this.videoService, this.zone);
     }
 
     public Add(): void {

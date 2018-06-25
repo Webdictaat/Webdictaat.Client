@@ -20,7 +20,7 @@ import { AssignmentToolComponent } from "./game-tools/assignment.component";
 import { LeaderboardToolComponent } from "./game-tools/leaderboard.component";
 import { SnippetComponent } from './default-tools/snippet.component';
 import { PollToolComponent } from './game-tools/poll.component';
-import { HtmlOutlet } from 'core/core';
+import { HtmlOutlet } from 'core';
 
 @NgModule({
     imports: [BrowserModule, FormsModule],

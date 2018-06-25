@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {AchievementService} from "core/lib/services/achievement.service";
+import {AchievementService} from "core";
 
 @Component({
     selector: 'wd-achievementmarker',

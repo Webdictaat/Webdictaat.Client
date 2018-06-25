@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
-import { QuizService } from 'core/lib/services/quiz.service';
-import { Quiz } from 'core/lib/models/quiz/quiz';
+import { QuizService } from 'core';
+import { Quiz } from 'core';
 
 declare var $: any;
 

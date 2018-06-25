@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { QuizService } from "core/lib/services/quiz.service";
-import { DictaatService } from "core/lib/services/dictaat.service";
-import { ConfigService } from "core/lib/services/config.service";
-import { Quiz } from 'core/lib/models/quiz/quiz';
-import { Question } from 'core/lib/models/quiz/question';
+import { QuizService } from "core";
+import { DictaatService } from "core";
+import { ConfigService } from "core";
+import { Quiz } from 'core';
+import { Question } from 'core';
 
 
 @Component({

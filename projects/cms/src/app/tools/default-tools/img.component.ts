@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
-import { ImageService } from 'core/lib/services/images.service';
+import { ImageService } from 'core';
 
 declare var $: any;
 

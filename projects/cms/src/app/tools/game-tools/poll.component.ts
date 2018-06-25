@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Poll } from 'core/lib/models/poll';
-import { PollService } from 'core/lib/services/poll.service';
+import { Poll } from 'core';
+import { PollService } from 'core';
 
 declare var $: any;
 

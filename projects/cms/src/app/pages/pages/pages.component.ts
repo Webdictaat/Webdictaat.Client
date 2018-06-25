@@ -1,11 +1,11 @@
 ﻿import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { DragulaService } from "ng2-dragula";
-import { Dictaat } from 'core/lib/models/dictaat';
-import { NavMenuItem } from 'core/lib/models/nav-menu';
+import { Dictaat } from 'core';
+import { NavMenuItem } from 'core';
 import { PagesService } from '../pages.service';
-import { NavMenuService } from 'core/lib/nav-menu/nav-menu.service';
-import { DictaatService } from 'core/lib/services/dictaat.service';
+import { NavMenuService } from 'core';
+import { DictaatService } from 'core';
 
 
 

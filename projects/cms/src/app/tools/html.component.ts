@@ -1,5 +1,5 @@
 ﻿import { Component, Input, Output, OnInit, EventEmitter, ChangeDetectorRef, NgZone } from '@angular/core';
-import { DialogService } from 'core/lib/services/dialog.service';
+import { DialogService } from 'core';
 import * as $ from 'jquery';
 
 declare var CKEDITOR: any;

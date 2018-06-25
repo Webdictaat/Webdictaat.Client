@@ -1,13 +1,13 @@
 ﻿import { Component, EventEmitter, Output, NgZone, Input } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { BaseModalComponent } from 'core/lib/core/basemodal.service';
-import { Page } from 'core/lib/models/page';
-import { Dictaat } from 'core/lib/models/dictaat';
+import { BaseModalComponent } from 'core';
+import { Page } from 'core';
+import { Dictaat } from 'core';
 import { PagesService } from '../pages.service';
-import { DictaatService } from 'core/lib/services/dictaat.service';
+import { DictaatService } from 'core';
 import { ActivatedRoute } from '@angular/router';
-import { NavMenuService } from 'core/lib/nav-menu/nav-menu.service';
-import { NavMenuItem } from 'core/lib/models/nav-menu';
+import { NavMenuService } from 'core';
+import { NavMenuItem } from 'core';
 
 @Component({
     selector: "wd-add-page",

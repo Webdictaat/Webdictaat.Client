@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NavMenuItem } from 'core/lib/models/nav-menu';
+import { NavMenuItem } from 'core';
 import { MenuItemBase } from '../menuItemBase';
 import { Router, ActivatedRoute } from '@angular/router';
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Assignment } from "core/lib/models/assignment";
-import { AssignmentService } from 'core/lib/services/assignment.service';
-import { DictaatService } from 'core/lib/services/dictaat.service';
+import { Assignment } from "core";
+import { AssignmentService } from 'core';
+import { DictaatService } from 'core';
 
 @Component({
   selector: 'wd-edit-assignment',

@@ -3,8 +3,8 @@ import { Headers, Http, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import { Assignment } from '../../models/assignment';
-import { wdApi } from '../../core/wd.service';
+import { Assignment } from '../../../models/assignment';
+import { wdApi } from '../../../core/wd.service';
 
 export class DbAssignment extends Assignment {
     public external: DbSubmission;

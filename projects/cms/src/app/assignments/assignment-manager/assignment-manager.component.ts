@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Quiz } from 'core/lib/models/quiz/quiz';
-import { Assignment } from 'core/lib/models/assignment';
+import { Quiz } from 'core';
+import { Assignment } from 'core';
 
 @Component({
   selector: 'wd-assignment-manager',

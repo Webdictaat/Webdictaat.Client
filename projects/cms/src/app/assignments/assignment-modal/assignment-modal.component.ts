@@ -1,8 +1,8 @@
 import { Component, OnInit, NgZone, OnChanges, SimpleChanges } from '@angular/core';
-import { BaseModalComponent } from 'core/lib/core/basemodal.service';
-import { AssignmentService } from 'core/lib/services/assignment.service';
-import { DictaatService } from 'core/lib/services/dictaat.service';
-import { Assignment } from 'core/lib/models/assignment';
+import { BaseModalComponent } from 'core';
+import { AssignmentService } from 'core';
+import { DictaatService } from 'core';
+import { Assignment } from 'core';
 
 @Component({
   selector: 'wd-assignment-modal',

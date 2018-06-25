@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AchievementGroup} from "core/lib/models/achievementgroup";
-import {Achievement} from "core/lib/models/achievement";
-import {UserAchievement} from "core/lib/models/userachievement";
-import {AchievementService} from "core/lib/services/achievement.service";
+import {AchievementGroup, UserAchievement} from "core";
+import {Achievement} from "core";
+import {AchievementService} from "core";
 
 @Component({
     selector: "wd-achievement-marking",

@@ -10,8 +10,8 @@ import { routing } from "../app.routing";
 import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
-import { DictaatService } from "core/lib/services/dictaat.service";
-import { WdCoreModule } from 'core/core';
+import { DictaatService } from "core";
+import { WdCoreModule } from 'core';
 
 
 @NgModule({

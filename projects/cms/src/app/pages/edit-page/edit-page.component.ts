@@ -3,10 +3,10 @@ import { ActivatedRoute, Router, Params , NavigationStart} from '@angular/router
 import { PagesService } from '../pages.service';
 import { HtmlComponent } from '../../tools/html.component';
 
-import { ConfigService } from 'core/lib/services/config.service';
-import { DictaatService } from 'core/lib/services/dictaat.service';
+import { ConfigService } from 'core';
+import { DictaatService } from 'core';
 import 'codemirror/mode/xml/xml';
-import { Page } from 'core/lib/models/page';
+import { Page } from 'core';
 
 
 @Component({

@@ -12,8 +12,8 @@ import { NavMenuItem } from '../models/nav-menu';
 })
 export class NavMenuComponent implements OnInit {
 
-    private page;
-    private selected: NavMenuItem;
+    public page;
+    public selected: NavMenuItem;
 
     @Input()
     public MenuItems: NavMenuItem[];

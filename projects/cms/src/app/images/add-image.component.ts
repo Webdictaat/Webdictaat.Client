@@ -1,8 +1,8 @@
 ﻿import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef, ElementRef, ChangeDetectionStrategy, NgZone } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { ActivatedRoute, Params } from '@angular/router';
-import { BaseModalComponent } from "core/lib/core/basemodal.service";
-import { ImageService } from "core/lib/services/images.service";
+import { BaseModalComponent } from "core";
+import { ImageService } from "core";
 
 @Component({
     selector: "wd-add-image",

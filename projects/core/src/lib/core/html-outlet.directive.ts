@@ -25,11 +25,10 @@ import {
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { StaticInjector, Injector } from '@angular/core/src/di/injector'; //from version 6
+import { Injector } from '@angular/core'; //from version 6
 
 //my modules
 import { GameElementsModule } from '../game-elements/game-elements.module';
-import { DatabModule } from "../extern/databases/datab.module"; //voor bart zijn datab project
 import { WdCoreModule } from '../wd-core.module';
 
 export function createComponentFactory(compiler: Compiler, metadata: Component): Promise<ComponentFactory<any>> {
@@ -38,7 +37,7 @@ export function createComponentFactory(compiler: Compiler, metadata: Component):
 
     @NgModule({
         imports: [
-            BrowserModule, CommonModule, RouterModule, WdCoreModule, GameElementsModule, DatabModule
+            BrowserModule, CommonModule, RouterModule, WdCoreModule, GameElementsModule
         ],
         schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
         declarations: [decoratedCmp]

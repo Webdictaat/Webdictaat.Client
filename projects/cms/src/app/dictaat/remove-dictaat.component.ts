@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { DictaatService } from "core/lib/services/dictaat.service";
-import { Dictaat } from "core/lib/models/dictaat";
+import { DictaatService } from "core";
+import { Dictaat } from "core";
 
 @Component({
     selector: "wd-remove-dictaat",

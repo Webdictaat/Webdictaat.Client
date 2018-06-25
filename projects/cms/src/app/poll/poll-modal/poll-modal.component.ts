@@ -1,8 +1,8 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { PollService } from 'core/lib/services/poll.service';
-import { Poll } from 'core/lib/models/poll';
-import { DictaatService } from 'core/lib/services/dictaat.service';
-import { BaseModalComponent } from 'core/lib/core/basemodal.service';
+import { PollService } from 'core';
+import { Poll } from 'core';
+import { DictaatService } from 'core';
+import { BaseModalComponent } from 'core';
 
 @Component({
   selector: 'wd-poll-modal',

@@ -33,24 +33,29 @@ import { ProcessTokenComponent } from "./core/process-token.component";
 import { DirtyGuard } from "./core/security/dirty.guard";
 import { wdApi } from "./core/wd.service";
 import { HtmlOutlet } from "./core/html-outlet.directive";
+import { NavMenuComponent } from "../public_api";
+import { RouterModule } from "@angular/router";
 
 
 /**
  * This mdule contains all the shared services, and components that are reusable across the application
  */
 @NgModule({
-    imports: [CommonModule],    
+    imports: [CommonModule, RouterModule],    
     providers: [
+        NavMenuService,
         DialogService, QuizService, ImageService, AchievementService, AccountService, wdApi, ConfigService,
         RatingService, DirtyGuard, VideoService, NavMenuService, AssignmentService, DictaatService, ParticipantService,
         StylingService, GoogleAnalyticsEventsService, PollService
     ],
     declarations: [
-       DialogComponent, AvatarComponent, HtmlOutlet,
-      SpinnerComponent, WdFilterPipe, GroupByPipe, ArraySortPipe, ProcessTokenComponent, ModalComponentComponent],
+        NavMenuComponent,       DialogComponent, AvatarComponent, HtmlOutlet,
+      SpinnerComponent, WdFilterPipe, GroupByPipe, ArraySortPipe, ProcessTokenComponent, ModalComponentComponent
+    ],
     exports: [
        DialogComponent, AvatarComponent, HtmlOutlet,
-      SpinnerComponent, WdFilterPipe, GroupByPipe, ArraySortPipe, ModalComponentComponent]
+      SpinnerComponent, WdFilterPipe, GroupByPipe, ArraySortPipe, ModalComponentComponent
+    ]
 })
 export class WdCoreModule {}
  

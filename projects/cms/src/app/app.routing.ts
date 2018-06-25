@@ -10,7 +10,7 @@ import { Observable } from "rxjs";
 import { EditPageComponent } from './pages/edit-page/edit-page.component';
 import { PagesComponent } from './pages/pages/pages.component';
 import { StylingComponent } from './styling/styling.component';
-import { ProcessTokenComponent } from 'core/lib/core/process-token.component';
+import { ProcessTokenComponent } from 'core';
 
 @Injectable()
 export class CanDeactivateEditPage implements CanDeactivate<EditPageComponent> {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DictaatService } from 'core/lib/services/dictaat.service';
+import { DictaatService } from 'core';
 import 'codemirror/mode/css/css'
-import { StylingService } from 'core/lib/services/styling.service';
+import { StylingService } from 'core';
 
 
 @Component({

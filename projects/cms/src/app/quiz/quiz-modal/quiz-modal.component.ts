@@ -1,8 +1,8 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { QuizService } from 'core/lib/services/quiz.service';
-import { DictaatService } from 'core/lib/services/dictaat.service';
-import { Quiz, QuizSummary } from 'core/lib/models/quiz/quiz';
-import { BaseModalComponent } from 'core/lib/core/basemodal.service';
+import { QuizService } from 'core';
+import { DictaatService } from 'core';
+import { Quiz, QuizSummary } from 'core';
+import { BaseModalComponent } from 'core';
 
 @Component({
   selector: 'wd-quiz-modal',

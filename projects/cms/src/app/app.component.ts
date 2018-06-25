@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfigService } from "core/lib/services/config.service";
+import { ConfigService } from "core";
 import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
-import { GoogleAnalyticsEventsService } from 'core/lib/services/google-analytics.service';
+import { GoogleAnalyticsEventsService } from 'core';
 // ./src/app/services/google-analytics-events-service.ts
 
 @Component({
@@ -20,4 +20,4 @@ export class AppComponent  {
         });
       }
 
-}
+} 

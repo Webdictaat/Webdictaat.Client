@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 
 import { ActivatedRoute, Params } from '@angular/router';
-import { DictaatService } from "core/lib/services/dictaat.service";
+import { DictaatService } from "core";
 
 
 @Component({

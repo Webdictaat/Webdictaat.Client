@@ -1,5 +1,5 @@
 import { ViewChild, ElementRef, Input, Output, EventEmitter } from "@angular/core";
-import { NavMenuItem } from "core/lib/models/nav-menu";
+import { NavMenuItem } from "core";
 
 export class MenuItemBase {
 

@@ -1,8 +1,8 @@
 import { Component,  OnInit, Input } from '@angular/core';
 
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { Dictaat } from "core/lib/models/dictaat";
-import { DictaatService } from "core/lib/services/dictaat.service";
+import { Dictaat } from "core";
+import { DictaatService } from "core";
 
 
 @Component({

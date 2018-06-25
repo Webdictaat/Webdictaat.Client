@@ -2,9 +2,9 @@
 import { Headers, Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/rx';
-import { DictaatService } from "core/lib/services/dictaat.service";
-import { AccountService } from "core/lib/services/account.service";
-import { DictaatSummary } from "core/lib/models/dictaat-summary";
+import { DictaatService } from "core";
+import { AccountService } from "core";
+import { DictaatSummary } from "core";
 
 
 @Component({

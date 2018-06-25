@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Dictaat, DictaatMarkings } from "core/lib/models/dictaat";
-import { DictaatService } from "core/lib/services/dictaat.service";
+import { Dictaat, DictaatMarkings } from "core";
+import { DictaatService } from "core";
 
 @Component({
   selector: 'wd-marking',
