@@ -46,10 +46,12 @@
       <!-- TEMPORARY -->
       <div *ngIf="quiz.status == 'temporary'" class='temporary text-center'>
           <button *ngIf="isAuth" (click)="quiz.status = 'started'" class='btn btn-info btn-raised'>Continue where i left off</button>
-          <fieldset class="breakline">
-            <legend>Or</legend>
-          </fieldset>
-          <button *ngIf="isAuth && this.quiz" (click)="start()" class='btn btn-info'>Restart quiz</button>
+          <div *ngIf="!limit">
+            <fieldset class="breakline">
+              <legend>Or</legend>
+            </fieldset>
+            <button *ngIf="isAuth" (click)="start()" class='btn btn-info'>Restart quiz</button>
+          </div>
       </div>  
 
       <!-- FINISHED -->
@@ -60,7 +62,7 @@
             {{isCorrect}}
           </div>
         </div>
-        <button (click)="retakeQuiz()" class="btn btn-info btn-sm btn-raised">Retake quiz</button>
+        <button *ngIf="!limit" (click)="retakeQuiz()" class="btn btn-info btn-sm btn-raised">Retake quiz</button>
       </div>
       <!-- Show loader -->
       <div *ngIf="isSubmitting"  class='finished'>

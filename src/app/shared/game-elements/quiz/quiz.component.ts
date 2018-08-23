@@ -19,6 +19,9 @@ export class QuizComponent implements OnInit {
   @Input()
   public qid : number;
 
+  @Input() 
+  public limit : boolean = false;
+
   public isLoading: boolean; 
   public isSubmitting: boolean;
   public quiz : Quiz; 
