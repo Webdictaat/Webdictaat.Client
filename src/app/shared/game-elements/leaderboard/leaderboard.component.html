@@ -16,6 +16,11 @@
     </div>
 
     <div *ngIf="state == 0">
+
+        <div *ngIf="!groups">
+            <wd-spinner [subtitle]="'Loading groups'"></wd-spinner> 
+          </div>
+
       <table class="table">
         <tr>
           <th>Rank</th>

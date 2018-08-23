@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DictaatService } from "../../services/dictaat.service";
 import { AccountService } from "../../services/account.service";
 import { ConfigService } from "../../services/config.service";
@@ -23,15 +23,27 @@ export class LeaderboardComponent implements OnInit {
   public state: number = 1;
   public groups: any[];
 
+  @Input()
+  public tab: string = 'individual'
+
+  @Input()
+  public sort: string = 'average';
+
   constructor(
     private dictaatService: DictaatService, 
     private accountService: AccountService, 
     private configService: ConfigService){}
 
   ngOnInit() {
+
+    //handle inputs
+    this.state = this.tab == 'group' ? 0 : 1; 
+
     this.user = this.accountService.User;
     this.configService.Config.subscribe((config) => {
         if(config){
+
+          //load individual
           this.dictaatService.getParticipants(config.name)
             .then((participants) => {
                  this.participants = participants;
@@ -39,9 +51,15 @@ export class LeaderboardComponent implements OnInit {
                  this.leaderboard = this.top5;
             })
 
+          //load groups
           this.dictaatService.getGroups(config.name)
             .then((groups) => {
-                 this.groups = groups;
+                 this.groups = groups.sort((a, b) => {
+                    if(this.sort == 'total')
+                      return a.totalPoints < b.totalPoints ? 1 : -1;
+                    else
+                      return a.points < b.points ? 1 : -1;
+                 });
             })
         }
     })
