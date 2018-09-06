@@ -5,6 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { wdApi } from "../../shared/core/wd.service";
 import { Assignment } from "../../shared/models/assignment";
+import { Observable } from 'rxjs';
 
 export class DbAssignment extends Assignment {
     public external: DbSubmission;
@@ -30,25 +31,60 @@ export class DatabService {
        
     }
 
-    public getAssignment(daid): Promise<any>{
-        return this.http.get(this.root + "/assignments/" + daid)
+    public getAssignment(daid): Observable<any>{
+        return new Observable(o => {
+        //return data from local
+        var cache = this.getFromLocal('a', daid);
+        if(cache)
+            return o.next(cache);
+
+        //if no cache then retreive from online
+        this.http.get(this.root + "/assignments/" + daid)
             .map((response) => response.json())
-            .toPromise();
+            .do((a) => this.saveAssignmentInLocal(a))
+            .subscribe(a => o.next(a))
+        });
     }
 
-    public getSubmissions(daid, userId) : Promise<DbSubmission>
+    public getSubmissions(daid, userId) : Observable<DbSubmission>
     {
-        return this.http.get(this.root + "/assignments/" + daid + "/submissions/" + userId)
-            .map((response) => response.json() as DbSubmission )
-            .toPromise();
+        return new Observable(o => {
+
+            //return data from local
+            var cache = this.getFromLocal('s', daid);
+            if(cache)
+                return o.next(cache);
+
+            //if no cache then retreive from online
+            this.http.get(this.root + "/assignments/" + daid + "/submissions/" + userId)
+                .map((response) => response.json())
+                .do((s) => this.saveSubmissionInLocal(s))
+                .subscribe(a => o.next(a))
+            });
+    
     }
 
-    public sendSubmission(waid, daid, submission : DbSubmission ) : Promise<DbSubmission>
+    public sendSubmission(waid, daid, submission : DbSubmission ) : Observable<DbSubmission>
     {
         submission.originalAssignmentId = waid;
         return this.http.post(this.root + "/assignments/" + daid + "/submissions", submission)
-            .toPromise()
-            .then(response => response.json() as DbSubmission);
+            .map((response) => response.json())
+            .do((s) => this.saveSubmissionInLocal(s))
     }
 
+    public getFromLocal(type, id) : any
+    {
+        console.log('getting from local storage')
+        return JSON.parse(localStorage.getItem('databaas:' +  + type + ':' + id));
+    }
+
+    private saveAssignmentInLocal(assignment)
+    {
+        localStorage.setItem('databaas:a:' + assignment.assignmentId, JSON.stringify(assignment));
+    }
+
+    private saveSubmissionInLocal(submission)
+    {
+        localStorage.setItem('databaas:s:' + submission.Id, JSON.stringify(submission));
+    }
 }
