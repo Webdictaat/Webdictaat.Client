@@ -34,7 +34,11 @@ export class HtmlComponent implements OnInit {
 
     public ngOnInit(): void{
         this.pageElement = $('#page'); //.html(this.innerHTML);
+
+        //configure CK editor
         CKEDITOR.disableAutoInline = true;
+        CKEDITOR.config.mathJaxLib = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML';
+
         this.pageElement.on('click', '.delete-this', (element) => {
             element.target.closest('.wd-component').remove();
         })

@@ -59,7 +59,7 @@ export class DatabService {
             this.http.get(this.root + "/assignments/" + daid + "/submissions/" + userId)
                 .map((response) => response.json())
                 .do((s) => this.saveSubmissionInLocal(s))
-                .subscribe(a => o.next(a))
+                .subscribe(s => o.next(s))
             });
     
     }
@@ -74,7 +74,6 @@ export class DatabService {
 
     public getFromLocal(type, id) : any
     {
-        console.log('getting from local storage')
         return JSON.parse(localStorage.getItem('databaas:' +  + type + ':' + id));
     }
 
@@ -85,6 +84,7 @@ export class DatabService {
 
     private saveSubmissionInLocal(submission)
     {
-        localStorage.setItem('databaas:s:' + submission.Id, JSON.stringify(submission));
+        if(!submission) return; 
+        localStorage.setItem('databaas:s:' + submission.assignmentId, JSON.stringify(submission));
     }
 }

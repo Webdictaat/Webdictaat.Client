@@ -208,7 +208,7 @@ module.exports = {
             { from: 'node_modules\\bootstrap-material-design\\dist\\js\\material.min.js', to: 'js' },
             { from: 'node_modules\\bootstrap-material-design\\dist\\js\\ripples.min.js', to: 'js' },
             { from: 'node_modules\\core-js\\client\\shim.min.js', to: 'js' },   //copy shims
-            { from: 'libs\\ckeditor_4.6.2_d2ec7cce935f\\ckeditor', to: 'js' }, //copy intire directory
+             { from: 'libs\\ckeditor', to: 'js' }, //copy intire directory
           
             // from img
              { from: './src\\img', to: 'img' },
