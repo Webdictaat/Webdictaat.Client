@@ -12,7 +12,7 @@ export class wdApi {
     private jwt : string;
     public urlPrefix = window["rootVar"] ? window["rootVar"] : 'https://localhost:65418/api';
 
-    constructor(private https: Http) { 
+    constructor(private http: Http) { 
         this.jwt = localStorage.getItem('jwt');
     } 
 

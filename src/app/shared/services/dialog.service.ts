@@ -19,7 +19,7 @@ export class DialogService {
     private dialogData: DialogData;
     private subject: Subject<DialogData> = new Subject<DialogData>();
 
-    constructor(private https: Http) {
+    constructor(private http: Http) {
 
     }
 

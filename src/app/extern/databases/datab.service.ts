@@ -27,7 +27,7 @@ export class DatabService {
     private root  = "https://webdictaat.aii.avans.nl/apis/databases";
     //private root = "https://localhost:22608"
 
-    constructor(private https: Http, private wdApi: wdApi) {
+    constructor(private http: Http, private wdApi: wdApi) {
        
     }
 

@@ -14,7 +14,7 @@ import { wdApi } from "../core/wd.service";
 export class NavMenuService {
 
     constructor(
-        private https: Http,
+        private http: Http,
         private router: Router,
         private api: wdApi) { }
 
