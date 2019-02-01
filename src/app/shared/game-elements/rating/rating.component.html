@@ -16,7 +16,7 @@
                 <div *ngIf="!rating.myRate" class="rate">
                     <span class="count">{{rating.sadCounter}}</span>
                     <div class='emotion' [ngClass]="{ 'active' : rate.emotion == 'sad' }">       
-                        <img (click)="setEmotion('sad')"   src="http://webdictaat.azurewebsites.net/images/shared/sad.png">
+                        <img (click)="setEmotion('sad')"   src="https://webdictaat.azurewebsites.net/images/shared/sad.png">
                        
                         <div  *ngIf="rate.emotion == 'sad'" class="text-baloon">
                              <div class="content">
@@ -27,7 +27,7 @@
                     </div>
                     <span class="count">{{rating.happyCounter}}</span>
                     <div  class='emotion' [ngClass]="{ 'active' : rate.emotion == 'happy' }">
-                        <img (click)="setEmotion('happy')"  src="http://webdictaat.azurewebsites.net/images/shared/happy.png">
+                        <img (click)="setEmotion('happy')"  src="https://webdictaat.azurewebsites.net/images/shared/happy.png">
                         
                         <div  *ngIf="rate.emotion == 'happy'" class="text-baloon">
                             <div class="content">
@@ -44,9 +44,9 @@
                     
                     <p *ngIf="rating.myRate.feedback"> 
                         <span class="count">{{rating.sadCounter}}</span>
-                        <img width="30px" src="http://webdictaat.azurewebsites.net/images/shared/sad.png">
+                        <img width="30px" src="https://webdictaat.azurewebsites.net/images/shared/sad.png">
                         <span class="count">{{rating.happyCounter}}</span>
-                        <img width="30px" src="http://webdictaat.azurewebsites.net/images/shared/happy.png">
+                        <img width="30px" src="https://webdictaat.azurewebsites.net/images/shared/happy.png">
                         - "{{rating.myRate.feedback}}"
                     </p>
                 </div>

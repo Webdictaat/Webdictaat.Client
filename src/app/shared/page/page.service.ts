@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class PageService {
 
-    constructor(private http: Http) { }
+    constructor(private https: Http) { }
 
     public getPage(pageName: String) {
         return this.http.get('pages/' + pageName + '.html?v=' + new Date().getTime() , { withCredentials: true })

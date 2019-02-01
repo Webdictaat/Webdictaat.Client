@@ -15,7 +15,7 @@ export class ConfigService {
     public Config : BehaviorSubject<DictaatConfig> = new BehaviorSubject<DictaatConfig>(null);
     public DictaatName : BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
-    constructor(private http: Http){    
+    constructor(private https: Http){    
       
     }
 

@@ -14,8 +14,8 @@ export class ImgComponent implements OnInit  {
     @Input()
     public dictaatName: string;
 
-    //private server = "http://localhost:65418/";
-    private server = "http://webdictaat.aii.avans.nl/";
+    //private server = "https://localhost:65418/";
+    private server = "https://webdictaat.aii.avans.nl/";
 
     constructor(private imageServie: ImageService) { }
 

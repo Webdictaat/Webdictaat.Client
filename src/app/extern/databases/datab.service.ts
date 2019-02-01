@@ -24,10 +24,10 @@ export class DbSubmission{
 @Injectable()
 export class DatabService {
 
-    private root  = "http://webdictaat.aii.avans.nl/apis/databases";
-    //private root = "http://localhost:22608"
+    private root  = "https://webdictaat.aii.avans.nl/apis/databases";
+    //private root = "https://localhost:22608"
 
-    constructor(private http: Http, private wdApi: wdApi) {
+    constructor(private https: Http, private wdApi: wdApi) {
        
     }
 
