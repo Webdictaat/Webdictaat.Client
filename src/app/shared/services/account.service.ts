@@ -52,7 +52,7 @@ export class AccountService {
     public Login(): void {
         //retrieve the host url including subfolders this app is runing in.
         var baseUrl: string = window.location.toString().split('#')[0];
-        window.location.href = this.wdapi.urlPrefix + "/account/ExternalLogin?returnurl=" + baseUrl;
+        window.location.href = this.wdapi.urlPrefix + "/account/AvansLogin?returnurl=" + baseUrl;
     }
 
     public Logoff(): void {
