@@ -23,8 +23,8 @@
     <div class="datab" *ngIf="submission">
        
         <div>
-            <textarea [(ngModel)]="submission.query" [disabled]="submission.assignmentToken" ></textarea>
-            <div  *ngIf="!submission.assignmentToken">
+            <textarea [(ngModel)]="submission.query" ></textarea>
+            <div>
                 <button class="btn btn-default btn-raised" (click)="submit()">Submit</button>
             </div> 
         </div>
