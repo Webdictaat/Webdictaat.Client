@@ -18,7 +18,7 @@ export class DictatenComponent implements OnInit {
     public dictaten: DictaatSummary[];
     public selectedDictaat: DictaatSummary;
 
-    public isAuth: boolean;
+    public user: any;
  
     public loaderValue: number = 0;
 
@@ -39,7 +39,7 @@ export class DictatenComponent implements OnInit {
             }
         });
 
-        this.accountService.User.subscribe(user => this.isAuth = user != null);
+        this.accountService.User.subscribe(user => this.user = user);
 
         this.dictatenService.getDictaten()
             .then(dictaten => { 

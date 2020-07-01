@@ -5,13 +5,13 @@
         <div class="animated fadeIn">
             <h1>Welkom op de site van Webdictaat!</h1>
 
-            <p>Maak nu een nieuw webdictaat, of bekijk de lijst van bestaande dictaten!</p>
+            <p>Bekijk hieronder de lijst van bestaande dictaten!</p>
 
-            <p *ngIf="isAuth">
+            <p *ngIf="user && user.isTeacher">
                 <wd-add-dictaat (dictaatAdded)="setDictaten($event)"></wd-add-dictaat>
             </p>
 
-            <p *ngIf="!isAuth">
+            <p *ngIf="!user">
                 <button class="btn btn-primary btn-raised" (click)="login()">Login to get started!</button>
             </p>
         </div>
@@ -32,7 +32,7 @@
 
                     <span *ngIf="!dictaat.isEnabled" class="preview">Preview</span>
 
-                    <div *ngIf="isAuth && dictaat.canEdit" class="hover-actions">
+                    <div *ngIf="user && dictaat.canEdit" class="hover-actions">
                         <button type="button" class="btn btn-info btn-raised btn-sm" (click)="gotoDetail(dictaat)">
                             <span class="glyphicon glyphicon-pencil icon" aria-hidden="true" ></span> Edit
                         </button>
