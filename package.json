@@ -31,7 +31,7 @@
     "bootstrap": "^3.3.6",
     "bootstrap-material-design": "^0.5.10",
     "ckeditor": "^4.6.2",
-    "codemirror": "^5.28.0",
+    "codemirror": "^5.58.2",
     "core-js": "^2.4.1",
     "dragula": "^3.7.2",
     "jquery": "^3.1.1",
